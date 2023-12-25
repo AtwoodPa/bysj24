@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97c99b41-ba55-4f3a-8dfe-6b589657457d" name="Changes" comment="Enhancement: 租房小程序.md">
-      <change beforePath="$PROJECT_DIR$/doc/参考文档.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/参考文档.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/疫苗预约.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/疫苗预约.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/租房小程序.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/租房小程序.md" afterDir="false" />
-    </list>
+    <list default="true" id="97c99b41-ba55-4f3a-8dfe-6b589657457d" name="Changes" comment="Enhancement: 租房小程序.md" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,6 +80,7 @@
       <workItem from="1703223229569" duration="3166000" />
       <workItem from="1703470094972" duration="249000" />
       <workItem from="1703470907241" duration="351000" />
+      <workItem from="1703474517491" duration="76000" />
     </task>
     <task id="LOCAL-00001" summary="Enhancement: 租房小程序.md">
       <option name="closed" value="true" />
