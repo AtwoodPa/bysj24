@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97c99b41-ba55-4f3a-8dfe-6b589657457d" name="Changes" comment="" />
+    <list default="true" id="97c99b41-ba55-4f3a-8dfe-6b589657457d" name="Changes" comment="Enhancement: 租房小程序.md">
+      <change beforePath="$PROJECT_DIR$/doc/参考文档.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/参考文档.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/疫苗预约.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/疫苗预约.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/租房小程序.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/租房小程序.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +82,18 @@
       <workItem from="1703209720232" duration="401000" />
       <workItem from="1703210323879" duration="2600000" />
       <workItem from="1703223229569" duration="3166000" />
+      <workItem from="1703470094972" duration="249000" />
+      <workItem from="1703470907241" duration="351000" />
     </task>
+    <task id="LOCAL-00001" summary="Enhancement: 租房小程序.md">
+      <option name="closed" value="true" />
+      <created>1703470189504</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703470189504</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,5 +101,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Enhancement: 租房小程序.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhancement: 租房小程序.md" />
   </component>
 </project>
