@@ -1,1 +1,0 @@
-2023-12-21 17:10:42 [XNIO-1 task-1] ERROR c.y.f.w.e.GlobalExceptionHandler - 请求地址'/getInfo',认证失败'token 已被冻结：eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiI5VHZmQ1dVRjNwYXU1bzFHRWpJQnFYVng3bGI0YXpaTSIsInVzZXJJZCI6MX0.8n03nZPCeAYoRe9JyrNj9VBVQ4n1ikJt8k-7jzvygvA',无法访问系统资源
