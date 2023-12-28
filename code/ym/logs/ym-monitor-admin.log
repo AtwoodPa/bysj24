@@ -1,0 +1,157 @@
+2023-12-21 17:08:57 [main] INFO  c.y.m.admin.MonitorAdminApplication - Starting MonitorAdminApplication using Java 21.0.1 on panpandeMacBook-Pro.local with PID 68630 (/Library/PP/my-project/bysj24/code/ym/ym-extend/ym-monitor-admin/target/classes started by panpan in /Library/PP/my-project/bysj24/code/ym)
+2023-12-21 17:08:57 [main] INFO  c.y.m.admin.MonitorAdminApplication - The following 1 profile is active: "dev"
+2023-12-21 17:08:59 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+2023-12-21 17:08:59 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+2023-12-21 17:08:59 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-12-21 17:08:59 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2023-12-21 17:08:59 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-12-21 17:08:59 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2272 ms
+2023-12-21 17:09:00 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@55361f03, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@581c9bb7, org.springframework.security.web.context.SecurityContextPersistenceFilter@33ec2c0c, org.springframework.security.web.header.HeaderWriterFilter@4ef18604, org.springframework.security.web.authentication.logout.LogoutFilter@6b2fdffc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@55877274, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5a2ae1ab, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3887c7d7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@b1b471, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@138f0661, org.springframework.security.web.session.SessionManagementFilter@16cf8438, org.springframework.security.web.access.ExceptionTranslationFilter@48cd319d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@231cdda8]
+2023-12-21 17:09:00 [main] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-12-21 17:09:02 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 14 endpoint(s) beneath base path '/actuator'
+2023-12-21 17:09:02 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+2023-12-21 17:09:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+2023-12-21 17:09:02 [main] INFO  c.y.m.admin.MonitorAdminApplication - Started MonitorAdminApplication in 5.854 seconds (JVM running for 6.678)
+2023-12-21 17:09:02 [RMI TCP Connection(2)-192.168.66.185] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-12-21 17:09:02 [RMI TCP Connection(2)-192.168.66.185] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-12-21 17:09:02 [RMI TCP Connection(2)-192.168.66.185] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2023-12-21 17:09:03 [registrationTask1] INFO  d.c.b.a.c.r.ApplicationRegistrator - Application registered itself as 1b8c0b3f5688
+2023-12-21 17:09:03 [reactor-http-nio-2] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-monitor-admin],[1b8c0b3f5688],[UP]
+2023-12-21 17:09:17 [parallel-7] INFO  d.c.b.a.s.services.StatusUpdater - Couldn't retrieve status for Instance(id=ddfa35649816, version=0, registration=Registration(name=ym-xxl-job-admin, managementUrl=http://192.168.66.185:9100/xxl-job-admin/actuator, healthUrl=http://192.168.66.185:9100/xxl-job-admin/actuator/health, serviceUrl=http://192.168.66.185:9100/xxl-job-admin, source=http-api), registered=true, statusInfo=StatusInfo(status=UNKNOWN, details={}), statusTimestamp=2023-12-21T09:09:08.414829Z, info=Info(values={}), endpoints=Endpoints(endpoints={health=Endpoint(id=health, url=http://192.168.66.185:9100/xxl-job-admin/actuator/health)}), buildVersion=null, tags=Tags(values={}))
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 9000ms in 'log' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:295)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:280)
+	at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:419)
+	at reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:271)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:286)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-12-21 17:09:17 [parallel-7] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[ddfa35649816],[OFFLINE]
+2023-12-21 17:09:35 [reactor-http-nio-5] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-Vue-Plus],[615bfa2525a3],[UP]
+2023-12-21 17:12:20 [reactor-http-nio-1] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[ddfa35649816],[DOWN]
+2023-12-21 17:12:41 [parallel-11] INFO  d.c.b.a.s.services.StatusUpdater - Couldn't retrieve status for Instance(id=ddfa35649816, version=3, registration=Registration(name=ym-xxl-job-admin, managementUrl=http://192.168.66.185:9100/xxl-job-admin/actuator, healthUrl=http://192.168.66.185:9100/xxl-job-admin/actuator/health, serviceUrl=http://192.168.66.185:9100/xxl-job-admin, source=http-api), registered=true, statusInfo=StatusInfo(status=DOWN, details={}), statusTimestamp=2023-12-21T09:12:20.225440Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://192.168.66.185:9100/xxl-job-admin/actuator/caches), loggers=Endpoint(id=loggers, url=http://192.168.66.185:9100/xxl-job-admin/actuator/loggers), logfile=Endpoint(id=logfile, url=http://192.168.66.185:9100/xxl-job-admin/actuator/logfile), health=Endpoint(id=health, url=http://192.168.66.185:9100/xxl-job-admin/actuator/health), env=Endpoint(id=env, url=http://192.168.66.185:9100/xxl-job-admin/actuator/env), heapdump=Endpoint(id=heapdump, url=http://192.168.66.185:9100/xxl-job-admin/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://192.168.66.185:9100/xxl-job-admin/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://192.168.66.185:9100/xxl-job-admin/actuator/mappings), beans=Endpoint(id=beans, url=http://192.168.66.185:9100/xxl-job-admin/actuator/beans), configprops=Endpoint(id=configprops, url=http://192.168.66.185:9100/xxl-job-admin/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://192.168.66.185:9100/xxl-job-admin/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://192.168.66.185:9100/xxl-job-admin/actuator/metrics), conditions=Endpoint(id=conditions, url=http://192.168.66.185:9100/xxl-job-admin/actuator/conditions), info=Endpoint(id=info, url=http://192.168.66.185:9100/xxl-job-admin/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 9000ms in 'log' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:295)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:280)
+	at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:419)
+	at reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:271)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:286)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-12-21 17:12:41 [parallel-11] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[ddfa35649816],[OFFLINE]
+2023-12-21 17:14:42 [reactor-http-nio-7] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-monitor-admin],[3f1de0b81a3d],[UP]
+2023-12-21 17:14:44 [reactor-http-nio-8] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-Vue-Plus],[6bcf19a6bf8c],[UP]
+2023-12-21 17:14:57 [parallel-3] INFO  d.c.b.a.s.services.StatusUpdater - Couldn't retrieve status for Instance(id=e3cfca7d8d59, version=0, registration=Registration(name=ym-xxl-job-admin, managementUrl=http://127.0.0.1:9100/xxl-job-admin/actuator, healthUrl=http://127.0.0.1:9100/xxl-job-admin/actuator/health, serviceUrl=http://127.0.0.1:9100/xxl-job-admin, source=http-api), registered=true, statusInfo=StatusInfo(status=UNKNOWN, details={}), statusTimestamp=2023-12-21T09:14:48.314653Z, info=Info(values={}), endpoints=Endpoints(endpoints={health=Endpoint(id=health, url=http://127.0.0.1:9100/xxl-job-admin/actuator/health)}), buildVersion=null, tags=Tags(values={}))
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 9000ms in 'log' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:295)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:280)
+	at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:419)
+	at reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:271)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:286)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-12-21 17:14:57 [parallel-3] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[OFFLINE]
+2023-12-21 17:17:58 [reactor-http-nio-4] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[DOWN]
+2023-12-21 17:18:21 [parallel-5] INFO  d.c.b.a.s.services.StatusUpdater - Couldn't retrieve status for Instance(id=e3cfca7d8d59, version=3, registration=Registration(name=ym-xxl-job-admin, managementUrl=http://127.0.0.1:9100/xxl-job-admin/actuator, healthUrl=http://127.0.0.1:9100/xxl-job-admin/actuator/health, serviceUrl=http://127.0.0.1:9100/xxl-job-admin, source=http-api), registered=true, statusInfo=StatusInfo(status=DOWN, details={}), statusTimestamp=2023-12-21T09:17:58.962634Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://127.0.0.1:9100/xxl-job-admin/actuator/caches), loggers=Endpoint(id=loggers, url=http://127.0.0.1:9100/xxl-job-admin/actuator/loggers), logfile=Endpoint(id=logfile, url=http://127.0.0.1:9100/xxl-job-admin/actuator/logfile), health=Endpoint(id=health, url=http://127.0.0.1:9100/xxl-job-admin/actuator/health), env=Endpoint(id=env, url=http://127.0.0.1:9100/xxl-job-admin/actuator/env), heapdump=Endpoint(id=heapdump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://127.0.0.1:9100/xxl-job-admin/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://127.0.0.1:9100/xxl-job-admin/actuator/mappings), beans=Endpoint(id=beans, url=http://127.0.0.1:9100/xxl-job-admin/actuator/beans), configprops=Endpoint(id=configprops, url=http://127.0.0.1:9100/xxl-job-admin/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://127.0.0.1:9100/xxl-job-admin/actuator/metrics), conditions=Endpoint(id=conditions, url=http://127.0.0.1:9100/xxl-job-admin/actuator/conditions), info=Endpoint(id=info, url=http://127.0.0.1:9100/xxl-job-admin/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 9000ms in 'log' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:295)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:280)
+	at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:419)
+	at reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:271)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:286)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-12-21 17:18:21 [parallel-5] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[OFFLINE]
+2023-12-21 17:18:59 [reactor-http-nio-8] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[DOWN]
+2023-12-21 17:19:21 [parallel-9] INFO  d.c.b.a.s.services.StatusUpdater - Couldn't retrieve status for Instance(id=e3cfca7d8d59, version=5, registration=Registration(name=ym-xxl-job-admin, managementUrl=http://127.0.0.1:9100/xxl-job-admin/actuator, healthUrl=http://127.0.0.1:9100/xxl-job-admin/actuator/health, serviceUrl=http://127.0.0.1:9100/xxl-job-admin, source=http-api), registered=true, statusInfo=StatusInfo(status=DOWN, details={}), statusTimestamp=2023-12-21T09:18:59.552657Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://127.0.0.1:9100/xxl-job-admin/actuator/caches), loggers=Endpoint(id=loggers, url=http://127.0.0.1:9100/xxl-job-admin/actuator/loggers), logfile=Endpoint(id=logfile, url=http://127.0.0.1:9100/xxl-job-admin/actuator/logfile), health=Endpoint(id=health, url=http://127.0.0.1:9100/xxl-job-admin/actuator/health), env=Endpoint(id=env, url=http://127.0.0.1:9100/xxl-job-admin/actuator/env), heapdump=Endpoint(id=heapdump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://127.0.0.1:9100/xxl-job-admin/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://127.0.0.1:9100/xxl-job-admin/actuator/mappings), beans=Endpoint(id=beans, url=http://127.0.0.1:9100/xxl-job-admin/actuator/beans), configprops=Endpoint(id=configprops, url=http://127.0.0.1:9100/xxl-job-admin/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://127.0.0.1:9100/xxl-job-admin/actuator/metrics), conditions=Endpoint(id=conditions, url=http://127.0.0.1:9100/xxl-job-admin/actuator/conditions), info=Endpoint(id=info, url=http://127.0.0.1:9100/xxl-job-admin/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 9000ms in 'log' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:295)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:280)
+	at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:419)
+	at reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:271)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:286)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-12-21 17:19:21 [parallel-9] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[OFFLINE]
+2023-12-21 17:20:00 [reactor-http-nio-12] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[DOWN]
+2023-12-21 17:20:21 [parallel-2] INFO  d.c.b.a.s.services.StatusUpdater - Couldn't retrieve status for Instance(id=e3cfca7d8d59, version=7, registration=Registration(name=ym-xxl-job-admin, managementUrl=http://127.0.0.1:9100/xxl-job-admin/actuator, healthUrl=http://127.0.0.1:9100/xxl-job-admin/actuator/health, serviceUrl=http://127.0.0.1:9100/xxl-job-admin, source=http-api), registered=true, statusInfo=StatusInfo(status=DOWN, details={}), statusTimestamp=2023-12-21T09:20:00.190345Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://127.0.0.1:9100/xxl-job-admin/actuator/caches), loggers=Endpoint(id=loggers, url=http://127.0.0.1:9100/xxl-job-admin/actuator/loggers), logfile=Endpoint(id=logfile, url=http://127.0.0.1:9100/xxl-job-admin/actuator/logfile), health=Endpoint(id=health, url=http://127.0.0.1:9100/xxl-job-admin/actuator/health), env=Endpoint(id=env, url=http://127.0.0.1:9100/xxl-job-admin/actuator/env), heapdump=Endpoint(id=heapdump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://127.0.0.1:9100/xxl-job-admin/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://127.0.0.1:9100/xxl-job-admin/actuator/mappings), beans=Endpoint(id=beans, url=http://127.0.0.1:9100/xxl-job-admin/actuator/beans), configprops=Endpoint(id=configprops, url=http://127.0.0.1:9100/xxl-job-admin/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://127.0.0.1:9100/xxl-job-admin/actuator/metrics), conditions=Endpoint(id=conditions, url=http://127.0.0.1:9100/xxl-job-admin/actuator/conditions), info=Endpoint(id=info, url=http://127.0.0.1:9100/xxl-job-admin/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 9000ms in 'log' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:295)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:280)
+	at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:419)
+	at reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:271)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:286)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-12-21 17:20:21 [parallel-2] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[OFFLINE]
+2023-12-21 17:28:00 [reactor-http-nio-10] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[DOWN]
+2023-12-21 17:28:21 [parallel-8] INFO  d.c.b.a.s.services.StatusUpdater - Couldn't retrieve status for Instance(id=e3cfca7d8d59, version=9, registration=Registration(name=ym-xxl-job-admin, managementUrl=http://127.0.0.1:9100/xxl-job-admin/actuator, healthUrl=http://127.0.0.1:9100/xxl-job-admin/actuator/health, serviceUrl=http://127.0.0.1:9100/xxl-job-admin, source=http-api), registered=true, statusInfo=StatusInfo(status=DOWN, details={}), statusTimestamp=2023-12-21T09:28:00.179026Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://127.0.0.1:9100/xxl-job-admin/actuator/caches), loggers=Endpoint(id=loggers, url=http://127.0.0.1:9100/xxl-job-admin/actuator/loggers), logfile=Endpoint(id=logfile, url=http://127.0.0.1:9100/xxl-job-admin/actuator/logfile), health=Endpoint(id=health, url=http://127.0.0.1:9100/xxl-job-admin/actuator/health), env=Endpoint(id=env, url=http://127.0.0.1:9100/xxl-job-admin/actuator/env), heapdump=Endpoint(id=heapdump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://127.0.0.1:9100/xxl-job-admin/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://127.0.0.1:9100/xxl-job-admin/actuator/mappings), beans=Endpoint(id=beans, url=http://127.0.0.1:9100/xxl-job-admin/actuator/beans), configprops=Endpoint(id=configprops, url=http://127.0.0.1:9100/xxl-job-admin/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://127.0.0.1:9100/xxl-job-admin/actuator/metrics), conditions=Endpoint(id=conditions, url=http://127.0.0.1:9100/xxl-job-admin/actuator/conditions), info=Endpoint(id=info, url=http://127.0.0.1:9100/xxl-job-admin/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 9000ms in 'log' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:295)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:280)
+	at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:419)
+	at reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:271)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:286)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-12-21 17:28:21 [parallel-8] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[OFFLINE]
+2023-12-21 17:29:21 [reactor-http-nio-4] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[DOWN]
+2023-12-21 17:29:41 [parallel-1] INFO  d.c.b.a.s.services.StatusUpdater - Couldn't retrieve status for Instance(id=e3cfca7d8d59, version=11, registration=Registration(name=ym-xxl-job-admin, managementUrl=http://127.0.0.1:9100/xxl-job-admin/actuator, healthUrl=http://127.0.0.1:9100/xxl-job-admin/actuator/health, serviceUrl=http://127.0.0.1:9100/xxl-job-admin, source=http-api), registered=true, statusInfo=StatusInfo(status=DOWN, details={}), statusTimestamp=2023-12-21T09:29:21.013556Z, info=Info(values={}), endpoints=Endpoints(endpoints={caches=Endpoint(id=caches, url=http://127.0.0.1:9100/xxl-job-admin/actuator/caches), loggers=Endpoint(id=loggers, url=http://127.0.0.1:9100/xxl-job-admin/actuator/loggers), logfile=Endpoint(id=logfile, url=http://127.0.0.1:9100/xxl-job-admin/actuator/logfile), health=Endpoint(id=health, url=http://127.0.0.1:9100/xxl-job-admin/actuator/health), env=Endpoint(id=env, url=http://127.0.0.1:9100/xxl-job-admin/actuator/env), heapdump=Endpoint(id=heapdump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/heapdump), scheduledtasks=Endpoint(id=scheduledtasks, url=http://127.0.0.1:9100/xxl-job-admin/actuator/scheduledtasks), mappings=Endpoint(id=mappings, url=http://127.0.0.1:9100/xxl-job-admin/actuator/mappings), beans=Endpoint(id=beans, url=http://127.0.0.1:9100/xxl-job-admin/actuator/beans), configprops=Endpoint(id=configprops, url=http://127.0.0.1:9100/xxl-job-admin/actuator/configprops), threaddump=Endpoint(id=threaddump, url=http://127.0.0.1:9100/xxl-job-admin/actuator/threaddump), metrics=Endpoint(id=metrics, url=http://127.0.0.1:9100/xxl-job-admin/actuator/metrics), conditions=Endpoint(id=conditions, url=http://127.0.0.1:9100/xxl-job-admin/actuator/conditions), info=Endpoint(id=info, url=http://127.0.0.1:9100/xxl-job-admin/actuator/info)}), buildVersion=null, tags=Tags(values={}))
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 9000ms in 'log' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:295)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:280)
+	at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:419)
+	at reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:271)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:286)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-12-21 17:29:41 [parallel-1] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[OFFLINE]
+2023-12-21 17:31:37 [reactor-http-nio-4] INFO  c.y.m.admin.notifier.CustomNotifier - Instance Status Change: [ym-xxl-job-admin],[e3cfca7d8d59],[DOWN]

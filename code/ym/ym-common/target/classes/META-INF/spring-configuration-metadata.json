@@ -1,0 +1,36 @@
+{
+  "groups": [
+    {
+      "name": "ym",
+      "type": "com.ym.common.config.YmConfig",
+      "sourceType": "com.ym.common.config.YmConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "ym.cache-lazy",
+      "type": "java.lang.Boolean",
+      "description": "缓存懒加载",
+      "sourceType": "com.ym.common.config.YmConfig"
+    },
+    {
+      "name": "ym.copyright-year",
+      "type": "java.lang.String",
+      "description": "版权年份",
+      "sourceType": "com.ym.common.config.YmConfig"
+    },
+    {
+      "name": "ym.name",
+      "type": "java.lang.String",
+      "description": "项目名称",
+      "sourceType": "com.ym.common.config.YmConfig"
+    },
+    {
+      "name": "ym.version",
+      "type": "java.lang.String",
+      "description": "版本",
+      "sourceType": "com.ym.common.config.YmConfig"
+    }
+  ],
+  "hints": []
+}

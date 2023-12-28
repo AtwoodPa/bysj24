@@ -1,0 +1,115 @@
+2023-12-21 17:09:22 [main] INFO  com.ym.YmApplication - Starting YmApplication using Java 21.0.1 on panpandeMacBook-Pro.local with PID 68642 (/Library/PP/my-project/bysj24/code/ym/ym-admin/target/classes started by panpan in /Library/PP/my-project/bysj24/code/ym)
+2023-12-21 17:09:22 [main] INFO  com.ym.YmApplication - The following 1 profile is active: "dev"
+2023-12-21 17:09:22 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2023-12-21 17:09:25 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2023-12-21 17:09:25 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource detect P6SPY plugin and enabled it
+2023-12-21 17:09:25 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Starting...
+2023-12-21 17:09:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Start completed.
+2023-12-21 17:09:26 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [slave] success
+2023-12-21 17:09:26 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [master] success
+2023-12-21 17:09:26 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [master]
+2023-12-21 17:09:27 [main] INFO  c.ym.framework.config.JacksonConfig - 初始化 jackson 配置
+2023-12-21 17:09:28 [main] INFO  com.ym.framework.config.RedisConfig - 初始化 redis 配置
+2023-12-21 17:09:28 [main] INFO  org.redisson.Version - Redisson 3.20.1
+2023-12-21 17:09:28 [redisson-netty-2-6] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for 43.142.255.148/43.142.255.148:6379
+2023-12-21 17:09:29 [redisson-netty-2-3] INFO  o.r.c.pool.MasterConnectionPool - 8 connections initialized for 43.142.255.148/43.142.255.148:6379
+2023-12-21 17:09:30 [main] INFO  com.ym.job.config.XxlJobConfig - >>>>>>>>>>> xxl-job config init.
+2023-12-21 17:09:33 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:demoJobHandler, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@5128efc[class com.ym.job.service.SampleService#demoJobHandler]
+2023-12-21 17:09:33 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:httpJobHandler, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@438a2337[class com.ym.job.service.SampleService#httpJobHandler]
+2023-12-21 17:09:33 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:shardingJobHandler, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@593d5f39[class com.ym.job.service.SampleService#shardingJobHandler]
+2023-12-21 17:09:33 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:commandJobHandler, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@5e537465[class com.ym.job.service.SampleService#commandJobHandler]
+2023-12-21 17:09:33 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:demoJobHandler2, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@4f27643d[class com.ym.job.service.SampleService#demoJobHandler2]
+2023-12-21 17:09:33 [Thread-8] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server start success, nettype = class com.xxl.job.core.server.EmbedServer, port = 28080
+2023-12-21 17:09:33 [main] INFO  io.undertow - starting server: Undertow - 2.2.28.Final
+2023-12-21 17:09:33 [main] INFO  org.xnio - XNIO version 3.8.7.Final
+2023-12-21 17:09:33 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.8.7.Final
+2023-12-21 17:09:33 [main] INFO  org.jboss.threads - JBoss Threads version 3.1.0.Final
+2023-12-21 17:09:33 [main] INFO  com.ym.YmApplication - Started YmApplication in 11.928 seconds (JVM running for 12.738)
+2023-12-21 17:09:34 [main] INFO  c.y.s.runner.SystemApplicationRunner - 初始化OSS配置成功
+2023-12-21 17:09:34 [main] INFO  c.y.s.runner.SystemApplicationRunner - 加载参数缓存数据成功
+2023-12-21 17:09:34 [main] INFO  c.y.s.runner.SystemApplicationRunner - 加载字典缓存数据成功
+2023-12-21 17:09:34 [registrationTask1] INFO  d.c.b.a.c.r.ApplicationRegistrator - Application registered itself as 615bfa2525a3
+2023-12-21 17:09:35 [RMI TCP Connection(2)-192.168.66.185] INFO  io.undertow.servlet - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-12-21 17:10:42 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2023-12-21 17:10:42 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[65]毫秒
+2023-12-21 17:10:42 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /logout],无参数
+2023-12-21 17:10:42 [XNIO-1 task-1] INFO  c.y.f.listener.UserActionListener - user doLogout, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiI5VHZmQ1dVRjNwYXU1bzFHRWpJQnFYVng3bGI0YXpaTSIsInVzZXJJZCI6MX0.8n03nZPCeAYoRe9JyrNj9VBVQ4n1ikJt8k-7jzvygvA
+2023-12-21 17:10:42 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /logout],耗时:[512]毫秒
+2023-12-21 17:10:42 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2023-12-21 17:10:44 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[1387]毫秒
+2023-12-21 17:10:46 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /login],参数类型[json],参数:[{"username":"admin","password":"admin123","code":"7","uuid":"141eaddb041d4864a9f742ceaffe4a6e"}]
+2023-12-21 17:10:47 [XNIO-1 task-1] INFO  c.y.f.listener.UserActionListener - user doLogin, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJPN0tScTJSNWhIVzFKNElCNGxVcENVQzdUejBNNXRTUSIsInVzZXJJZCI6MX0.dld__ufVqZ4WvJBy924kdBDba51OUY466zaC5-rpnoY
+2023-12-21 17:10:47 [schedule-pool-1] INFO  c.y.s.s.i.SysLogininforServiceImpl - [127.0.0.1]内网IP[admin][Success][登录成功]
+2023-12-21 17:10:47 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /login],耗时:[985]毫秒
+2023-12-21 17:10:47 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2023-12-21 17:10:47 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[216]毫秒
+2023-12-21 17:10:47 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2023-12-21 17:10:47 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[173]毫秒
+2023-12-21 17:10:50 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/dict/data/type/sys_normal_disable],无参数
+2023-12-21 17:10:50 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/user/deptTree],无参数
+2023-12-21 17:10:50 [XNIO-1 task-3] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/dict/data/type/sys_user_sex],无参数
+2023-12-21 17:10:50 [XNIO-1 task-5] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/config/configKey/sys.user.initPassword],无参数
+2023-12-21 17:10:50 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/user/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2023-12-21 17:10:50 [XNIO-1 task-3] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/dict/data/type/sys_user_sex],耗时:[133]毫秒
+2023-12-21 17:10:50 [XNIO-1 task-1] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/dict/data/type/sys_normal_disable],耗时:[134]毫秒
+2023-12-21 17:10:50 [XNIO-1 task-5] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/config/configKey/sys.user.initPassword],耗时:[135]毫秒
+2023-12-21 17:10:51 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/user/deptTree],耗时:[383]毫秒
+2023-12-21 17:10:51 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/user/list],耗时:[452]毫秒
+2023-12-21 17:10:53 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/config/configKey/sys.oss.previewListResource],无参数
+2023-12-21 17:10:53 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/oss/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2023-12-21 17:10:53 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/config/configKey/sys.oss.previewListResource],耗时:[123]毫秒
+2023-12-21 17:10:53 [XNIO-1 task-2] INFO  com.amazonaws.http.AmazonHttpClient - Configuring Proxy. Proxy Host: 127.0.0.1 Proxy Port: 8890
+2023-12-21 17:10:54 [XNIO-1 task-2] INFO  com.ym.oss.factory.OssFactory - 创建OSS实例 key => aliyun
+2023-12-21 17:10:54 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/oss/list],耗时:[935]毫秒
+2023-12-21 17:10:55 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/dict/data/type/sys_yes_no],无参数
+2023-12-21 17:10:55 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/oss/config/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2023-12-21 17:10:55 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/dict/data/type/sys_yes_no],耗时:[105]毫秒
+2023-12-21 17:10:55 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/oss/config/list],耗时:[316]毫秒
+2023-12-21 17:11:03 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2023-12-21 17:11:04 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[224]毫秒
+2023-12-21 17:11:04 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2023-12-21 17:11:04 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[111]毫秒
+2023-12-21 17:11:04 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/oss/config/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2023-12-21 17:11:04 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/dict/data/type/sys_yes_no],无参数
+2023-12-21 17:11:04 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/dict/data/type/sys_yes_no],耗时:[97]毫秒
+2023-12-21 17:11:04 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/oss/config/list],耗时:[278]毫秒
+2023-12-21 17:11:18 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/role/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2023-12-21 17:11:18 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/dict/data/type/sys_normal_disable],无参数
+2023-12-21 17:11:18 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/dict/data/type/sys_normal_disable],耗时:[199]毫秒
+2023-12-21 17:11:18 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/role/list],耗时:[425]毫秒
+2023-12-21 17:11:27 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /demo/demo/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2023-12-21 17:11:27 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /demo/demo/page],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2023-12-21 17:11:27 [XNIO-1 task-2] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /demo/demo/page],耗时:[311]毫秒
+2023-12-21 17:11:27 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /demo/demo/list],耗时:[317]毫秒
+2023-12-21 17:11:31 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /demo/tree/list],无参数
+2023-12-21 17:11:31 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /demo/tree/list],耗时:[333]毫秒
+2023-12-21 17:16:56 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2023-12-21 17:16:56 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[220]毫秒
+2023-12-21 17:16:57 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2023-12-21 17:16:57 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[113]毫秒
+2023-12-21 17:16:57 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /demo/tree/list],无参数
+2023-12-21 17:16:57 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /demo/tree/list],耗时:[247]毫秒
+2023-12-21 17:17:02 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /logout],无参数
+2023-12-21 17:17:02 [schedule-pool-1] INFO  c.y.s.s.i.SysLogininforServiceImpl - [127.0.0.1]内网IP[admin][Logout][退出成功]
+2023-12-21 17:17:03 [XNIO-1 task-4] INFO  c.y.f.listener.UserActionListener - user doLogout, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJPN0tScTJSNWhIVzFKNElCNGxVcENVQzdUejBNNXRTUSIsInVzZXJJZCI6MX0.dld__ufVqZ4WvJBy924kdBDba51OUY466zaC5-rpnoY
+2023-12-21 17:17:03 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /logout],耗时:[479]毫秒
+2023-12-21 17:17:03 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2023-12-21 17:17:03 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[35]毫秒
+2023-12-21 17:24:16 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2023-12-21 17:24:16 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[42]毫秒
+2023-12-21 17:29:06 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2023-12-21 17:29:06 [XNIO-1 task-4] INFO  c.y.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[34]毫秒
+2023-12-21 17:31:42 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2023-12-21 17:31:42 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-12-21 17:31:42 [Thread-8] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server stop.
+2023-12-21 17:31:42 [xxl-job, executor ExecutorRegistryThread] INFO  c.x.j.c.t.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry-remove success, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='xxl-job-executor', registryValue='http://192.168.66.185:28080/'}, registryResult:ReturnT [code=200, msg=null, content=null]
+2023-12-21 17:31:42 [xxl-job, executor ExecutorRegistryThread] INFO  c.x.j.c.t.ExecutorRegistryThread - >>>>>>>>>>> xxl-job, executor registry thread destroy.
+2023-12-21 17:31:42 [SpringApplicationShutdownHook] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server destroy success.
+2023-12-21 17:31:42 [xxl-job, executor JobLogFileCleanThread] INFO  c.x.j.c.thread.JobLogFileCleanThread - >>>>>>>>>>> xxl-job, executor JobLogFileCleanThread thread destroy.
+2023-12-21 17:31:42 [xxl-job, executor TriggerCallbackThread] INFO  c.x.j.c.thread.TriggerCallbackThread - >>>>>>>>>>> xxl-job, executor callback thread destroy.
+2023-12-21 17:31:42 [Thread-7] INFO  c.x.j.c.thread.TriggerCallbackThread - >>>>>>>>>>> xxl-job, executor retry callback thread destroy.
+2023-12-21 17:31:42 [SpringApplicationShutdownHook] INFO  c.y.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2023-12-21 17:31:42 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2023-12-21 17:31:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2023-12-21 17:31:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2023-12-21 17:31:42 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
