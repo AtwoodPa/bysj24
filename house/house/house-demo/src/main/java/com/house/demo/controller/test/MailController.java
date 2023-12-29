@@ -1,4 +1,4 @@
-package com.house.demo.controller;
+package com.house.demo.controller.test;
 
 import com.house.common.core.domain.R;
 import com.house.common.utils.email.MailUtils;

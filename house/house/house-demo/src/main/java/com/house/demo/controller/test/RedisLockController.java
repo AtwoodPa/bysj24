@@ -1,4 +1,4 @@
-package com.house.demo.controller;
+package com.house.demo.controller.test;
 
 import com.baomidou.lock.LockInfo;
 import com.baomidou.lock.LockTemplate;

@@ -1,4 +1,4 @@
-package com.house.demo.controller;
+package com.house.demo.controller.test;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.house.common.core.controller.BaseController;

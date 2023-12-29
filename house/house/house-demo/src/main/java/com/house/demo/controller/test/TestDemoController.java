@@ -1,4 +1,4 @@
-package com.house.demo.controller;
+package com.house.demo.controller.test;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.hutool.core.bean.BeanUtil;

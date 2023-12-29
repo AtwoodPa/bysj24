@@ -1,4 +1,4 @@
-package com.house.demo.controller;
+package com.house.demo.controller.test;
 
 import com.house.common.annotation.RateLimiter;
 import com.house.common.core.domain.R;
