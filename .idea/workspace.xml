@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97c99b41-ba55-4f3a-8dfe-6b589657457d" name="Changes" comment="Enhancement: 租房小程序.md" />
+    <list default="true" id="97c99b41-ba55-4f3a-8dfe-6b589657457d" name="Changes" comment="Enhancement: 租房小程序.md">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,6 +95,7 @@
       <workItem from="1703759801459" duration="215000" />
       <workItem from="1703841378960" duration="65000" />
       <workItem from="1703852126179" duration="48000" />
+      <workItem from="1703852188404" duration="122000" />
     </task>
     <task id="LOCAL-00001" summary="Enhancement: 租房小程序.md">
       <option name="closed" value="true" />
