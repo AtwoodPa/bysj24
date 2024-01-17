@@ -1,295 +1,61 @@
--- 用户表
-CREATE TABLE IF NOT EXISTS YM_User
-(
-    UserID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    Username
-    VARCHAR
-(
-    255
-) NOT NULL,
-    Password VARCHAR
-(
-    255
-) NOT NULL,
-    Role ENUM
-(
-    'Admin',
-    'Doctor',
-    'User'
-) NOT NULL,
-    Name VARCHAR
-(
-    255
-),
-    ContactInfo VARCHAR
-(
-    255
-),
-    UNIQUE
-(
-    Username
-)
-    ) COMMENT='用户表，存储系统用户信息';
-
 -- 疫苗表
-CREATE TABLE IF NOT EXISTS YM_Vaccine
+CREATE TABLE IF NOT EXISTS ym_vaccine
 (
-    VaccineID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    Name
-    VARCHAR
-(
-    255
-) NOT NULL,
-    TypeID INT NOT NULL,
-    ManufacturerID INT NOT NULL,
-    Description TEXT,
-    FOREIGN KEY
-(
-    TypeID
-) REFERENCES YM_VaccineType
-(
-    TypeID
-),
-    FOREIGN KEY
-(
-    ManufacturerID
-) REFERENCES YM_Manufacturer
-(
-    ManufacturerID
-)
+    vaccine_id bigint(20) not null comment '疫苗id',
+    vaccine_name VARCHAR(255) NOT NULL comment '疫苗名称',
+    type_id INT NOT NULL comment '疫苗类型id',
+    manufacturer_id bigint NOT NULL comment '疫苗厂家id',
+    description VARCHAR(500) comment '疫苗信息描述',
+    primary key (vaccine_id),
+    FOREIGN KEY(type_id) REFERENCES ym_vaccine_type(type_id),
+    FOREIGN KEY(manufacturer_id) REFERENCES ym_manufacturer(manufacturer_id)
     ) COMMENT='疫苗表，存储疫苗信息';
-
 -- 疫苗类型表
-CREATE TABLE IF NOT EXISTS YM_VaccineType
+CREATE TABLE IF NOT EXISTS ym_vaccine_type
 (
-    TypeID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    TypeName
-    VARCHAR
-(
-    255
-) NOT NULL
+    type_id INT AUTO_INCREMENT PRIMARY KEY comment '类型id',
+    type_name VARCHAR(255) NOT NULL comment '疫苗类型名称'
     ) COMMENT='疫苗类型表，存储疫苗的类型信息';
-
+-- 插入疫苗类型数据
+INSERT INTO ym_vaccine_type (type_name)
+VALUES ('灭活疫苗'),
+       ('减毒活疫苗'),
+       ('亚单位疫苗'),
+       ('基因工程疫苗');
 -- 疫苗厂家表
-CREATE TABLE IF NOT EXISTS YM_Manufacturer
+CREATE TABLE IF NOT EXISTS ym_manufacturer
 (
-    ManufacturerID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    Name
-    VARCHAR
-(
-    255
-) NOT NULL,
-    Location VARCHAR
-(
-    255
-)
-    ) COMMENT='疫苗厂家表，存储疫苗厂家信息';
-
--- 医生表
-CREATE TABLE IF NOT EXISTS YM_Doctor
-(
-    DoctorID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    Name
-    VARCHAR
-(
-    255
-) NOT NULL,
-    ContactInfo VARCHAR
-(
-    255
-),
-    UserID INT NOT NULL,
-    FOREIGN KEY
-(
-    UserID
-) REFERENCES YM_User
-(
-    UserID
-)
-    ) COMMENT='医生表，存储医生信息';
-
+    manufacturer_id bigint(20) AUTO_INCREMENT PRIMARY KEY,
+    facturer_name VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    description varchar(500) comment '厂家信息描述'
+    )engine=innodb COMMENT='疫苗厂家表，存储疫苗厂家信息';
+-- 插入疫苗厂家数据
+INSERT INTO ym_manufacturer (facturer_name, address,description)
+VALUES ('武汉生物', '湖北省武汉市东湖新技术开发区生物产业基地','武汉生物是中国最大的生物制品生产企业之一，产品涵盖多种疫苗。'),
+       ('北京生物', '北京市丰台区南四环西路11号','北京生物是中国生物制品领域的知名企业，产品广泛应用于临床。'),
+       ('长春长生', '吉林省长春市经济技术开发区创新街2888号','长春长生是中国疫苗行业的领军企业之一，致力于疫苗的研发和生产。');
 -- 预约表
-CREATE TABLE IF NOT EXISTS YM_Appointment
+CREATE TABLE IF NOT EXISTS ym_appointment
 (
-    AppointmentID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    UserID
-    INT
-    NOT
-    NULL,
-    VaccineID
-    INT
-    NOT
-    NULL,
-    Status
-    ENUM
-(
-    'Booked',
-    'Pending',
-    'Completed'
-) NOT NULL,
-    Date DATE NOT NULL,
-    FOREIGN KEY
-(
-    UserID
-) REFERENCES YM_User
-(
-    UserID
-),
-    FOREIGN KEY
-(
-    VaccineID
-) REFERENCES YM_Vaccine
-(
-    VaccineID
-)
+    appointment_ID INT AUTO_INCREMENT PRIMARY KEY,
+    user_id bigint NOT NULL,
+    vaccine_id bigint NOT NULL,
+    status int(3) NOT NULL comment '预约状态（0_Booked 1_Pending 2_Completed）',
+    create_time   datetime  comment '创建时间',
+    update_time   datetime  comment '更新时间',
+    FOREIGN KEY(user_id) REFERENCES sys_user(user_id),
+    FOREIGN KEY(vaccine_id) REFERENCES ym_vaccine(vaccine_id)
     ) COMMENT='预约表，存储用户预约信息';
 
 -- 接种记录表
-CREATE TABLE IF NOT EXISTS YM_VaccinationRecord
+CREATE TABLE IF NOT EXISTS ym_vaccination_record
 (
-    RecordID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    UserID
-    INT
-    NOT
-    NULL,
-    VaccineID
-    INT
-    NOT
-    NULL,
-    Date
-    DATE
-    NOT
-    NULL,
-    FOREIGN
-    KEY
-(
-    UserID
-) REFERENCES YM_User
-(
-    UserID
-),
-    FOREIGN KEY
-(
-    VaccineID
-) REFERENCES YM_Vaccine
-(
-    VaccineID
-)
+    record_id INT AUTO_INCREMENT PRIMARY KEY comment '记录id',
+    user_id bigint NOT NULL comment '用户id',
+    vaccine_id bigint NOT NULL comment '疫苗id',
+    create_time   datetime  comment '创建时间',
+    update_time   datetime  comment '更新时间',
+    FOREIGN KEY(user_id) REFERENCES sys_user(user_id),
+    FOREIGN KEY(vaccine_id) REFERENCES ym_vaccine(vaccine_id)
     ) COMMENT='接种记录表，存储用户接种记录';
-
--- 公告表
-CREATE TABLE IF NOT EXISTS YM_Announcement
-(
-    AnnouncementID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    Title
-    VARCHAR
-(
-    255
-) NOT NULL,
-    Content TEXT NOT NULL,
-    Date DATE NOT NULL
-    ) COMMENT='公告表，存储系统公告';
-
--- 资讯表
-CREATE TABLE IF NOT EXISTS YM_Information
-(
-    InformationID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    Title
-    VARCHAR
-(
-    255
-) NOT NULL,
-    Content TEXT NOT NULL,
-    TypeID INT NOT NULL,
-    Date DATE NOT NULL,
-    FOREIGN KEY
-(
-    TypeID
-) REFERENCES YM_InformationType
-(
-    TypeID
-)
-    ) COMMENT='资讯表，存储系统资讯信息';
-
--- 资讯类型表
-CREATE TABLE IF NOT EXISTS YM_InformationType
-(
-    TypeID
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    TypeName
-    VARCHAR
-(
-    255
-) NOT NULL
-    ) COMMENT='资讯类型表，存储资讯的类型信息';
-
-
--- 插入用户数据
-INSERT INTO YM_User (Username, Password, Role, Name, ContactInfo)
-VALUES ('admin', 'admin123', 'Admin', 'Admin User', 'admin@example.com'),
-       ('doctor1', 'doctor123', 'Doctor', 'Doctor One', 'doctor1@example.com'),
-       ('user1', 'user123', 'User', 'User One', 'user1@example.com');
-
--- 插入疫苗类型数据
-INSERT INTO YM_VaccineType (TypeName)
-VALUES ('Type A'),
-       ('Type B'),
-       ('Type C');
-
--- 插入疫苗厂家数据
-INSERT INTO YM_Manufacturer (Name, Location)
-VALUES ('Manufacturer A', 'Location A'),
-       ('Manufacturer B', 'Location B'),
-       ('Manufacturer C', 'Location C');
-
--- 插入公告数据
-INSERT INTO YM_Announcement (Title, Content, Date)
-VALUES ('Announcement 1', 'This is announcement 1 content.', '2023-01-01'),
-       ('Announcement 2', 'This is announcement 2 content.', '2023-02-01');
-
--- 插入资讯类型数据
-INSERT INTO YM_InformationType (TypeName)
-VALUES ('Info Type A'),
-       ('Info Type B'),
-       ('Info Type C');
-
-

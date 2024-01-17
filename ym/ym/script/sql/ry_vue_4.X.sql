@@ -584,6 +584,10 @@ create table sys_notice (
 -- ----------------------------
 insert into sys_notice values('1', '温馨提醒：2018-07-01 新版本发布啦', '2', '新版本内容', '0', 'admin', sysdate(), '', null, '管理员');
 insert into sys_notice values('2', '维护通知：2018-07-01 系统凌晨维护', '1', '维护内容',   '0', 'admin', sysdate(), '', null, '管理员');
+INSERT INTO sys_notice (notice_id, notice_title, notice_type, notice_content, status, create_by, create_time, update_by, update_time, remark) VALUES
+    (1, '关于新型冠状病毒疫苗接种的通知', '1', '根据国家卫生健康委员会的要求，我院将于近期开始新型冠状病毒疫苗接种工作。请广大市民密切关注官方通知，做好接种准备。', '0', '管理员A', '2023-12-20 08:00:00', '管理员A', '2023-12-20 08:00:00', '无');
+INSERT INTO sys_notice (notice_id, notice_title, notice_type, notice_content, status, create_by, create_time, update_by, update_time, remark) VALUES
+    (2, '关于疫苗接种后注意事项的公告', '2', '疫苗接种后，注意休息，保持充足的水分摄入，避免剧烈运动，观察接种部位是否有异常反应等。如有不适，请及时就医。', '0', '管理员B', '2023-12-20 09:00:00', '管理员B', '2023-12-20 09:00:00', '无');
 
 
 -- ----------------------------
