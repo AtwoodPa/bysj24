@@ -3,7 +3,7 @@ package com.ym.common.constant;
 /**
  * 返回状态码
  *
- * @author Lion Li
+ * @author PP
  */
 public interface HttpStatus {
     /**

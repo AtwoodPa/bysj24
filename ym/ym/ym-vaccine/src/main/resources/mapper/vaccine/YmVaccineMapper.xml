@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ym.vaccine.mapper.YmVaccineMapper">
+
+    <resultMap type="com.ym.vaccine.domain.YmVaccine" id="YmVaccineResult">
+        <result property="vaccineId" column="vaccine_id"/>
+        <result property="vaccineName" column="vaccine_name"/>
+        <result property="typeId" column="type_id"/>
+        <result property="manufacturerId" column="manufacturer_id"/>
+        <result property="description" column="description"/>
+    </resultMap>
+
+
+</mapper>

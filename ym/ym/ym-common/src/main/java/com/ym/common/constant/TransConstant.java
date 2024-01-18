@@ -3,7 +3,7 @@ package com.ym.common.constant;
 /**
  * 翻译常量
  *
- * @author Lion Li
+ * @author PP
  */
 public interface TransConstant {
 

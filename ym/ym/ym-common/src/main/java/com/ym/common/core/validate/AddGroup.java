@@ -3,7 +3,7 @@ package com.ym.common.core.validate;
 /**
  * 校验分组 add
  *
- * @author Lion Li
+ * @author PP
  */
 public interface AddGroup {
 }

@@ -51,15 +51,13 @@
             <artifactId>ym-framework</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>com.ym</groupId>
             <artifactId>ym-system</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.ym</groupId>
-            <artifactId>ym-job</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>com.ym</groupId>
@@ -76,6 +74,11 @@
         <dependency>
             <groupId>com.ym</groupId>
             <artifactId>ym-demo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ym</groupId>
+            <artifactId>ym-vaccine</artifactId>
         </dependency>
 
         <dependency>

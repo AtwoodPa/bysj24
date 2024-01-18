@@ -89,8 +89,8 @@ create table sys_menu (
 -- 一级菜单
 insert into sys_menu values('1', '系统管理', '0', '1', 'system',           null, '', 1, 0, 'M', '0', '0', '', 'system',   'admin', sysdate(), '', null, '系统管理目录');
 insert into sys_menu values('2', '疫苗管理', '0', '2', 'vaccine', null, '', 1, 0, 'M', '0', '0', '', 'guide',    'admin', sysdate(), '', null, '疫苗预约管理目录');
-insert into sys_menu values('3',  '疫苗预约', '0',   '3', 'user', 'appointment','', 1, 0, 'C', '0', '0', '', 'tool', 'admin', sysdate(), '', null, '疫苗预约目录');
-insert into sys_menu values('4',  '疫苗接种', '0',   '4', 'user', 'inoculate', '', 1, 0, 'C', '0', '0', '', 'tool','admin', sysdate(), '', null, '疫苗预约记录菜单');
+insert into sys_menu values('3',  '疫苗预约', '0',   '3', 'appointment', null,'', 1, 0, 'C', '0', '0', '', 'tool', 'admin', sysdate(), '', null, '疫苗预约目录');
+insert into sys_menu values('4',  '疫苗接种', '0',   '4', 'inoculate', null, '', 1, 0, 'C', '0', '0', '', 'tool','admin', sysdate(), '', null, '疫苗预约记录菜单');
 -- 二级菜单
 -- 系统管理
 insert into sys_menu values('100',  '用户管理', '1',   '1', 'user',       'system/user/index',        '', 1, 0, 'C', '0', '0', '',        'user',          'admin', sysdate(), '', null, '用户管理菜单');

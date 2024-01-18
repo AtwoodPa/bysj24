@@ -28,7 +28,7 @@ import java.util.Set;
 /**
  * Swagger 文档配置
  *
- * @author Lion Li
+ * @author PP
  */
 @RequiredArgsConstructor
 @Configuration
@@ -110,7 +110,7 @@ public class SpringDocConfig {
     /**
      * 单独使用一个类便于判断 解决springdoc路径拼接重复问题
      *
-     * @author Lion Li
+     * @author PP
      */
     static class PlusPaths extends Paths {
 

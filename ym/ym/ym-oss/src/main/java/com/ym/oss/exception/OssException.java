@@ -3,7 +3,7 @@ package com.ym.oss.exception;
 /**
  * OSS异常类
  *
- * @author Lion Li
+ * @author PP
  */
 public class OssException extends RuntimeException {
 

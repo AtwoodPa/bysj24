@@ -29,7 +29,7 @@ import javax.validation.ConstraintViolationException;
 /**
  * 全局异常处理器
  *
- * @author Lion Li
+ * @author PP
  */
 @Slf4j
 @RestControllerAdvice

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 /**
  * 实体类 注意不允许使用内部类 否则会找不到类
  *
- * @author Lion Li
+ * @author PP
  * @version 3.6.0
  */
 @Data

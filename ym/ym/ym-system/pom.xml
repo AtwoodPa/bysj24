@@ -29,11 +29,6 @@
             <artifactId>ym-oss</artifactId>
         </dependency>
 
-        <!-- SMS功能模块 -->
-        <dependency>
-            <groupId>com.ym</groupId>
-            <artifactId>ym-sms</artifactId>
-        </dependency>
 
     </dependencies>
 

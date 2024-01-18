@@ -3,7 +3,7 @@ package com.ym.common.core.service;
 /**
  * 通用 OSS服务
  *
- * @author Lion Li
+ * @author PP
  */
 public interface OssService {
 

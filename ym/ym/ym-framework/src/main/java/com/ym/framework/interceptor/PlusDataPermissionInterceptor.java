@@ -31,7 +31,7 @@ import java.util.Set;
 /**
  * 数据权限拦截器
  *
- * @author Lion Li
+ * @author PP
  * @version 3.5.0
  */
 public class PlusDataPermissionInterceptor extends JsqlParserSupport implements InnerInterceptor {

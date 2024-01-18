@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * 部门翻译实现
  *
- * @author Lion Li
+ * @author PP
  */
 @Component
 @AllArgsConstructor
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class DeptNameTranslationImpl implements TranslationInterface<String> {
 
     private final DeptService deptService;
-    
+
     @Override
     public String translation(Object key, String other) {
         return deptService.selectDeptNameByIds(key.toString());

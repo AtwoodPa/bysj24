@@ -3,7 +3,7 @@ package com.ym.common.core.service;
 /**
  * 通用 部门服务
  *
- * @author Lion Li
+ * @author PP
  */
 public interface DeptService {
 

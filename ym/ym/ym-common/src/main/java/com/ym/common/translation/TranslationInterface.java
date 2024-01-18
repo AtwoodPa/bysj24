@@ -3,7 +3,7 @@ package com.ym.common.translation;
 /**
  * 翻译接口 (实现类需标注 {@link com.ym.common.annotation.TranslationType} 注解标明翻译类型)
  *
- * @author Lion Li
+ * @author PP
  */
 public interface TranslationInterface<T> {
 

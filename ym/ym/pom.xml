@@ -29,12 +29,10 @@
         <p6spy.version>3.9.1</p6spy.version>
         <hutool.version>5.8.22</hutool.version>
         <okhttp.version>4.10.0</okhttp.version>
-        <spring-boot-admin.version>2.7.11</spring-boot-admin.version>
         <redisson.version>3.20.1</redisson.version>
         <lock4j.version>2.2.3</lock4j.version>
         <dynamic-ds.version>3.5.2</dynamic-ds.version>
         <alibaba-ttl.version>2.14.2</alibaba-ttl.version>
-        <xxl-job.version>2.4.0</xxl-job.version>
         <lombok.version>1.18.30</lombok.version>
         <bouncycastle.version>1.72</bouncycastle.version>
         <!-- 离线IP地址定位库 -->
@@ -43,7 +41,6 @@
         <!-- OSS 配置 -->
         <aws-java-sdk-s3.version>1.12.540</aws-java-sdk-s3.version>
         <!-- SMS 配置 -->
-        <sms4j.version>2.2.0</sms4j.version>
     </properties>
 
     <profiles>
@@ -196,24 +193,6 @@
                 <version>${aws-java-sdk-s3.version}</version>
             </dependency>
 
-            <!--短信sms4j-->
-            <dependency>
-                <groupId>org.dromara.sms4j</groupId>
-                <artifactId>sms4j-spring-boot-starter</artifactId>
-                <version>${sms4j.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-server</artifactId>
-                <version>${spring-boot-admin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-client</artifactId>
-                <version>${spring-boot-admin.version}</version>
-            </dependency>
-
             <!--redisson-->
             <dependency>
                 <groupId>org.redisson</groupId>
@@ -238,12 +217,6 @@
                 <version>${lock4j.version}</version>
             </dependency>
 
-            <!-- xxl-job-core -->
-            <dependency>
-                <groupId>com.xuxueli</groupId>
-                <artifactId>xxl-job-core</artifactId>
-                <version>${xxl-job.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -263,13 +236,6 @@
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcprov-jdk15to18</artifactId>
                 <version>${bouncycastle.version}</version>
-            </dependency>
-
-            <!-- 定时任务 -->
-            <dependency>
-                <groupId>com.ym</groupId>
-                <artifactId>ym-job</artifactId>
-                <version>${ym-vue-plus.version}</version>
             </dependency>
 
             <!-- 代码生成-->
@@ -306,18 +272,16 @@
                 <artifactId>ym-oss</artifactId>
                 <version>${ym-vue-plus.version}</version>
             </dependency>
-
-            <!-- SMS短信模块 -->
-            <dependency>
-                <groupId>com.ym</groupId>
-                <artifactId>ym-sms</artifactId>
-                <version>${ym-vue-plus.version}</version>
-            </dependency>
-
             <!-- demo模块 -->
             <dependency>
                 <groupId>com.ym</groupId>
                 <artifactId>ym-demo</artifactId>
+                <version>${ym-vue-plus.version}</version>
+            </dependency>
+            <!-- vaccine模块 -->
+            <dependency>
+                <groupId>com.ym</groupId>
+                <artifactId>ym-vaccine</artifactId>
                 <version>${ym-vue-plus.version}</version>
             </dependency>
 
@@ -328,13 +292,11 @@
         <module>ym-admin</module>
         <module>ym-framework</module>
         <module>ym-system</module>
-        <module>ym-job</module>
         <module>ym-generator</module>
         <module>ym-common</module>
         <module>ym-demo</module>
-        <module>ym-extend</module>
         <module>ym-oss</module>
-        <module>ym-sms</module>
+        <module>ym-vaccine</module>
     </modules>
     <packaging>pom</packaging>
 

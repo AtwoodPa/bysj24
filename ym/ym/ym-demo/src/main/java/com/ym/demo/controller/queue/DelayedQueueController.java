@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * 集群测试通过 同一个数据只会被消费一次 做好事务补偿
  * 集群测试流程 两台集群分别开启订阅 在其中一台发送数据 观察接收消息的规律
  *
- * @author Lion Li
+ * @author PP
  * @version 3.6.0
  */
 @Slf4j
