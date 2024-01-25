@@ -1,26 +1,10 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="" prop="facturerName">
+      <el-form-item label="疫苗类型名称" prop="typeName">
         <el-input
-          v-model="queryParams.facturerName"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="address">
-        <el-input
-          v-model="queryParams.address"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="厂家信息描述" prop="description">
-        <el-input
-          v-model="queryParams.description"
-          placeholder="请输入厂家信息描述"
+          v-model="queryParams.typeName"
+          placeholder="请输入疫苗类型名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -39,7 +23,7 @@
           icon="el-icon-plus"
           size="mini"
           @click="handleAdd"
-          v-hasPermi="['vaccine:manufacturer:add']"
+          v-hasPermi="['vaccine:vaccineType:add']"
         >新增</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -50,7 +34,7 @@
           size="mini"
           :disabled="single"
           @click="handleUpdate"
-          v-hasPermi="['vaccine:manufacturer:edit']"
+          v-hasPermi="['vaccine:vaccineType:edit']"
         >修改</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -61,7 +45,7 @@
           size="mini"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['vaccine:manufacturer:remove']"
+          v-hasPermi="['vaccine:vaccineType:remove']"
         >删除</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -71,18 +55,16 @@
           icon="el-icon-download"
           size="mini"
           @click="handleExport"
-          v-hasPermi="['vaccine:manufacturer:export']"
+          v-hasPermi="['vaccine:vaccineType:export']"
         >导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="manufacturerList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" :data="vaccineTypeList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="" align="center" prop="manufacturerId" v-if="true"/>
-      <el-table-column label="" align="center" prop="facturerName" />
-      <el-table-column label="" align="center" prop="address" />
-      <el-table-column label="厂家信息描述" align="center" prop="description" />
+      <el-table-column label="类型id" align="center" prop="typeId" v-if="true"/>
+      <el-table-column label="疫苗类型名称" align="center" prop="typeName" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -90,14 +72,14 @@
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
-            v-hasPermi="['vaccine:manufacturer:edit']"
+            v-hasPermi="['vaccine:vaccineType:edit']"
           >修改</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
-            v-hasPermi="['vaccine:manufacturer:remove']"
+            v-hasPermi="['vaccine:vaccineType:remove']"
           >删除</el-button>
         </template>
       </el-table-column>
@@ -111,17 +93,11 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改疫苗厂家对话框 -->
+    <!-- 添加或修改疫苗类型对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="" prop="facturerName">
-          <el-input v-model="form.facturerName" placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="" prop="address">
-          <el-input v-model="form.address" placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="厂家信息描述" prop="description">
-          <el-input v-model="form.description" type="textarea" placeholder="请输入内容" />
+        <el-form-item label="疫苗类型名称" prop="typeName">
+          <el-input v-model="form.typeName" placeholder="请输入疫苗类型名称" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -133,10 +109,10 @@
 </template>
 
 <script>
-import { listManufacturer, getManufacturer, delManufacturer, addManufacturer, updateManufacturer } from "@/api/vaccine/manufacturer";
+import { listVaccineType, getVaccineType, delVaccineType, addVaccineType, updateVaccineType } from "@/api/vaccine/vaccineType";
 
 export default {
-  name: "Manufacturer",
+  name: "VaccineType",
   data() {
     return {
       // 按钮loading
@@ -153,8 +129,8 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 疫苗厂家表格数据
-      manufacturerList: [],
+      // 疫苗类型表格数据
+      vaccineTypeList: [],
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -163,25 +139,17 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
-        facturerName: undefined,
-        address: undefined,
-        description: undefined
+        typeName: undefined
       },
       // 表单参数
       form: {},
       // 表单校验
       rules: {
-        manufacturerId: [
-          { required: true, message: "不能为空", trigger: "blur" }
+        typeId: [
+          { required: true, message: "类型id不能为空", trigger: "blur" }
         ],
-        facturerName: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        address: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        description: [
-          { required: true, message: "厂家信息描述不能为空", trigger: "blur" }
+        typeName: [
+          { required: true, message: "疫苗类型名称不能为空", trigger: "blur" }
         ]
       }
     };
@@ -190,11 +158,11 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询疫苗厂家列表 */
+    /** 查询疫苗类型列表 */
     getList() {
       this.loading = true;
-      listManufacturer(this.queryParams).then(response => {
-        this.manufacturerList = response.rows;
+      listVaccineType(this.queryParams).then(response => {
+        this.vaccineTypeList = response.rows;
         this.total = response.total;
         this.loading = false;
       });
@@ -207,10 +175,8 @@ export default {
     // 表单重置
     reset() {
       this.form = {
-        manufacturerId: undefined,
-        facturerName: undefined,
-        address: undefined,
-        description: undefined
+        typeId: undefined,
+        typeName: undefined
       };
       this.resetForm("form");
     },
@@ -226,7 +192,7 @@ export default {
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.manufacturerId)
+      this.ids = selection.map(item => item.typeId)
       this.single = selection.length!==1
       this.multiple = !selection.length
     },
@@ -234,18 +200,18 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加疫苗厂家";
+      this.title = "添加疫苗类型";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.loading = true;
       this.reset();
-      const manufacturerId = row.manufacturerId || this.ids
-      getManufacturer(manufacturerId).then(response => {
+      const typeId = row.typeId || this.ids
+      getVaccineType(typeId).then(response => {
         this.loading = false;
         this.form = response.data;
         this.open = true;
-        this.title = "修改疫苗厂家";
+        this.title = "修改疫苗类型";
       });
     },
     /** 提交按钮 */
@@ -253,8 +219,8 @@ export default {
       this.$refs["form"].validate(valid => {
         if (valid) {
           this.buttonLoading = true;
-          if (this.form.manufacturerId != null) {
-            updateManufacturer(this.form).then(response => {
+          if (this.form.typeId != null) {
+            updateVaccineType(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
               this.open = false;
               this.getList();
@@ -262,7 +228,7 @@ export default {
               this.buttonLoading = false;
             });
           } else {
-            addManufacturer(this.form).then(response => {
+            addVaccineType(this.form).then(response => {
               this.$modal.msgSuccess("新增成功");
               this.open = false;
               this.getList();
@@ -275,10 +241,10 @@ export default {
     },
     /** 删除按钮操作 */
     handleDelete(row) {
-      const manufacturerIds = row.manufacturerId || this.ids;
-      this.$modal.confirm('是否确认删除疫苗厂家编号为"' + manufacturerIds + '"的数据项？').then(() => {
+      const typeIds = row.typeId || this.ids;
+      this.$modal.confirm('是否确认删除疫苗类型编号为"' + typeIds + '"的数据项？').then(() => {
         this.loading = true;
-        return delManufacturer(manufacturerIds);
+        return delVaccineType(typeIds);
       }).then(() => {
         this.loading = false;
         this.getList();
@@ -290,9 +256,9 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      this.download('vaccine/manufacturer/export', {
+      this.download('vaccine/vaccineType/export', {
         ...this.queryParams
-      }, `manufacturer_${new Date().getTime()}.xlsx`)
+      }, `vaccineType_${new Date().getTime()}.xlsx`)
     }
   }
 };
