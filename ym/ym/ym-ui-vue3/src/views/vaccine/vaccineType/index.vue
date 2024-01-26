@@ -10,8 +10,8 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="el-icon-search" size="default" @click="handleQuery">搜索</el-button>
+        <el-button icon="el-icon-refresh" size="default" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
@@ -21,7 +21,7 @@
           type="primary"
           plain
           icon="el-icon-plus"
-          size="mini"
+          size="default"
           @click="handleAdd"
           v-hasPermi="['vaccine:vaccineType:add']"
         >新增</el-button>
@@ -31,7 +31,7 @@
           type="success"
           plain
           icon="el-icon-edit"
-          size="mini"
+          size="default"
           :disabled="single"
           @click="handleUpdate"
           v-hasPermi="['vaccine:vaccineType:edit']"
@@ -42,7 +42,7 @@
           type="danger"
           plain
           icon="el-icon-delete"
-          size="mini"
+          size="default"
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['vaccine:vaccineType:remove']"
@@ -53,7 +53,7 @@
           type="warning"
           plain
           icon="el-icon-download"
-          size="mini"
+          size="default"
           @click="handleExport"
           v-hasPermi="['vaccine:vaccineType:export']"
         >导出</el-button>
@@ -68,14 +68,14 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
-            size="mini"
+            size="default"
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['vaccine:vaccineType:edit']"
           >修改</el-button>
           <el-button
-            size="mini"
+            size="default"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
