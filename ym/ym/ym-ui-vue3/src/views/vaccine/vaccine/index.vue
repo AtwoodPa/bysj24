@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryForm" size="default" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="疫苗名称" prop="name">
         <el-input
           v-model="queryParams.name"
@@ -41,17 +41,9 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="疫苗图片地址" prop="imgUrl">
-        <el-input
-          v-model="queryParams.imgUrl"
-          placeholder="请输入疫苗图片地址"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="Search"  @click="handleQuery">搜索</el-button>
+        <el-button icon="Refresh"  @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
@@ -60,8 +52,8 @@
         <el-button
           type="primary"
           plain
-          icon="el-icon-plus"
-          size="mini"
+          icon="Plus"
+
           @click="handleAdd"
           v-hasPermi="['vaccine:vaccine:add']"
         >新增</el-button>
@@ -70,8 +62,8 @@
         <el-button
           type="success"
           plain
-          icon="el-icon-edit"
-          size="mini"
+          icon="Edit"
+
           :disabled="single"
           @click="handleUpdate"
           v-hasPermi="['vaccine:vaccine:edit']"
@@ -81,8 +73,8 @@
         <el-button
           type="danger"
           plain
-          icon="el-icon-delete"
-          size="mini"
+          icon="Delete"
+
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['vaccine:vaccine:remove']"
@@ -92,8 +84,8 @@
         <el-button
           type="warning"
           plain
-          icon="el-icon-download"
-          size="mini"
+          icon="Download"
+
           @click="handleExport"
           v-hasPermi="['vaccine:vaccine:export']"
         >导出</el-button>
@@ -103,29 +95,21 @@
 
     <el-table v-loading="loading" :data="vaccineList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="疫苗id" align="center" prop="id" v-if="true"/>
-      <el-table-column label="疫苗名称" align="center" prop="name" />
-      <el-table-column label="疫苗价格" align="center" prop="price" />
-      <el-table-column label="疫苗厂家" align="center" prop="manufacturer" />
-      <el-table-column label="疫苗分类" align="center" prop="category" />
-      <el-table-column label="疫苗详情" align="center" prop="detail" />
-      <el-table-column label="疫苗图片地址" align="center" prop="imgUrl" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['vaccine:vaccine:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['vaccine:vaccine:remove']"
-          >删除</el-button>
+      <el-table-column label="疫苗编号" align="center" prop="id" v-if="columns[0].visible"/>
+      <el-table-column label="疫苗名称" align="center" prop="name" v-if="columns[1].visible"/>
+      <el-table-column label="疫苗价格" align="center" prop="price" v-if="columns[2].visible" />
+      <el-table-column label="疫苗厂家" align="center" prop="manufacturer"  v-if="columns[3].visible"/>
+      <el-table-column label="疫苗分类" align="center" prop="category" v-if="columns[4].visible" />
+      <el-table-column label="疫苗详情" align="center" prop="detail" v-if="columns[5].visible" />
+      <el-table-column label="疫苗图片" align="center" prop="imgUrl" v-if="columns[6].visible" />
+      <el-table-column label="操作" align="center" class-name="small-padding fixed-width" v-if="columns[7].visible">
+        <template #default="scope">
+          <el-tooltip content="修改" placement="top" >
+            <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['vaccine:vaccine:edit']"></el-button>
+          </el-tooltip>
+          <el-tooltip content="删除" placement="top" >
+            <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['vaccine:vaccine:remove']"></el-button>
+          </el-tooltip>
         </template>
       </el-table-column>
     </el-table>
@@ -156,7 +140,7 @@
         <el-form-item label="疫苗详情" prop="detail">
           <el-input v-model="form.detail" placeholder="请输入疫苗详情" />
         </el-form-item>
-        <el-form-item label="疫苗图片地址" prop="imgUrl">
+        <el-form-item label="疫苗图片" prop="imgUrl">
           <el-input v-model="form.imgUrl" placeholder="请输入疫苗图片地址" />
         </el-form-item>
       </el-form>
@@ -183,161 +167,170 @@ const multiple = ref(true);
 const total = ref(0);
 const title = ref("");
 
+const columns = ref([
+  { key: 0, label: `疫苗编号`, visible: true },
+  { key: 1, label: `疫苗名称`, visible: true },
+  { key: 2, label: `疫苗价格`, visible: true },
+  { key: 3, label: `疫苗厂家`, visible: true },
+  { key: 4, label: `疫苗分类`, visible: true },
+  { key: 5, label: `疫苗详情`, visible: true },
+  { key: 6, label: `疫苗图片地址`, visible: true },
+  { key: 7, label: `操作`, visible: true }
+]);
 
-export default {
-  name: "Vaccine",
-  data() {
-    return {
-      // 查询参数
-      queryParams: {
-        pageNum: 1,
-        pageSize: 10,
-        name: undefined,
-        price: undefined,
-        manufacturer: undefined,
-        category: undefined,
-        detail: undefined,
-        imgUrl: undefined
-      },
-      // 表单参数
-      form: {},
-      // 表单校验
-      rules: {
-        id: [
-          { required: true, message: "疫苗id不能为空", trigger: "blur" }
-        ],
-        name: [
-          { required: true, message: "疫苗名称不能为空", trigger: "blur" }
-        ],
-        price: [
-          { required: true, message: "疫苗价格不能为空", trigger: "blur" }
-        ],
-        manufacturer: [
-          { required: true, message: "疫苗厂家不能为空", trigger: "blur" }
-        ],
-        category: [
-          { required: true, message: "疫苗分类不能为空", trigger: "blur" }
-        ],
-        detail: [
-          { required: true, message: "疫苗详情不能为空", trigger: "blur" }
-        ],
-        imgUrl: [
-          { required: true, message: "疫苗图片地址不能为空", trigger: "blur" }
-        ]
-      }
-    };
+const data = reactive({
+  form: {},
+  queryParams: {
+    pageNum: 1,
+    pageSize: 10,
+    name: undefined,
+    price: undefined,
+    manufacturer: undefined,
+    category: undefined,
+    detail: undefined,
+    imgUrl: undefined
   },
-  created() {
-    this.getList();
-  },
-  methods: {
-    /** 查询疫苗信息列表 */
-    getList() {
-      this.loading = true;
-      listVaccine(this.queryParams).then(response => {
-        this.vaccineList = response.rows;
-        this.total = response.total;
-        this.loading = false;
-      });
-    },
-    // 取消按钮
-    cancel() {
-      this.open = false;
-      this.reset();
-    },
-    // 表单重置
-    reset() {
-      this.form = {
-        id: undefined,
-        name: undefined,
-        price: undefined,
-        manufacturer: undefined,
-        category: undefined,
-        detail: undefined,
-        imgUrl: undefined
-      };
-      this.resetForm("form");
-    },
-    /** 搜索按钮操作 */
-    handleQuery() {
-      this.queryParams.pageNum = 1;
-      this.getList();
-    },
-    /** 重置按钮操作 */
-    resetQuery() {
-      this.resetForm("queryForm");
-      this.handleQuery();
-    },
-    // 多选框选中数据
-    handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.id)
-      this.single = selection.length!==1
-      this.multiple = !selection.length
-    },
-    /** 新增按钮操作 */
-    handleAdd() {
-      this.reset();
-      this.open = true;
-      this.title = "添加疫苗信息";
-    },
-    /** 修改按钮操作 */
-    handleUpdate(row) {
-      this.loading = true;
-      this.reset();
-      const id = row.id || this.ids
-      getVaccine(id).then(response => {
-        this.loading = false;
-        this.form = response.data;
-        this.open = true;
-        this.title = "修改疫苗信息";
-      });
-    },
-    /** 提交按钮 */
-    submitForm() {
-      this.$refs["form"].validate(valid => {
-        if (valid) {
-          this.buttonLoading = true;
-          if (this.form.id != null) {
-            updateVaccine(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
-              this.open = false;
-              this.getList();
-            }).finally(() => {
-              this.buttonLoading = false;
-            });
-          } else {
-            addVaccine(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            }).finally(() => {
-              this.buttonLoading = false;
-            });
-          }
-        }
-      });
-    },
-    /** 删除按钮操作 */
-    handleDelete(row) {
-      const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除疫苗信息编号为"' + ids + '"的数据项？').then(() => {
-        this.loading = true;
-        return delVaccine(ids);
-      }).then(() => {
-        this.loading = false;
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      }).finally(() => {
-        this.loading = false;
-      });
-    },
-    /** 导出按钮操作 */
-    handleExport() {
-      this.download('vaccine/vaccine/export', {
-        ...this.queryParams
-      }, `vaccine_${new Date().getTime()}.xlsx`)
-    }
+  rules: {
+    id: [
+      { required: true, message: "疫苗id不能为空", trigger: "blur" }
+    ],
+    name: [
+      { required: true, message: "疫苗名称不能为空", trigger: "blur" }
+    ],
+    price: [
+      { required: true, message: "疫苗价格不能为空", trigger: "blur" }
+    ],
+    manufacturer: [
+      { required: true, message: "疫苗厂家不能为空", trigger: "blur" }
+    ],
+    category: [
+      { required: true, message: "疫苗分类不能为空", trigger: "blur" }
+    ],
+    detail: [
+      { required: true, message: "疫苗详情不能为空", trigger: "blur" }
+    ],
+    imgUrl: [
+      { required: true, message: "疫苗图片地址不能为空", trigger: "blur" }
+    ]
   }
+});
+const {queryParams, form, rules} = toRefs(data);
+function getList() {
+  loading.value = true;
+  listVaccine(data.queryParams).then(response => {
+    vaccineList.value = response.rows;
+    total.value = response.total;
+    loading.value = false;
+  });
+}
+
+/** 取消按钮 */
+function cancel() {
+  open.value = false;
+  reset();
 };
+
+function reset() {
+  form.value = {
+    id: undefined,
+    name: undefined,
+    price: undefined,
+    manufacturer: undefined,
+    category: undefined,
+    detail: undefined,
+    imgUrl: undefined
+  };
+  proxy.$refs["vaccineForm"];
+};
+
+function handleQuery() {
+  queryParams.value.pageNum = 1;
+  getList();
+};
+
+function resetQuery() {
+  proxy.resetForm("queryForm");
+  handleQuery();
+};
+
+/** 多选框选中数据 **/
+function handleSelectionChange(selection) {
+  ids.value = selection.map(item => item.id);
+  single.value = selection.length !== 1;
+  multiple.value = !selection.length;
+}
+
+/** 新增按钮操作 */
+function handleAdd() {
+  reset();
+  open.value = true;
+  title.value = "添加疫苗信息";
+}
+
+/**修改按钮操作 */
+function handleUpdate(row) {
+  loading.value = true;
+  reset();
+  const id = row.id || ids.value
+  getVaccine(id).then(response => {
+    loading.value = false;
+    form.value = response.data;
+    form.value.id = response.data.id;
+    form.value.name = response.data.name;
+    form.value.manufacturer = response.data.manufacturer;
+    form.value.category = response.data.category;
+    form.value.detail = response.data.detail;
+    form.value.imgUrl = response.data.imgUrl;
+    open.value = true;
+    title.value = "修改疫苗信息";
+  });
+}
+
+/** 提交按钮 */
+function submitForm() {
+  proxy.$refs["vaccineForm"].validate(valid => {
+    if (valid) {
+      buttonLoading.value = true;
+      if (form.value.id != null) {
+        updateVaccine(form.value).then(response => {
+          proxy.$modal.msgSuccess("修改成功");
+          open.value = false;
+          getList();
+        }).finally(() => {
+          buttonLoading.value = false;
+        });
+      } else {
+        addVaccine(form.value).then(response => {
+          proxy.$modal.msgSuccess("新增成功");
+          open.value = false;
+          getList();
+        }).finally(() => {
+          buttonLoading.value = false;
+        });
+      }
+    }
+  });
+}
+
+/** 删除按钮操作 */
+function handleDelete(row) {
+  const id = row.id || ids.value
+  proxy.$modal.confirm('是否确认删除疫苗信息编号为"' + id + '"的数据项？').then(function () {
+    return delVaccine(id);
+  }).then(() => {
+    getList();
+    proxy.$modal.msgSuccess("删除成功");
+  }).catch(() => {
+  });
+}
+
+/** 导出按钮操作 */
+function handleExport() {
+  proxy.download('vaccine/vaccine/export', {
+    ...queryParams.value,
+  }, `vaccine_${new Date().getTime()}.xlsx`)
+}
+
+
+getList();
 </script>
