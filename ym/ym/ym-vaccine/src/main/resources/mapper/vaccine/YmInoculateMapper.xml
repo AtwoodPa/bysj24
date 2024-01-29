@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ym.vaccine.mapper.YmInoculateMapper">
+
+    <resultMap type="com.ym.vaccine.domain.YmInoculate" id="YmInoculateResult">
+        <result property="id" column="id"/>
+        <result property="part" column="part"/>
+        <result property="vaccineBatchCode" column="vaccine_batch_code"/>
+        <result property="workerId" column="worker_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="appointId" column="appoint_id"/>
+        <result property="note" column="note"/>
+    </resultMap>
+
+
+</mapper>

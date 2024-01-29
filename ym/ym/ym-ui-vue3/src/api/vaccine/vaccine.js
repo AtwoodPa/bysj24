@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询存储疫苗信息列表
+// 查询疫苗信息列表
 export function listVaccine(query) {
   return request({
     url: '/vaccine/vaccine/list',
@@ -9,15 +9,15 @@ export function listVaccine(query) {
   })
 }
 
-// 查询存储疫苗信息详细
-export function getVaccine(vaccineId) {
+// 查询疫苗信息详细
+export function getVaccine(id) {
   return request({
-    url: '/vaccine/vaccine/' + vaccineId,
+    url: '/vaccine/vaccine/' + id,
     method: 'get'
   })
 }
 
-// 新增存储疫苗信息
+// 新增疫苗信息
 export function addVaccine(data) {
   return request({
     url: '/vaccine/vaccine',
@@ -26,7 +26,7 @@ export function addVaccine(data) {
   })
 }
 
-// 修改存储疫苗信息
+// 修改疫苗信息
 export function updateVaccine(data) {
   return request({
     url: '/vaccine/vaccine',
@@ -35,10 +35,10 @@ export function updateVaccine(data) {
   })
 }
 
-// 删除存储疫苗信息
-export function delVaccine(vaccineId) {
+// 删除疫苗信息
+export function delVaccine(id) {
   return request({
-    url: '/vaccine/vaccine/' + vaccineId,
+    url: '/vaccine/vaccine/' + id,
     method: 'delete'
   })
 }

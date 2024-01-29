@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ym.vaccine.mapper.YmPlanMapper">
+
+    <resultMap type="com.ym.vaccine.domain.YmPlan" id="YmPlanResult">
+        <result property="id" column="id"/>
+        <result property="startDate" column="start_date"/>
+        <result property="endDate" column="end_date"/>
+        <result property="startTimeMorning" column="start_time_morning"/>
+        <result property="endTimeMorning" column="end_time_morning"/>
+        <result property="startTimeAfternoon" column="start_time_afternoon"/>
+        <result property="endTimeAfternoon" column="end_time_afternoon"/>
+        <result property="vaccineId" column="vaccine_id"/>
+        <result property="inoculateSiteId" column="inoculate_site_id"/>
+        <result property="amount" column="amount"/>
+        <result property="startTimeEvening" column="start_time_evening"/>
+        <result property="endTimeEvening" column="end_time_evening"/>
+        <result property="morningLimit" column="morning_limit"/>
+        <result property="afternoonLimit" column="afternoon_limit"/>
+        <result property="eveningLimit" column="evening_limit"/>
+    </resultMap>
+
+
+</mapper>
