@@ -3,7 +3,18 @@ package com.ym.vaccine.controller;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.ym.common.utils.StringUtils;
+import com.ym.vaccine.domain.Vaccine;
+import com.ym.vaccine.domain.YmInoculateSite;
+import com.ym.vaccine.domain.YmPlan;
+import com.ym.vaccine.domain.bo.SelectOption;
+import com.ym.vaccine.mapper.VaccineMapper;
+import com.ym.vaccine.mapper.YmInoculateSiteMapper;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -39,13 +50,64 @@ public class YmPlanController extends BaseController {
 
     private final IYmPlanService iYmPlanService;
 
+    private final VaccineMapper vaccineMapper;
+
+    private final YmInoculateSiteMapper ymInoculateSiteMapper;
     /**
      * 查询预约计划管理列表
      */
     @SaCheckPermission("vaccine:plan:list")
     @GetMapping("/list")
     public TableDataInfo<YmPlanVo> list(YmPlanBo bo, PageQuery pageQuery) {
-        return iYmPlanService.queryPageList(bo, pageQuery);
+
+        if(StringUtils.isNotBlank(bo.getVaccineName())){
+            vaccineMapper.selectVaccineByName(bo.getVaccineName()).ifPresent(item -> {
+                bo.setVaccineId(item.getId());
+            });
+        }
+
+        if (StringUtils.isNotBlank(bo.getInoculateSiteName())) {
+            ymInoculateSiteMapper.selectInoculateSiteByName(bo.getInoculateSiteName()).ifPresent(item -> {
+                bo.setInoculateSiteId(item.getId());
+            });
+        }
+
+
+        TableDataInfo<YmPlanVo> result = iYmPlanService.queryPageList(bo, pageQuery);
+        List<YmPlanVo> list = result.getRows();
+        List<YmPlanVo> resultList = list.stream().map(item -> {
+            item.setVaccineName(vaccineMapper.selectById(item.getVaccineId()).getName());
+            item.setInoculateSiteName(ymInoculateSiteMapper.selectById(item.getInoculateSiteId()).getName());
+            return item;
+        }).collect(Collectors.toList());
+        result.setRows(resultList);
+        return result;
+    }
+
+    @SaCheckPermission("vaccine:plan:list")
+    @GetMapping("/getVaccineSelectOption")
+    public R<List<SelectOption>> getVaccineSelectOption() {
+        List<Vaccine> list = vaccineMapper.selectList(Wrappers.emptyWrapper());
+        List<SelectOption> result = list.stream().map(item -> {
+            SelectOption selectOption = new SelectOption();
+            selectOption.setValue(item.getName());
+            selectOption.setKey(item.getId().toString());
+            return selectOption;
+        }).collect(Collectors.toList());
+        return R.ok(result);
+    }
+
+    @SaCheckPermission("vaccine:plan:list")
+    @GetMapping("/getInoculateSiteSelectOption")
+    public R<List<SelectOption>> getInoculateSiteSelectOption() {
+        List<YmInoculateSite> list = ymInoculateSiteMapper.selectList(Wrappers.emptyWrapper());
+        List<SelectOption> result = list.stream().map(item -> {
+            SelectOption selectOption = new SelectOption();
+            selectOption.setKey(item.getId().toString());
+            selectOption.setValue(item.getName());
+            return selectOption;
+        }).collect(Collectors.toList());
+        return R.ok(result);
     }
 
     /**
@@ -56,7 +118,14 @@ public class YmPlanController extends BaseController {
     @PostMapping("/export")
     public void export(YmPlanBo bo, HttpServletResponse response) {
         List<YmPlanVo> list = iYmPlanService.queryList(bo);
-        ExcelUtil.exportExcel(list, "预约计划管理", YmPlanVo.class, response);
+        List<YmPlanVo> result = list.stream().map(item -> {
+            String name = vaccineMapper.selectById(item.getVaccineId()).getName();
+            System.out.println("name = " + name);
+            item.setVaccineName(name);
+            item.setInoculateSiteName(ymInoculateSiteMapper.selectById(item.getInoculateSiteId()).getName());
+            return item;
+        }).collect(Collectors.toList());
+        ExcelUtil.exportExcel(result, "预约计划管理", YmPlanVo.class, response);
     }
 
     /**

@@ -4,6 +4,8 @@ import com.ym.vaccine.domain.YmInoculateSite;
 import com.ym.vaccine.domain.vo.YmInoculateSiteVo;
 import com.ym.common.core.mapper.BaseMapperPlus;
 
+import java.util.Optional;
+
 /**
  * 疫苗接种站点管理Mapper接口
  *
@@ -12,4 +14,5 @@ import com.ym.common.core.mapper.BaseMapperPlus;
  */
 public interface YmInoculateSiteMapper extends BaseMapperPlus<YmInoculateSiteMapper, YmInoculateSite, YmInoculateSiteVo> {
 
+    Optional<YmInoculateSite> selectInoculateSiteByName(String inoculateSiteName);
 }

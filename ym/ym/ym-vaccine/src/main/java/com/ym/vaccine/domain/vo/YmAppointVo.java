@@ -24,7 +24,7 @@ public class YmAppointVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long id;
@@ -36,31 +36,40 @@ public class YmAppointVo implements Serializable {
     private Long userId;
 
     /**
+     * 真实姓名
+     */
+    private String realName;
+
+    /**
      * 预约日期
      */
     @ExcelProperty(value = "预约日期")
     private Date appointDate;
 
     /**
-     * 
+     * 操作时间
+     */
+    private Date createTime;
+    /**
+     *
      */
     @ExcelProperty(value = "")
     private Long status;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private String qrCodeUrl;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long planId;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long timeSlot;

@@ -22,43 +22,25 @@ public class YmInoculateSiteVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long id;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private String name;
 
     /**
-     * 
-     */
-    @ExcelProperty(value = "")
-    private String provinceCode;
-
-    /**
-     * 
-     */
-    @ExcelProperty(value = "")
-    private String cityCode;
-
-    /**
-     * 
-     */
-    @ExcelProperty(value = "")
-    private String districtCode;
-
-    /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private String address;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private String imgUrl;

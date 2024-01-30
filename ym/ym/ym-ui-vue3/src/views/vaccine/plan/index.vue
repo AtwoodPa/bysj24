@@ -1,131 +1,33 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="" prop="startDate">
-        <el-date-picker clearable
-                        v-model="queryParams.startDate"
-                        type="date"
-                        value-format="yyyy-MM-dd"
-                        placeholder="请选择">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="" prop="endDate">
-        <el-date-picker clearable
-                        v-model="queryParams.endDate"
-                        type="date"
-                        value-format="yyyy-MM-dd"
-                        placeholder="请选择">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="" prop="startTimeMorning">
+    <el-form :model="queryParams" ref="queryForm" size="default" :inline="true" v-show="showSearch" label-width="68px">
+      <el-form-item label="疫苗名称" prop="vaccineName">
         <el-input
-          v-model="queryParams.startTimeMorning"
-          placeholder="请输入"
+          v-model="queryParams.vaccineName"
+          placeholder="请输入疫苗名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="" prop="endTimeMorning">
+      <el-form-item label="接种点" prop="inoculateSiteName">
         <el-input
-          v-model="queryParams.endTimeMorning"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="startTimeAfternoon">
-        <el-input
-          v-model="queryParams.startTimeAfternoon"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="endTimeAfternoon">
-        <el-input
-          v-model="queryParams.endTimeAfternoon"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="vaccineId">
-        <el-input
-          v-model="queryParams.vaccineId"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="inoculateSiteId">
-        <el-input
-          v-model="queryParams.inoculateSiteId"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="amount">
-        <el-input
-          v-model="queryParams.amount"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="startTimeEvening">
-        <el-input
-          v-model="queryParams.startTimeEvening"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="endTimeEvening">
-        <el-input
-          v-model="queryParams.endTimeEvening"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="morningLimit">
-        <el-input
-          v-model="queryParams.morningLimit"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="afternoonLimit">
-        <el-input
-          v-model="queryParams.afternoonLimit"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="eveningLimit">
-        <el-input
-          v-model="queryParams.eveningLimit"
-          placeholder="请输入"
+          v-model="queryParams.inoculateSiteName"
+          placeholder="请输入接种点名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="Search"  @click="handleQuery">搜索</el-button>
+        <el-button icon="Refresh"  @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
-
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button
           type="primary"
           plain
-          icon="el-icon-plus"
-          size="mini"
+          icon="Plus"
           @click="handleAdd"
           v-hasPermi="['vaccine:plan:add']"
         >新增</el-button>
@@ -134,8 +36,7 @@
         <el-button
           type="success"
           plain
-          icon="el-icon-edit"
-          size="mini"
+          icon="Edit"
           :disabled="single"
           @click="handleUpdate"
           v-hasPermi="['vaccine:plan:edit']"
@@ -145,67 +46,49 @@
         <el-button
           type="danger"
           plain
-          icon="el-icon-delete"
-          size="mini"
+          icon="Delete"
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['vaccine:plan:remove']"
         >删除</el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['vaccine:plan:export']"
-        >导出</el-button>
-      </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
+
+      <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="planList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="" align="center" prop="id" v-if="true"/>
-      <el-table-column label="" align="center" prop="startDate" width="180">
-        <template slot-scope="scope">
+      <el-table-column label="ID" align="center" prop="id" v-if="true"/>
+      <el-table-column label="疫苗名称" align="center" prop="vaccineName" width="180"/>
+      <el-table-column label="接种点名称" align="center" prop="inoculateSiteName" width="180"/>
+      <el-table-column label="可预约总量" align="center" prop="amount" />
+      <el-table-column label="起始日期" align="center" prop="startDate" width="120">
+        <template #default="scope">
           <span>{{ parseTime(scope.row.startDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="" align="center" prop="endDate" width="180">
-        <template slot-scope="scope">
+      <el-table-column label="结束日期" align="center" prop="endDate" width="120">
+        <template #default="scope">
           <span>{{ parseTime(scope.row.endDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="" align="center" prop="startTimeMorning" />
-      <el-table-column label="" align="center" prop="endTimeMorning" />
-      <el-table-column label="" align="center" prop="startTimeAfternoon" />
-      <el-table-column label="" align="center" prop="endTimeAfternoon" />
-      <el-table-column label="" align="center" prop="vaccineId" />
-      <el-table-column label="" align="center" prop="inoculateSiteId" />
-      <el-table-column label="" align="center" prop="amount" />
-      <el-table-column label="" align="center" prop="startTimeEvening" />
-      <el-table-column label="" align="center" prop="endTimeEvening" />
-      <el-table-column label="" align="center" prop="morningLimit" />
-      <el-table-column label="" align="center" prop="afternoonLimit" />
-      <el-table-column label="" align="center" prop="eveningLimit" />
+      <el-table-column label="上午起始整点数" align="center" prop="startTimeMorning" />
+      <el-table-column label="上午最大预约量" align="center" prop="morningLimit" />
+      <el-table-column label="上午结束整点数" align="center" prop="endTimeMorning" />
+      <el-table-column label="下午起始整点数" align="center" prop="startTimeAfternoon" />
+      <el-table-column label="下午最大预约量" align="center" prop="afternoonLimit" />
+      <el-table-column label="下午结束整点数" align="center" prop="endTimeAfternoon" />
+      <el-table-column label="夜晚起始整点数" align="center" prop="startTimeEvening" />
+      <el-table-column label="夜晚最大预约量" align="center" prop="eveningLimit" />
+      <el-table-column label="夜晚结束整点数" align="center" prop="endTimeEvening" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['vaccine:plan:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['vaccine:plan:remove']"
-          >删除</el-button>
+        <template #default="scope">
+          <el-tooltip content="修改" placement="top" >
+            <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['vaccine:plan:edit']"></el-button>
+          </el-tooltip>
+          <el-tooltip content="删除" placement="top" >
+            <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['vaccine:plan:remove']"></el-button>
+          </el-tooltip>
         </template>
       </el-table-column>
     </el-table>
@@ -219,59 +102,86 @@
     />
 
     <!-- 添加或修改预约计划管理对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="" prop="startDate">
+    <el-dialog :title="title" v-model="open" width="500px" append-to-body>
+      <el-form ref="planForm" :model="form" :rules="rules" label-width="80px">
+        <el-form-item label="起始日期" prop="startDate">
           <el-date-picker clearable
                           v-model="form.startDate"
                           type="datetime"
-                          value-format="yyyy-MM-dd HH:mm:ss"
-                          placeholder="请选择">
+
+                          value-format="YYYY-MM-DD"
+                          placeholder="请选择起始日期">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="" prop="endDate">
+        <el-form-item label="结束日期" prop="endDate">
           <el-date-picker clearable
                           v-model="form.endDate"
                           type="datetime"
-                          value-format="yyyy-MM-dd HH:mm:ss"
-                          placeholder="请选择">
+                          value-format="YYYY-MM-DD"
+
+                          placeholder="请选择结束日期">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="" prop="startTimeMorning">
-          <el-input v-model="form.startTimeMorning" placeholder="请输入" />
+        <el-form-item label="上午起始整点数" prop="startTimeMorning">
+          <el-input v-model="form.startTimeMorning" placeholder="请输入上午起始整点数" />
         </el-form-item>
-        <el-form-item label="" prop="endTimeMorning">
-          <el-input v-model="form.endTimeMorning" placeholder="请输入" />
+        <el-form-item label="上午结束整点数" prop="endTimeMorning">
+          <el-input v-model="form.endTimeMorning" placeholder="请输入上午结束整点数" />
         </el-form-item>
-        <el-form-item label="" prop="startTimeAfternoon">
-          <el-input v-model="form.startTimeAfternoon" placeholder="请输入" />
+        <el-form-item label="下午起始整点数" prop="startTimeAfternoon">
+          <el-input v-model="form.startTimeAfternoon" placeholder="请输入下午起始整点数" />
         </el-form-item>
-        <el-form-item label="" prop="endTimeAfternoon">
-          <el-input v-model="form.endTimeAfternoon" placeholder="请输入" />
+        <el-form-item label="下午结束整点数" prop="endTimeAfternoon">
+          <el-input v-model="form.endTimeAfternoon" placeholder="请输入下午结束整点数" />
         </el-form-item>
-        <el-form-item label="" prop="vaccineId">
-          <el-input v-model="form.vaccineId" placeholder="请输入" />
+        <el-form-item label="疫苗名称" prop="vaccineId">
+          <el-select
+            v-model="form.vaccineId"
+            class="m-2"
+            placeholder="请输入疫苗名称"
+            style="width: 400px"
+          >
+            <el-option
+              v-for="item in vaccineOptions"
+              :key="item.key"
+              :label="item.value"
+              :value="item.key"
+            />
+          </el-select>
         </el-form-item>
-        <el-form-item label="" prop="inoculateSiteId">
-          <el-input v-model="form.inoculateSiteId" placeholder="请输入" />
+
+        <el-form-item label="接种点" prop="inoculateSiteId">
+          <el-select
+            v-model="form.inoculateSiteId"
+            class="m-2"
+            placeholder="请输入接种点名称"
+            style="width: 400px"
+          >
+            <el-option
+              v-for="item in siteOptions"
+              :key="item.key"
+              :label="item.value"
+              :value="item.key"
+            />
+          </el-select>
         </el-form-item>
-        <el-form-item label="" prop="amount">
-          <el-input v-model="form.amount" placeholder="请输入" />
+        <el-form-item label="预约总量" prop="amount">
+          <el-input v-model="form.amount" placeholder="请输入可预约总量" />
         </el-form-item>
-        <el-form-item label="" prop="startTimeEvening">
-          <el-input v-model="form.startTimeEvening" placeholder="请输入" />
+        <el-form-item label="夜晚起始整点数" prop="startTimeEvening">
+          <el-input v-model="form.startTimeEvening" placeholder="请输入夜晚起始整点数" />
         </el-form-item>
-        <el-form-item label="" prop="endTimeEvening">
-          <el-input v-model="form.endTimeEvening" placeholder="请输入" />
+        <el-form-item label="夜晚结束整点数" prop="endTimeEvening">
+          <el-input v-model="form.endTimeEvening" placeholder="请输入夜晚结束整点数" />
         </el-form-item>
-        <el-form-item label="" prop="morningLimit">
-          <el-input v-model="form.morningLimit" placeholder="请输入" />
+        <el-form-item label="上午最大预约量" prop="morningLimit">
+          <el-input v-model="form.morningLimit" placeholder="请输入上午最大预约量" />
         </el-form-item>
-        <el-form-item label="" prop="afternoonLimit">
-          <el-input v-model="form.afternoonLimit" placeholder="请输入" />
+        <el-form-item label="下午最大预约量" prop="afternoonLimit">
+          <el-input v-model="form.afternoonLimit" placeholder="请输入下午最大预约量" />
         </el-form-item>
-        <el-form-item label="" prop="eveningLimit">
-          <el-input v-model="form.eveningLimit" placeholder="请输入" />
+        <el-form-item label="夜晚最大预约量" prop="eveningLimit">
+          <el-input v-model="form.eveningLimit" placeholder="请输入夜晚最大预约量" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -282,223 +192,212 @@
   </div>
 </template>
 
-<script>
-import { listPlan, getPlan, delPlan, addPlan, updatePlan } from "@/api/vaccine/plan";
+<script setup name="Plan">
+import { listPlan, getPlan, delPlan, addPlan, updatePlan, getVaccineSelectOption, getInoculateSiteSelectOption } from "@/api/vaccine/plan";
 
-export default {
-  name: "Plan",
-  data() {
-    return {
-      // 按钮loading
-      buttonLoading: false,
-      // 遮罩层
-      loading: true,
-      // 选中数组
-      ids: [],
-      // 非单个禁用
-      single: true,
-      // 非多个禁用
-      multiple: true,
-      // 显示搜索条件
-      showSearch: true,
-      // 总条数
-      total: 0,
-      // 预约计划管理表格数据
-      planList: [],
-      // 弹出层标题
-      title: "",
-      // 是否显示弹出层
-      open: false,
-      // 查询参数
-      queryParams: {
-        pageNum: 1,
-        pageSize: 10,
-        startDate: undefined,
-        endDate: undefined,
-        startTimeMorning: undefined,
-        endTimeMorning: undefined,
-        startTimeAfternoon: undefined,
-        endTimeAfternoon: undefined,
-        vaccineId: undefined,
-        inoculateSiteId: undefined,
-        amount: undefined,
-        startTimeEvening: undefined,
-        endTimeEvening: undefined,
-        morningLimit: undefined,
-        afternoonLimit: undefined,
-        eveningLimit: undefined
-      },
-      // 表单参数
-      form: {},
-      // 表单校验
-      rules: {
-        id: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        startDate: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        endDate: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        startTimeMorning: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        endTimeMorning: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        startTimeAfternoon: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        endTimeAfternoon: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        vaccineId: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        inoculateSiteId: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        amount: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        startTimeEvening: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        endTimeEvening: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        morningLimit: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        afternoonLimit: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        eveningLimit: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ]
-      }
-    };
+const {proxy} = getCurrentInstance();
+
+const planList = ref([]);
+const open = ref(false);
+const buttonLoading = ref(false);
+const loading = ref(true);
+const showSearch = ref(true);
+const ids = ref([]);
+const single = ref(true);
+const multiple = ref(true);
+const total = ref(0);
+const title = ref("");
+const vaccineOptions = ref([]);
+const siteOptions = ref([]);
+
+const data =reactive({
+  form: {},
+  queryParams: {
+    pageNum: 1,
+    pageSize: 10,
+    startDate: undefined,
+    endDate: undefined,
+    startTimeMorning: undefined,
+    endTimeMorning: undefined,
+    startTimeAfternoon: undefined,
+    endTimeAfternoon: undefined,
+    vaccineId: undefined,
+    vaccineName: undefined,
+    inoculateSiteId: undefined,
+    inoculateSiteName: undefined,
+    amount: undefined,
+    startTimeEvening: undefined,
+    endTimeEvening: undefined,
+    morningLimit: undefined,
+    afternoonLimit: undefined,
+    eveningLimit: undefined
   },
-  created() {
-    this.getList();
-  },
-  methods: {
-    /** 查询预约计划管理列表 */
-    getList() {
-      this.loading = true;
-      listPlan(this.queryParams).then(response => {
-        this.planList = response.rows;
-        this.total = response.total;
-        this.loading = false;
-      });
-    },
-    // 取消按钮
-    cancel() {
-      this.open = false;
-      this.reset();
-    },
-    // 表单重置
-    reset() {
-      this.form = {
-        id: undefined,
-        startDate: undefined,
-        endDate: undefined,
-        startTimeMorning: undefined,
-        endTimeMorning: undefined,
-        startTimeAfternoon: undefined,
-        endTimeAfternoon: undefined,
-        vaccineId: undefined,
-        inoculateSiteId: undefined,
-        amount: undefined,
-        startTimeEvening: undefined,
-        endTimeEvening: undefined,
-        morningLimit: undefined,
-        afternoonLimit: undefined,
-        eveningLimit: undefined
-      };
-      this.resetForm("form");
-    },
-    /** 搜索按钮操作 */
-    handleQuery() {
-      this.queryParams.pageNum = 1;
-      this.getList();
-    },
-    /** 重置按钮操作 */
-    resetQuery() {
-      this.resetForm("queryForm");
-      this.handleQuery();
-    },
-    // 多选框选中数据
-    handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.id)
-      this.single = selection.length!==1
-      this.multiple = !selection.length
-    },
-    /** 新增按钮操作 */
-    handleAdd() {
-      this.reset();
-      this.open = true;
-      this.title = "添加预约计划管理";
-    },
-    /** 修改按钮操作 */
-    handleUpdate(row) {
-      this.loading = true;
-      this.reset();
-      const id = row.id || this.ids
-      getPlan(id).then(response => {
-        this.loading = false;
-        this.form = response.data;
-        this.open = true;
-        this.title = "修改预约计划管理";
-      });
-    },
-    /** 提交按钮 */
-    submitForm() {
-      this.$refs["form"].validate(valid => {
-        if (valid) {
-          this.buttonLoading = true;
-          if (this.form.id != null) {
-            updatePlan(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
-              this.open = false;
-              this.getList();
-            }).finally(() => {
-              this.buttonLoading = false;
-            });
-          } else {
-            addPlan(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            }).finally(() => {
-              this.buttonLoading = false;
-            });
-          }
-        }
-      });
-    },
-    /** 删除按钮操作 */
-    handleDelete(row) {
-      const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除预约计划管理编号为"' + ids + '"的数据项？').then(() => {
-        this.loading = true;
-        return delPlan(ids);
-      }).then(() => {
-        this.loading = false;
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      }).finally(() => {
-        this.loading = false;
-      });
-    },
-    /** 导出按钮操作 */
-    handleExport() {
-      this.download('vaccine/plan/export', {
-        ...this.queryParams
-      }, `plan_${new Date().getTime()}.xlsx`)
-    }
+  rules: {
+    id: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    startDate: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    endDate: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    startTimeMorning: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    endTimeMorning: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    startTimeAfternoon: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    endTimeAfternoon: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    vaccineId: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    inoculateSiteId: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    amount: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    startTimeEvening: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    endTimeEvening: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    morningLimit: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    afternoonLimit: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    eveningLimit: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ]
   }
+});
+const {queryParams, form, rules} = toRefs(data);
+function getList() {
+  loading.value = true;
+  listPlan(queryParams.value).then(response => {
+    planList.value = response.rows;
+    total.value = response.total;
+    loading.value = false;
+  });
+}
+
+function cancel() {
+  open.value = false;
+  reset();
 };
+
+function reset() {
+  form.value = {
+    id: undefined,
+    startDate: undefined,
+    endDate: undefined,
+    startTimeMorning: undefined,
+    endTimeMorning: undefined,
+    startTimeAfternoon: undefined,
+    endTimeAfternoon: undefined,
+    vaccineId: undefined,
+    inoculateSiteId: undefined,
+    amount: undefined,
+    startTimeEvening: undefined,
+    endTimeEvening: undefined,
+    morningLimit: undefined,
+    afternoonLimit: undefined,
+    eveningLimit: undefined
+  };
+  proxy.resetForm["planForm"];
+}
+
+function handleQuery() {
+  queryParams.value.pageNum = 1;
+  getList();
+}
+
+
+function resetQuery() {
+  proxy.resetForm("queryForm");
+  handleQuery();
+}
+function handleSelectionChange(selection) {
+  ids.value = selection.map(item => item.id)
+  single.value = selection.length!==1
+  multiple.value = !selection.length
+}
+function handleAdd() {
+  reset();
+  open.value = true;
+  title.value = "添加预约计划管理";
+}
+
+function handleUpdate(row) {
+  loading.value = true;
+  reset();
+  const id = row.id || ids.value
+  getPlan(id).then(response => {
+    loading.value = false;
+    form.value = response.data;
+    open.value = true;
+    title.value = "修改预约计划管理";
+  });
+}
+
+function submitForm() {
+  proxy.$refs["planForm"].validate(valid => {
+    if (valid) {
+      buttonLoading.value = true;
+      if (form.value.id != null) {
+        updatePlan(form.value).then(response => {
+          proxy.$modal.msgSuccess("修改成功");
+          open.value = false;
+          getList();
+        }).finally(() => {
+          buttonLoading.value = false;
+        });
+      } else {
+        addPlan(form.value).then(response => {
+          proxy.$modal.msgSuccess("新增成功");
+          open.value = false;
+          getList();
+        }).finally(() => {
+          buttonLoading.value = false;
+        });
+      }
+    }
+  });
+}
+function handleDelete(row) {
+  const ids = row.id || ids.value
+  proxy.$modal.confirm('是否确认删除预约计划编号为"' + ids + '"的数据项？').then(() => {
+    loading.value = true;
+    return delPlan(ids);
+  }).then(() => {
+    loading.value = false;
+    getList();
+    proxy.$modal.msgSuccess("删除成功");
+  }).catch(() => {
+  }).finally(() => {
+    loading.value = false;
+  });
+}
+function getVaccineOptionsLists(){
+  getVaccineSelectOption().then(resp => {
+    vaccineOptions.value = resp.data
+  })
+}
+function getInoculateSite(){
+  getInoculateSiteSelectOption().then(resp => {
+    siteOptions.value = resp.data
+  })
+}
+getList();
+getInoculateSite();
+getVaccineOptionsLists();
 </script>

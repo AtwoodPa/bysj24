@@ -59,7 +59,7 @@ public class YmPayServiceImpl implements IYmPayService {
     }
 
     private LambdaQueryWrapper<YmPay> buildQueryWrapper(YmPayBo bo) {
-        Map<String, Object> params = bo.getParams();
+//        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmPay> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getCost() != null, YmPay::getCost, bo.getCost());
         lqw.eq(bo.getAppointId() != null, YmPay::getAppointId, bo.getAppointId());

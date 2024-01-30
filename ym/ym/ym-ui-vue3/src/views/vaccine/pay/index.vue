@@ -1,97 +1,27 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="支付费用" prop="cost">
-        <el-input
-          v-model="queryParams.cost"
-          placeholder="请输入支付费用"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="预约id" prop="appointId">
+    <el-form :model="queryParams" ref="queryForm" size="default" :inline="true" v-show="showSearch" label-width="100px">
+      <el-form-item label="接种人名称" prop="appointId">
         <el-input
           v-model="queryParams.appointId"
-          placeholder="请输入预约id"
+          placeholder="请输入接种人名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="Search"  @click="handleQuery">搜索</el-button>
+        <el-button icon="Refresh"  @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
-    <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['vaccine:pay:add']"
-        >新增</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['vaccine:pay:edit']"
-        >修改</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['vaccine:pay:remove']"
-        >删除</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['vaccine:pay:export']"
-        >导出</el-button>
-      </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
-    </el-row>
-
     <el-table v-loading="loading" :data="payList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="" align="center" prop="id" v-if="true"/>
-      <el-table-column label="支付费用" align="center" prop="cost" />
-      <el-table-column label="预约id" align="center" prop="appointId" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['vaccine:pay:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['vaccine:pay:remove']"
-          >删除</el-button>
-        </template>
-      </el-table-column>
+      <el-table-column label="ID" width="55" align="center" prop="id" v-if="true"/>
+      <el-table-column label="接种人姓名" align="center" prop="realName" />
+      <el-table-column label="支付金额" align="center" prop="cost" />
+      <el-table-column label="疫苗名称" align="center" prop="vaccineName" />
+      <el-table-column label="支付时间" align="center" prop="cost" />
     </el-table>
 
     <pagination
@@ -102,21 +32,6 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改支付功能对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="支付费用" prop="cost">
-          <el-input v-model="form.cost" placeholder="请输入支付费用" />
-        </el-form-item>
-        <el-form-item label="预约id" prop="appointId">
-          <el-input v-model="form.appointId" placeholder="请输入预约id" />
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button :loading="buttonLoading" type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 

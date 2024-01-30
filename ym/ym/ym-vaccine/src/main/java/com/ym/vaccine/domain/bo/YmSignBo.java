@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.ym.common.core.domain.BaseEntity;
@@ -18,23 +19,22 @@ import com.ym.common.core.domain.BaseEntity;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class YmSignBo extends BaseEntity {
+public class YmSignBo implements Serializable {
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { EditGroup.class })
     private Long id;
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long workerId;
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long appointId;

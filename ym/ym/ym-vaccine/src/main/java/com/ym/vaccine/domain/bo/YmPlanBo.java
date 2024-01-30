@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ym.common.core.domain.BaseEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 预约计划管理业务对象 ym_plan
@@ -29,15 +30,19 @@ public class YmPlanBo implements Serializable {
     @NotNull(message = "不能为空", groups = { EditGroup.class })
     private Long id;
 
-    /**
+    /**s
      *
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Date startDate;
 
     /**
      *
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Date endDate;
 
@@ -71,11 +76,15 @@ public class YmPlanBo implements Serializable {
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long vaccineId;
 
+    private String vaccineName;
+
     /**
      *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long inoculateSiteId;
+
+    private String inoculateSiteName;
 
     /**
      *

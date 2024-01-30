@@ -9,6 +9,12 @@ export function listWorker(query) {
   })
 }
 
+export function getInoculateSiteSelectOption() {
+  return request({
+    url: '/vaccine/plan/getInoculateSiteSelectOption',
+    method: 'get'
+  })
+}
 // 查询医护人员信息详细
 export function getWorker(id) {
   return request({

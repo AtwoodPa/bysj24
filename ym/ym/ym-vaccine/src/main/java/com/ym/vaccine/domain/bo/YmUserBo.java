@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.validation.constraints.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -17,8 +18,7 @@ import java.util.Date;
  */
 
 @Data
-
-public class YmUserBo  {
+public class YmUserBo implements Serializable {
 
     /**
      * 疫苗用户id

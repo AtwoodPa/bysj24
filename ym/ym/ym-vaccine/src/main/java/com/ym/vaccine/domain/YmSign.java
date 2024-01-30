@@ -16,23 +16,22 @@ import com.ym.common.core.domain.BaseEntity;
  * @date 2024-01-29
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @TableName("ym_sign")
-public class YmSign extends BaseEntity {
+public class YmSign implements Serializable {
 
     private static final long serialVersionUID=1L;
 
     /**
-     * 
+     *
      */
     @TableId(value = "id")
     private Long id;
     /**
-     * 
+     *
      */
     private Long workerId;
     /**
-     * 
+     *
      */
     private Long appointId;
 

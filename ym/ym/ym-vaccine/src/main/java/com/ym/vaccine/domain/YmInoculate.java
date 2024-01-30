@@ -16,35 +16,34 @@ import com.ym.common.core.domain.BaseEntity;
  * @date 2024-01-29
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @TableName("ym_inoculate")
-public class YmInoculate extends BaseEntity {
+public class YmInoculate implements Serializable {
 
     private static final long serialVersionUID=1L;
 
     /**
-     * 
+     *
      */
     @TableId(value = "id")
     private Long id;
     /**
-     * 
+     *
      */
     private String part;
     /**
-     * 
+     *
      */
     private String vaccineBatchCode;
     /**
-     * 
+     *
      */
     private Long workerId;
     /**
-     * 
+     *
      */
     private Long appointId;
     /**
-     * 
+     *
      */
     private String note;
 

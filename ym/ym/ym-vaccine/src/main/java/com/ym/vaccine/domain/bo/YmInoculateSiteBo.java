@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.ym.common.core.domain.BaseEntity;
@@ -18,47 +19,29 @@ import com.ym.common.core.domain.BaseEntity;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class YmInoculateSiteBo extends BaseEntity {
+public class YmInoculateSiteBo implements Serializable {
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { EditGroup.class })
     private Long id;
 
     /**
-     * 
+     *
      */
     @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private String name;
 
-    /**
-     * 
-     */
-    @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String provinceCode;
 
     /**
-     * 
-     */
-    @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String cityCode;
-
-    /**
-     * 
-     */
-    @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String districtCode;
-
-    /**
-     * 
+     *
      */
     @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private String address;
 
     /**
-     * 
+     *
      */
     @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private String imgUrl;

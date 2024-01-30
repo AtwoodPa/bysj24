@@ -4,6 +4,8 @@ import com.ym.common.core.mapper.BaseMapperPlus;
 import com.ym.vaccine.domain.Vaccine;
 import com.ym.vaccine.domain.vo.VaccineVo;
 
+import java.util.Optional;
+
 /**
  * 疫苗信息Mapper接口
  *
@@ -12,4 +14,5 @@ import com.ym.vaccine.domain.vo.VaccineVo;
  */
 public interface VaccineMapper extends BaseMapperPlus<VaccineMapper, Vaccine, VaccineVo> {
 
+    Optional<Vaccine> selectVaccineByName(String vaccineName);
 }

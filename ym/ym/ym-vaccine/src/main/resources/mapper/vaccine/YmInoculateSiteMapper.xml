@@ -7,12 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <resultMap type="com.ym.vaccine.domain.YmInoculateSite" id="YmInoculateSiteResult">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
-        <result property="provinceCode" column="province_code"/>
-        <result property="cityCode" column="city_code"/>
-        <result property="districtCode" column="district_code"/>
         <result property="address" column="address"/>
         <result property="imgUrl" column="img_url"/>
     </resultMap>
+    <select id="selectInoculateSiteByName" resultType="com.ym.vaccine.domain.YmInoculateSite">
+        SELECT * FROM ym_inoculate_site WHERE name = #{name}
+    </select>
 
 
 </mapper>

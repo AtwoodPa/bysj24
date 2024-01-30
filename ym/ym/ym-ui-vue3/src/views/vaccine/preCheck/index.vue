@@ -1,79 +1,7 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="" prop="isMedicine">
-        <el-input
-          v-model="queryParams.isMedicine"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="medicine">
-        <el-input
-          v-model="queryParams.medicine"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="isContraindication">
-        <el-input
-          v-model="queryParams.isContraindication"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="contraindication">
-        <el-input
-          v-model="queryParams.contraindication"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="bloodPressureHigh">
-        <el-input
-          v-model="queryParams.bloodPressureHigh"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="bloodPressureLow">
-        <el-input
-          v-model="queryParams.bloodPressureLow"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="temperature">
-        <el-input
-          v-model="queryParams.temperature"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="workerId">
-        <el-input
-          v-model="queryParams.workerId"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="appointId">
-        <el-input
-          v-model="queryParams.appointId"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="note">
+    <el-form :model="queryParams" ref="queryForm" size="default" :inline="true" v-show="showSearch" label-width="100px">
+      <el-form-item label="接种人姓名" prop="note">
         <el-input
           v-model="queryParams.note"
           placeholder="请输入"
@@ -82,88 +10,27 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="Search"  @click="handleQuery">搜索</el-button>
+        <el-button icon="Refresh"  @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
-    <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['vaccine:preCheck:add']"
-        >新增</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['vaccine:preCheck:edit']"
-        >修改</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['vaccine:preCheck:remove']"
-        >删除</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['vaccine:preCheck:export']"
-        >导出</el-button>
-      </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
-    </el-row>
-
     <el-table v-loading="loading" :data="preCheckList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="" align="center" prop="id" v-if="true"/>
-      <el-table-column label="" align="center" prop="isMedicine" />
-      <el-table-column label="" align="center" prop="medicine" />
-      <el-table-column label="" align="center" prop="isContraindication" />
-      <el-table-column label="" align="center" prop="contraindication" />
-      <el-table-column label="" align="center" prop="bloodPressureHigh" />
-      <el-table-column label="" align="center" prop="bloodPressureLow" />
-      <el-table-column label="" align="center" prop="temperature" />
-      <el-table-column label="" align="center" prop="workerId" />
-      <el-table-column label="" align="center" prop="appointId" />
-      <el-table-column label="" align="center" prop="note" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['vaccine:preCheck:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['vaccine:preCheck:remove']"
-          >删除</el-button>
-        </template>
-      </el-table-column>
+      <el-table-column label="ID" align="center" prop="id" v-if="true"/>
+      <el-table-column label="接种人姓名" align="center" prop="appointId" />
+      <el-table-column label="是否服药" align="center" prop="isMedicine" />
+      <el-table-column label="药物名称" align="center" prop="medicine" />
+      <el-table-column label="是否禁忌症" align="center" prop="isContraindication" />
+      <el-table-column label="禁忌症名称" align="center" prop="contraindication" />
+      <el-table-column label="高压值" align="center" prop="bloodPressureHigh" />
+      <el-table-column label="低压值" align="center" prop="bloodPressureLow" />
+      <el-table-column label="体温" align="center" prop="temperature" />
+      <el-table-column label="医护人员名称" align="center" prop="workerId" />
+      <el-table-column label="预检时间" align="center" prop="workerId" />
+      <el-table-column label="接种点名称" align="center" prop="workerId" />
+      <el-table-column label="备注" align="center" prop="note" />
+
     </el-table>
 
     <pagination

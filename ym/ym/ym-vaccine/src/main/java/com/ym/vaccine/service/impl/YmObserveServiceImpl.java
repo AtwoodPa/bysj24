@@ -59,7 +59,7 @@ public class YmObserveServiceImpl implements IYmObserveService {
     }
 
     private LambdaQueryWrapper<YmObserve> buildQueryWrapper(YmObserveBo bo) {
-        Map<String, Object> params = bo.getParams();
+//        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmObserve> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getWorkerId() != null, YmObserve::getWorkerId, bo.getWorkerId());
         lqw.eq(bo.getAppointId() != null, YmObserve::getAppointId, bo.getAppointId());

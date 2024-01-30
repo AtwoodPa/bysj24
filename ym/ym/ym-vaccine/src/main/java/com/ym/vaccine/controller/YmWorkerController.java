@@ -3,7 +3,9 @@ package com.ym.vaccine.controller;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import com.ym.vaccine.mapper.YmInoculateSiteMapper;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -39,13 +41,22 @@ public class YmWorkerController extends BaseController {
 
     private final IYmWorkerService iYmWorkerService;
 
+
+    private final YmInoculateSiteMapper ymInoculateSiteMapper;
     /**
      * 查询医护人员信息列表
      */
     @SaCheckPermission("vaccine:worker:list")
     @GetMapping("/list")
     public TableDataInfo<YmWorkerVo> list(YmWorkerBo bo, PageQuery pageQuery) {
-        return iYmWorkerService.queryPageList(bo, pageQuery);
+        TableDataInfo<YmWorkerVo> ymWorkerVoTableDataInfo = iYmWorkerService.queryPageList(bo, pageQuery);
+        List<YmWorkerVo> rows = ymWorkerVoTableDataInfo.getRows();
+        List<YmWorkerVo> collect = rows.stream().map(ymWorkerVo -> {
+            ymWorkerVo.setInoculateSiteName(ymInoculateSiteMapper.selectById(ymWorkerVo.getInoculateSiteId()).getName());
+            return ymWorkerVo;
+        }).collect(Collectors.toList());
+        ymWorkerVoTableDataInfo.setRows(collect);
+        return ymWorkerVoTableDataInfo;
     }
 
     /**

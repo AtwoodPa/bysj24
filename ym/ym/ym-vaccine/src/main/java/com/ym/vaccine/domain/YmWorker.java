@@ -16,39 +16,38 @@ import com.ym.common.core.domain.BaseEntity;
  * @date 2024-01-29
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @TableName("ym_worker")
-public class YmWorker extends BaseEntity {
+public class YmWorker implements Serializable {
 
     private static final long serialVersionUID=1L;
 
     /**
-     * 
+     *
      */
     @TableId(value = "id")
     private Long id;
     /**
-     * 
+     *
      */
     private String username;
     /**
-     * 
+     *
      */
     private String password;
     /**
-     * 
+     *
      */
     private String realName;
     /**
-     * 
+     *
      */
     private String cardId;
     /**
-     * 
+     *
      */
     private String phone;
     /**
-     * 
+     *
      */
     private Long inoculateSiteId;
 

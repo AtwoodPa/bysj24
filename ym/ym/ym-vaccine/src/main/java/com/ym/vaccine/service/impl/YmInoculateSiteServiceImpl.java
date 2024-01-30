@@ -59,12 +59,9 @@ public class YmInoculateSiteServiceImpl implements IYmInoculateSiteService {
     }
 
     private LambdaQueryWrapper<YmInoculateSite> buildQueryWrapper(YmInoculateSiteBo bo) {
-        Map<String, Object> params = bo.getParams();
+//        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmInoculateSite> lqw = Wrappers.lambdaQuery();
         lqw.like(StringUtils.isNotBlank(bo.getName()), YmInoculateSite::getName, bo.getName());
-        lqw.eq(StringUtils.isNotBlank(bo.getProvinceCode()), YmInoculateSite::getProvinceCode, bo.getProvinceCode());
-        lqw.eq(StringUtils.isNotBlank(bo.getCityCode()), YmInoculateSite::getCityCode, bo.getCityCode());
-        lqw.eq(StringUtils.isNotBlank(bo.getDistrictCode()), YmInoculateSite::getDistrictCode, bo.getDistrictCode());
         lqw.eq(StringUtils.isNotBlank(bo.getAddress()), YmInoculateSite::getAddress, bo.getAddress());
         lqw.eq(StringUtils.isNotBlank(bo.getImgUrl()), YmInoculateSite::getImgUrl, bo.getImgUrl());
         return lqw;

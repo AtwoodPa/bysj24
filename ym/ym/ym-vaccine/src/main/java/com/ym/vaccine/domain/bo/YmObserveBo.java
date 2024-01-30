@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import java.util.Date;
@@ -20,41 +21,40 @@ import com.ym.common.core.domain.BaseEntity;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class YmObserveBo extends BaseEntity {
+public class YmObserveBo implements Serializable {
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { EditGroup.class })
     private Long id;
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long workerId;
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long appointId;
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long isFinish;
 
     /**
-     * 
+     *
      */
     @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private String note;
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Date endTime;

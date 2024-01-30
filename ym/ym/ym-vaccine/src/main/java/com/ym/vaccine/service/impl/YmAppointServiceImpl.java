@@ -59,7 +59,7 @@ public class YmAppointServiceImpl implements IYmAppointService {
     }
 
     private LambdaQueryWrapper<YmAppoint> buildQueryWrapper(YmAppointBo bo) {
-        Map<String, Object> params = bo.getParams();
+       // Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmAppoint> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getUserId() != null, YmAppoint::getUserId, bo.getUserId());
         lqw.eq(bo.getAppointDate() != null, YmAppoint::getAppointDate, bo.getAppointDate());

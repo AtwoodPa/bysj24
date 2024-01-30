@@ -9,6 +9,19 @@ export function listPlan(query) {
   })
 }
 
+export function getVaccineSelectOption() {
+  return request({
+    url: '/vaccine/plan/getVaccineSelectOption',
+    method: 'get'
+  })
+}
+
+export function getInoculateSiteSelectOption() {
+  return request({
+    url: '/vaccine/plan/getInoculateSiteSelectOption',
+    method: 'get'
+  })
+}
 // 查询预约计划管理详细
 export function getPlan(id) {
   return request({

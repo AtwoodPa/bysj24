@@ -59,7 +59,7 @@ public class YmSignServiceImpl implements IYmSignService {
     }
 
     private LambdaQueryWrapper<YmSign> buildQueryWrapper(YmSignBo bo) {
-        Map<String, Object> params = bo.getParams();
+//        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmSign> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getWorkerId() != null, YmSign::getWorkerId, bo.getWorkerId());
         lqw.eq(bo.getAppointId() != null, YmSign::getAppointId, bo.getAppointId());

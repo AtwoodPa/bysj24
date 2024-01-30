@@ -59,7 +59,7 @@ public class YmInoculateServiceImpl implements IYmInoculateService {
     }
 
     private LambdaQueryWrapper<YmInoculate> buildQueryWrapper(YmInoculateBo bo) {
-        Map<String, Object> params = bo.getParams();
+//        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmInoculate> lqw = Wrappers.lambdaQuery();
         lqw.eq(StringUtils.isNotBlank(bo.getPart()), YmInoculate::getPart, bo.getPart());
         lqw.eq(StringUtils.isNotBlank(bo.getVaccineBatchCode()), YmInoculate::getVaccineBatchCode, bo.getVaccineBatchCode());

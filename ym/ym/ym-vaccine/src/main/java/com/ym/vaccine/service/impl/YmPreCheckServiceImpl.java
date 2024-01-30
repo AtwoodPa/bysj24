@@ -59,7 +59,7 @@ public class YmPreCheckServiceImpl implements IYmPreCheckService {
     }
 
     private LambdaQueryWrapper<YmPreCheck> buildQueryWrapper(YmPreCheckBo bo) {
-        Map<String, Object> params = bo.getParams();
+//        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmPreCheck> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getIsMedicine() != null, YmPreCheck::getIsMedicine, bo.getIsMedicine());
         lqw.eq(StringUtils.isNotBlank(bo.getMedicine()), YmPreCheck::getMedicine, bo.getMedicine());

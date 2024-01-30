@@ -22,46 +22,51 @@ public class YmWorkerVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long id;
 
     /**
-     * 
+     * 用户名
      */
     @ExcelProperty(value = "")
     private String username;
 
     /**
-     * 
+     * 密码
      */
     @ExcelProperty(value = "")
     private String password;
 
     /**
-     * 
+     * 真实姓名
      */
     @ExcelProperty(value = "")
     private String realName;
 
     /**
-     * 
+     * 身份证号
      */
     @ExcelProperty(value = "")
     private String cardId;
 
     /**
-     * 
+     * 联系方式
      */
     @ExcelProperty(value = "")
     private String phone;
 
     /**
-     * 
+     * 接种站点ID
      */
     @ExcelProperty(value = "")
     private Long inoculateSiteId;
+
+    /**
+     * 接种站点名称
+     */
+    private String inoculateSiteName;
 
 
 }

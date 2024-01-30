@@ -59,7 +59,7 @@ public class YmWorkerServiceImpl implements IYmWorkerService {
     }
 
     private LambdaQueryWrapper<YmWorker> buildQueryWrapper(YmWorkerBo bo) {
-        Map<String, Object> params = bo.getParams();
+//        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmWorker> lqw = Wrappers.lambdaQuery();
         lqw.like(StringUtils.isNotBlank(bo.getUsername()), YmWorker::getUsername, bo.getUsername());
         lqw.eq(StringUtils.isNotBlank(bo.getPassword()), YmWorker::getPassword, bo.getPassword());

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import java.util.Date;
@@ -20,11 +21,10 @@ import com.ym.common.core.domain.BaseEntity;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class YmAppointBo extends BaseEntity {
+public class YmAppointBo implements Serializable {
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { EditGroup.class })
     private Long id;
@@ -42,25 +42,25 @@ public class YmAppointBo extends BaseEntity {
     private Date appointDate;
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long status;
 
     /**
-     * 
+     *
      */
     @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private String qrCodeUrl;
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long planId;
 
     /**
-     * 
+     *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long timeSlot;

@@ -71,11 +71,17 @@ public class YmPlanVo implements Serializable {
     @ExcelProperty(value = "")
     private Long vaccineId;
 
+    @ExcelProperty(value = "")
+    private String vaccineName;
+
     /**
      *
      */
     @ExcelProperty(value = "")
     private Long inoculateSiteId;
+
+    @ExcelProperty(value = "")
+    private String inoculateSiteName;
 
     /**
      *
