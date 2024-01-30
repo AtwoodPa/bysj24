@@ -1,12 +1,14 @@
 package com.ym.vaccine.domain.vo;
 
 import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.ym.common.annotation.ExcelDictFormat;
 import com.ym.common.convert.ExcelDictConvert;
 import lombok.Data;
+
 import java.util.Date;
 
 import java.io.Serializable;
@@ -39,6 +41,16 @@ public class YmAppointVo implements Serializable {
      * 真实姓名
      */
     private String realName;
+    /**
+     * 接种点名称
+     */
+    private String inoculateSiteName;
+
+    /**
+     * 疫苗名称
+     */
+    private String vaccineName;
+
 
     /**
      * 预约日期

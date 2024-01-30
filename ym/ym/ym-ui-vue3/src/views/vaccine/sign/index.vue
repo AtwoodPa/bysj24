@@ -18,10 +18,10 @@
     <el-table v-loading="loading" :data="signList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="ID" width="55" align="center" prop="id" v-if="true"/>
-      <el-table-column label="接种人姓名" align="center" prop="workerId" />
-      <el-table-column label="签到时间" align="center" prop="appointId" />
-      <el-table-column label="医护人员姓名" align="center" prop="appointId" />
-      <el-table-column label="接种点名称" align="center" prop="appointId" />
+      <el-table-column label="接种人姓名" align="center" prop="realName" />
+      <el-table-column label="签到时间" align="center" prop="createTime" />
+      <el-table-column label="医护人员姓名" align="center" prop="workerName" />
+      <el-table-column label="接种点名称" align="center" prop="siteName" />
 
     </el-table>
 

@@ -2,9 +2,12 @@ package com.ym.vaccine.domain.vo;
 
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ym.common.annotation.ExcelDictFormat;
 import com.ym.common.convert.ExcelDictConvert;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 import java.io.Serializable;
@@ -22,7 +25,7 @@ public class YmPayVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long id;
@@ -32,12 +35,23 @@ public class YmPayVo implements Serializable {
      */
     @ExcelProperty(value = "支付费用")
     private Long cost;
-
+    /**
+     * 疫苗名称
+     */
+    private String vaccineName;
+    /**
+     * 真实姓名
+     */
+    private String realName;
     /**
      * 预约id
      */
     @ExcelProperty(value = "预约id")
     private Long appointId;
-
-
+    /**
+     * 操作时间
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date createTime;
 }

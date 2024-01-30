@@ -28,6 +28,10 @@ public class YmPayBo implements Serializable {
     private Long id;
 
     /**
+     * 接种人姓名
+     */
+    private String realName;
+    /**
      * 支付费用
      */
     @NotNull(message = "支付费用不能为空", groups = { AddGroup.class, EditGroup.class })

@@ -3,7 +3,10 @@ package com.ym.vaccine.controller;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import com.ym.vaccine.domain.YmUser;
+import com.ym.vaccine.mapper.*;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -38,6 +41,11 @@ import com.ym.common.core.page.TableDataInfo;
 public class YmSignController extends BaseController {
 
     private final IYmSignService iYmSignService;
+    private final YmUserMapper userMapper;
+    private final YmAppointMapper appointMapper;
+    private final YmWorkerMapper workerMapper;
+    private final YmPlanMapper planMapper;
+    private final YmInoculateSiteMapper siteMapper;
 
     /**
      * 查询接种签到列表
@@ -45,7 +53,17 @@ public class YmSignController extends BaseController {
     @SaCheckPermission("vaccine:sign:list")
     @GetMapping("/list")
     public TableDataInfo<YmSignVo> list(YmSignBo bo, PageQuery pageQuery) {
-        return iYmSignService.queryPageList(bo, pageQuery);
+        TableDataInfo<YmSignVo> data = iYmSignService.queryPageList(bo, pageQuery);
+        List<YmSignVo> dataList = data.getRows();
+        List<YmSignVo> resultData = dataList.stream().map(item -> {
+
+            item.setRealName(userMapper.selectById(appointMapper.selectById(item.getAppointId()).getUserId()).getRealName());
+            item.setWorkerName(workerMapper.selectById(item.getWorkerId()).getRealName());
+            item.setSiteName(siteMapper.selectById(planMapper.selectById(appointMapper.selectById(item.getAppointId()).getPlanId()).getInoculateSiteId()).getName());
+            return item;
+        }).collect(Collectors.toList());
+        data.setRows(resultData);
+        return data;
     }
 
     /**

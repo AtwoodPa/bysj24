@@ -3,7 +3,13 @@ package com.ym.vaccine.controller;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import com.ym.common.utils.StringUtils;
+import com.ym.vaccine.mapper.VaccineMapper;
+import com.ym.vaccine.mapper.YmAppointMapper;
+import com.ym.vaccine.mapper.YmPlanMapper;
+import com.ym.vaccine.mapper.YmUserMapper;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -38,6 +44,10 @@ import com.ym.common.core.page.TableDataInfo;
 public class YmPayController extends BaseController {
 
     private final IYmPayService iYmPayService;
+    private final YmAppointMapper appointMapper;
+    private final YmPlanMapper planMapper;
+    private final YmUserMapper userMapper;
+    private final VaccineMapper vaccineMapper;
 
     /**
      * 查询支付功能列表
@@ -45,7 +55,24 @@ public class YmPayController extends BaseController {
     @SaCheckPermission("vaccine:pay:list")
     @GetMapping("/list")
     public TableDataInfo<YmPayVo> list(YmPayBo bo, PageQuery pageQuery) {
-        return iYmPayService.queryPageList(bo, pageQuery);
+
+        TableDataInfo<YmPayVo> data = iYmPayService.queryPageList(bo, pageQuery);
+        List<YmPayVo> dataList = data.getRows();
+        dataList.stream().map(item->{
+            item.setRealName(userMapper.selectById(appointMapper.selectById(item.getAppointId()).getUserId()).getRealName());
+            item.setVaccineName(
+                vaccineMapper.selectById(
+                    planMapper.selectById(
+                        appointMapper.selectById(item.getAppointId()).getPlanId()).getVaccineId()).getName());
+            return item;
+        }).collect(Collectors.toList());
+        if (StringUtils.isNotBlank(bo.getRealName())){
+            // 只保留realName匹配的数据
+            dataList = dataList.stream().filter(item->item.getRealName().equals(bo.getRealName())).collect(Collectors.toList());
+
+        }
+        data.setRows(dataList);
+        return data;
     }
 
     /**

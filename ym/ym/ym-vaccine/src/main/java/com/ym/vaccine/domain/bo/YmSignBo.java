@@ -39,5 +39,9 @@ public class YmSignBo implements Serializable {
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long appointId;
 
+    /**
+     * 接种人姓名
+     */
+    private String realName;
 
 }

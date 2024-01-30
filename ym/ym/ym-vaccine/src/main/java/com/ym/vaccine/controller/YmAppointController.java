@@ -3,7 +3,15 @@ package com.ym.vaccine.controller;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import com.ym.common.utils.StringUtils;
+import com.ym.vaccine.domain.YmPlan;
+import com.ym.vaccine.mapper.VaccineMapper;
+import com.ym.vaccine.mapper.YmInoculateSiteMapper;
+import com.ym.vaccine.mapper.YmPlanMapper;
+import com.ym.vaccine.mapper.YmUserMapper;
+import jodd.util.StringUtil;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -38,14 +46,34 @@ import com.ym.common.core.page.TableDataInfo;
 public class YmAppointController extends BaseController {
 
     private final IYmAppointService iYmAppointService;
-
+    private final YmUserMapper userMapper;
+    private final YmPlanMapper planMapper;
+    private final YmInoculateSiteMapper inoculateSiteMapper;
+    private final VaccineMapper vaccineMapper;
     /**
      * 查询预约列表
      */
     @SaCheckPermission("vaccine:appoint:list")
     @GetMapping("/list")
     public TableDataInfo<YmAppointVo> list(YmAppointBo bo, PageQuery pageQuery) {
-        return iYmAppointService.queryPageList(bo, pageQuery);
+        if(StringUtils.isNotBlank(bo.getRealName())){
+            userMapper.selectUserByRealName(bo.getRealName()).ifPresent(item->{
+                bo.setUserId(item.getId());
+            });
+        }
+        TableDataInfo<YmAppointVo> data = iYmAppointService.queryPageList(bo, pageQuery);
+        List<YmAppointVo> dataList = data.getRows();
+        List<YmAppointVo> resultData = dataList.stream().map(item -> {
+            item.setRealName(userMapper.selectById(item.getUserId()).getRealName());
+            item.setInoculateSiteName(inoculateSiteMapper.selectById(planMapper.selectById(item.getPlanId()).getInoculateSiteId()).getName());
+            item.setVaccineName(vaccineMapper.selectById(planMapper.selectById(item.getPlanId()).getVaccineId()).getName());
+            return item;
+        }).collect(Collectors.toList());
+
+
+
+        data.setRows(resultData);
+        return data;
     }
 
     /**

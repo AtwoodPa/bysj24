@@ -14,6 +14,9 @@
         <result property="address" column="address"/>
         <result property="districtCode" column="district_code"/>
     </resultMap>
+    <select id="selectUserByRealName" resultType="com.ym.vaccine.domain.YmUser">
+        select * from ym_user where real_name = #{realName}
+    </select>
 
 
 </mapper>

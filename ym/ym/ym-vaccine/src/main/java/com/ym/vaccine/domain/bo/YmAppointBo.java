@@ -36,6 +36,10 @@ public class YmAppointBo implements Serializable {
     private Long userId;
 
     /**
+     * 接种人姓名
+     */
+    private String realName;
+    /**
      * 预约日期
      */
     @NotNull(message = "预约日期不能为空", groups = { AddGroup.class, EditGroup.class })

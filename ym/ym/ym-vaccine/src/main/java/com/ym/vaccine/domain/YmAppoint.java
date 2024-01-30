@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ym.common.core.domain.BaseEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 预约对象 ym_appoint
@@ -53,4 +54,10 @@ public class YmAppoint implements Serializable {
      */
     private Long timeSlot;
 
+    /**
+     * 操作时间
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date createTime;
 }
