@@ -1,5 +1,6 @@
 package com.ym.vaccine.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.ym.vaccine.domain.YmPay;
 import com.ym.vaccine.domain.vo.YmPayVo;
 import com.ym.vaccine.domain.bo.YmPayBo;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IYmPayService {
+public interface IYmPayService extends IService<YmPay> {
 
     /**
      * 查询支付功能

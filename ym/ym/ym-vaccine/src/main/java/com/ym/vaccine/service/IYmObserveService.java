@@ -1,5 +1,7 @@
 package com.ym.vaccine.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.domain.YmObserve;
 import com.ym.vaccine.domain.vo.YmObserveVo;
 import com.ym.vaccine.domain.bo.YmObserveBo;
@@ -15,8 +17,9 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IYmObserveService {
+public interface IYmObserveService extends IService<YmObserve> {
 
+    void observe(YmAppoint appoint, YmObserve observe);
     /**
      * 查询留观查询
      */

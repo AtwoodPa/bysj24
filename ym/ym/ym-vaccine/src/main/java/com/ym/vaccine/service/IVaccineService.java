@@ -1,6 +1,8 @@
 package com.ym.vaccine.service;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.ym.vaccine.domain.Vaccine;
 import com.ym.vaccine.domain.bo.VaccineBo;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
@@ -15,7 +17,7 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IVaccineService {
+public interface IVaccineService extends IService<Vaccine> {
 
     /**
      * 查询疫苗信息

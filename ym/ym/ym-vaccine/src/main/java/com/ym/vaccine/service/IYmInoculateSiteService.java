@@ -1,5 +1,6 @@
 package com.ym.vaccine.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.ym.vaccine.domain.YmInoculateSite;
 import com.ym.vaccine.domain.vo.YmInoculateSiteVo;
 import com.ym.vaccine.domain.bo.YmInoculateSiteBo;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IYmInoculateSiteService {
+public interface IYmInoculateSiteService extends IService<YmInoculateSite> {
 
     /**
      * 查询疫苗接种站点管理

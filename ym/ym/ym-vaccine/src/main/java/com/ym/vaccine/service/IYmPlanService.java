@@ -1,8 +1,10 @@
 package com.ym.vaccine.service;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
+import com.ym.vaccine.domain.YmPlan;
 import com.ym.vaccine.domain.bo.YmPlanBo;
 import com.ym.vaccine.domain.vo.YmPlanVo;
 
@@ -15,7 +17,7 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IYmPlanService {
+public interface IYmPlanService extends IService<YmPlan> {
 
     /**
      * 查询预约计划管理

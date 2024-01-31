@@ -1,12 +1,15 @@
 package com.ym.vaccine.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ym.common.utils.StringUtils;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.ym.vaccine.domain.YmAppoint;
+import com.ym.vaccine.service.IYmAppointService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.ym.vaccine.domain.bo.YmObserveBo;
@@ -14,7 +17,9 @@ import com.ym.vaccine.domain.vo.YmObserveVo;
 import com.ym.vaccine.domain.YmObserve;
 import com.ym.vaccine.mapper.YmObserveMapper;
 import com.ym.vaccine.service.IYmObserveService;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Collection;
@@ -27,9 +32,26 @@ import java.util.Collection;
  */
 @RequiredArgsConstructor
 @Service
-public class YmObserveServiceImpl implements IYmObserveService {
+public class YmObserveServiceImpl extends ServiceImpl<YmObserveMapper,YmObserve> implements IYmObserveService {
 
     private final YmObserveMapper baseMapper;
+
+    private final IYmAppointService appointService;
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void observe(YmAppoint appoint, YmObserve observe) {
+        if (appoint == null || observe == null) {
+            throw new RuntimeException("参数有误");
+        }
+
+        appoint.setStatus(4L);
+        appointService.updateById(appoint);
+
+        observe.setIsFinish(1L);
+        observe.setEndTime(new Date());
+        updateById(observe);
+    }
 
     /**
      * 查询留观查询

@@ -1,5 +1,7 @@
 package com.ym.vaccine.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.domain.YmInoculate;
 import com.ym.vaccine.domain.vo.YmInoculateVo;
 import com.ym.vaccine.domain.bo.YmInoculateBo;
@@ -15,8 +17,11 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IYmInoculateService {
+public interface IYmInoculateService extends IService<YmInoculate> {
 
+    void inoculate(YmAppoint appoint, YmInoculate inoculate);
+
+    void notSucceeded(YmAppoint appoint, YmInoculate inoculate);
     /**
      * 查询疫苗接种记录
      */

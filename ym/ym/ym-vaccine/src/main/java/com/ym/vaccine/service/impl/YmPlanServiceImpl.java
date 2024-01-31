@@ -2,6 +2,7 @@ package com.ym.vaccine.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -27,7 +28,7 @@ import java.util.Collection;
  */
 @RequiredArgsConstructor
 @Service
-public class YmPlanServiceImpl implements IYmPlanService {
+public class YmPlanServiceImpl extends ServiceImpl<YmPlanMapper,YmPlan> implements IYmPlanService {
 
     private final YmPlanMapper baseMapper;
 

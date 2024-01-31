@@ -1,5 +1,6 @@
 package com.ym.vaccine.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.ym.vaccine.domain.YmWorker;
 import com.ym.vaccine.domain.vo.YmWorkerVo;
 import com.ym.vaccine.domain.bo.YmWorkerBo;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IYmWorkerService {
+public interface IYmWorkerService extends IService<YmWorker> {
 
     /**
      * 查询医护人员信息

@@ -1,6 +1,7 @@
 package com.ym.vaccine.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ym.common.utils.StringUtils;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
@@ -27,7 +28,7 @@ import java.util.Collection;
  */
 @RequiredArgsConstructor
 @Service
-public class YmPreCheckServiceImpl implements IYmPreCheckService {
+public class YmPreCheckServiceImpl extends ServiceImpl<YmPreCheckMapper,YmPreCheck> implements IYmPreCheckService {
 
     private final YmPreCheckMapper baseMapper;
 

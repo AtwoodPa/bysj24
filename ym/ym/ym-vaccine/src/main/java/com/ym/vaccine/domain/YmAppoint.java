@@ -36,6 +36,9 @@ public class YmAppoint implements Serializable {
     /**
      * 预约日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @TableField("appoint_date")
     private Date appointDate;
     /**
      *
@@ -59,6 +62,7 @@ public class YmAppoint implements Serializable {
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField("create_time")
     private Date createTime;
 
 }

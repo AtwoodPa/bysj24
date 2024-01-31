@@ -1,5 +1,6 @@
 package com.ym.vaccine.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.ym.vaccine.domain.YmSign;
 import com.ym.vaccine.domain.vo.YmSignVo;
 import com.ym.vaccine.domain.bo.YmSignBo;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IYmSignService {
+public interface IYmSignService extends IService<YmSign> {
 
     /**
      * 查询接种签到
