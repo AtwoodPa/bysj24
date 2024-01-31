@@ -3,7 +3,10 @@ package com.ym.vaccine.controller;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import com.ym.common.utils.StringUtils;
+import com.ym.vaccine.mapper.*;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -39,13 +42,36 @@ public class YmPreCheckController extends BaseController {
 
     private final IYmPreCheckService iYmPreCheckService;
 
+    private final YmUserMapper userMapper;
+    private final YmAppointMapper appointMapper;
+    private final YmWorkerMapper workerMapper;
+
+    private final YmPlanMapper planMapper;
+    private final YmInoculateSiteMapper siteMapper;
     /**
      * 查询预检信息查询列表
      */
     @SaCheckPermission("vaccine:preCheck:list")
     @GetMapping("/list")
     public TableDataInfo<YmPreCheckVo> list(YmPreCheckBo bo, PageQuery pageQuery) {
-        return iYmPreCheckService.queryPageList(bo, pageQuery);
+
+
+        TableDataInfo<YmPreCheckVo> data = iYmPreCheckService.queryPageList(bo, pageQuery);
+        List<YmPreCheckVo> dataList = data.getRows();
+        dataList = dataList.stream().map(item ->{
+
+            item.setRealName(userMapper.selectById(appointMapper.selectById(item.getAppointId()).getUserId()).getRealName());
+            item.setWorkerName(workerMapper.selectById(item.getWorkerId()).getRealName());
+            item.setSiteName(siteMapper.selectById(planMapper.selectById(appointMapper.selectById(item.getAppointId()).getPlanId()).getInoculateSiteId()).getName());
+            return item;
+        }).collect(Collectors.toList());
+
+        if (StringUtils.isNotBlank(bo.getRealName())){
+            // 只保留realName匹配的数据
+            dataList = dataList.stream().filter(item->item.getRealName().equals(bo.getRealName())).collect(Collectors.toList());
+        }
+        data.setRows(dataList);
+        return data;
     }
 
     /**

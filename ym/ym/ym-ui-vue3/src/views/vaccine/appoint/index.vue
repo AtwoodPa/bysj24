@@ -18,16 +18,11 @@
     </el-form>
 
     <el-table v-loading="loading" :data="appointList" >
-      <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="ID" align="center" width="55" prop="id" v-if="true"/>
       <el-table-column label="签到码" align="center" prop="qrCodeUrl"/>
       <el-table-column label="预约人姓名" align="center" prop="realName"/>
       <el-table-column label="接种点名称" align="center" prop="inoculateSiteName"/>
-      <el-table-column label="预约日期" align="center" prop="appointDate" width="180">
-        <template #default="scope">
-          <span>{{ parseTime(scope.row.appointDate, '{y}-{m}-{d}') }}</span>
-        </template>
-      </el-table-column>
+      <el-table-column label="预约日期" align="center" prop="appointDate" width="180" />
       <el-table-column label="操作时间" align="center" prop="createTime"/>
       <el-table-column label="疫苗名称" align="center" prop="vaccineName"/>
       <el-table-column label="接种状态" align="center" prop="status">

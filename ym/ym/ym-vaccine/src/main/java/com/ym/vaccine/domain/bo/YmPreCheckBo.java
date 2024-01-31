@@ -44,6 +44,7 @@ public class YmPreCheckBo implements Serializable {
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long isContraindication;
+    private String realName;
 
     /**
      *

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import com.ym.common.utils.StringUtils;
 import com.ym.vaccine.domain.YmUser;
 import com.ym.vaccine.mapper.*;
 import lombok.RequiredArgsConstructor;
@@ -62,6 +63,10 @@ public class YmSignController extends BaseController {
             item.setSiteName(siteMapper.selectById(planMapper.selectById(appointMapper.selectById(item.getAppointId()).getPlanId()).getInoculateSiteId()).getName());
             return item;
         }).collect(Collectors.toList());
+        if (StringUtils.isNotBlank(bo.getRealName())){
+            // 只保留realName匹配的数据
+            resultData = resultData.stream().filter(item->item.getRealName().equals(bo.getRealName())).collect(Collectors.toList());
+        }
         data.setRows(resultData);
         return data;
     }

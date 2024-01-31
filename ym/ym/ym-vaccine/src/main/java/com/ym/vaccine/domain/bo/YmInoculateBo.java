@@ -1,5 +1,6 @@
 package com.ym.vaccine.domain.bo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ym.common.core.validate.AddGroup;
 import com.ym.common.core.validate.EditGroup;
 import lombok.Data;
@@ -10,6 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.ym.common.core.domain.BaseEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 疫苗接种记录业务对象 ym_inoculate
@@ -38,7 +40,7 @@ public class YmInoculateBo implements Serializable {
      */
     @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private String vaccineBatchCode;
-
+    private String realName;
     /**
      *
      */
@@ -56,6 +58,11 @@ public class YmInoculateBo implements Serializable {
      */
     @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private String note;
-
+    /**
+     * 签到时间
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date createTime;
 
 }

@@ -49,4 +49,5 @@ public class YmObserve implements Serializable {
      */
     private Date endTime;
 
+    private Date createTime;
 }

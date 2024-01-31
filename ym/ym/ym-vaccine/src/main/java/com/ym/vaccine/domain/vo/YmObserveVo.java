@@ -24,40 +24,42 @@ public class YmObserveVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long id;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long workerId;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long appointId;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private Long isFinish;
 
     /**
-     * 
+     *
      */
     @ExcelProperty(value = "")
     private String note;
 
-    /**
-     * 
-     */
-    @ExcelProperty(value = "")
+
+    private Date createTime;
     private Date endTime;
+
+    private String realName;
+    private String workerName;
+    private String siteName;
 
 
 }

@@ -62,16 +62,8 @@
       <el-table-column label="疫苗名称" align="center" prop="vaccineName" width="180"/>
       <el-table-column label="接种点名称" align="center" prop="inoculateSiteName" width="180"/>
       <el-table-column label="可预约总量" align="center" prop="amount" />
-      <el-table-column label="起始日期" align="center" prop="startDate" width="120">
-        <template #default="scope">
-          <span>{{ parseTime(scope.row.startDate, '{y}-{m}-{d}') }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="结束日期" align="center" prop="endDate" width="120">
-        <template #default="scope">
-          <span>{{ parseTime(scope.row.endDate, '{y}-{m}-{d}') }}</span>
-        </template>
-      </el-table-column>
+      <el-table-column label="起始日期" align="center" prop="startDate" width="150"/>
+      <el-table-column label="结束日期" align="center" prop="endDate" width="150" />
       <el-table-column label="上午起始整点数" align="center" prop="startTimeMorning" />
       <el-table-column label="上午最大预约量" align="center" prop="morningLimit" />
       <el-table-column label="上午结束整点数" align="center" prop="endTimeMorning" />

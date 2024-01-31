@@ -3,7 +3,10 @@ package com.ym.vaccine.controller;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import com.ym.common.utils.StringUtils;
+import com.ym.vaccine.mapper.*;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -38,6 +41,12 @@ import com.ym.common.core.page.TableDataInfo;
 public class YmInoculateController extends BaseController {
 
     private final IYmInoculateService iYmInoculateService;
+    private final YmWorkerMapper workerMapper;
+    private final YmInoculateSiteMapper siteMapper;
+    private final YmPlanMapper planMapper;
+    private final YmUserMapper userMapper;
+    private final YmAppointMapper appointMapper;
+    private final VaccineMapper vaccineMapper;
 
     /**
      * 查询疫苗接种记录列表
@@ -45,7 +54,21 @@ public class YmInoculateController extends BaseController {
     @SaCheckPermission("vaccine:inoculate:list")
     @GetMapping("/list")
     public TableDataInfo<YmInoculateVo> list(YmInoculateBo bo, PageQuery pageQuery) {
-        return iYmInoculateService.queryPageList(bo, pageQuery);
+        TableDataInfo<YmInoculateVo> data = iYmInoculateService.queryPageList(bo, pageQuery);
+        List<YmInoculateVo> dataList = data.getRows();
+        dataList = dataList.stream().map(item -> {
+            item.setRealName(userMapper.selectById(appointMapper.selectById(item.getAppointId()).getUserId()).getRealName());
+            item.setWorkerName(workerMapper.selectById(item.getWorkerId()).getRealName());
+            item.setSiteName(siteMapper.selectById(planMapper.selectById(appointMapper.selectById(item.getAppointId()).getPlanId()).getInoculateSiteId()).getName());
+            item.setVaccineName(vaccineMapper.selectById(planMapper.selectById(appointMapper.selectById(item.getAppointId()).getPlanId()).getVaccineId()).getName());
+            return item;
+        }).collect(Collectors.toList());
+        if (StringUtils.isNotBlank(bo.getRealName())){
+            // 只保留realName匹配的数据
+            dataList = dataList.stream().filter(item->item.getRealName().equals(bo.getRealName())).collect(Collectors.toList());
+        }
+        data.setRows(dataList);
+        return data;
     }
 
     /**

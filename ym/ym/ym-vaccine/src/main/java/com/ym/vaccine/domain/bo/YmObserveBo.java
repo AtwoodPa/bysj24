@@ -34,7 +34,7 @@ public class YmObserveBo implements Serializable {
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long workerId;
-
+    private String realName;
     /**
      *
      */
