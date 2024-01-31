@@ -1,13 +1,25 @@
 package com.ym.vaccine.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import cn.dev33.satoken.annotation.SaIgnore;
+import cn.hutool.crypto.asymmetric.Sign;
 import com.ym.common.utils.StringUtils;
-import com.ym.vaccine.domain.YmUser;
+import com.ym.vaccine.annotation.PassToken;
+import com.ym.vaccine.domain.*;
+import com.ym.vaccine.domain.common.Result;
+import com.ym.vaccine.exception.TokenUnavailable;
 import com.ym.vaccine.mapper.*;
+import com.ym.vaccine.service.IYmAppointService;
+import com.ym.vaccine.service.IYmPlanService;
+import com.ym.vaccine.service.IYmWorkerService;
+import com.ym.vaccine.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -47,6 +59,73 @@ public class YmSignController extends BaseController {
     private final YmWorkerMapper workerMapper;
     private final YmPlanMapper planMapper;
     private final YmInoculateSiteMapper siteMapper;
+    private final IYmAppointService appointService;
+    private final IYmWorkerService workerService;
+    private final IYmPlanService planService;
+    private final IYmSignService signService;
+
+
+    @SaIgnore
+    @PostMapping("/worker/sign/save")
+    @PassToken(required = false)
+    public Result save(@RequestBody YmAppoint appoint, @RequestHeader("x-token") String token) {
+        String workerId = null;
+        try {
+            workerId = JwtUtils.getAudience(token);
+        } catch (TokenUnavailable tokenUnavailable) {
+            return Result.error("token无效");
+        }
+
+        if (appoint.getId() == null) {
+            return Result.error("预约ID为空");
+        }
+
+        YmAppoint target = appointService.getById(appoint.getId());
+        if (target == null) {
+            return Result.error("预约ID不存在");
+        }
+        if (target.getStatus() != 0) {
+            return Result.error("预约二维码无效");
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String nowDateStr = simpleDateFormat.format(new Date());
+        String appointDateStr = simpleDateFormat.format(target.getAppointDate());
+        if (!appointDateStr.equals(nowDateStr)) {
+            return Result.error("预约时间不匹配");
+        }
+
+        YmWorker worker = workerService.getById(workerId);
+        YmPlan plan = planService.getById(target.getPlanId());
+        if (worker.getInoculateSiteId().intValue() != plan.getInoculateSiteId().intValue()) {
+            return Result.error("预约接种点不匹配");
+        }
+
+        Long timeSlot = target.getTimeSlot();
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        if (timeSlot == 0) {
+            if (hour < plan.getStartTimeMorning() || hour > plan.getEndTimeMorning()) {
+                return Result.error("预约时间段不匹配");
+            }
+        } else if (timeSlot == 1) {
+            if (hour < plan.getStartTimeAfternoon() || hour > plan.getEndTimeAfternoon()) {
+                return Result.error("预约时间段不匹配");
+            }
+        } else {
+            if (hour < plan.getStartTimeEvening() || hour > plan.getEndTimeEvening()) {
+                return Result.error("预约时间段不匹配");
+            }
+        }
+
+        YmSign sign = new YmSign();
+        sign.setAppointId(target.getId());
+        sign.setCreateTime(new Date());
+        sign.setWorkerId(worker.getId());
+
+        signService.sign(appoint, sign);
+
+        return Result.error("签到成功");
+    }
 
     /**
      * 查询接种签到列表

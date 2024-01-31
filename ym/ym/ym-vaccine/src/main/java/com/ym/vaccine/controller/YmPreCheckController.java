@@ -1,12 +1,25 @@
 package com.ym.vaccine.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import com.ym.common.utils.StringUtils;
+import com.ym.vaccine.annotation.PassToken;
+import com.ym.vaccine.domain.YmAppoint;
+import com.ym.vaccine.domain.YmPlan;
+import com.ym.vaccine.domain.YmPreCheck;
+import com.ym.vaccine.domain.YmWorker;
+import com.ym.vaccine.domain.common.Result;
+import com.ym.vaccine.exception.TokenUnavailable;
 import com.ym.vaccine.mapper.*;
+import com.ym.vaccine.service.IYmAppointService;
+import com.ym.vaccine.service.IYmPlanService;
+import com.ym.vaccine.service.IYmWorkerService;
+import com.ym.vaccine.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -41,13 +54,138 @@ import com.ym.common.core.page.TableDataInfo;
 public class YmPreCheckController extends BaseController {
 
     private final IYmPreCheckService iYmPreCheckService;
-
+    private final IYmAppointService appointService;
+    private final IYmPlanService planService;
+    private final IYmPreCheckService preCheckService;
+    private final IYmWorkerService workerService;
     private final YmUserMapper userMapper;
     private final YmAppointMapper appointMapper;
     private final YmWorkerMapper workerMapper;
 
     private final YmPlanMapper planMapper;
     private final YmInoculateSiteMapper siteMapper;
+
+    @SaIgnore
+    @PostMapping("/worker/ok")
+    @PassToken(required = false)
+    public Result ok(@RequestBody YmAppoint appoint, @RequestHeader("x-token") String token) {
+        String workerId = null;
+        try {
+            workerId = JwtUtils.getAudience(token);
+        } catch (TokenUnavailable tokenUnavailable) {
+            return Result.error("token无效");
+        }
+
+        if (appoint.getId() == null) {
+            return Result.error("预约ID为空");
+        }
+
+        YmAppoint target = appointService.getById(appoint.getId());
+        if (target == null) {
+            return Result.error("预约ID不存在");
+        }
+        if (target.getStatus() != 1) {
+            return Result.error("请先签到");
+        }
+
+        YmWorker worker = workerService.getById(workerId);
+        YmPlan plan = planService.getById(target.getPlanId());
+        if (worker.getInoculateSiteId().intValue() != plan.getInoculateSiteId().intValue()) {
+            return Result.error("接种点接不匹配");
+        }
+
+        return Result.ok("可以预检");
+    }
+    @SaIgnore
+    @PostMapping("/worker/save")
+    @PassToken(required = false)
+    public Result save(@RequestBody YmPreCheck preCheck, @RequestHeader("x-token") String token, Integer isSuited) {
+        String workerId = null;
+        try {
+            workerId = JwtUtils.getAudience(token);
+        } catch (TokenUnavailable tokenUnavailable) {
+            return Result.error("token无效");
+        }
+
+        if (isSuited == null) {
+            return Result.error("是否适宜接种不能为空");
+        }
+        if (isSuited != 1 && isSuited != 0) {
+            return Result.error("是否适宜接种参数只能为01");
+        }
+
+        preCheck.setId(null);
+        if (org.apache.commons.lang3.StringUtils.isBlank(preCheck.getNote())) {
+            return Result.error("备注不能为空");
+        }
+        if (preCheck.getIsMedicine() == null) {
+            return Result.error("是否服药参数为空");
+        }
+        if (preCheck.getIsContraindication() == null) {
+            return Result.error("是否禁忌症参数为空");
+        }
+        if (preCheck.getIsMedicine() != 0 && preCheck.getIsMedicine() != 1) {
+            return Result.error("是否服药参数只能为01");
+        }
+        if (preCheck.getIsContraindication() != 0 && preCheck.getIsContraindication() != 1) {
+            return Result.error("是否禁忌症参数只能为01");
+        }
+        if (preCheck.getIsMedicine() == 0) {
+            preCheck.setMedicine(null);
+        } else {
+            if (org.apache.commons.lang3.StringUtils.isBlank(preCheck.getMedicine())) {
+                return Result.error("药物名称不能为空");
+            }
+        }
+        if (preCheck.getIsContraindication() == 0) {
+            preCheck.setContraindication(null);
+        } else {
+            if (org.apache.commons.lang3.StringUtils.isBlank(preCheck.getContraindication())) {
+                return Result.error("禁忌症名称不能为空");
+            }
+        }
+        if (preCheck.getBloodPressureHigh() == null || preCheck.getBloodPressureLow() == null) {
+            return Result.error("血压值不能为空");
+        }
+        if (preCheck.getBloodPressureLow() < 0 || preCheck.getBloodPressureLow() > 300 || preCheck.getBloodPressureHigh() < 0 || preCheck.getBloodPressureHigh() > 300) {
+            return Result.error("请重测血压");
+        }
+        if (preCheck.getTemperature() == null) {
+            return Result.error("体温不能为空");
+        }
+        if (preCheck.getTemperature() < 0 || preCheck.getTemperature() > 50) {
+            return Result.error("请重测体温");
+        }
+
+        if (preCheck.getAppointId() == null) {
+            return Result.error("预约ID为空");
+        }
+        YmAppoint appoint = appointService.getById(preCheck.getAppointId());
+        if (appoint == null) {
+            return Result.error("预约ID不存在");
+        }
+        if (appoint.getStatus() != 1) {
+            return Result.error("请先签到");
+        }
+
+        YmWorker worker = workerService.getById(workerId);
+        YmPlan plan = planService.getById(appoint.getPlanId());
+        if (worker.getInoculateSiteId().intValue() != plan.getInoculateSiteId().intValue()) {
+            return Result.error("接种点不匹配");
+        }
+
+        preCheck.setWorkerId(Long.valueOf(workerId));
+        preCheck.setCreateTime(new Date());
+
+        if (isSuited == 0) {
+            preCheckService.preCheck(appoint, preCheck);
+            return Result.ok("预检成功");
+        }
+        preCheckService.notSuited(appoint, preCheck);
+        return Result.ok("不适宜接种登记成功");
+    }
+
+
     /**
      * 查询预检信息查询列表
      */

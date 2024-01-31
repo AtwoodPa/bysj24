@@ -1,6 +1,7 @@
 package com.ym.vaccine.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.domain.YmSign;
 import com.ym.vaccine.domain.vo.YmSignVo;
 import com.ym.vaccine.domain.bo.YmSignBo;
@@ -47,4 +48,6 @@ public interface IYmSignService extends IService<YmSign> {
      * 校验并批量删除接种签到信息
      */
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+    void sign(YmAppoint appoint, YmSign sign);
 }

@@ -1,20 +1,23 @@
 package com.ym.vaccine.controller;
 
-import java.util.List;
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ym.common.utils.StringUtils;
-import com.ym.vaccine.domain.Vaccine;
-import com.ym.vaccine.domain.YmInoculateSite;
-import com.ym.vaccine.domain.YmPlan;
+import com.ym.vaccine.domain.*;
 import com.ym.vaccine.domain.bo.SelectOption;
+import com.ym.vaccine.domain.common.Result;
 import com.ym.vaccine.mapper.VaccineMapper;
 import com.ym.vaccine.mapper.YmInoculateSiteMapper;
+import com.ym.vaccine.service.IVaccineService;
+import com.ym.vaccine.service.IYmAppointService;
+import com.ym.vaccine.service.IYmInoculateSiteService;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -49,10 +52,112 @@ import com.ym.common.core.page.TableDataInfo;
 public class YmPlanController extends BaseController {
 
     private final IYmPlanService iYmPlanService;
+    private final IYmAppointService appointService;
+    private final IYmPlanService planService;
 
+    private final IVaccineService vaccineService;
     private final VaccineMapper vaccineMapper;
 
     private final YmInoculateSiteMapper ymInoculateSiteMapper;
+    private final IYmInoculateSiteService inoculateSiteService;
+    @SaIgnore
+    @GetMapping("/plan/findInoculateSites/{vaccineId}")
+    public Result findInoculateSites(@PathVariable("vaccineId") Integer vaccineId) {
+        QueryWrapper<YmPlan> planQueryWrapper = new QueryWrapper<>();
+        planQueryWrapper.select("DISTINCT inoculate_site_id");
+        planQueryWrapper.eq("vaccine_id", vaccineId);
+
+        List<YmPlan> list = planService.list(planQueryWrapper);
+        List<Map<String, Object>> results = new ArrayList<>();
+        for (int i = 0; i < list.size(); i ++) {
+            Map<String, Object> result = new HashMap<>();
+            YmInoculateSite inoculateSite = inoculateSiteService.getById(list.get(i).getInoculateSiteId());
+
+            result.put("id", inoculateSite.getId());
+            result.put("name", inoculateSite.getName());
+            result.put("address", inoculateSite.getAddress());
+            result.put("imgUrl", inoculateSite.getImgUrl());
+
+            results.add(result);
+        }
+        return Result.ok(results, "查询成功");
+    }
+    @SaIgnore
+    @GetMapping("/plan/findPlans/{vaccineId}/{inoculateSiteId}")
+    public Result findPlans(@PathVariable("vaccineId") Integer vaccineId, @PathVariable("inoculateSiteId") Integer inoculateSiteId) {
+        QueryWrapper<YmPlan> planQueryWrapper = new QueryWrapper<>();
+        planQueryWrapper.eq("vaccine_id", vaccineId);
+        planQueryWrapper.eq("inoculate_site_id", inoculateSiteId);
+
+        List<YmPlan> list = planService.list(planQueryWrapper);
+        List<Map<String, Object>> results = new ArrayList<>();
+        for (int i = 0; i < list.size(); i ++) {
+            Map<String, Object> result = new HashMap<>();
+            result.put("id", list.get(i).getId());
+            result.put("startDate", new SimpleDateFormat("yyyy-MM-dd").format(list.get(i).getStartDate()));
+            result.put("endDate", new SimpleDateFormat("yyyy-MM-dd").format(list.get(i).getEndDate()));
+            result.put("amount", list.get(i).getAmount());
+            results.add(result);
+        }
+        return Result.ok(results, "查询成功");
+    }
+    @SaIgnore
+    @PostMapping("/plan/findPlan")
+    public Result findPlan(@RequestBody YmAppoint appoint) {
+        if (appoint.getPlanId() == null) {
+            return Result.error("预约计划ID不能为空");
+        }
+        YmPlan plan = planService.getById(appoint.getPlanId());
+        if (plan == null) {
+            return Result.error("预约计划不存在");
+        }
+        Map<String, Object> result = new HashMap<>();
+        result.put("plan", plan);
+        QueryWrapper<YmAppoint> appointQueryWrapper = new QueryWrapper<>();
+        appointQueryWrapper.ne("status", 6);
+        if (appoint.getAppointDate() != null) {
+            appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(appoint.getAppointDate()));
+        } else {
+            appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(plan.getEndDate()));
+        }
+        appointQueryWrapper.eq("time_slot", 0);
+        appointQueryWrapper.eq("plan_id", plan.getId());
+        int morningAppointed = (int) appointService.count(appointQueryWrapper);
+        appointQueryWrapper.clear();
+        appointQueryWrapper.ne("status", 6);
+        if (appoint.getAppointDate() != null) {
+            appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(appoint.getAppointDate()));
+        } else {
+            appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(plan.getEndDate()));
+        }
+        appointQueryWrapper.eq("time_slot", 1);
+        appointQueryWrapper.eq("plan_id", plan.getId());
+        int afternoonAppointed = (int) appointService.count(appointQueryWrapper);
+        appointQueryWrapper.clear();
+        appointQueryWrapper.ne("status", 6);
+        if (appoint.getAppointDate() != null) {
+            appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(appoint.getAppointDate()));
+        } else {
+            appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(plan.getEndDate()));
+        }
+        appointQueryWrapper.eq("time_slot", 2);
+        appointQueryWrapper.eq("plan_id", plan.getId());
+        int eveningAppointed = (int) appointService.count(appointQueryWrapper);
+        result.put("morningRemain", plan.getMorningLimit() - morningAppointed);
+        result.put("afternoonRemain", plan.getAfternoonLimit() - afternoonAppointed);
+        result.put("eveningRemain", plan.getEveningLimit() - eveningAppointed);
+        return Result.ok(result, "查询成功");
+    }
+
+    @GetMapping("/plan/findVaccine/{planId}")
+    public Result findVaccine(@PathVariable("planId") Integer planId) {
+        YmPlan plan = planService.getById(planId);
+        if (plan == null) {
+            return Result.error("预约计划不存在");
+        }
+        return Result.ok(vaccineService.getById(plan.getVaccineId()), "查询成功");
+    }
+
     /**
      * 查询预约计划管理列表
      */

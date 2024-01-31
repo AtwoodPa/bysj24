@@ -1,13 +1,21 @@
 package com.ym.vaccine.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Arrays;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import com.ym.vaccine.annotation.PassToken;
+import com.ym.vaccine.domain.common.Result;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
 import com.ym.common.annotation.RepeatSubmit;
@@ -24,6 +32,7 @@ import com.ym.vaccine.domain.vo.YmInoculateSiteVo;
 import com.ym.vaccine.domain.bo.YmInoculateSiteBo;
 import com.ym.vaccine.service.IYmInoculateSiteService;
 import com.ym.common.core.page.TableDataInfo;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 疫苗接种站点管理
@@ -38,7 +47,8 @@ import com.ym.common.core.page.TableDataInfo;
 public class YmInoculateSiteController extends BaseController {
 
     private final IYmInoculateSiteService iYmInoculateSiteService;
-
+    @Value("${upload.image.inoculateSiteImage.url}")
+    private String uploadImageInoculateSiteImageUrl;
     /**
      * 查询疫苗接种站点管理列表
      */
@@ -81,7 +91,40 @@ public class YmInoculateSiteController extends BaseController {
     public R<Void> add(@Validated(AddGroup.class) @RequestBody YmInoculateSiteBo bo) {
         return toAjax(iYmInoculateSiteService.insertByBo(bo));
     }
+    @SaCheckPermission("vaccine:inoculateSite:add")
+    @PostMapping("/inoculateSiteImage/upload")
+    @PassToken(required = false)
+    public Result uploadInoculateSiteImage(@RequestParam("file") MultipartFile imgFile) {
+        try {
+            uploadImageInoculateSiteImageUrl = new String(uploadImageInoculateSiteImageUrl.getBytes("iso8859-1"), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException("字符转码异常！");
+        }
 
+        if (imgFile == null) {
+            return Result.error("图片为空");
+        }
+        String fileName = imgFile.getOriginalFilename();
+        if (StringUtils.isBlank(fileName)) {
+            return Result.error("文件名不能为空");
+        }
+        int index = fileName.lastIndexOf(".");
+        if (index == -1) {
+            return Result.error("文件后缀不能为空");
+        }
+        String suffix = fileName.substring(index);
+        if (StringUtils.isBlank(suffix) || (!".png".equals(suffix) && !".jpg".equals(suffix) && !".jpeg".equals(suffix))) {
+            return Result.error("文件格式不正确");
+        }
+        fileName = UUID.randomUUID().toString().replace("-", "") + suffix;
+        File dest = new File(uploadImageInoculateSiteImageUrl + "/" + fileName);
+        try {
+            imgFile.transferTo(dest);
+        } catch (IOException e) {
+            return Result.error("图片上传失败");
+        }
+        return Result.ok(fileName, "上传成功");
+    }
     /**
      * 修改疫苗接种站点管理
      */

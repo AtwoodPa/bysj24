@@ -8,6 +8,8 @@ import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.ym.vaccine.domain.YmAppoint;
+import com.ym.vaccine.service.IYmAppointService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.ym.vaccine.domain.bo.YmPreCheckBo;
@@ -15,6 +17,7 @@ import com.ym.vaccine.domain.vo.YmPreCheckVo;
 import com.ym.vaccine.domain.YmPreCheck;
 import com.ym.vaccine.mapper.YmPreCheckMapper;
 import com.ym.vaccine.service.IYmPreCheckService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -31,6 +34,33 @@ import java.util.Collection;
 public class YmPreCheckServiceImpl extends ServiceImpl<YmPreCheckMapper,YmPreCheck> implements IYmPreCheckService {
 
     private final YmPreCheckMapper baseMapper;
+
+    private final IYmAppointService appointService;
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void preCheck(YmAppoint appoint, YmPreCheck preCheck) {
+        if (appoint == null || preCheck == null) {
+            throw new RuntimeException("参数有误");
+        }
+
+        appoint.setStatus(2L);
+        appointService.updateById(appoint);
+
+        save(preCheck);
+
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void notSuited(YmAppoint appoint, YmPreCheck preCheck) {
+        if (appoint == null || preCheck == null) {
+            throw new RuntimeException("参数有误");
+        }
+
+        appoint.setStatus(4L);
+        appointService.updateById(appoint);
+        save(preCheck);
+    }
 
     /**
      * 查询预检信息查询

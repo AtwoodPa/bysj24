@@ -8,6 +8,8 @@ import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.ym.vaccine.domain.YmAppoint;
+import com.ym.vaccine.service.IYmAppointService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.ym.vaccine.domain.bo.YmSignBo;
@@ -15,6 +17,7 @@ import com.ym.vaccine.domain.vo.YmSignVo;
 import com.ym.vaccine.domain.YmSign;
 import com.ym.vaccine.mapper.YmSignMapper;
 import com.ym.vaccine.service.IYmSignService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -31,7 +34,19 @@ import java.util.Collection;
 public class YmSignServiceImpl extends ServiceImpl<YmSignMapper,YmSign> implements IYmSignService {
 
     private final YmSignMapper baseMapper;
+    private final IYmAppointService appointService;
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void sign(YmAppoint appoint, YmSign sign) {
+        if (appoint == null || sign == null) {
+            throw new RuntimeException("参数有误");
+        }
 
+        appoint.setStatus(1L);
+        appointService.updateById(appoint);
+
+        save(sign);
+    }
     /**
      * 查询接种签到
      */
@@ -108,4 +123,6 @@ public class YmSignServiceImpl extends ServiceImpl<YmSignMapper,YmSign> implemen
         }
         return baseMapper.deleteBatchIds(ids) > 0;
     }
+
+
 }

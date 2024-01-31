@@ -1,6 +1,7 @@
 package com.ym.vaccine.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.domain.YmPreCheck;
 import com.ym.vaccine.domain.vo.YmPreCheckVo;
 import com.ym.vaccine.domain.bo.YmPreCheckBo;
@@ -18,6 +19,9 @@ import java.util.List;
  */
 public interface IYmPreCheckService extends IService<YmPreCheck> {
 
+    void preCheck(YmAppoint appoint, YmPreCheck preCheck);
+
+    void notSuited(YmAppoint appoint, YmPreCheck preCheck);
     /**
      * 查询预检信息查询
      */

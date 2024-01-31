@@ -40,4 +40,5 @@ public class YmInoculateSite implements Serializable {
      */
     private String imgUrl;
 
+
 }

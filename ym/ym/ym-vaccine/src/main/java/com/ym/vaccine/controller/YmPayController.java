@@ -1,15 +1,29 @@
 package com.ym.vaccine.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import cn.dev33.satoken.annotation.SaIgnore;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ym.common.utils.StringUtils;
+import com.ym.vaccine.annotation.PassToken;
+import com.ym.vaccine.domain.YmAppoint;
+import com.ym.vaccine.domain.YmPlan;
+import com.ym.vaccine.domain.YmUser;
+import com.ym.vaccine.domain.common.Result;
+import com.ym.vaccine.exception.TokenUnavailable;
 import com.ym.vaccine.mapper.VaccineMapper;
 import com.ym.vaccine.mapper.YmAppointMapper;
 import com.ym.vaccine.mapper.YmPlanMapper;
 import com.ym.vaccine.mapper.YmUserMapper;
+import com.ym.vaccine.service.IYmAppointService;
+import com.ym.vaccine.service.IYmPlanService;
+import com.ym.vaccine.service.IYmUserService;
+import com.ym.vaccine.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -48,6 +62,106 @@ public class YmPayController extends BaseController {
     private final YmPlanMapper planMapper;
     private final YmUserMapper userMapper;
     private final VaccineMapper vaccineMapper;
+    private final IYmPlanService planService;
+    private final IYmAppointService appointService;
+    private final IYmUserService userService;
+
+    @SaIgnore
+    @PostMapping("/user/pay/save")
+    @PassToken(required = false)
+    public Result save(@RequestBody YmAppoint appoint, @RequestHeader("x-token") String token) {
+        String userId = null;
+        try {
+            userId = JwtUtils.getAudience(token);
+        } catch (TokenUnavailable tokenUnavailable) {
+            return Result.error("token无效");
+        }
+
+        appoint.setId(null);
+        if (appoint.getPlanId() == null) {
+            return Result.error("预约计划ID不能为空");
+        }
+        if (appoint.getAppointDate() == null) {
+            return Result.error("预约日期不能为空");
+        }
+        if (appoint.getTimeSlot() == null) {
+            return Result.error("预约时间段不能为空");
+        }
+        YmPlan plan = planService.getById(appoint.getPlanId());
+        if (plan == null) {
+            return Result.error("预约计划不存在");
+        }
+        Date now = new Date();
+        if (now.after(plan.getEndDate())) {
+            return Result.error("该预约计划已过期，请选择其他预约计划");
+        }
+        if (!(appoint.getAppointDate().after(now) && appoint.getAppointDate().before(new Date(plan.getEndDate().getTime() + 1000 * 60 * 60 * 24 * 1)))) {
+            return Result.error("预约日期不在明日到预约计划结束之间");
+        }
+        if (plan.getAmount() < 1) {
+            return Result.error("可预约量不足");
+        }
+        if (appoint.getTimeSlot() != 1 && appoint.getTimeSlot() != 0 && appoint.getTimeSlot() != 2) {
+            return Result.error("预约时间段有误");
+        }
+
+        QueryWrapper<YmAppoint> appointQueryWrapper = new QueryWrapper<>();
+        if (appoint.getTimeSlot() == 0) {
+            appointQueryWrapper.ne("status", 6);
+            if (appoint.getAppointDate() != null) {
+                appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(appoint.getAppointDate()));
+            } else {
+                appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(plan.getEndDate()));
+            }
+            appointQueryWrapper.eq("time_slot", 0);
+            appointQueryWrapper.eq("plan_id", plan.getId());
+            if (plan.getMorningLimit() - appointService.count(appointQueryWrapper) < 1) {
+                return Result.error("该时间段无可预约疫苗");
+            }
+        } else if (appoint.getTimeSlot() == 1) {
+            appointQueryWrapper.ne("status", 6);
+            if (appoint.getAppointDate() != null) {
+                appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(appoint.getAppointDate()));
+            } else {
+                appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(plan.getEndDate()));
+            }
+            appointQueryWrapper.eq("time_slot", 1);
+            appointQueryWrapper.eq("plan_id", plan.getId());
+            if(plan.getAfternoonLimit() - appointService.count(appointQueryWrapper) < 1) {
+                return Result.error("该时间段无可预约疫苗");
+            }
+        } else {
+            appointQueryWrapper.ne("status", 6);
+            if (appoint.getAppointDate() != null) {
+                appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(appoint.getAppointDate()));
+            } else {
+                appointQueryWrapper.eq("appoint_date", new SimpleDateFormat("yyyy-MM-dd").format(plan.getEndDate()));
+            }
+            appointQueryWrapper.eq("time_slot", 2);
+            appointQueryWrapper.eq("plan_id", plan.getId());
+            if (plan.getEveningLimit() - appointService.count(appointQueryWrapper) < 1) {
+                return Result.error("该时间段无可预约疫苗");
+            }
+        }
+
+        appointQueryWrapper.clear();;
+        appointQueryWrapper.eq("status", 0);
+        appointQueryWrapper.eq("user_id", userId);
+        List<YmAppoint> list = appointService.list(appointQueryWrapper);
+        if (list.size() != 0) {
+            return Result.error("您还有未完成的预约");
+        }
+        YmUser user = userService.getById(appoint.getUserId());
+        if (user == null) {
+            return Result.error("用户不存在");
+        }
+        try {
+            appointService.appoint(appoint, plan);
+        } catch (Exception e) {
+            return Result.error("预约失败");
+        }
+        return Result.ok("预约成功");
+    }
 
     /**
      * 查询支付功能列表
