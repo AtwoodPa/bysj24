@@ -1,5 +1,6 @@
 package com.ym.vaccine.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.domain.vo.YmAppointVo;
 import com.ym.vaccine.domain.bo.YmAppointBo;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IYmAppointService {
+public interface IYmAppointService extends IService<YmAppoint> {
 
     /**
      * 查询预约
