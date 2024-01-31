@@ -69,7 +69,11 @@
     <el-table v-loading="loading" :data="inoculateSiteList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="ID"  width="55"  align="center" prop="id" v-if="true"/>
-      <el-table-column label="接种点图片" align="center" prop="imgUrl" />
+      <el-table-column label="接种点图片" align="center" prop="imgUrl" >
+        <template #default="{ row }">
+          <img :src="getServerUrl()+'inoculateSiteImage'+row.imgUrl" style='height:200px;width: 200px;'/>
+        </template>
+      </el-table-column>
       <el-table-column label="接种点名称" align="center" prop="name" />
       <el-table-column label="接种点地址" align="center" prop="address" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -115,6 +119,7 @@
 
 <script setup name="InoculateSite">
 import { listInoculateSite, getInoculateSite, delInoculateSite, addInoculateSite, updateInoculateSite } from "@/api/vaccine/inoculateSite";
+import {getServerUrl} from "@/utils/request";
 const {proxy} = getCurrentInstance();
 
 const inoculateSiteList = ref([]);

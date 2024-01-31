@@ -101,7 +101,11 @@
       <el-table-column label="疫苗厂家" align="center" prop="manufacturer"  v-if="columns[3].visible"/>
       <el-table-column label="疫苗分类" align="center" prop="category" v-if="columns[4].visible" />
       <el-table-column label="疫苗详情" align="center" prop="detail" v-if="columns[5].visible" />
-      <el-table-column label="疫苗图片" align="center" prop="imgUrl" v-if="columns[6].visible" />
+      <el-table-column label="疫苗图片" align="center" prop="imgUrl" v-if="columns[6].visible" >
+        <template #default="{ row }">
+          <img :src="getServerUrl()+'vaccineImage'+row.imgUrl" style='height:200px; width: 200px;'/>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width" v-if="columns[7].visible">
         <template #default="scope">
           <el-tooltip content="修改" placement="top" >
@@ -154,6 +158,7 @@
 
 <script setup name="Vaccine">
 import { listVaccine, getVaccine, delVaccine, addVaccine, updateVaccine } from "@/api/vaccine/vaccine";
+import {getServerUrl} from "@/utils/request";
 const {proxy} = getCurrentInstance();
 
 const vaccineList = ref([]);

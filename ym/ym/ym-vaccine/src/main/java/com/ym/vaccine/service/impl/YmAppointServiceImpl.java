@@ -8,6 +8,7 @@ import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.ym.vaccine.domain.YmPlan;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.ym.vaccine.domain.bo.YmAppointBo;
@@ -31,6 +32,16 @@ import java.util.Collection;
 public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper,YmAppoint> implements IYmAppointService {
 
     private final YmAppointMapper baseMapper;
+
+    @Override
+    public void appoint(YmAppoint appoint, YmPlan plan) throws Exception {
+
+    }
+
+    @Override
+    public void cancelAppoint(YmAppoint appoint, YmPlan plan) {
+
+    }
 
     /**
      * 查询预约

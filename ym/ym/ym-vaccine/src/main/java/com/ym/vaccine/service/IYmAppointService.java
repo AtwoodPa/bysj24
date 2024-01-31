@@ -2,6 +2,7 @@ package com.ym.vaccine.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ym.vaccine.domain.YmAppoint;
+import com.ym.vaccine.domain.YmPlan;
 import com.ym.vaccine.domain.vo.YmAppointVo;
 import com.ym.vaccine.domain.bo.YmAppointBo;
 import com.ym.common.core.page.TableDataInfo;
@@ -17,6 +18,10 @@ import java.util.List;
  * @date 2024-01-29
  */
 public interface IYmAppointService extends IService<YmAppoint> {
+
+    void appoint(YmAppoint appoint, YmPlan plan) throws Exception;
+
+    void cancelAppoint(YmAppoint appoint, YmPlan plan);
 
     /**
      * 查询预约

@@ -19,7 +19,11 @@
 
     <el-table v-loading="loading" :data="appointList" >
       <el-table-column label="ID" align="center" width="55" prop="id" v-if="true"/>
-      <el-table-column label="签到码" align="center" prop="qrCodeUrl"/>
+      <el-table-column label="签到码" align="center" prop="qrCodeUrl">
+        <template #default="{ row }">
+          <img :src="getServerUrl()+'qrCodeImage'+row.qrCodeUrl" style='border:1px solid red;height:100px;width: 100px;'/>
+        </template>
+      </el-table-column>
       <el-table-column label="预约人姓名" align="center" prop="realName"/>
       <el-table-column label="接种点名称" align="center" prop="inoculateSiteName"/>
       <el-table-column label="预约日期" align="center" prop="appointDate" width="180" />
@@ -47,7 +51,7 @@
 
 <script setup name="Appoint">
 import {listAppoint} from "@/api/vaccine/appoint";
-
+import {getServerUrl} from "@/utils/request"
 const {proxy} = getCurrentInstance();
 
 const appointList = ref([]);
