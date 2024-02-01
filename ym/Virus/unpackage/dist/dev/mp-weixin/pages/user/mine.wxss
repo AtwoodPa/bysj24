@@ -1,0 +1,38 @@
+
+.page{
+	background-color: #f8f7fc;
+}
+
+
+.page.data-v-7e5aa06e{
+	padding: 50rpx;
+}
+.row.data-v-7e5aa06e{
+	display: flex;
+	line-height: 150rpx;
+	margin-right:50rpx;
+	margin-left:50rpx;
+	border-bottom: 2rpx solid #eeeeee;
+}
+/* .row+.row{
+	border-top: 2rpx solid #eeeeee;
+} */
+.label.data-v-7e5aa06e{
+	width: 150rpx;
+}
+.content.data-v-7e5aa06e{
+	flex: 1;
+}
+/* .content::before{
+	content: '';
+} */
+/* .search {
+display:flex;
+justify-content: center;//水平居中
+margin-bottom: 100rpx; 
+	} */
+.logoutBtn.data-v-7e5aa06e{
+		margin-top: 30rpx;
+		width: 500rpx;
+}
+

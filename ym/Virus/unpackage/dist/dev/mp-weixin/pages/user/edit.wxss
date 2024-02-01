@@ -1,0 +1,32 @@
+
+page{
+	
+	background-color: #f8f7fc;
+}
+
+
+.page.data-v-2f1d36a5{
+	padding: 80rpx;
+}
+.tips.data-v-2f1d36a5{
+	
+	text-align: right;
+	margin-top: 20rpx;
+}
+.tips text.data-v-2f1d36a5{
+	color: blue;
+	line-height: 3em;
+}
+.reg.data-v-2f1d36a5{
+	margin-top:10rpx;
+	margin-bottom:40rpx;
+	margin-right:50rpx;
+	margin-left:50rpx;
+}
+.back.data-v-2f1d36a5{
+	color:#18B566;
+	width: 500rpx;
+}
+
+
+

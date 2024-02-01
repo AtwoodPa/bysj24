@@ -62,7 +62,7 @@ public class YmWorkerController extends BaseController {
 
     private final YmInoculateSiteMapper ymInoculateSiteMapper;
     @SaIgnore
-    @GetMapping("/worker/findSignHistories")
+    @GetMapping("/findSignHistories")
     @PassToken(required = false)
     public Result findSignHistories(@RequestHeader("x-token") String token) {
         String workerId = null;
@@ -87,7 +87,7 @@ public class YmWorkerController extends BaseController {
         return Result.ok(results, "查询成功");
     }
     @SaIgnore
-    @GetMapping("/worker/findPreCheckHistories")
+    @GetMapping("/findPreCheckHistories")
     @PassToken(required = false)
     public Result findPreCheckHistories(@RequestHeader("x-token") String token) {
         String workerId = null;
@@ -131,7 +131,7 @@ public class YmWorkerController extends BaseController {
     }
 
     @SaIgnore
-    @GetMapping("/worker/findInoculateHistories")
+    @GetMapping("/findInoculateHistories")
     @PassToken(required = false)
     public Result findInoculateHistories(@RequestHeader("x-token") String token) {
         String workerId = null;
@@ -166,7 +166,7 @@ public class YmWorkerController extends BaseController {
         return Result.ok(results, "查询成功");
     }
     @SaIgnore
-    @GetMapping("/worker/findObserveHistories")
+    @GetMapping("/findObserveHistories")
     @PassToken(required = false)
     public Result findObserveHistories(@RequestHeader("x-token") String token) {
         String workerId = null;
@@ -203,7 +203,7 @@ public class YmWorkerController extends BaseController {
         return Result.ok(results, "查询成功");
     }
     @SaIgnore
-    @PostMapping("/worker/login")
+    @PostMapping("/login")
     public Result login(@RequestBody YmWorker worker) {
         if (StringUtils.isBlank(worker.getUsername())) {
             return Result.error("用户名不能为空");
@@ -235,7 +235,7 @@ public class YmWorkerController extends BaseController {
         return Result.ok(obj, "登录成功");
     }
     @SaIgnore
-    @PutMapping("/worker/change")
+    @PutMapping("/change")
     @PassToken(required = false)
     public Result Change(@RequestBody YmWorker worker, @RequestHeader("x-token") String token) {
         String workerId = null;

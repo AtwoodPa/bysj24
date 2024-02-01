@@ -67,7 +67,7 @@ public class YmPayController extends BaseController {
     private final IYmUserService userService;
 
     @SaIgnore
-    @PostMapping("/user/pay/save")
+    @PostMapping("/user/save")
     @PassToken(required = false)
     public Result save(@RequestBody YmAppoint appoint, @RequestHeader("x-token") String token) {
         String userId = null;
@@ -148,7 +148,7 @@ public class YmPayController extends BaseController {
         appointQueryWrapper.eq("status", 0);
         appointQueryWrapper.eq("user_id", userId);
         List<YmAppoint> list = appointService.list(appointQueryWrapper);
-        if (list.size() != 0) {
+        if (!list.isEmpty()) {
             return Result.error("您还有未完成的预约");
         }
         YmUser user = userService.getById(appoint.getUserId());

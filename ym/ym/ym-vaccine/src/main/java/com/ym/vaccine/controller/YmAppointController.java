@@ -67,7 +67,7 @@ public class YmAppointController extends BaseController {
 
     /* 客户端接口 */
     @SaIgnore
-    @PostMapping("/user/appoint/ok")
+    @PostMapping("/user/ok")
     @PassToken(required = false)
     public Result ok(@RequestBody YmAppoint appoint, @RequestHeader("x-token") String token){
         String userId = null;

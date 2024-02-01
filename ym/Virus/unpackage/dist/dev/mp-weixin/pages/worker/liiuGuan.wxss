@@ -1,0 +1,8 @@
+
+.aaa{
+		font-size: 50rpx;
+}
+.page{
+		padding: 50rpx;
+}
+

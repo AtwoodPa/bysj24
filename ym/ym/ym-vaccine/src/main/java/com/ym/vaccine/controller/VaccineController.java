@@ -1,14 +1,25 @@
 package com.ym.vaccine.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Arrays;
+import java.util.UUID;
 
+import cn.dev33.satoken.annotation.SaIgnore;
+import com.ym.vaccine.annotation.PassToken;
+import com.ym.vaccine.domain.Vaccine;
+import com.ym.vaccine.domain.common.Result;
 import com.ym.vaccine.domain.vo.VaccineVo;
 import com.ym.vaccine.service.IVaccineService;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
 import com.ym.common.annotation.RepeatSubmit;
@@ -24,6 +35,7 @@ import com.ym.common.utils.poi.ExcelUtil;
 import com.ym.vaccine.domain.bo.VaccineBo;
 
 import com.ym.common.core.page.TableDataInfo;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 疫苗信息
@@ -38,6 +50,8 @@ import com.ym.common.core.page.TableDataInfo;
 public class VaccineController extends BaseController {
 
     private final IVaccineService iVaccineService;
+    @Value("${upload.image.vaccineImage.url}")
+    private String uploadImageVaccineImageUrl;
 
     /**
      * 查询疫苗信息列表
@@ -47,7 +61,45 @@ public class VaccineController extends BaseController {
     public TableDataInfo<VaccineVo> list(VaccineBo bo, PageQuery pageQuery) {
         return iVaccineService.queryPageList(bo, pageQuery);
     }
+    @SaIgnore
+    @GetMapping("/findAll")
+    public Result findAll() {
+        return Result.ok(iVaccineService.list(),"查询成功");
+    }
+    @SaIgnore
+    @PostMapping("/vaccineImage/upload")
+    @PassToken(required = false)
+    public Result uploadVaccineImage(@RequestParam("file") MultipartFile imgFile) {
+        try {
+            uploadImageVaccineImageUrl = new String(uploadImageVaccineImageUrl.getBytes("iso8859-1"), StandardCharsets.UTF_8);
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException("字符转码异常！");
+        }
 
+        if (imgFile == null) {
+            return Result.error("图片为空");
+        }
+        String fileName = imgFile.getOriginalFilename();
+        if (StringUtils.isBlank(fileName)) {
+            return Result.error("文件名不能为空");
+        }
+        int index = fileName.lastIndexOf(".");
+        if (index == -1) {
+            return Result.error("文件后缀不能为空");
+        }
+        String suffix = fileName.substring(index);
+        if (StringUtils.isBlank(suffix) || (!".png".equals(suffix) && !".jpg".equals(suffix) && !".jpeg".equals(suffix))) {
+            return Result.error("文件格式不正确");
+        }
+        fileName = UUID.randomUUID().toString().replace("-", "") + suffix;
+        File dest = new File(uploadImageVaccineImageUrl + "/" + fileName);
+        try {
+            imgFile.transferTo(dest);
+        } catch (IOException e) {
+            return Result.error("图片上传失败");
+        }
+        return Result.ok(fileName, "上传成功");
+    }
     /**
      * 导出疫苗信息列表
      */

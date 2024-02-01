@@ -61,7 +61,7 @@ public class YmPlanController extends BaseController {
     private final YmInoculateSiteMapper ymInoculateSiteMapper;
     private final IYmInoculateSiteService inoculateSiteService;
     @SaIgnore
-    @GetMapping("/plan/findInoculateSites/{vaccineId}")
+    @GetMapping("/findInoculateSites/{vaccineId}")
     public Result findInoculateSites(@PathVariable("vaccineId") Integer vaccineId) {
         QueryWrapper<YmPlan> planQueryWrapper = new QueryWrapper<>();
         planQueryWrapper.select("DISTINCT inoculate_site_id");
@@ -83,7 +83,7 @@ public class YmPlanController extends BaseController {
         return Result.ok(results, "查询成功");
     }
     @SaIgnore
-    @GetMapping("/plan/findPlans/{vaccineId}/{inoculateSiteId}")
+    @GetMapping("/findPlans/{vaccineId}/{inoculateSiteId}")
     public Result findPlans(@PathVariable("vaccineId") Integer vaccineId, @PathVariable("inoculateSiteId") Integer inoculateSiteId) {
         QueryWrapper<YmPlan> planQueryWrapper = new QueryWrapper<>();
         planQueryWrapper.eq("vaccine_id", vaccineId);
@@ -102,7 +102,7 @@ public class YmPlanController extends BaseController {
         return Result.ok(results, "查询成功");
     }
     @SaIgnore
-    @PostMapping("/plan/findPlan")
+    @PostMapping("/findPlan")
     public Result findPlan(@RequestBody YmAppoint appoint) {
         if (appoint.getPlanId() == null) {
             return Result.error("预约计划ID不能为空");
@@ -149,7 +149,7 @@ public class YmPlanController extends BaseController {
         return Result.ok(result, "查询成功");
     }
 
-    @GetMapping("/plan/findVaccine/{planId}")
+    @GetMapping("/findVaccine/{planId}")
     public Result findVaccine(@PathVariable("planId") Integer planId) {
         YmPlan plan = planService.getById(planId);
         if (plan == null) {

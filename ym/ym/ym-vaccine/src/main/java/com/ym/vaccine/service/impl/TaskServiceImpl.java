@@ -3,6 +3,7 @@ package com.ym.vaccine.service.impl;
 import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.service.ITaskService;
 import com.ym.vaccine.service.IYmAppointService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +16,11 @@ import java.util.List;
  * @date 2024/01/31
  */
 @Service
+@RequiredArgsConstructor
+
 public class TaskServiceImpl implements ITaskService {
 
-    @Autowired
-    private IYmAppointService appointService;
+    private final IYmAppointService appointService;
 
     @Override
     @Transactional(rollbackFor = Exception.class)// 开启事务回滚

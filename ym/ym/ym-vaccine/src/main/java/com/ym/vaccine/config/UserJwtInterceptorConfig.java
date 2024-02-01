@@ -18,8 +18,8 @@ public class UserJwtInterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration registration = registry.addInterceptor(userJwtAuthInterceptor());
-        registration.addPathPatterns("/user/**");
-        registration.excludePathPatterns("/user/login", "/user/save");
+        registration.addPathPatterns("/vaccine/user/**");
+        registration.excludePathPatterns("/vaccine/user/login", "/vaccine/user/save");
     }
 
     @Bean

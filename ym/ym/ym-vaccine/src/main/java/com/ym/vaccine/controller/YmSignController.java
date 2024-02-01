@@ -66,7 +66,7 @@ public class YmSignController extends BaseController {
 
 
     @SaIgnore
-    @PostMapping("/worker/sign/save")
+    @PostMapping("/worker/save")
     @PassToken(required = false)
     public Result save(@RequestBody YmAppoint appoint, @RequestHeader("x-token") String token) {
         String workerId = null;

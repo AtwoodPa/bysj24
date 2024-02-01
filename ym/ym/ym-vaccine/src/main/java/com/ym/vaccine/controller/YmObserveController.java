@@ -102,7 +102,7 @@ public class YmObserveController extends BaseController {
         return Result.ok(list.get(0), "留观中");
     }
     @SaIgnore
-    @PutMapping("/worker/observe/change")
+    @PutMapping("/worker/change")
     @PassToken(required = false)
     public Result change(@RequestBody YmObserve observe, @RequestHeader("x-token") String token) {
         String workerId = null;

@@ -96,7 +96,7 @@ public class YmInoculateController extends BaseController {
         return Result.ok("可以接种");
     }
 
-    @PostMapping("/worker/inoculate/save")
+    @PostMapping("/worker/save")
     @PassToken(required = false)
     public Result save(@RequestBody YmInoculate inoculate, @RequestHeader("x-token") String token, Integer isSucceeded) {
         String workerId = null;

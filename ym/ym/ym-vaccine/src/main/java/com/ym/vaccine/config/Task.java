@@ -2,6 +2,7 @@ package com.ym.vaccine.config;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ym.vaccine.domain.YmAppoint;
+import com.ym.vaccine.mapper.YmAppointMapper;
 import com.ym.vaccine.service.ITaskService;
 import com.ym.vaccine.service.IYmAppointService;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ public class Task {
     private static final Logger logger = LoggerFactory.getLogger(Task.class);
 
     @Autowired
-    private IYmAppointService appointService;
+    private YmAppointMapper appointMapper;
 
     @Autowired
     private ITaskService taskService;
@@ -37,7 +38,8 @@ public class Task {
         logger.info("开始处理预约时间已经过期的预约");
         QueryWrapper<YmAppoint> appointQueryWrapper = new QueryWrapper<>();
         appointQueryWrapper.eq("status", 0);
-        List<YmAppoint> appointList1 = appointService.list(appointQueryWrapper);
+
+        List<YmAppoint> appointList1 = appointMapper.selectList(appointQueryWrapper);
         taskService.change0To5(appointList1);
         logger.info("处理预约时间已经过期的预约结束");
 
@@ -48,7 +50,7 @@ public class Task {
         appointQueryWrapper.eq("status", 2);
         appointQueryWrapper.or();
         appointQueryWrapper.eq("status", 3);
-        List<YmAppoint> appointList2 = appointService.list(appointQueryWrapper);
+        List<YmAppoint> appointList2 = appointMapper.selectList(appointQueryWrapper);
         taskService.changeTo7(appointList2);
         logger.info("处理接种流程未正常结束的预约结束");
     }

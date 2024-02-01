@@ -16,8 +16,8 @@ public class WorkerJwtInterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration registration = registry.addInterceptor(workerJwtAuthInterceptor());
-        registration.addPathPatterns("/worker/**");
-        registration.excludePathPatterns("/worker/login");
+        registration.addPathPatterns("/vaccine/worker/**");
+        registration.excludePathPatterns("/vaccine/worker/login");
     }
     @Bean
     public WorkerJwtAuthInterceptor workerJwtAuthInterceptor() {
