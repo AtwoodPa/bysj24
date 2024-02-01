@@ -271,6 +271,8 @@ public class YmWorkerController extends BaseController {
     /**
      * 查询医护人员信息列表
      */
+
+    @PassToken
     @SaCheckPermission("vaccine:worker:list")
     @GetMapping("/list")
     public TableDataInfo<YmWorkerVo> list(YmWorkerBo bo, PageQuery pageQuery) {
@@ -287,6 +289,7 @@ public class YmWorkerController extends BaseController {
     /**
      * 导出医护人员信息列表
      */
+    @PassToken
     @SaCheckPermission("vaccine:worker:export")
     @Log(title = "医护人员信息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -300,6 +303,7 @@ public class YmWorkerController extends BaseController {
      *
      * @param id 主键
      */
+    @PassToken
     @SaCheckPermission("vaccine:worker:query")
     @GetMapping("/{id}")
     public R<YmWorkerVo> getInfo(@NotNull(message = "主键不能为空")
@@ -310,6 +314,7 @@ public class YmWorkerController extends BaseController {
     /**
      * 新增医护人员信息
      */
+    @PassToken
     @SaCheckPermission("vaccine:worker:add")
     @Log(title = "医护人员信息", businessType = BusinessType.INSERT)
     @RepeatSubmit()
@@ -321,6 +326,7 @@ public class YmWorkerController extends BaseController {
     /**
      * 修改医护人员信息
      */
+    @PassToken
     @SaCheckPermission("vaccine:worker:edit")
     @Log(title = "医护人员信息", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
@@ -334,6 +340,7 @@ public class YmWorkerController extends BaseController {
      *
      * @param ids 主键串
      */
+    @PassToken
     @SaCheckPermission("vaccine:worker:remove")
     @Log(title = "医护人员信息", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

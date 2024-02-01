@@ -106,7 +106,16 @@
           <el-input v-model="form.address" placeholder="请输入疫苗接种站点地址" />
         </el-form-item>
         <el-form-item label="" prop="imgUrl">
-          <el-input v-model="form.imgUrl" placeholder="请输入" />
+          <el-upload
+            class="avatar-uploader"
+            action="http://43.142.255.148:36060/vaccine/inoculateSite/inoculateSiteImage/upload"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img v-if="form.imgUrl" :src="getServerUrl()+'inoculateSiteImage'+form.imgUrl" class="avatar" />
+            <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+          </el-upload>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -116,10 +125,17 @@
     </el-dialog>
   </div>
 </template>
-
+<style scoped>
+.avatar-uploader .avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
+</style>
 <script setup name="InoculateSite">
 import { listInoculateSite, getInoculateSite, delInoculateSite, addInoculateSite, updateInoculateSite } from "@/api/vaccine/inoculateSite";
 import {getServerUrl} from "@/utils/request";
+import {Plus} from "@element-plus/icons-vue";
 const {proxy} = getCurrentInstance();
 
 const inoculateSiteList = ref([]);
@@ -174,7 +190,14 @@ function getList() {
     loading.value = false;
   });
 }
+const handleAvatarSuccess = (response, uploadFile) => {
+  data.form.imgUrl = "/" + response.data;
+};
 
+const beforeAvatarUpload = (rawFile) => {
+
+  return true;
+};
 function cancel() {
   open.value = false;
   reset();

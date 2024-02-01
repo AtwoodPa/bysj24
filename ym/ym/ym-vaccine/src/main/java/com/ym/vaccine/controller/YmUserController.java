@@ -469,6 +469,7 @@ public class YmUserController extends BaseController {
      */
     @SaCheckPermission("vaccine:ym_user:list")
     @GetMapping("/list")
+    @PassToken
     public TableDataInfo<YmUserVo> list(YmUserBo bo, PageQuery pageQuery) {
         return iYmUserService.queryPageList(bo, pageQuery);
     }
@@ -479,6 +480,7 @@ public class YmUserController extends BaseController {
     @SaCheckPermission("vaccine:ym_user:export")
     @Log(title = "疫苗预约用户", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
+    @PassToken
     public void export(YmUserBo bo, HttpServletResponse response) {
         List<YmUserVo> list = iYmUserService.queryList(bo);
         ExcelUtil.exportExcel(list, "疫苗预约用户", YmUserVo.class, response);
@@ -491,6 +493,7 @@ public class YmUserController extends BaseController {
      */
     @SaCheckPermission("vaccine:ym_user:query")
     @GetMapping("/{id}")
+    @PassToken
     public R<YmUserVo> getInfo(@NotNull(message = "主键不能为空")
                                      @PathVariable Long id) {
         return R.ok(iYmUserService.queryById(id));
@@ -503,6 +506,7 @@ public class YmUserController extends BaseController {
     @Log(title = "疫苗预约用户", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
+    @PassToken
     public R<Void> add(@Validated(AddGroup.class) @RequestBody YmUserBo bo) {
         return toAjax(iYmUserService.insertByBo(bo));
     }
@@ -514,6 +518,7 @@ public class YmUserController extends BaseController {
     @Log(title = "疫苗预约用户", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
+    @PassToken
     public R<Void> edit(@Validated(EditGroup.class) @RequestBody YmUserBo bo) {
         return toAjax(iYmUserService.updateByBo(bo));
     }
@@ -526,6 +531,7 @@ public class YmUserController extends BaseController {
     @SaCheckPermission("vaccine:ym_user:remove")
     @Log(title = "疫苗预约用户", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
+    @PassToken
     public R<Void> remove(@NotEmpty(message = "主键不能为空")
                           @PathVariable Long[] ids) {
         return toAjax(iYmUserService.deleteWithValidByIds(Arrays.asList(ids), true));

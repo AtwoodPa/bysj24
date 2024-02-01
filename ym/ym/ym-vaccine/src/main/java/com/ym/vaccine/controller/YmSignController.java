@@ -156,6 +156,7 @@ public class YmSignController extends BaseController {
     @SaCheckPermission("vaccine:sign:export")
     @Log(title = "接种签到", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
+    @PassToken
     public void export(YmSignBo bo, HttpServletResponse response) {
         List<YmSignVo> list = iYmSignService.queryList(bo);
         ExcelUtil.exportExcel(list, "接种签到", YmSignVo.class, response);
@@ -168,6 +169,7 @@ public class YmSignController extends BaseController {
      */
     @SaCheckPermission("vaccine:sign:query")
     @GetMapping("/{id}")
+    @PassToken
     public R<YmSignVo> getInfo(@NotNull(message = "主键不能为空")
                                      @PathVariable Long id) {
         return R.ok(iYmSignService.queryById(id));
@@ -180,6 +182,7 @@ public class YmSignController extends BaseController {
     @Log(title = "接种签到", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
+    @PassToken
     public R<Void> add(@Validated(AddGroup.class) @RequestBody YmSignBo bo) {
         return toAjax(iYmSignService.insertByBo(bo));
     }
@@ -191,6 +194,7 @@ public class YmSignController extends BaseController {
     @Log(title = "接种签到", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
+    @PassToken
     public R<Void> edit(@Validated(EditGroup.class) @RequestBody YmSignBo bo) {
         return toAjax(iYmSignService.updateByBo(bo));
     }
@@ -203,6 +207,7 @@ public class YmSignController extends BaseController {
     @SaCheckPermission("vaccine:sign:remove")
     @Log(title = "接种签到", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
+    @PassToken
     public R<Void> remove(@NotEmpty(message = "主键不能为空")
                           @PathVariable Long[] ids) {
         return toAjax(iYmSignService.deleteWithValidByIds(Arrays.asList(ids), true));

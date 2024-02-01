@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import com.ym.vaccine.annotation.PassToken;
 import com.ym.vaccine.domain.common.Result;
 import lombok.RequiredArgsConstructor;
@@ -91,9 +92,10 @@ public class YmInoculateSiteController extends BaseController {
     public R<Void> add(@Validated(AddGroup.class) @RequestBody YmInoculateSiteBo bo) {
         return toAjax(iYmInoculateSiteService.insertByBo(bo));
     }
-    @SaCheckPermission("vaccine:inoculateSite:add")
+
     @PostMapping("/inoculateSiteImage/upload")
-    @PassToken(required = false)
+    @PassToken
+    @SaIgnore
     public Result uploadInoculateSiteImage(@RequestParam("file") MultipartFile imgFile) {
         try {
             uploadImageInoculateSiteImageUrl = new String(uploadImageInoculateSiteImageUrl.getBytes("iso8859-1"), "UTF-8");

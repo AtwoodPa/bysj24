@@ -68,7 +68,7 @@ public class YmPayController extends BaseController {
 
     @SaIgnore
     @PostMapping("/user/save")
-    @PassToken(required = false)
+    @PassToken
     public Result save(@RequestBody YmAppoint appoint, @RequestHeader("x-token") String token) {
         String userId = null;
         try {

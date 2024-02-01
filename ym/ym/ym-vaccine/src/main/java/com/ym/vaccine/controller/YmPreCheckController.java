@@ -191,6 +191,7 @@ public class YmPreCheckController extends BaseController {
      */
     @SaCheckPermission("vaccine:preCheck:list")
     @GetMapping("/list")
+    @PassToken
     public TableDataInfo<YmPreCheckVo> list(YmPreCheckBo bo, PageQuery pageQuery) {
 
 
@@ -218,6 +219,7 @@ public class YmPreCheckController extends BaseController {
     @SaCheckPermission("vaccine:preCheck:export")
     @Log(title = "预检信息查询", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
+    @PassToken
     public void export(YmPreCheckBo bo, HttpServletResponse response) {
         List<YmPreCheckVo> list = iYmPreCheckService.queryList(bo);
         ExcelUtil.exportExcel(list, "预检信息查询", YmPreCheckVo.class, response);
@@ -230,6 +232,7 @@ public class YmPreCheckController extends BaseController {
      */
     @SaCheckPermission("vaccine:preCheck:query")
     @GetMapping("/{id}")
+    @PassToken
     public R<YmPreCheckVo> getInfo(@NotNull(message = "主键不能为空")
                                      @PathVariable Long id) {
         return R.ok(iYmPreCheckService.queryById(id));
@@ -242,6 +245,7 @@ public class YmPreCheckController extends BaseController {
     @Log(title = "预检信息查询", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
+    @PassToken
     public R<Void> add(@Validated(AddGroup.class) @RequestBody YmPreCheckBo bo) {
         return toAjax(iYmPreCheckService.insertByBo(bo));
     }
@@ -253,6 +257,7 @@ public class YmPreCheckController extends BaseController {
     @Log(title = "预检信息查询", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
+    @PassToken
     public R<Void> edit(@Validated(EditGroup.class) @RequestBody YmPreCheckBo bo) {
         return toAjax(iYmPreCheckService.updateByBo(bo));
     }
@@ -265,6 +270,7 @@ public class YmPreCheckController extends BaseController {
     @SaCheckPermission("vaccine:preCheck:remove")
     @Log(title = "预检信息查询", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
+    @PassToken
     public R<Void> remove(@NotEmpty(message = "主键不能为空")
                           @PathVariable Long[] ids) {
         return toAjax(iYmPreCheckService.deleteWithValidByIds(Arrays.asList(ids), true));

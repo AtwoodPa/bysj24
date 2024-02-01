@@ -101,9 +101,9 @@
       <el-table-column label="疫苗厂家" align="center" prop="manufacturer"  v-if="columns[3].visible"/>
       <el-table-column label="疫苗分类" align="center" prop="category" v-if="columns[4].visible" />
       <el-table-column label="疫苗详情" align="center" prop="detail" v-if="columns[5].visible" />
-      <el-table-column label="疫苗图片" align="center" prop="imgUrl" v-if="columns[6].visible" >
+      <el-table-column label="疫苗图片" width="300rpx" align="center" prop="imgUrl" v-if="columns[6].visible" >
         <template #default="{ row }">
-          <img :src="getServerUrl()+'vaccineImage'+row.imgUrl" style='height:200px; width: 200px;'/>
+          <img :src="getServerUrl()+'vaccineImage'+row.imgUrl" style='width: 178px;height: 178px;display: block;'/>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width" v-if="columns[7].visible">
@@ -145,7 +145,17 @@
           <el-input v-model="form.detail" placeholder="请输入疫苗详情" />
         </el-form-item>
         <el-form-item label="疫苗图片" prop="imgUrl">
-          <el-input v-model="form.imgUrl" placeholder="请输入疫苗图片地址" />
+          <el-upload
+            class="avatar-uploader"
+            action="http://43.142.255.148:36060/vaccine/vaccine/vaccineImage/upload"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img v-if="form.imgUrl" :src="getServerUrl()+'vaccineImage'+form.imgUrl" class="avatar" />
+            <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+          </el-upload>
+
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -156,11 +166,19 @@
   </div>
 </template>
 
+<style scoped>
+.avatar-uploader .avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
+</style>
 <script setup name="Vaccine">
-import { listVaccine, getVaccine, delVaccine, addVaccine, updateVaccine } from "@/api/vaccine/vaccine";
+import {addVaccine, delVaccine, getVaccine, listVaccine, updateVaccine} from "@/api/vaccine/vaccine";
 import {getServerUrl} from "@/utils/request";
-const {proxy} = getCurrentInstance();
+import {Plus} from '@element-plus/icons-vue'
 
+const {proxy} = getCurrentInstance();
 const vaccineList = ref([]);
 const open = ref(false);
 const buttonLoading = ref(false);
@@ -235,6 +253,14 @@ function cancel() {
   reset();
 };
 
+const handleAvatarSuccess = (response, uploadFile) => {
+  data.form.imgUrl = "/" + response.data;
+};
+
+const beforeAvatarUpload = (rawFile) => {
+
+  return true;
+};
 function reset() {
   form.value = {
     id: undefined,

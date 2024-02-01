@@ -68,7 +68,7 @@ public class VaccineController extends BaseController {
     }
     @SaIgnore
     @PostMapping("/vaccineImage/upload")
-    @PassToken(required = false)
+    @PassToken
     public Result uploadVaccineImage(@RequestParam("file") MultipartFile imgFile) {
         try {
             uploadImageVaccineImageUrl = new String(uploadImageVaccineImageUrl.getBytes("iso8859-1"), StandardCharsets.UTF_8);

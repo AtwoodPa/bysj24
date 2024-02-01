@@ -6,7 +6,7 @@ import { tansParams, blobValidate } from '@/utils/ruoyi'
 import cache from '@/plugins/cache'
 import { saveAs } from 'file-saver'
 import useUserStore from '@/store/modules/user'
-let baseUrl="http://localhost:8080/";
+let baseUrl="http://43.142.255.148:36060/";
 let downloadLoadingInstance;
 // 是否显示重新登录
 export let isRelogin = { show: false };
