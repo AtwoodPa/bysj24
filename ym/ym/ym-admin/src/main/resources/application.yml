@@ -23,17 +23,7 @@ captcha:
 
 # 开发环境配置
 server:
-  ssl:
-    enabled: true
-    #key-alias: alias-key # 别名(可以不进行配置)
-    # 保存SSL证书的秘钥库的路径
-    key-store: classpath:ssl/njmmxx.com.jks
-    key-store-password: g8nqzhb9
-    # 证书类型
-    key-store-type: JKS
-  # 服务器的HTTP端口，默认为8080
-  ip: www.njmmxx.com # 服务器地址
-  port: 36060
+  port: 8080
   servlet:
     # 应用的访问路径
     context-path: /
