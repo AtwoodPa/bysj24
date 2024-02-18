@@ -12,15 +12,11 @@ import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.service.IYmAppointService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.ym.vaccine.domain.bo.YmPreCheckBo;
-import com.ym.vaccine.domain.vo.YmPreCheckVo;
-import com.ym.vaccine.domain.YmPreCheck;
 import com.ym.vaccine.mapper.YmPreCheckMapper;
 import com.ym.vaccine.service.IYmPreCheckService;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Collection;
 
 /**

@@ -1,7 +1,5 @@
 package com.ym.vaccine.mapper;
 
-import com.ym.vaccine.domain.YmSign;
-import com.ym.vaccine.domain.vo.YmSignVo;
 import com.ym.common.core.mapper.BaseMapperPlus;
 
 /**

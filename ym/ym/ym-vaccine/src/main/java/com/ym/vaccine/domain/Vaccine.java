@@ -39,6 +39,10 @@ public class Vaccine implements Serializable {
      */
     private String manufacturer;
     /**
+     * 疫苗库存
+     */
+    private Long number;
+    /**
      * 疫苗分类
      */
     private String category;

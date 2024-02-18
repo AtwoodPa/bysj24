@@ -50,7 +50,11 @@ public class VaccineBo implements Serializable {
      */
     @NotBlank(message = "疫苗分类不能为空", groups = { AddGroup.class, EditGroup.class })
     private String category;
-
+    /**
+     * 疫苗库存
+     */
+    @NotBlank(message = "疫苗库存不能为空", groups = { AddGroup.class, EditGroup.class })
+    private Long number;
     /**
      * 疫苗详情
      */

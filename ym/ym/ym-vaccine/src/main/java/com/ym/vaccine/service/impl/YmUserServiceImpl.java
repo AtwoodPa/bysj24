@@ -10,14 +10,10 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.ym.vaccine.domain.bo.YmUserBo;
-import com.ym.vaccine.domain.vo.YmUserVo;
-import com.ym.vaccine.domain.YmUser;
 import com.ym.vaccine.mapper.YmUserMapper;
 import com.ym.vaccine.service.IYmUserService;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Collection;
 
 /**

@@ -3,7 +3,6 @@ package com.ym.vaccine.interceptor;
 import com.alibaba.fastjson.JSONObject;
 
 import com.ym.vaccine.annotation.PassToken;
-import com.ym.vaccine.domain.YmWorker;
 import com.ym.vaccine.domain.common.Result;
 import com.ym.vaccine.exception.TokenUnavailable;
 import com.ym.vaccine.mapper.YmWorkerMapper;

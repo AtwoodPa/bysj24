@@ -3,11 +3,9 @@ package com.ym.vaccine.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ym.vaccine.annotation.PassToken;
-import com.ym.vaccine.domain.YmUser;
 import com.ym.vaccine.domain.common.Result;
 import com.ym.vaccine.exception.TokenUnavailable;
 import com.ym.vaccine.mapper.YmUserMapper;
-import com.ym.vaccine.service.IYmUserService;
 
 import com.ym.vaccine.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;

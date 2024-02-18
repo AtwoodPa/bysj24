@@ -2,7 +2,6 @@ package com.ym.vaccine.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ym.common.utils.StringUtils;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -12,15 +11,11 @@ import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.service.IYmAppointService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.ym.vaccine.domain.bo.YmSignBo;
-import com.ym.vaccine.domain.vo.YmSignVo;
-import com.ym.vaccine.domain.YmSign;
 import com.ym.vaccine.mapper.YmSignMapper;
 import com.ym.vaccine.service.IYmSignService;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Collection;
 
 /**

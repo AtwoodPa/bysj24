@@ -1,11 +1,7 @@
 package com.ym.vaccine.mapper;
 
-import com.ym.vaccine.domain.Vaccine;
-import com.ym.vaccine.domain.YmUser;
-import com.ym.vaccine.domain.vo.YmUserVo;
 import com.ym.common.core.mapper.BaseMapperPlus;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 /**

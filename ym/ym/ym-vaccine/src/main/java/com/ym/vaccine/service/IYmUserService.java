@@ -1,9 +1,6 @@
 package com.ym.vaccine.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ym.vaccine.domain.YmUser;
-import com.ym.vaccine.domain.vo.YmUserVo;
-import com.ym.vaccine.domain.bo.YmUserBo;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
 

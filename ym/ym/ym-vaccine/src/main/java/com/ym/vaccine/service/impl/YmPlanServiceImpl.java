@@ -8,16 +8,12 @@ import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ym.vaccine.domain.YmPlan;
-import com.ym.vaccine.domain.bo.YmPlanBo;
-import com.ym.vaccine.domain.vo.YmPlanVo;
 import com.ym.vaccine.mapper.YmPlanMapper;
 import com.ym.vaccine.service.IYmPlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Collection;
 
 /**

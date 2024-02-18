@@ -1,8 +1,6 @@
 package com.ym.vaccine.mapper;
 
 import com.ym.common.core.mapper.BaseMapperPlus;
-import com.ym.vaccine.domain.YmPlan;
-import com.ym.vaccine.domain.vo.YmPlanVo;
 
 /**
  * 预约计划管理Mapper接口

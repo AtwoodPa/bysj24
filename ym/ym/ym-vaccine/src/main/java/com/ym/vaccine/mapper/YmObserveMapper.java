@@ -1,7 +1,5 @@
 package com.ym.vaccine.mapper;
 
-import com.ym.vaccine.domain.YmObserve;
-import com.ym.vaccine.domain.vo.YmObserveVo;
 import com.ym.common.core.mapper.BaseMapperPlus;
 
 /**

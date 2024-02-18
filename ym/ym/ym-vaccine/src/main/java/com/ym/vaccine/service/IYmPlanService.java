@@ -4,9 +4,6 @@ package com.ym.vaccine.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
-import com.ym.vaccine.domain.YmPlan;
-import com.ym.vaccine.domain.bo.YmPlanBo;
-import com.ym.vaccine.domain.vo.YmPlanVo;
 
 import java.util.Collection;
 import java.util.List;

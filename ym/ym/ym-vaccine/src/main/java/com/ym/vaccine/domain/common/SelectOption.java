@@ -1,4 +1,4 @@
-package com.ym.vaccine.domain.bo;
+package com.ym.vaccine.domain.common;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

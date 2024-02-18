@@ -8,8 +8,6 @@ import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ym.vaccine.domain.YmPay;
-import com.ym.vaccine.domain.YmPlan;
 import com.ym.vaccine.service.IVaccineService;
 import com.ym.vaccine.service.IYmPayService;
 import com.ym.vaccine.service.IYmPlanService;

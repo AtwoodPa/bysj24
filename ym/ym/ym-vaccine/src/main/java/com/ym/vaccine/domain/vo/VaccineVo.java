@@ -44,7 +44,10 @@ public class VaccineVo implements Serializable {
      */
     @ExcelProperty(value = "疫苗厂家")
     private String manufacturer;
-
+    /**
+     * 疫苗库存
+     */
+    private Long number;
     /**
      * 疫苗分类
      */
