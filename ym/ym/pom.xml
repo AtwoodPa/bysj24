@@ -294,7 +294,7 @@
         <module>ym-system</module>
         <module>ym-generator</module>
         <module>ym-common</module>
-        <module>ym-demo</module>
+
         <module>ym-oss</module>
         <module>ym-vaccine</module>
     </modules>

@@ -9,13 +9,14 @@ import java.util.Arrays;
 import java.util.UUID;
 
 import cn.dev33.satoken.annotation.SaIgnore;
-import com.ym.vaccine.annotation.PassToken;
 import com.ym.vaccine.domain.common.Result;
 import com.ym.vaccine.domain.vo.YmVaccineVo;
-import com.ym.vaccine.service.IVaccineService;
+import com.ym.vaccine.service.IYmVaccineService;
 import lombok.RequiredArgsConstructor;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
+
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,9 +47,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/vaccine/vaccine")
-public class VaccineController extends BaseController {
+public class YmVaccineController extends BaseController {
 
-    private final IVaccineService iVaccineService;
+    private final IYmVaccineService iYmVaccineService;
     @Value("${upload.image.vaccineImage.url}")
     private String uploadImageVaccineImageUrl;
 
@@ -58,16 +59,18 @@ public class VaccineController extends BaseController {
     @SaCheckPermission("vaccine:vaccine:list")
     @GetMapping("/list")
     public TableDataInfo<YmVaccineVo> list(YmVaccineBo bo, PageQuery pageQuery) {
-        return iVaccineService.queryPageList(bo, pageQuery);
+        return iYmVaccineService.queryPageList(bo, pageQuery);
     }
+
     @SaIgnore
     @GetMapping("/findAll")
     public Result findAll() {
-        return Result.ok(iVaccineService.list(),"查询成功");
+        return Result.ok(iYmVaccineService.list(), "查询成功");
     }
+
     @SaIgnore
     @PostMapping("/vaccineImage/upload")
-    @PassToken
+
     public Result uploadVaccineImage(@RequestParam("file") MultipartFile imgFile) {
         try {
             uploadImageVaccineImageUrl = new String(uploadImageVaccineImageUrl.getBytes("iso8859-1"), StandardCharsets.UTF_8);
@@ -99,6 +102,7 @@ public class VaccineController extends BaseController {
         }
         return Result.ok(fileName, "上传成功");
     }
+
     /**
      * 导出疫苗信息列表
      */
@@ -106,7 +110,7 @@ public class VaccineController extends BaseController {
     @Log(title = "疫苗信息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(YmVaccineBo bo, HttpServletResponse response) {
-        List<YmVaccineVo> list = iVaccineService.queryList(bo);
+        List<YmVaccineVo> list = iYmVaccineService.queryList(bo);
         ExcelUtil.exportExcel(list, "疫苗信息", YmVaccineVo.class, response);
     }
 
@@ -118,8 +122,8 @@ public class VaccineController extends BaseController {
     @SaCheckPermission("vaccine:vaccine:query")
     @GetMapping("/{id}")
     public R<YmVaccineVo> getInfo(@NotNull(message = "主键不能为空")
-                                     @PathVariable Long id) {
-        return R.ok(iVaccineService.queryById(id));
+                                  @PathVariable Long id) {
+        return R.ok(iYmVaccineService.queryById(id));
     }
 
     /**
@@ -130,7 +134,7 @@ public class VaccineController extends BaseController {
     @RepeatSubmit()
     @PostMapping()
     public R<Void> add(@Validated(AddGroup.class) @RequestBody YmVaccineBo bo) {
-        return toAjax(iVaccineService.insertByBo(bo));
+        return toAjax(iYmVaccineService.insertByBo(bo));
     }
 
     /**
@@ -141,7 +145,7 @@ public class VaccineController extends BaseController {
     @RepeatSubmit()
     @PutMapping()
     public R<Void> edit(@Validated(EditGroup.class) @RequestBody YmVaccineBo bo) {
-        return toAjax(iVaccineService.updateByBo(bo));
+        return toAjax(iYmVaccineService.updateByBo(bo));
     }
 
     /**
@@ -154,6 +158,6 @@ public class VaccineController extends BaseController {
     @DeleteMapping("/{ids}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空")
                           @PathVariable Long[] ids) {
-        return toAjax(iVaccineService.deleteWithValidByIds(Arrays.asList(ids), true));
+        return toAjax(iYmVaccineService.deleteWithValidByIds(Arrays.asList(ids), true));
     }
 }

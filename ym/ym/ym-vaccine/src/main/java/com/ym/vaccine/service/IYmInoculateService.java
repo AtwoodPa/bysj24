@@ -22,6 +22,7 @@ public interface IYmInoculateService extends IService<YmInoculate> {
     void inoculate(YmAppoint appoint, YmInoculate inoculate);
 
     void notSucceeded(YmAppoint appoint, YmInoculate inoculate);
+
     /**
      * 查询疫苗接种记录
      */

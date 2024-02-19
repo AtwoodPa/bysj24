@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ym.vaccine.domain.YmVaccine;
 import com.ym.vaccine.domain.vo.YmVaccineVo;
 import com.ym.vaccine.mapper.YmVaccineMapper;
-import com.ym.vaccine.service.IVaccineService;
+import com.ym.vaccine.service.IYmVaccineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.ym.vaccine.domain.bo.YmVaccineBo;
@@ -28,7 +28,7 @@ import java.util.Collection;
  */
 @RequiredArgsConstructor
 @Service
-public class VaccineServiceImpl extends ServiceImpl<YmVaccineMapper, YmVaccine> implements IVaccineService {
+public class YmVaccineServiceImpl extends ServiceImpl<YmVaccineMapper, YmVaccine> implements IYmVaccineService {
 
     private final YmVaccineMapper baseMapper;
 
@@ -36,7 +36,7 @@ public class VaccineServiceImpl extends ServiceImpl<YmVaccineMapper, YmVaccine> 
      * 查询疫苗信息
      */
     @Override
-    public YmVaccineVo queryById(Long id){
+    public YmVaccineVo queryById(Long id) {
         return baseMapper.selectVoById(id);
     }
 
@@ -98,7 +98,7 @@ public class VaccineServiceImpl extends ServiceImpl<YmVaccineMapper, YmVaccine> 
     /**
      * 保存前的数据校验
      */
-    private void validEntityBeforeSave(YmVaccine entity){
+    private void validEntityBeforeSave(YmVaccine entity) {
         //TODO 做一些数据校验,如唯一约束
     }
 
@@ -107,7 +107,7 @@ public class VaccineServiceImpl extends ServiceImpl<YmVaccineMapper, YmVaccine> 
      */
     @Override
     public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
-        if(isValid){
+        if (isValid) {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteBatchIds(ids) > 0;

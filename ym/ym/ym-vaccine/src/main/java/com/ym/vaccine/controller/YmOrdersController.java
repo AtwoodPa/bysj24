@@ -66,7 +66,7 @@ public class YmOrdersController extends BaseController {
     @SaCheckPermission("vaccine:orders:query")
     @GetMapping("/{id}")
     public R<YmOrdersVo> getInfo(@NotNull(message = "主键不能为空")
-                                     @PathVariable Long id) {
+                                 @PathVariable Long id) {
         return R.ok(iYmOrdersService.queryById(id));
     }
 

@@ -17,9 +17,9 @@ import java.util.List;
  * @date 2024-01-29
  */
 public interface IYmAppointService extends IService<YmAppoint> {
-
+    // 库存充足在线预约
 //    void appoint(YmAppoint appoint, YmPlan plan) throws Exception;
-//
+    // 取消预约
 //    void cancelAppoint(YmAppoint appoint, YmPlan plan);
 
     /**

@@ -66,7 +66,7 @@ public class YmInoculateController extends BaseController {
     @SaCheckPermission("vaccine:inoculate:query")
     @GetMapping("/{id}")
     public R<YmInoculateVo> getInfo(@NotNull(message = "主键不能为空")
-                                     @PathVariable Long id) {
+                                    @PathVariable Long id) {
         return R.ok(iYmInoculateService.queryById(id));
     }
 

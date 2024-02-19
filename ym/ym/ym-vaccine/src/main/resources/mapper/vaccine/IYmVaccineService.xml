@@ -14,7 +14,9 @@
         <result property="imgUrl" column="img_url"/>
     </resultMap>
     <select id="selectVaccineByName" resultType="com.ym.vaccine.domain.YmVaccine">
-        SELECT * FROM ym_vaccine WHERE name = #{name}
+        SELECT *
+        FROM ym_vaccine
+        WHERE name = #{name}
     </select>
 
 

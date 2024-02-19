@@ -8,8 +8,10 @@ import com.ym.common.utils.StringUtils;
 import com.ym.vaccine.mapper.YmVaccineMapper;
 import com.ym.vaccine.mapper.YmInoculateSiteMapper;
 import lombok.RequiredArgsConstructor;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
+
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
@@ -42,7 +44,6 @@ public class YmAppointController extends BaseController {
     private final IYmAppointService iYmAppointService;
 
 
-
     private final YmInoculateSiteMapper inoculateSiteMapper;
     private final YmVaccineMapper ymVaccineMapper;
 
@@ -55,18 +56,13 @@ public class YmAppointController extends BaseController {
     @SaCheckPermission("vaccine:appoint:list")
     @GetMapping("/list")
     public TableDataInfo<YmAppointVo> list(YmAppointBo bo, PageQuery pageQuery) {
-        if(StringUtils.isNotBlank(bo.getRealName())){
-//            userMapper.selectUserByRealName(bo.getRealName()).ifPresent(item->{
-//                // bo.setUserId(item.getId());
-//            });
-        }
+
         TableDataInfo<YmAppointVo> data = iYmAppointService.queryPageList(bo, pageQuery);
         List<YmAppointVo> dataList = data.getRows();
         List<YmAppointVo> resultData = dataList.stream().map(item -> {
 
             return item;
         }).collect(Collectors.toList());
-
 
 
         data.setRows(resultData);
@@ -92,7 +88,7 @@ public class YmAppointController extends BaseController {
     @SaCheckPermission("vaccine:appoint:query")
     @GetMapping("/{id}")
     public R<YmAppointVo> getInfo(@NotNull(message = "主键不能为空")
-                                     @PathVariable Long id) {
+                                  @PathVariable Long id) {
         return R.ok(iYmAppointService.queryById(id));
     }
 

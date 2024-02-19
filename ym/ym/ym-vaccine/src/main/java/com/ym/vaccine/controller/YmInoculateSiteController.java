@@ -3,17 +3,19 @@ package com.ym.vaccine.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Arrays;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import cn.dev33.satoken.annotation.SaIgnore;
-import com.ym.vaccine.annotation.PassToken;
+
 import com.ym.vaccine.domain.common.Result;
 import lombok.RequiredArgsConstructor;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
+
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +28,6 @@ import com.ym.common.core.domain.PageQuery;
 import com.ym.common.core.domain.R;
 import com.ym.common.core.validate.AddGroup;
 import com.ym.common.core.validate.EditGroup;
-import com.ym.common.core.validate.QueryGroup;
 import com.ym.common.enums.BusinessType;
 import com.ym.common.utils.poi.ExcelUtil;
 import com.ym.vaccine.domain.vo.YmInoculateSiteVo;
@@ -50,6 +51,7 @@ public class YmInoculateSiteController extends BaseController {
     private final IYmInoculateSiteService iYmInoculateSiteService;
     @Value("${upload.image.inoculateSiteImage.url}")
     private String uploadImageInoculateSiteImageUrl;
+
     /**
      * 查询疫苗接种站点管理列表
      */
@@ -78,7 +80,7 @@ public class YmInoculateSiteController extends BaseController {
     @SaCheckPermission("vaccine:inoculateSite:query")
     @GetMapping("/{id}")
     public R<YmInoculateSiteVo> getInfo(@NotNull(message = "主键不能为空")
-                                     @PathVariable Long id) {
+                                        @PathVariable Long id) {
         return R.ok(iYmInoculateSiteService.queryById(id));
     }
 
@@ -93,12 +95,11 @@ public class YmInoculateSiteController extends BaseController {
         return toAjax(iYmInoculateSiteService.insertByBo(bo));
     }
 
-    @PostMapping("/inoculateSiteImage/upload")
-    @PassToken
     @SaIgnore
+    @PostMapping("/inoculateSiteImage/upload")
     public Result uploadInoculateSiteImage(@RequestParam("file") MultipartFile imgFile) {
         try {
-            uploadImageInoculateSiteImageUrl = new String(uploadImageInoculateSiteImageUrl.getBytes("iso8859-1"), "UTF-8");
+            uploadImageInoculateSiteImageUrl = new String(uploadImageInoculateSiteImageUrl.getBytes("iso8859-1"), StandardCharsets.UTF_8);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("字符转码异常！");
         }
@@ -127,6 +128,7 @@ public class YmInoculateSiteController extends BaseController {
         }
         return Result.ok(fileName, "上传成功");
     }
+
     /**
      * 修改疫苗接种站点管理
      */

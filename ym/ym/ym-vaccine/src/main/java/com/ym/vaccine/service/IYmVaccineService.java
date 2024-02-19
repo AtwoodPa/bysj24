@@ -17,7 +17,7 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IVaccineService extends IService<YmVaccine> {
+public interface IYmVaccineService extends IService<YmVaccine> {
 
     /**
      * 查询疫苗信息

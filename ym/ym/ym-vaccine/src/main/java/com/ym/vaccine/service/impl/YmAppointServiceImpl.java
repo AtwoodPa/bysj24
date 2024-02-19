@@ -2,15 +2,13 @@ package com.ym.vaccine.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ym.common.utils.StringUtils;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ym.vaccine.service.IVaccineService;
+import com.ym.vaccine.service.IYmVaccineService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.ym.vaccine.domain.bo.YmAppointBo;
 import com.ym.vaccine.domain.vo.YmAppointVo;
@@ -28,12 +26,11 @@ import java.util.*;
  */
 @RequiredArgsConstructor
 @Service
-public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper,YmAppoint> implements IYmAppointService {
+public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper, YmAppoint> implements IYmAppointService {
 
     private final YmAppointMapper baseMapper;
 
-    private final IVaccineService vaccineService;
-
+    private final IYmVaccineService vaccineService;
 
 
 //    @Override
@@ -84,7 +81,7 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper,YmAppoint>
      * 查询预约
      */
     @Override
-    public YmAppointVo queryById(Long id){
+    public YmAppointVo queryById(Long id) {
         return baseMapper.selectVoById(id);
     }
 
@@ -108,7 +105,7 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper,YmAppoint>
     }
 
     private LambdaQueryWrapper<YmAppoint> buildQueryWrapper(YmAppointBo bo) {
-       // Map<String, Object> params = bo.getParams();
+        // Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmAppoint> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getUserId() != null, YmAppoint::getUserId, bo.getUserId());
         lqw.eq(bo.getAppointDate() != null, YmAppoint::getAppointDate, bo.getAppointDate());
@@ -146,7 +143,7 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper,YmAppoint>
     /**
      * 保存前的数据校验
      */
-    private void validEntityBeforeSave(YmAppoint entity){
+    private void validEntityBeforeSave(YmAppoint entity) {
         //TODO 做一些数据校验,如唯一约束
     }
 
@@ -155,7 +152,7 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper,YmAppoint>
      */
     @Override
     public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
-        if(isValid){
+        if (isValid) {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteBatchIds(ids) > 0;

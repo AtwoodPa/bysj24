@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 订单管理Service业务层处理
@@ -35,7 +34,7 @@ public class YmOrdersServiceImpl implements IYmOrdersService {
      * 查询订单管理
      */
     @Override
-    public YmOrdersVo queryById(Long id){
+    public YmOrdersVo queryById(Long id) {
         return baseMapper.selectVoById(id);
     }
 
@@ -95,7 +94,7 @@ public class YmOrdersServiceImpl implements IYmOrdersService {
     /**
      * 保存前的数据校验
      */
-    private void validEntityBeforeSave(YmOrders entity){
+    private void validEntityBeforeSave(YmOrders entity) {
         //TODO 做一些数据校验,如唯一约束
     }
 
@@ -104,7 +103,7 @@ public class YmOrdersServiceImpl implements IYmOrdersService {
      */
     @Override
     public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
-        if(isValid){
+        if (isValid) {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteBatchIds(ids) > 0;

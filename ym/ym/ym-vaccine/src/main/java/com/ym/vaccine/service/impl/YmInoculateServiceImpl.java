@@ -17,9 +17,7 @@ import com.ym.vaccine.domain.vo.YmInoculateVo;
 import com.ym.vaccine.domain.YmInoculate;
 import com.ym.vaccine.mapper.YmInoculateMapper;
 import com.ym.vaccine.service.IYmInoculateService;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Collection;
 
@@ -31,12 +29,11 @@ import java.util.Collection;
  */
 @RequiredArgsConstructor
 @Service
-public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper,YmInoculate> implements IYmInoculateService {
+public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper, YmInoculate> implements IYmInoculateService {
 
     private final YmInoculateMapper baseMapper;
 
     private final IYmAppointService appointService;
-
 
 
     /**
@@ -46,7 +43,7 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper,YmInoc
      * @param inoculate
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
+
     public void inoculate(YmAppoint appoint, YmInoculate inoculate) {
         if (appoint == null || inoculate == null) {
             throw new RuntimeException("参数有误");
@@ -62,11 +59,11 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper,YmInoc
 
     /**
      * 接种失败
+     *
      * @param appoint
      * @param inoculate
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public void notSucceeded(YmAppoint appoint, YmInoculate inoculate) {
         if (appoint == null || inoculate == null) {
             throw new RuntimeException("参数有误");
@@ -82,7 +79,7 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper,YmInoc
      * 查询疫苗接种记录
      */
     @Override
-    public YmInoculateVo queryById(Long id){
+    public YmInoculateVo queryById(Long id) {
         return baseMapper.selectVoById(id);
     }
 
@@ -140,7 +137,7 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper,YmInoc
     /**
      * 保存前的数据校验
      */
-    private void validEntityBeforeSave(YmInoculate entity){
+    private void validEntityBeforeSave(YmInoculate entity) {
         //TODO 做一些数据校验,如唯一约束
     }
 
@@ -149,7 +146,7 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper,YmInoc
      */
     @Override
     public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
-        if(isValid){
+        if (isValid) {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteBatchIds(ids) > 0;

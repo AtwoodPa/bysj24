@@ -17,7 +17,6 @@ import com.ym.vaccine.mapper.YmInoculateSiteMapper;
 import com.ym.vaccine.service.IYmInoculateSiteService;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Collection;
 
 /**
@@ -28,7 +27,7 @@ import java.util.Collection;
  */
 @RequiredArgsConstructor
 @Service
-public class YmInoculateSiteServiceImpl extends ServiceImpl<YmInoculateSiteMapper,YmInoculateSite> implements IYmInoculateSiteService {
+public class YmInoculateSiteServiceImpl extends ServiceImpl<YmInoculateSiteMapper, YmInoculateSite> implements IYmInoculateSiteService {
 
     private final YmInoculateSiteMapper baseMapper;
 
@@ -36,7 +35,7 @@ public class YmInoculateSiteServiceImpl extends ServiceImpl<YmInoculateSiteMappe
      * 查询疫苗接种站点管理
      */
     @Override
-    public YmInoculateSiteVo queryById(Long id){
+    public YmInoculateSiteVo queryById(Long id) {
         return baseMapper.selectVoById(id);
     }
 
@@ -95,7 +94,7 @@ public class YmInoculateSiteServiceImpl extends ServiceImpl<YmInoculateSiteMappe
     /**
      * 保存前的数据校验
      */
-    private void validEntityBeforeSave(YmInoculateSite entity){
+    private void validEntityBeforeSave(YmInoculateSite entity) {
         //TODO 做一些数据校验,如唯一约束
     }
 
@@ -104,7 +103,7 @@ public class YmInoculateSiteServiceImpl extends ServiceImpl<YmInoculateSiteMappe
      */
     @Override
     public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
-        if(isValid){
+        if (isValid) {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteBatchIds(ids) > 0;
