@@ -6,10 +6,12 @@ import com.ym.common.core.domain.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
 @Data
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @TableName("ym_orders")
-public class YmOrders extends BaseEntity {
+public class YmOrders implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

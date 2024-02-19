@@ -5,6 +5,8 @@ import com.ym.common.core.domain.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
 /**
  * 疫苗信息管理对象 ym_vaccine
  *
@@ -12,9 +14,9 @@ import lombok.EqualsAndHashCode;
  * @date 2024-02-19
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @TableName("ym_vaccine")
-public class YmVaccine extends BaseEntity {
+public class YmVaccine implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

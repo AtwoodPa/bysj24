@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.ym.common.core.domain.BaseEntity;
@@ -15,9 +16,9 @@ import com.ym.common.core.domain.BaseEntity;
  * @date 2024-02-19
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @TableName("ym_inoculate")
-public class YmInoculate extends BaseEntity {
+public class YmInoculate implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
