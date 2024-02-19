@@ -3,42 +3,37 @@ package com.ym.vaccine.domain;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import java.io.Serializable;
-import java.util.Date;
-import java.math.BigDecimal;
 
 import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
+
 import com.ym.common.core.domain.BaseEntity;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * 预约对象 ym_appoint
+ * 疫苗预约对象 ym_appoint
  *
  * @author ym
- * @date 2024-01-29
+ * @date 2024-02-19
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @TableName("ym_appoint")
-public class YmAppoint implements Serializable {
+public class YmAppoint extends BaseEntity {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
-     *
+     * 预约id
      */
     @TableId(value = "id")
     private Long id;
     /**
-     * 预约用户id
+     * 预约用户信息
      */
     private Long userId;
     /**
      * 预约日期
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    @TableField("appoint_date")
     private Date appointDate;
     /**
      * 上午 or 下午
@@ -48,28 +43,18 @@ public class YmAppoint implements Serializable {
      * 预约状态（待支付、已支付、已接种）
      */
     private Long status;
-
     /**
-     * 接种站点id
+     * 接种站点信息
      */
     private Long inoculateSiteId;
-
     /**
-     * 疫苗id
+     * 疫苗信息
      */
     private Long vaccineId;
-
     /**
      * 第几针
      */
     private String whichPin;
 
-    /**
-     * 签到时间
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @TableField("create_time")
-    private Date createTime;
-
 }
+

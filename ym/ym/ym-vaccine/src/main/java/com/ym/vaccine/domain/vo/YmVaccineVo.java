@@ -7,10 +7,10 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 疫苗信息视图对象 ym_vaccine
+ * 疫苗信息管理视图对象 ym_vaccine
  *
  * @author ym
- * @date 2024-01-29
+ * @date 2024-02-19
  */
 @Data
 @ExcelIgnoreUnannotated
@@ -37,19 +37,28 @@ public class YmVaccineVo implements Serializable {
     private Long price;
 
     /**
+     * 疫苗库存
+     */
+    @ExcelProperty(value = "疫苗库存")
+    private Long amount;
+
+    /**
      * 疫苗厂家
      */
     @ExcelProperty(value = "疫苗厂家")
     private String manufacturer;
-    /**
-     * 疫苗库存
-     */
-    private Long amount;
+
     /**
      * 疫苗分类
      */
     @ExcelProperty(value = "疫苗分类")
     private String category;
+
+    /**
+     * 疫苗批号
+     */
+    @ExcelProperty(value = "疫苗批号")
+    private String batchNumber;
 
     /**
      * 疫苗详情
@@ -65,3 +74,4 @@ public class YmVaccineVo implements Serializable {
 
 
 }
+

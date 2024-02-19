@@ -2,51 +2,57 @@ package com.ym.vaccine.domain.vo;
 
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
+import com.ym.common.annotation.ExcelDictFormat;
+import com.ym.common.convert.ExcelDictConvert;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * @author supanpan
- * @date 2024/02/19
+ * 订单管理视图对象 ym_orders
+ *
+ * @author ym
+ * @date 2024-02-19
  */
 @Data
 @ExcelIgnoreUnannotated
 public class YmOrdersVo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
-     * 订单id
+     *
      */
-    @ExcelProperty(value = "订单id")
+    @ExcelProperty(value = "")
     private Long id;
+
     /**
-     * 预约id
+     * 预约信息（用户信息）
      */
-    @ExcelProperty(value = "预约id")
+    @ExcelProperty(value = "预约信息", converter = ExcelDictConvert.class)
+    @ExcelDictFormat(readConverterExp = "用=户信息")
     private Long appointId;
-    /**
-     * 支付时间
-     */
-    private Date createTime;
+
     /**
      * 订单总金额
      */
     @ExcelProperty(value = "订单总金额")
-    private Double totalAmount;
+    private Long totalAmount;
+
     /**
      * 支付方式
      */
     @ExcelProperty(value = "支付方式")
     private String paymentMethod;
+
     /**
      * 订单状态（待支付、已支付、已取消）
      */
-    @ExcelProperty(value = "订单状态（待支付、已支付、已取消）")
-    private Integer status;
+    @ExcelProperty(value = "订单状态", converter = ExcelDictConvert.class)
+    @ExcelDictFormat(readConverterExp = "待=支付、已支付、已取消")
+    private Long status;
+
 
 }
+

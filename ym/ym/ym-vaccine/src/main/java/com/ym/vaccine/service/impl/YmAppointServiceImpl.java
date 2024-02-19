@@ -35,8 +35,6 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper,YmAppoint>
     private final IVaccineService vaccineService;
 
 
-    @Value("${upload.image.qrCodeImage.url}")
-    private String uploadImageQrCodeImageUrl;
 
 //    @Override
 //    @Transactional(rollbackFor = Exception.class)   //出错回滚
@@ -115,8 +113,8 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper,YmAppoint>
         lqw.eq(bo.getUserId() != null, YmAppoint::getUserId, bo.getUserId());
         lqw.eq(bo.getAppointDate() != null, YmAppoint::getAppointDate, bo.getAppointDate());
         lqw.eq(bo.getStatus() != null, YmAppoint::getStatus, bo.getStatus());
-        lqw.eq(StringUtils.isNotBlank(bo.getQrCodeUrl()), YmAppoint::getQrCodeUrl, bo.getQrCodeUrl());
-        lqw.eq(bo.getPlanId() != null, YmAppoint::getPlanId, bo.getPlanId());
+
+
         lqw.eq(bo.getTimeSlot() != null, YmAppoint::getTimeSlot, bo.getTimeSlot());
         return lqw;
     }

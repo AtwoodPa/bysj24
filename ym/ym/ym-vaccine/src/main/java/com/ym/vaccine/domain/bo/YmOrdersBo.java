@@ -1,44 +1,56 @@
 package com.ym.vaccine.domain.bo;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
-import java.util.Date;
+import com.ym.common.core.domain.BaseEntity;
+import com.ym.common.core.validate.AddGroup;
+import com.ym.common.core.validate.EditGroup;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+
+import javax.validation.constraints.*;
 
 /**
- * @author supanpan
- * @date 2024/02/19
+ * 订单管理业务对象 ym_orders
+ *
+ * @author ym
+ * @date 2024-02-19
  */
+
 @Data
-public class YmOrdersBo implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class YmOrdersBo extends BaseEntity {
+
     /**
-     * 订单id
+     *
      */
+    @NotNull(message = "不能为空", groups = {EditGroup.class})
     private Long id;
+
     /**
-     * 预约id
+     * 预约信息（用户信息）
      */
+    @NotNull(message = "预约信息（用户信息）不能为空", groups = {AddGroup.class, EditGroup.class})
     private Long appointId;
-    /**
-     * 支付时间
-     */
-    private Date createTime;
+
     /**
      * 订单总金额
      */
-    private Double totalAmount;
+    @NotNull(message = "订单总金额不能为空", groups = {AddGroup.class, EditGroup.class})
+    private Long totalAmount;
+
     /**
      * 支付方式
      */
+    @NotBlank(message = "支付方式不能为空", groups = {AddGroup.class, EditGroup.class})
     private String paymentMethod;
+
     /**
      * 订单状态（待支付、已支付、已取消）
      */
-    private Integer status;
+    @NotNull(message = "订单状态（待支付、已支付、已取消）不能为空", groups = {AddGroup.class, EditGroup.class})
+    private Long status;
+
 
 }
+

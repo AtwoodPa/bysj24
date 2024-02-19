@@ -109,10 +109,7 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper,YmInoc
 //        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmInoculate> lqw = Wrappers.lambdaQuery();
         lqw.eq(StringUtils.isNotBlank(bo.getPart()), YmInoculate::getPart, bo.getPart());
-        lqw.eq(StringUtils.isNotBlank(bo.getVaccineBatchCode()), YmInoculate::getVaccineBatchCode, bo.getVaccineBatchCode());
-        lqw.eq(bo.getWorkerId() != null, YmInoculate::getWorkerId, bo.getWorkerId());
         lqw.eq(bo.getAppointId() != null, YmInoculate::getAppointId, bo.getAppointId());
-        lqw.eq(StringUtils.isNotBlank(bo.getNote()), YmInoculate::getNote, bo.getNote());
         return lqw;
     }
 
