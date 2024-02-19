@@ -41,21 +41,28 @@ public class YmAppoint implements Serializable {
     @TableField("appoint_date")
     private Date appointDate;
     /**
-     *
+     * 上午 or 下午
+     */
+    private String timeSlot;
+    /**
+     * 预约状态（待支付、已支付、已接种）
      */
     private Long status;
+
     /**
-     *
+     * 接种站点id
      */
-    private String qrCodeUrl;
+    private Long inoculateSiteId;
+
     /**
-     *
+     * 疫苗id
      */
-    private Long planId;
+    private Long vaccineId;
+
     /**
-     *
+     * 第几针
      */
-    private Long timeSlot;
+    private String whichPin;
 
     /**
      * 签到时间

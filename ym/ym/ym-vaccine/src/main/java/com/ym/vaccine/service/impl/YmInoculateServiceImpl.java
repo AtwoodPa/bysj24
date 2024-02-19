@@ -10,7 +10,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.service.IYmAppointService;
-import com.ym.vaccine.service.IYmObserveService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.ym.vaccine.domain.bo.YmInoculateBo;
@@ -38,7 +37,7 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper,YmInoc
 
     private final IYmAppointService appointService;
 
-    private final IYmObserveService observeService;
+
 
     /**
      * 疫苗接种
@@ -58,13 +57,7 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper,YmInoc
 
         save(inoculate);
 
-        YmObserve observe = new YmObserve();
-        observe.setAppointId(appoint.getId());
-        observe.setCreateTime(new Date());
-        observe.setWorkerId(inoculate.getWorkerId());
-        observe.setIsFinish(0L);
-        observe.setEndTime(new Date(observe.getCreateTime().getTime() + 1000 * 60 * 30));
-        observeService.save(observe);
+
     }
 
     /**

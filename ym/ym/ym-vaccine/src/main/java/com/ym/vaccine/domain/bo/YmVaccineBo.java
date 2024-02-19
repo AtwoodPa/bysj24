@@ -3,13 +3,10 @@ package com.ym.vaccine.domain.bo;
 import com.ym.common.core.validate.AddGroup;
 import com.ym.common.core.validate.EditGroup;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.Date;
-
-import com.ym.common.core.domain.BaseEntity;
 
 /**
  * 疫苗信息业务对象 ym_vaccine
@@ -19,7 +16,7 @@ import com.ym.common.core.domain.BaseEntity;
  */
 
 @Data
-public class VaccineBo implements Serializable {
+public class YmVaccineBo implements Serializable {
 
     /**
      * 疫苗id
@@ -54,7 +51,7 @@ public class VaccineBo implements Serializable {
      * 疫苗库存
      */
     @NotBlank(message = "疫苗库存不能为空", groups = { AddGroup.class, EditGroup.class })
-    private Long number;
+    private Long amount;
     /**
      * 疫苗详情
      */

@@ -2,12 +2,14 @@ package com.ym.vaccine.domain.vo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.ym.common.annotation.ExcelDictFormat;
 import com.ym.common.convert.ExcelDictConvert;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -30,61 +32,48 @@ public class YmAppointVo implements Serializable {
      */
     @ExcelProperty(value = "")
     private Long id;
-
     /**
      * 预约用户id
      */
-    @ExcelProperty(value = "预约用户id")
     private Long userId;
-
-    /**
-     * 真实姓名
-     */
-    private String realName;
-    /**
-     * 接种点名称
-     */
-    private String inoculateSiteName;
-
-    /**
-     * 疫苗名称
-     */
-    private String vaccineName;
-
-
     /**
      * 预约日期
      */
-    @ExcelProperty(value = "预约日期")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @TableField("appoint_date")
     private Date appointDate;
-
     /**
-     * 操作时间
+     * 上午 or 下午
      */
-    private Date createTime;
+    private String timeSlot;
     /**
-     *
+     * 预约状态（待支付、已支付、已接种）
      */
-    @ExcelProperty(value = "")
     private Long status;
 
     /**
-     *
+     * 接种站点id
      */
-    @ExcelProperty(value = "")
-    private String qrCodeUrl;
+    private Long inoculateSiteId;
 
     /**
-     *
+     * 疫苗id
      */
-    @ExcelProperty(value = "")
-    private Long planId;
+    private Long vaccineId;
 
     /**
-     *
+     * 第几针
      */
-    @ExcelProperty(value = "")
-    private Long timeSlot;
+    private String whichPin;
+
+    /**
+     * 签到时间
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField("create_time")
+    private Date createTime;
 
 
 }

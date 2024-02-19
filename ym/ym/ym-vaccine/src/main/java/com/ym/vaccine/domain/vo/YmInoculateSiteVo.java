@@ -30,20 +30,27 @@ public class YmInoculateSiteVo implements Serializable {
     /**
      *
      */
-    @ExcelProperty(value = "")
+    @ExcelProperty(value = "站点名称")
     private String name;
 
     /**
      *
      */
-    @ExcelProperty(value = "")
+    @ExcelProperty(value = "站点地址")
     private String address;
 
     /**
      *
      */
-    @ExcelProperty(value = "")
+    @ExcelProperty(value = "站点图片")
     private String imgUrl;
+
+
+    /**
+     * 联系方式
+     */
+    @ExcelProperty(value = "站点联系方式")
+    private String contact;
 
 
 }

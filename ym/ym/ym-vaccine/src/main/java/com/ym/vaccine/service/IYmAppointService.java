@@ -18,9 +18,9 @@ import java.util.List;
  */
 public interface IYmAppointService extends IService<YmAppoint> {
 
-    void appoint(YmAppoint appoint, YmPlan plan) throws Exception;
-
-    void cancelAppoint(YmAppoint appoint, YmPlan plan);
+//    void appoint(YmAppoint appoint, YmPlan plan) throws Exception;
+//
+//    void cancelAppoint(YmAppoint appoint, YmPlan plan);
 
     /**
      * 查询预约

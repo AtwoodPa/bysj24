@@ -44,30 +44,40 @@ public class YmAppointBo implements Serializable {
      */
     @NotNull(message = "预约日期不能为空", groups = { AddGroup.class, EditGroup.class })
     private Date appointDate;
-
     /**
-     *
+     * 上午 or 下午
+     */
+    @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
+    private String timeSlot;
+    /**
+      *预约状态（待支付、已支付、已接种）
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long status;
 
-    /**
-     *
-     */
-    @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String qrCodeUrl;
+
 
     /**
      *
      */
     @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long planId;
+    /**
+     * 接种站点id
+     */
+    private Long inoculateSiteId;
 
     /**
-     *
+     * 疫苗id
      */
-    @NotNull(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
-    private Long timeSlot;
+    private Long vaccineId;
+
+    /**
+     * 第几针
+     */
+    private String whichPin;
+    private Date createTime;
+
 
 
 }

@@ -29,44 +29,45 @@ public class YmInoculateVo implements Serializable {
      */
     @ExcelProperty(value = "")
     private Long id;
-
     /**
-     *
+     * 接种部位
      */
-    @ExcelProperty(value = "")
     private String part;
-    private String realName;
-    private String siteName;
-    private String workerName;
-    private String vaccineName;
     /**
-     *
+     * 预约信息
      */
-    @ExcelProperty(value = "")
-    private String vaccineBatchCode;
-
-    /**
-     *
-     */
-    @ExcelProperty(value = "")
-    private Long workerId;
-
-    /**
-     *
-     */
-    @ExcelProperty(value = "")
     private Long appointId;
-
-    /**
-     *
-     */
-    @ExcelProperty(value = "")
-    private String note;
     /**
      * 签到时间
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
+
+    /**
+     * 疫苗信息
+     */
+    private Long vaccineId;
+    /**
+     * 用户信息
+     */
+    private Long userId;
+
+    /**
+     * 接种状态（已接种、未接种、已取消）
+     */
+    private Long status;
+
+    /**
+     * 备注
+     */
+    private String remark;
+
+    /**
+     * 接种时间
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date inoculateTime;
 
 }

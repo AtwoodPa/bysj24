@@ -1,29 +1,16 @@
 package com.ym.vaccine.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import cn.dev33.satoken.annotation.SaIgnore;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ym.common.utils.StringUtils;
-import com.ym.vaccine.annotation.PassToken;
-import com.ym.vaccine.domain.YmAppoint;
-import com.ym.vaccine.domain.common.Result;
-import com.ym.vaccine.exception.TokenUnavailable;
-import com.ym.vaccine.mapper.VaccineMapper;
+import com.ym.vaccine.mapper.YmVaccineMapper;
 import com.ym.vaccine.mapper.YmInoculateSiteMapper;
-import com.ym.vaccine.mapper.YmPlanMapper;
-import com.ym.vaccine.mapper.YmUserMapper;
-import com.ym.vaccine.service.IYmPlanService;
-import com.ym.vaccine.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
 import com.ym.common.annotation.RepeatSubmit;
@@ -54,12 +41,10 @@ public class YmAppointController extends BaseController {
 
     private final IYmAppointService iYmAppointService;
 
-    @Autowired
-    private IYmPlanService planService;
-    private final YmUserMapper userMapper;
-    private final YmPlanMapper planMapper;
+
+
     private final YmInoculateSiteMapper inoculateSiteMapper;
-    private final VaccineMapper vaccineMapper;
+    private final YmVaccineMapper ymVaccineMapper;
 
 
     /* 后台管理接口 */
@@ -71,9 +56,9 @@ public class YmAppointController extends BaseController {
     @GetMapping("/list")
     public TableDataInfo<YmAppointVo> list(YmAppointBo bo, PageQuery pageQuery) {
         if(StringUtils.isNotBlank(bo.getRealName())){
-            userMapper.selectUserByRealName(bo.getRealName()).ifPresent(item->{
-                // bo.setUserId(item.getId());
-            });
+//            userMapper.selectUserByRealName(bo.getRealName()).ifPresent(item->{
+//                // bo.setUserId(item.getId());
+//            });
         }
         TableDataInfo<YmAppointVo> data = iYmAppointService.queryPageList(bo, pageQuery);
         List<YmAppointVo> dataList = data.getRows();

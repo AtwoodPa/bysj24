@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ym.vaccine.mapper.VaccineMapper">
+<mapper namespace="com.ym.vaccine.mapper.YmVaccineMapper">
 
-    <resultMap type="com.ym.vaccine.domain.Vaccine" id="VaccineResult">
+    <resultMap type="com.ym.vaccine.domain.YmVaccine" id="VaccineResult">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="price" column="price"/>
@@ -13,7 +13,7 @@
         <result property="detail" column="detail"/>
         <result property="imgUrl" column="img_url"/>
     </resultMap>
-    <select id="selectVaccineByName" resultType="com.ym.vaccine.domain.Vaccine">
+    <select id="selectVaccineByName" resultType="com.ym.vaccine.domain.YmVaccine">
         SELECT * FROM ym_vaccine WHERE name = #{name}
     </select>
 

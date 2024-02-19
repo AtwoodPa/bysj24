@@ -2,10 +2,7 @@ package com.ym.vaccine.domain.vo;
 
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.ym.common.annotation.ExcelDictFormat;
-import com.ym.common.convert.ExcelDictConvert;
 import lombok.Data;
-import java.util.Date;
 
 import java.io.Serializable;
 
@@ -17,7 +14,7 @@ import java.io.Serializable;
  */
 @Data
 @ExcelIgnoreUnannotated
-public class VaccineVo implements Serializable {
+public class YmVaccineVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,7 +44,7 @@ public class VaccineVo implements Serializable {
     /**
      * 疫苗库存
      */
-    private Long number;
+    private Long amount;
     /**
      * 疫苗分类
      */

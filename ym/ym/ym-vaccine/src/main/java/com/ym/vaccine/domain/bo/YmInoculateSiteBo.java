@@ -30,21 +30,27 @@ public class YmInoculateSiteBo implements Serializable {
     /**
      *
      */
-    @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
+    @NotBlank(message = "站点名称不能为空", groups = { AddGroup.class, EditGroup.class })
     private String name;
 
 
     /**
      *
      */
-    @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
+    @NotBlank(message = "站点地址不能为空", groups = { AddGroup.class, EditGroup.class })
     private String address;
 
     /**
      *
      */
-    @NotBlank(message = "不能为空", groups = { AddGroup.class, EditGroup.class })
+    @NotBlank(message = "站点图片地址不能为空", groups = { AddGroup.class, EditGroup.class })
     private String imgUrl;
+
+    /**
+     *
+     */
+    @NotBlank(message = "联系方式不能为空", groups = { AddGroup.class, EditGroup.class })
+    private String contact;
 
 
 }

@@ -2,12 +2,8 @@ package com.ym.vaccine.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import java.io.Serializable;
-import java.util.Date;
-import java.math.BigDecimal;
 
-import com.ym.common.core.domain.BaseEntity;
+import java.io.Serializable;
 
 /**
  * 疫苗信息对象 ym_vaccine
@@ -17,7 +13,7 @@ import com.ym.common.core.domain.BaseEntity;
  */
 @Data
 @TableName("ym_vaccine")
-public class Vaccine implements Serializable {
+public class YmVaccine implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -41,7 +37,7 @@ public class Vaccine implements Serializable {
     /**
      * 疫苗库存
      */
-    private Long number;
+    private Long amount;
     /**
      * 疫苗分类
      */

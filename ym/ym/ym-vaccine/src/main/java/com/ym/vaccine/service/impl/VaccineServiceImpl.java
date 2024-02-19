@@ -8,17 +8,16 @@ import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ym.vaccine.domain.Vaccine;
-import com.ym.vaccine.domain.vo.VaccineVo;
-import com.ym.vaccine.mapper.VaccineMapper;
+import com.ym.vaccine.domain.YmVaccine;
+import com.ym.vaccine.domain.vo.YmVaccineVo;
+import com.ym.vaccine.mapper.YmVaccineMapper;
 import com.ym.vaccine.service.IVaccineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.ym.vaccine.domain.bo.VaccineBo;
+import com.ym.vaccine.domain.bo.YmVaccineBo;
 
 
 import java.util.List;
-import java.util.Map;
 import java.util.Collection;
 
 /**
@@ -29,15 +28,15 @@ import java.util.Collection;
  */
 @RequiredArgsConstructor
 @Service
-public class VaccineServiceImpl extends ServiceImpl<VaccineMapper,Vaccine> implements IVaccineService {
+public class VaccineServiceImpl extends ServiceImpl<YmVaccineMapper, YmVaccine> implements IVaccineService {
 
-    private final VaccineMapper baseMapper;
+    private final YmVaccineMapper baseMapper;
 
     /**
      * 查询疫苗信息
      */
     @Override
-    public VaccineVo queryById(Long id){
+    public YmVaccineVo queryById(Long id){
         return baseMapper.selectVoById(id);
     }
 
@@ -45,9 +44,9 @@ public class VaccineServiceImpl extends ServiceImpl<VaccineMapper,Vaccine> imple
      * 查询疫苗信息列表
      */
     @Override
-    public TableDataInfo<VaccineVo> queryPageList(VaccineBo bo, PageQuery pageQuery) {
-        LambdaQueryWrapper<Vaccine> lqw = buildQueryWrapper(bo);
-        Page<VaccineVo> result = baseMapper.selectVoPage(pageQuery.build(), lqw);
+    public TableDataInfo<YmVaccineVo> queryPageList(YmVaccineBo bo, PageQuery pageQuery) {
+        LambdaQueryWrapper<YmVaccine> lqw = buildQueryWrapper(bo);
+        Page<YmVaccineVo> result = baseMapper.selectVoPage(pageQuery.build(), lqw);
         return TableDataInfo.build(result);
     }
 
@@ -55,20 +54,20 @@ public class VaccineServiceImpl extends ServiceImpl<VaccineMapper,Vaccine> imple
      * 查询疫苗信息列表
      */
     @Override
-    public List<VaccineVo> queryList(VaccineBo bo) {
-        LambdaQueryWrapper<Vaccine> lqw = buildQueryWrapper(bo);
+    public List<YmVaccineVo> queryList(YmVaccineBo bo) {
+        LambdaQueryWrapper<YmVaccine> lqw = buildQueryWrapper(bo);
         return baseMapper.selectVoList(lqw);
     }
 
-    private LambdaQueryWrapper<Vaccine> buildQueryWrapper(VaccineBo bo) {
+    private LambdaQueryWrapper<YmVaccine> buildQueryWrapper(YmVaccineBo bo) {
 
-        LambdaQueryWrapper<Vaccine> lqw = Wrappers.lambdaQuery();
-        lqw.like(StringUtils.isNotBlank(bo.getName()), Vaccine::getName, bo.getName());
-        lqw.eq(bo.getPrice() != null, Vaccine::getPrice, bo.getPrice());
-        lqw.eq(StringUtils.isNotBlank(bo.getManufacturer()), Vaccine::getManufacturer, bo.getManufacturer());
-        lqw.eq(StringUtils.isNotBlank(bo.getCategory()), Vaccine::getCategory, bo.getCategory());
-        lqw.eq(StringUtils.isNotBlank(bo.getDetail()), Vaccine::getDetail, bo.getDetail());
-        lqw.eq(StringUtils.isNotBlank(bo.getImgUrl()), Vaccine::getImgUrl, bo.getImgUrl());
+        LambdaQueryWrapper<YmVaccine> lqw = Wrappers.lambdaQuery();
+        lqw.like(StringUtils.isNotBlank(bo.getName()), YmVaccine::getName, bo.getName());
+        lqw.eq(bo.getPrice() != null, YmVaccine::getPrice, bo.getPrice());
+        lqw.eq(StringUtils.isNotBlank(bo.getManufacturer()), YmVaccine::getManufacturer, bo.getManufacturer());
+        lqw.eq(StringUtils.isNotBlank(bo.getCategory()), YmVaccine::getCategory, bo.getCategory());
+        lqw.eq(StringUtils.isNotBlank(bo.getDetail()), YmVaccine::getDetail, bo.getDetail());
+        lqw.eq(StringUtils.isNotBlank(bo.getImgUrl()), YmVaccine::getImgUrl, bo.getImgUrl());
         return lqw;
     }
 
@@ -76,8 +75,8 @@ public class VaccineServiceImpl extends ServiceImpl<VaccineMapper,Vaccine> imple
      * 新增疫苗信息
      */
     @Override
-    public Boolean insertByBo(VaccineBo bo) {
-        Vaccine add = BeanUtil.toBean(bo, Vaccine.class);
+    public Boolean insertByBo(YmVaccineBo bo) {
+        YmVaccine add = BeanUtil.toBean(bo, YmVaccine.class);
         validEntityBeforeSave(add);
         boolean flag = baseMapper.insert(add) > 0;
         if (flag) {
@@ -90,8 +89,8 @@ public class VaccineServiceImpl extends ServiceImpl<VaccineMapper,Vaccine> imple
      * 修改疫苗信息
      */
     @Override
-    public Boolean updateByBo(VaccineBo bo) {
-        Vaccine update = BeanUtil.toBean(bo, Vaccine.class);
+    public Boolean updateByBo(YmVaccineBo bo) {
+        YmVaccine update = BeanUtil.toBean(bo, YmVaccine.class);
         validEntityBeforeSave(update);
         return baseMapper.updateById(update) > 0;
     }
@@ -99,7 +98,7 @@ public class VaccineServiceImpl extends ServiceImpl<VaccineMapper,Vaccine> imple
     /**
      * 保存前的数据校验
      */
-    private void validEntityBeforeSave(Vaccine entity){
+    private void validEntityBeforeSave(YmVaccine entity){
         //TODO 做一些数据校验,如唯一约束
     }
 

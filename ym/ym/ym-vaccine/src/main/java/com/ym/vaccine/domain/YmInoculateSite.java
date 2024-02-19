@@ -22,23 +22,28 @@ public class YmInoculateSite implements Serializable {
     private static final long serialVersionUID=1L;
 
     /**
-     *
+     * id
      */
     @TableId(value = "id")
     private Long id;
     /**
-     *
+     * 站点名称
      */
     private String name;
 
     /**
-     *
+     * 站点地址
      */
     private String address;
     /**
-     *
+     * 站点图片
      */
     private String imgUrl;
+
+    /**
+     * 联系方式
+     */
+    private String contact;
 
 
 }

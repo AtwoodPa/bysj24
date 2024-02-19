@@ -2,11 +2,11 @@ package com.ym.vaccine.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ym.vaccine.domain.Vaccine;
-import com.ym.vaccine.domain.bo.VaccineBo;
+import com.ym.vaccine.domain.YmVaccine;
+import com.ym.vaccine.domain.bo.YmVaccineBo;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
-import com.ym.vaccine.domain.vo.VaccineVo;
+import com.ym.vaccine.domain.vo.YmVaccineVo;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,32 +17,32 @@ import java.util.List;
  * @author ym
  * @date 2024-01-29
  */
-public interface IVaccineService extends IService<Vaccine> {
+public interface IVaccineService extends IService<YmVaccine> {
 
     /**
      * 查询疫苗信息
      */
-    VaccineVo queryById(Long id);
+    YmVaccineVo queryById(Long id);
 
     /**
      * 查询疫苗信息列表
      */
-    TableDataInfo<VaccineVo> queryPageList(VaccineBo bo, PageQuery pageQuery);
+    TableDataInfo<YmVaccineVo> queryPageList(YmVaccineBo bo, PageQuery pageQuery);
 
     /**
      * 查询疫苗信息列表
      */
-    List<VaccineVo> queryList(VaccineBo bo);
+    List<YmVaccineVo> queryList(YmVaccineBo bo);
 
     /**
      * 新增疫苗信息
      */
-    Boolean insertByBo(VaccineBo bo);
+    Boolean insertByBo(YmVaccineBo bo);
 
     /**
      * 修改疫苗信息
      */
-    Boolean updateByBo(VaccineBo bo);
+    Boolean updateByBo(YmVaccineBo bo);
 
     /**
      * 校验并批量删除疫苗信息信息

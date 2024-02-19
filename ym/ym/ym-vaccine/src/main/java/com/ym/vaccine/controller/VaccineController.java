@@ -10,9 +10,8 @@ import java.util.UUID;
 
 import cn.dev33.satoken.annotation.SaIgnore;
 import com.ym.vaccine.annotation.PassToken;
-import com.ym.vaccine.domain.Vaccine;
 import com.ym.vaccine.domain.common.Result;
-import com.ym.vaccine.domain.vo.VaccineVo;
+import com.ym.vaccine.domain.vo.YmVaccineVo;
 import com.ym.vaccine.service.IVaccineService;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +31,7 @@ import com.ym.common.core.validate.EditGroup;
 import com.ym.common.enums.BusinessType;
 import com.ym.common.utils.poi.ExcelUtil;
 
-import com.ym.vaccine.domain.bo.VaccineBo;
+import com.ym.vaccine.domain.bo.YmVaccineBo;
 
 import com.ym.common.core.page.TableDataInfo;
 import org.springframework.web.multipart.MultipartFile;
@@ -58,7 +57,7 @@ public class VaccineController extends BaseController {
      */
     @SaCheckPermission("vaccine:vaccine:list")
     @GetMapping("/list")
-    public TableDataInfo<VaccineVo> list(VaccineBo bo, PageQuery pageQuery) {
+    public TableDataInfo<YmVaccineVo> list(YmVaccineBo bo, PageQuery pageQuery) {
         return iVaccineService.queryPageList(bo, pageQuery);
     }
     @SaIgnore
@@ -106,9 +105,9 @@ public class VaccineController extends BaseController {
     @SaCheckPermission("vaccine:vaccine:export")
     @Log(title = "疫苗信息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
-    public void export(VaccineBo bo, HttpServletResponse response) {
-        List<VaccineVo> list = iVaccineService.queryList(bo);
-        ExcelUtil.exportExcel(list, "疫苗信息", VaccineVo.class, response);
+    public void export(YmVaccineBo bo, HttpServletResponse response) {
+        List<YmVaccineVo> list = iVaccineService.queryList(bo);
+        ExcelUtil.exportExcel(list, "疫苗信息", YmVaccineVo.class, response);
     }
 
     /**
@@ -118,7 +117,7 @@ public class VaccineController extends BaseController {
      */
     @SaCheckPermission("vaccine:vaccine:query")
     @GetMapping("/{id}")
-    public R<VaccineVo> getInfo(@NotNull(message = "主键不能为空")
+    public R<YmVaccineVo> getInfo(@NotNull(message = "主键不能为空")
                                      @PathVariable Long id) {
         return R.ok(iVaccineService.queryById(id));
     }
@@ -130,7 +129,7 @@ public class VaccineController extends BaseController {
     @Log(title = "疫苗信息", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
-    public R<Void> add(@Validated(AddGroup.class) @RequestBody VaccineBo bo) {
+    public R<Void> add(@Validated(AddGroup.class) @RequestBody YmVaccineBo bo) {
         return toAjax(iVaccineService.insertByBo(bo));
     }
 
@@ -141,7 +140,7 @@ public class VaccineController extends BaseController {
     @Log(title = "疫苗信息", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
-    public R<Void> edit(@Validated(EditGroup.class) @RequestBody VaccineBo bo) {
+    public R<Void> edit(@Validated(EditGroup.class) @RequestBody YmVaccineBo bo) {
         return toAjax(iVaccineService.updateByBo(bo));
     }
 
