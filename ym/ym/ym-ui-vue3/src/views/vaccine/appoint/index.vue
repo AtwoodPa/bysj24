@@ -1,35 +1,30 @@
 <template>
   <div class="app-container">
-    <el-table v-loading="loading" :data="appointList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
+    <el-table v-loading="loading" :data="appointList" >
+
       <el-table-column label="ID" align="center" prop="id" v-if="true"/>
-      <el-table-column label="预约用户信息" align="center" prop="userId" />
+      <el-table-column label="预约用户信息" align="center" prop="userName" />
       <el-table-column label="预约日期" align="center" prop="appointDate" width="180">
-        <template slot-scope="scope">
+        <template #default="scope">
           <span>{{ parseTime(scope.row.appointDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
       <el-table-column label="时间段" align="center" prop="timeSlot" />
-      <el-table-column label="预约状态" align="center" prop="status" />
-      <el-table-column label="接种站点信息" align="center" prop="inoculateSiteId" />
-      <el-table-column label="疫苗信息" align="center" prop="vaccineId" />
+      <el-table-column label="预约状态" align="center" prop="statusName" />
+      <el-table-column label="接种站点信息" align="center" prop="inoculateSiteName" />
+      <el-table-column label="疫苗信息" align="center" prop="vaccineName" />
       <el-table-column label="第几针" align="center" prop="whichPin" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['vaccine:appoint:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['vaccine:appoint:remove']"
-          >删除</el-button>
+        <template #default="scope">
+          <el-tooltip content="修改" placement="top" >
+            <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['vaccine:appoint:edit']"></el-button>
+          </el-tooltip>
+          <el-tooltip content="支付" placement="top" >
+            <el-button link type="primary" icon="Iphone" @click="handlePay(scope.row)" ></el-button>
+          </el-tooltip>
+          <el-tooltip content="取消预约" placement="top" >
+            <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['vaccine:appoint:remove']"></el-button>
+          </el-tooltip>
         </template>
       </el-table-column>
     </el-table>
@@ -43,33 +38,74 @@
     />
 
     <!-- 添加或修改疫苗预约对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="预约用户信息" prop="userId">
-          <el-input v-model="form.userId" placeholder="请输入预约用户信息" />
-        </el-form-item>
+    <el-dialog :title="title" v-model="open" width="500px" append-to-body>
+      <el-form ref="appointForm" :model="form" :rules="rules" label-width="80px">
+
         <el-form-item label="预约日期" prop="appointDate">
-          <el-date-picker clearable
+          <el-date-picker
             v-model="form.appointDate"
-            type="datetime"
-            value-format="yyyy-MM-dd HH:mm:ss"
-            placeholder="请选择预约日期">
-          </el-date-picker>
+            type="date"
+            format="YYYY-MM-DD"
+            value-format="YYYY-MM-DD HH:mm:ss"
+            placeholder="选择日期"
+            style="width: 100%"
+          ></el-date-picker>
         </el-form-item>
-        <el-form-item label="上午 or 下午" prop="timeSlot">
-          <el-input v-model="form.timeSlot" placeholder="请输入上午 or 下午" />
+        <el-form-item label="时间段" prop="timeSlot">
+          <el-select v-model="form.timeSlot" placeholder="请选择时间段">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="预约状态" prop="status">
-          <el-input v-model="form.status" placeholder="请输入预约状态" />
+
+        <el-form-item label="站点ID" prop="inoculateSiteId">
+          <el-select
+            v-model="form.inoculateSiteId"
+            placeholder="请选择接种站点信息"
+            size="default"
+            style="width: 340px"
+          >
+            <el-option
+              v-for="item in address"
+              :key="item.key"
+              :label="item.value"
+              :value="item.key"
+            ></el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="接种站点信息" prop="inoculateSiteId">
-          <el-input v-model="form.inoculateSiteId" placeholder="请输入接种站点信息" />
+        <el-form-item label="疫苗ID" prop="vaccineId">
+          <el-select
+            v-model="form.vaccineId"
+            placeholder="请选择疫苗"
+            size="default"
+            style="width: 340px"
+          >
+            <el-option
+              v-for="item in vaccines"
+              :key="item.key"
+              :label="item.value"
+              :value="item.key"
+            ></el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="疫苗信息" prop="vaccineId">
-          <el-input v-model="form.vaccineId" placeholder="请输入疫苗信息" />
-        </el-form-item>
-        <el-form-item label="第几针" prop="whichPin">
-          <el-input v-model="form.whichPin" placeholder="请输入第几针" />
+        <el-form-item label="接种针剂" prop="whichPin">
+          <el-select
+            v-model="form.whichPin"
+            placeholder="请选择"
+            size="default"
+            style="width: 240px"
+          >
+            <el-option
+              v-for="item in options2"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -80,189 +116,188 @@
   </div>
 </template>
 
-<script>
-import { listAppoint, getAppoint, delAppoint, addAppoint, updateAppoint } from "@/api/vaccine/appoint";
+<script setup name="Appoint">
+import {addOrder,getAppointAddress, getVaccines, listAppoint, getAppoint, delAppoint, addAppoint, updateAppoint } from "@/api/vaccine/appoint";
+const {proxy} = getCurrentInstance();
 
-export default {
-  name: "Appoint",
-  data() {
-    return {
-      // 按钮loading
-      buttonLoading: false,
-      // 遮罩层
-      loading: true,
-      // 选中数组
-      ids: [],
-      // 非单个禁用
-      single: true,
-      // 非多个禁用
-      multiple: true,
-      // 显示搜索条件
-      showSearch: true,
-      // 总条数
-      total: 0,
-      // 疫苗预约表格数据
-      appointList: [],
-      // 弹出层标题
-      title: "",
-      // 是否显示弹出层
-      open: false,
-      // 查询参数
-      queryParams: {
-        pageNum: 1,
-        pageSize: 10,
-        userId: undefined,
-        appointDate: undefined,
-        timeSlot: undefined,
-        status: undefined,
-        inoculateSiteId: undefined,
-        vaccineId: undefined,
-        whichPin: undefined,
-      },
-      // 表单参数
-      form: {},
-      // 表单校验
-      rules: {
-        id: [
-          { required: true, message: "不能为空", trigger: "blur" }
-        ],
-        userId: [
-          { required: true, message: "预约用户信息不能为空", trigger: "blur" }
-        ],
-        appointDate: [
-          { required: true, message: "预约日期不能为空", trigger: "blur" }
-        ],
-        timeSlot: [
-          { required: true, message: "上午 or 下午不能为空", trigger: "blur" }
-        ],
-        status: [
-          { required: true, message: "预约状态不能为空", trigger: "blur" }
-        ],
-        inoculateSiteId: [
-          { required: true, message: "接种站点信息不能为空", trigger: "blur" }
-        ],
-        vaccineId: [
-          { required: true, message: "疫苗信息不能为空", trigger: "blur" }
-        ],
-        whichPin: [
-          { required: true, message: "第几针不能为空", trigger: "blur" }
-        ],
-      }
-    };
+const appointList = ref([]);
+const open = ref(false);
+const buttonLoading = ref(false);
+const loading = ref(true);
+const showSearch = ref(true);
+const ids = ref([]);
+const single = ref(true);
+const multiple = ref(true);
+const total = ref(0);
+const title = ref("");
+const address = ref([]);
+const vaccines = ref([]);
+const options = ref([
+  {
+    value: '上午',
+    lable: '上午',
   },
-  created() {
-    this.getList();
+  {
+    value: '下午',
+    lable: '下午',
+  }]);
+const options2 = ref([
+  {
+    value: '第一针',
+    lable: '第一针',
   },
-  methods: {
-    /** 查询疫苗预约列表 */
-    getList() {
-      this.loading = true;
-      listAppoint(this.queryParams).then(response => {
-        this.appointList = response.rows;
-        this.total = response.total;
-        this.loading = false;
-      });
-    },
-    // 取消按钮
-    cancel() {
-      this.open = false;
-      this.reset();
-    },
-    // 表单重置
-    reset() {
-      this.form = {
-        id: undefined,
-        userId: undefined,
-        appointDate: undefined,
-        timeSlot: undefined,
-        status: undefined,
-        inoculateSiteId: undefined,
-        vaccineId: undefined,
-        whichPin: undefined,
-        createTime: undefined
-      };
-      this.resetForm("form");
-    },
-    /** 搜索按钮操作 */
-    handleQuery() {
-      this.queryParams.pageNum = 1;
-      this.getList();
-    },
-    /** 重置按钮操作 */
-    resetQuery() {
-      this.resetForm("queryForm");
-      this.handleQuery();
-    },
-    // 多选框选中数据
-    handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.id)
-      this.single = selection.length!==1
-      this.multiple = !selection.length
-    },
-    /** 新增按钮操作 */
-    handleAdd() {
-      this.reset();
-      this.open = true;
-      this.title = "添加疫苗预约";
-    },
-    /** 修改按钮操作 */
-    handleUpdate(row) {
-      this.loading = true;
-      this.reset();
-      const id = row.id || this.ids
-      getAppoint(id).then(response => {
-        this.loading = false;
-        this.form = response.data;
-        this.open = true;
-        this.title = "修改疫苗预约";
-      });
-    },
-    /** 提交按钮 */
-    submitForm() {
-      this.$refs["form"].validate(valid => {
-        if (valid) {
-          this.buttonLoading = true;
-          if (this.form.id != null) {
-            updateAppoint(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
-              this.open = false;
-              this.getList();
-            }).finally(() => {
-              this.buttonLoading = false;
-            });
-          } else {
-            addAppoint(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            }).finally(() => {
-              this.buttonLoading = false;
-            });
-          }
-        }
-      });
-    },
-    /** 删除按钮操作 */
-    handleDelete(row) {
-      const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除疫苗预约编号为"' + ids + '"的数据项？').then(() => {
-        this.loading = true;
-        return delAppoint(ids);
-      }).then(() => {
-        this.loading = false;
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      }).finally(() => {
-        this.loading = false;
-      });
-    },
-    /** 导出按钮操作 */
-    handleExport() {
-      this.download('vaccine/appoint/export', {
-        ...this.queryParams
-      }, `appoint_${new Date().getTime()}.xlsx`)
-    }
+  {
+    value: '第二针',
+    lable: '第二针',
+  }]);
+const data = reactive({
+  queryParams: {
+    pageNum: 1,
+    pageSize: 10,
+    userId: undefined,
+    appointDate: undefined,
+    timeSlot: undefined,
+    status: undefined,
+    inoculateSiteId: undefined,
+    vaccineId: undefined,
+    whichPin: undefined,
+  },
+  form: {
+  },
+  rules: {
+    id: [
+      { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    appointDate: [
+      { required: true, message: "预约日期不能为空", trigger: "blur" }
+    ],
+    timeSlot: [
+      { required: true, message: "上午 or 下午不能为空", trigger: "blur" }
+    ],
+
+    inoculateSiteId: [
+      { required: true, message: "接种站点信息不能为空", trigger: "blur" }
+    ],
+    vaccineId: [
+      { required: true, message: "疫苗信息不能为空", trigger: "blur" }
+    ],
+    whichPin: [
+      { required: true, message: "第几针不能为空", trigger: "blur" }
+    ],
   }
-};
+});
+
+const {queryParams, form, rules} = toRefs(data);
+
+function getList(){
+  loading.value = true;
+  listAppoint(queryParams.value).then(response => {
+    appointList.value = response.rows;
+    total.value = response.total;
+    loading.value = false;
+  });
+}
+function cancel(){
+  open.value = false;
+  reset();
+}
+function reset(){
+  form.value = {
+    id: undefined,
+    userId: undefined,
+    appointDate: undefined,
+    timeSlot: undefined,
+    status: undefined,
+    inoculateSiteId: undefined,
+    vaccineId: undefined,
+    whichPin: undefined,
+    createTime: undefined
+  };
+  proxy.resetForm["appointForm"];
+
+}
+function handleUpdate(row) {
+  loading.value = true;
+  reset();
+  const id = row.id || ids.value;
+  getAppoint(id).then(response => {
+    loading.value = false;
+    form.value = response.data;
+    open.value = true;
+    title.value = "修改疫苗接种站点管理";
+  }).finally(() => {
+    loading.value = false;
+  });
+}
+function handlePay(row) {
+  const id = row.id ;
+  const name = row.vaccineName;
+  proxy.$modal.confirm('是否确认支付"' + name + '"？').then(() => {
+    loading.value = true;
+    return addOrder(id);
+  }).then(() => {
+    loading.value = false;
+    getList();
+    proxy.$modal.msgSuccess("支付成功");
+  }).catch(() => {
+  }).finally(() => {
+    loading.value = false;
+  });
+}
+function handleDelete(row) {
+  const id = row.id ;
+  const name = row.vaccineName;
+  proxy.$modal.confirm('是否确认取消预约"' + name + '"？').then(() => {
+    loading.value = true;
+    return delAppoint(id);
+  }).then(() => {
+    loading.value = false;
+    getList();
+    proxy.$modal.msgSuccess("取消预约成功");
+  }).catch(() => {
+  }).finally(() => {
+    loading.value = false;
+  });
+}
+function submitForm(){
+  proxy.$refs["appointForm"].validate(valid => {
+    if (valid) {
+      buttonLoading.value = true;
+      if (form.value.id != null) {
+        updateAppoint(form.value).then(response => {
+          proxy.$modal.msgSuccess("修改成功");
+          open.value = false;
+          getList();
+        }).finally(() => {
+          buttonLoading.value = false;
+        });
+      } else {
+        addAppoint(form.value).then(response => {
+          proxy.$modal.msgSuccess("新增成功");
+          open.value = false;
+          getList();
+        }).finally(() => {
+          buttonLoading.value = false;
+        });
+      }
+    }
+  });
+}
+function getInoculateSite(){
+  getAppointAddress().then(resp => {
+    address.value = resp
+  })
+}
+
+function getVaccine(){
+  getVaccines().then(response => {
+    vaccines.value = response
+  })
+}
+// 获取接种站点数据
+getInoculateSite();
+// 获取疫苗信息数据
+getVaccine();
+getList();
+
 </script>

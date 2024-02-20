@@ -106,6 +106,9 @@
         <el-form-item label="站点地址" prop="address">
           <el-input v-model="form.address" placeholder="请输入疫苗接种站点地址" />
         </el-form-item>
+        <el-form-item label="联系方式" prop="contact">
+          <el-input v-model="form.contact" placeholder="请输入疫苗接种站点联系方式" />
+        </el-form-item>
         <el-form-item label="" prop="imgUrl">
           <el-upload
             class="avatar-uploader"

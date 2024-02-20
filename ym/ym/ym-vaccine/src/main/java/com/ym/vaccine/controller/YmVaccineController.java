@@ -61,6 +61,8 @@ public class YmVaccineController extends BaseController {
         return iYmVaccineService.queryPageList(bo, pageQuery);
     }
 
+
+
     @SaIgnore
     @GetMapping("/findAll")
     public Result findAll() {

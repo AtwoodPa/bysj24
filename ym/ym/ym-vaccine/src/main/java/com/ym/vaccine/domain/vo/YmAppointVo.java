@@ -37,6 +37,7 @@ public class YmAppointVo implements Serializable {
     @ExcelProperty(value = "预约用户信息")
     private Long userId;
 
+    private String userName;
     /**
      * 预约日期
      */
@@ -56,17 +57,24 @@ public class YmAppointVo implements Serializable {
     @ExcelDictFormat(readConverterExp = "待支付、已支付、已接种")
     private Long status;
 
+    private String statusName;
+
     /**
      * 接种站点信息
      */
     @ExcelProperty(value = "接种站点信息")
     private Long inoculateSiteId;
+    /**
+     * 站点名称
+     */
+    private String inoculateSiteName;
 
     /**
      * 疫苗信息
      */
     @ExcelProperty(value = "疫苗信息")
     private Long vaccineId;
+    private String vaccineName;
 
     /**
      * 第几针

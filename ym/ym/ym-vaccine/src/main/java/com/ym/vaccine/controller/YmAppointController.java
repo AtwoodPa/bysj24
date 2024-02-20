@@ -7,14 +7,19 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import cn.dev33.satoken.annotation.SaIgnore;
-import cn.dev33.satoken.stp.StpUtil;
+import cn.hutool.core.bean.BeanUtil;
 import com.ym.common.core.domain.entity.SysUser;
 import com.ym.common.core.domain.model.LoginUser;
 import com.ym.common.helper.LoginHelper;
-import com.ym.common.utils.StringUtils;
 import com.ym.system.service.ISysUserService;
-import com.ym.vaccine.mapper.YmVaccineMapper;
-import com.ym.vaccine.mapper.YmInoculateSiteMapper;
+import com.ym.vaccine.domain.YmInoculateSite;
+import com.ym.vaccine.domain.YmVaccine;
+import com.ym.vaccine.domain.bo.OnlineAppointBo;
+import com.ym.vaccine.domain.bo.YmOrdersBo;
+import com.ym.vaccine.domain.common.SelectOption;
+import com.ym.vaccine.service.IYmInoculateSiteService;
+import com.ym.vaccine.service.IYmOrdersService;
+import com.ym.vaccine.service.IYmVaccineService;
 import lombok.RequiredArgsConstructor;
 
 import javax.servlet.http.HttpServletResponse;
@@ -52,36 +57,108 @@ import com.ym.common.core.page.TableDataInfo;
 public class YmAppointController extends BaseController {
 
     private final IYmAppointService iYmAppointService;
+    private final IYmVaccineService iYmVaccineService;
+    private final IYmInoculateSiteService iYmInoculateSiteService;
+    /* 支付相关 */
+    private final IYmOrdersService ordersService;
 
-
-    private final YmInoculateSiteMapper inoculateSiteMapper;
-    private final YmVaccineMapper ymVaccineMapper;
 
     private final ISysUserService userService;
 
 
-
+    /**
+     * 用户在线预约
+     */
     @SaIgnore
-    @GetMapping("/currentLoginUser")
-    public R<SysUser> getCurrentLoginUser() {
+    @PostMapping("/appoint")
+    public R appoint(@RequestBody OnlineAppointBo bo) {
+        Boolean result = iYmAppointService.appoint(bo);
+        return R.ok(result);
+    }
+
+    /**
+     * 获取所有疫苗信息
+     *
+     * @return
+     */
+    @SaIgnore
+    @GetMapping("/getVaccines")
+    public List<SelectOption> getVaccines() {
+        return iYmVaccineService.list().stream().map(item -> SelectOption.of(String.valueOf(item.getId()), item.getName())).collect(Collectors.toList());
+    }
+
+    /**
+     * 获取所有接种点信息
+     *
+     * @return
+     */
+    @SaIgnore
+    @GetMapping("/getAppointAddress")
+    public List<SelectOption> getAppointAddress() {
+        return iYmInoculateSiteService.list().stream().map(item -> SelectOption.of(String.valueOf(item.getId()), item.getName())).collect(Collectors.toList());
+    }
+
+    /**
+     * 获取用户预约记录，当前登陆账户的所有预约记录
+     * @param pageQuery
+     * @return
+     */
+    @SaIgnore
+    @GetMapping("/getAppointRecordsByUserId")
+    public TableDataInfo<YmAppointVo> getAppointRecordsByUserId(PageQuery pageQuery) {
         Long userId = LoginHelper.getUserId();
-        log.info("loginId: {}", userId);
-        SysUser user = userService.selectUserById(userId);
-        return R.ok(user);
+        YmAppointBo bo = new YmAppointBo();
+        bo.setUserId(userId);
+        TableDataInfo<YmAppointVo> ymAppointVoTableDataInfo = iYmAppointService.queryPageList(bo, pageQuery);
+        List<YmAppointVo> rows = ymAppointVoTableDataInfo.getRows();
+        List<YmAppointVo> collect = rows.stream().map(item -> {
+            Long status = item.getStatus();
+            if (status == 0){
+                item.setStatusName("待支付");
+            }else if (status == 1){
+                item.setStatusName("已支付");
+            }else if (status == 2){
+                item.setStatusName("已接种");
+            }
+            SysUser sysUser = userService.selectUserById(item.getUserId());
+            item.setUserName(sysUser.getNickName());
+            YmVaccine vaccine = iYmVaccineService.getById(item.getVaccineId());
+            item.setVaccineName(vaccine.getName());
+            YmInoculateSite site = iYmInoculateSiteService.getById(item.getInoculateSiteId());
+            item.setInoculateSiteName(site.getName());
+            return item;
+        }).collect(Collectors.toList());
+
+        ymAppointVoTableDataInfo.setRows(collect);
+        return ymAppointVoTableDataInfo;
     }
 
+    /**
+     * 支付功能
+     * @param id
+     * @return
+     */
     @SaIgnore
-    @GetMapping("/currentLoginUser2")
-    public R<Map<String, Object>> getCurrentLoginUser2() {
-        LoginUser loginUser = LoginHelper.getLoginUser();
-        SysUser user = userService.selectUserById(loginUser.getUserId());
-        Map<String, Object> ajax = new HashMap<>();
-        ajax.put("user", user);
-        ajax.put("roles", loginUser.getRolePermission());
-        ajax.put("permissions", loginUser.getMenuPermission());
-        return R.ok(ajax);
-    }
+    @PostMapping("/addOrder")
+    public R<Void> addOrder(@RequestBody Long id) {
+        // 根据id查询预约信息
+        YmAppointVo appoint = iYmAppointService.queryById(id);
+        if(appoint.getStatus() == 1L){
+            return R.fail("该预约已支付");
+        }
+        // 修改预约状态为已支付
+        appoint.setStatus(1L);
+        iYmAppointService.updateByBo(BeanUtil.copyProperties(appoint, YmAppointBo.class));
+        // 创建订单
 
+        YmOrdersBo ordersBo = new YmOrdersBo();
+        ordersBo.setAppointId(appoint.getId());
+        ordersBo.setTotalAmount(iYmVaccineService.getById(appoint.getVaccineId()).getPrice());
+        ordersBo.setPaymentMethod("在线支付");
+        ordersBo.setStatus(1L);
+
+        return toAjax(ordersService.insertByBo(ordersBo));
+    }
     /* 后台管理接口 */
 
     /**
@@ -123,7 +200,11 @@ public class YmAppointController extends BaseController {
     @GetMapping("/{id}")
     public R<YmAppointVo> getInfo(@NotNull(message = "主键不能为空")
                                   @PathVariable Long id) {
-        return R.ok(iYmAppointService.queryById(id));
+        YmAppointVo data = iYmAppointService.queryById(id);
+        if(data.getStatus() == 1L){
+            return R.fail("该预约已支付，无法修改");
+        }
+        return R.ok(data);
     }
 
     /**

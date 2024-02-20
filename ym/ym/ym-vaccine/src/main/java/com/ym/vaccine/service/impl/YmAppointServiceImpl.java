@@ -2,11 +2,15 @@ package com.ym.vaccine.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ym.common.core.domain.model.LoginUser;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.ym.common.helper.LoginHelper;
+import com.ym.vaccine.domain.YmVaccine;
+import com.ym.vaccine.domain.bo.OnlineAppointBo;
 import com.ym.vaccine.service.IYmVaccineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,49 +37,6 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper, YmAppoint
     private final IYmVaccineService vaccineService;
 
 
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)   //出错回滚
-//    public void appoint(YmAppoint appoint, YmPlan plan) throws Exception {
-//        try {
-//            uploadImageQrCodeImageUrl = new String(uploadImageQrCodeImageUrl.getBytes("iso8859-1"), StandardCharsets.UTF_8);   //application.properties有中文需要转码
-//        } catch (UnsupportedEncodingException e) {
-//            throw new RuntimeException("字符转码异常！");
-//        }
-//
-//        if (appoint == null || plan == null) {
-//            throw new RuntimeException("参数有误");
-//        }
-//
-//        plan.setAmount(plan.getAmount() - 1);
-//        planService.updateById(plan);
-//        appoint.setStatus(0L);
-//        appoint.setCreateTime(new Date());
-//        save(appoint);
-//        String fileName = UUID.randomUUID().toString().replace("-", "") + ".jpg";
-//        String path = QRCodeUtils.generateQRCode(appoint.getId() + "", 400, 400, "jpg", uploadImageQrCodeImageUrl + "/" + fileName);
-//        appoint.setQrCodeUrl("/" + fileName);
-//        updateById(appoint);
-//
-//        YmPay pay = new YmPay();
-//        pay.setCost(vaccineService.getById(plan.getVaccineId()).getPrice());
-//        pay.setCreateTime(new Date());
-//        pay.setAppointId(appoint.getId());
-//        payService.save(pay);
-//    }
-
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)   //出错回滚
-//    public void cancelAppoint(YmAppoint appoint, YmPlan plan) {
-//        if (appoint == null || plan == null) {
-//            throw new RuntimeException("参数有误");
-//        }
-//
-//        appoint.setStatus(6L);
-//        updateById(appoint);
-//
-//        plan.setAmount(plan.getAmount() + 1);
-//        planService.updateById(plan);
-//    }
 
     /**
      * 查询预约
@@ -156,5 +117,22 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper, YmAppoint
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteBatchIds(ids) > 0;
+    }
+
+    @Override
+    public Boolean appoint(OnlineAppointBo bo) {
+        // 检查库存是否充足
+        YmVaccine vaccine = vaccineService.getById(bo.getVaccineId());
+        if (vaccine.getAmount() < 1) {
+            return false;
+        }
+        // 获取当前登陆用户信息
+        Long loginUserId = LoginHelper.getUserId();
+        YmAppoint online = BeanUtil.toBean(bo, YmAppoint.class);
+        // 存储当前登陆的用户id
+        online.setUserId(loginUserId);
+        online.setStatus(0L);// 0待支付
+        online.setCreateTime(new Date());
+        return baseMapper.insert(online) > 0;
     }
 }

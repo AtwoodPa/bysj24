@@ -46,7 +46,7 @@ public class YmOrdersBo extends BaseEntity {
     private String paymentMethod;
 
     /**
-     * 订单状态（待支付、已支付、已取消）
+     * 订单状态（0待支付、1已支付、2已取消）
      */
     @NotNull(message = "订单状态（待支付、已支付、已取消）不能为空", groups = {AddGroup.class, EditGroup.class})
     private Long status;

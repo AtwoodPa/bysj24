@@ -57,5 +57,7 @@ public class YmAppoint implements Serializable {
      */
     private String whichPin;
 
+    private Date createTime;
+
 }
 

@@ -4,19 +4,21 @@
       <div slot="header" class="clearfix">
         <span>疫苗在线预约</span>
       </div>
-      <el-form :model="form" label-width="80px">
+      <el-form :model="form" ref="appointRef" label-width="80px">
         <el-form-item label="预约时间">
           <el-col :span="5">
             <el-date-picker
               v-model="form.appointDate"
               type="date"
+              format="YYYY-MM-DD"
+              value-format="YYYY-MM-DD HH:mm:ss"
               placeholder="选择日期"
               style="width: 100%"
             ></el-date-picker>
           </el-col>
           <el-col style="text-align: center" :span="1">-</el-col>
           <el-col :span="5">
-            <el-select v-model="form.time" placeholder="请选择时间段">
+            <el-select v-model="form.timeSlot" placeholder="请选择时间段">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -43,31 +45,31 @@
         </el-form-item>
         <el-form-item label="接种地点">
           <el-select
-            v-model="form.appointSite"
+            v-model="form.inoculateSiteId"
             placeholder="请选择"
             size="default"
             style="width: 340px"
           >
             <el-option
               v-for="item in address"
-              :key="item.inoculateSiteId"
-              :label="item.inoculateSiteAddress"
-              :value="item.inoculateSiteId"
+              :key="item.key"
+              :label="item.value"
+              :value="item.key"
             ></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="接种疫苗">
           <el-select
-            v-model="form.vaccine"
+            v-model="form.vaccineId"
             placeholder="请选择"
             size="default"
             style="width: 340px"
           >
             <el-option
               v-for="item in vaccines"
-              :key="item.vaccineId"
-              :label="item.vaccineName"
-              :value="item.vaccineId"
+              :key="item.key"
+              :label="item.value"
+              :value="item.key"
             ></el-option>
           </el-select>
         </el-form-item>
@@ -108,24 +110,50 @@ const vaccines = ref([]);
 const data = reactive({
   form: {
     appointDate: '',
-    time: '',
+    timeSlot: '',
     whichPin: '',
-    appointSite: '',
-    vaccine: '',
+    inoculateSiteId: '',
+    vaccineId: '',
   }
 });
+function reset(){
+  form.value =  {
+    appointDate: undefined,
+    timeSlot: undefined,
+    whichPin: undefined,
+    inoculateSiteId: undefined,
+    vaccineId: undefined,
+  };
+  // 清除表单数据
+  proxy.resetForm("appointRef")
+}
 const {  form  } = toRefs(data);
 
 function onSubmit(){
+  proxy.$refs["appointRef"].validate(valid => {
+    if (valid) {
+      addAppoint(form.value).then(response => {
+        if (response){
+          proxy.$modal.msgSuccess("预约成功");
+          reset();
+        }
+        });
+      }
 
+  });
 }
 
-function getInoculateSite(){
 
+function getInoculateSite(){
+  getAppointAddress().then(resp => {
+    address.value = resp
+  })
 }
 
 function getVaccine(){
-
+  getVaccines().then(response => {
+    vaccines.value = response
+  })
 }
 // 获取接种站点数据
 getInoculateSite();

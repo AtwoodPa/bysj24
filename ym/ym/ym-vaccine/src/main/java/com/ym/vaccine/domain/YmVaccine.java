@@ -1,9 +1,7 @@
 package com.ym.vaccine.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.ym.common.core.domain.BaseEntity;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 

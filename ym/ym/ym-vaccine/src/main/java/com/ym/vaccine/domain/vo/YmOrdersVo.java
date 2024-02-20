@@ -35,6 +35,21 @@ public class YmOrdersVo implements Serializable {
     private Long appointId;
 
     /**
+     * 用户真实姓名
+     */
+    private String nickName;
+
+    /**
+     * 疫苗名称
+     */
+    private String vaccineName;
+
+    /**
+     * 接种站点名称
+     */
+    private String inoculateSiteName;
+
+    /**
      * 订单总金额
      */
     @ExcelProperty(value = "订单总金额")
@@ -50,8 +65,13 @@ public class YmOrdersVo implements Serializable {
      * 订单状态（待支付、已支付、已取消）
      */
     @ExcelProperty(value = "订单状态", converter = ExcelDictConvert.class)
-    @ExcelDictFormat(readConverterExp = "待=支付、已支付、已取消")
+    @ExcelDictFormat(dictType = "ym_order_type")
     private Long status;
+
+    /**
+     * 订单状态名称
+     */
+    private String statusName;
 
 
 }

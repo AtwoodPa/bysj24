@@ -2,6 +2,7 @@ package com.ym.vaccine.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ym.vaccine.domain.YmAppoint;
+import com.ym.vaccine.domain.bo.OnlineAppointBo;
 import com.ym.vaccine.domain.vo.YmAppointVo;
 import com.ym.vaccine.domain.bo.YmAppointBo;
 import com.ym.common.core.page.TableDataInfo;
@@ -51,4 +52,9 @@ public interface IYmAppointService extends IService<YmAppoint> {
      * 校验并批量删除预约信息
      */
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+    /**
+     * 用户在线预约
+     */
+    Boolean appoint(OnlineAppointBo bo);
 }

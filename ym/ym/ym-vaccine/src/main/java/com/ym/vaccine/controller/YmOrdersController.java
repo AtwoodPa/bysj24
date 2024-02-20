@@ -11,9 +11,14 @@ import com.ym.common.core.validate.AddGroup;
 import com.ym.common.core.validate.EditGroup;
 import com.ym.common.enums.BusinessType;
 import com.ym.common.utils.poi.ExcelUtil;
+import com.ym.system.service.ISysUserService;
+import com.ym.vaccine.domain.YmAppoint;
 import com.ym.vaccine.domain.bo.YmOrdersBo;
 import com.ym.vaccine.domain.vo.YmOrdersVo;
+import com.ym.vaccine.service.IYmAppointService;
+import com.ym.vaccine.service.IYmInoculateSiteService;
 import com.ym.vaccine.service.IYmOrdersService;
+import com.ym.vaccine.service.IYmVaccineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +28,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 订单管理
@@ -37,6 +43,11 @@ import java.util.List;
 public class YmOrdersController extends BaseController {
 
     private final IYmOrdersService iYmOrdersService;
+    private final IYmVaccineService vaccineService;
+    private final IYmInoculateSiteService inoculateSiteService;
+    private final IYmAppointService appointService;
+    private final ISysUserService userService;
+
 
     /**
      * 查询订单管理列表
@@ -44,7 +55,25 @@ public class YmOrdersController extends BaseController {
     @SaCheckPermission("vaccine:orders:list")
     @GetMapping("/list")
     public TableDataInfo<YmOrdersVo> list(YmOrdersBo bo, PageQuery pageQuery) {
-        return iYmOrdersService.queryPageList(bo, pageQuery);
+        TableDataInfo<YmOrdersVo> resultData = iYmOrdersService.queryPageList(bo, pageQuery);
+        List<YmOrdersVo> rows = resultData.getRows();
+        List<YmOrdersVo> toRowsData = rows.stream().map(item -> {
+            Long status = item.getStatus();
+            if (status == 0L) {
+                item.setStatusName("待支付");
+            } else if (status == 1L) {
+                item.setStatusName("已支付");
+            } else if (status == 2L) {
+                item.setStatusName("已取消");
+            }
+            YmAppoint appoint = appointService.getById(item.getAppointId());
+            item.setVaccineName(vaccineService.queryById(appoint.getVaccineId()).getName());
+            item.setInoculateSiteName(inoculateSiteService.queryById(appoint.getInoculateSiteId()).getName());
+            item.setNickName(userService.selectUserById(appoint.getUserId()).getNickName());
+            return item;
+        }).collect(Collectors.toList());
+        resultData.setRows(toRowsData);
+        return resultData;
     }
 
     /**
