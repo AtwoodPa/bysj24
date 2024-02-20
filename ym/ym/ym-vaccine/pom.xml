@@ -39,6 +39,10 @@
             <artifactId>java-jwt</artifactId>
             <version>3.7.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.ym</groupId>
+            <artifactId>ym-system</artifactId>
+        </dependency>
 
     </dependencies>
 

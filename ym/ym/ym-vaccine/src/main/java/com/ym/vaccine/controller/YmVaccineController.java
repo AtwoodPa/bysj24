@@ -56,7 +56,6 @@ public class YmVaccineController extends BaseController {
     /**
      * 查询疫苗信息列表
      */
-    @SaCheckPermission("vaccine:vaccine:list")
     @GetMapping("/list")
     public TableDataInfo<YmVaccineVo> list(YmVaccineBo bo, PageQuery pageQuery) {
         return iYmVaccineService.queryPageList(bo, pageQuery);
@@ -106,7 +105,6 @@ public class YmVaccineController extends BaseController {
     /**
      * 导出疫苗信息列表
      */
-    @SaCheckPermission("vaccine:vaccine:export")
     @Log(title = "疫苗信息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(YmVaccineBo bo, HttpServletResponse response) {
@@ -119,7 +117,6 @@ public class YmVaccineController extends BaseController {
      *
      * @param id 主键
      */
-    @SaCheckPermission("vaccine:vaccine:query")
     @GetMapping("/{id}")
     public R<YmVaccineVo> getInfo(@NotNull(message = "主键不能为空")
                                   @PathVariable Long id) {
@@ -129,7 +126,6 @@ public class YmVaccineController extends BaseController {
     /**
      * 新增疫苗信息
      */
-    @SaCheckPermission("vaccine:vaccine:add")
     @Log(title = "疫苗信息", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
@@ -140,7 +136,6 @@ public class YmVaccineController extends BaseController {
     /**
      * 修改疫苗信息
      */
-    @SaCheckPermission("vaccine:vaccine:edit")
     @Log(title = "疫苗信息", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
@@ -153,7 +148,6 @@ public class YmVaccineController extends BaseController {
      *
      * @param ids 主键串
      */
-    @SaCheckPermission("vaccine:vaccine:remove")
     @Log(title = "疫苗信息", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空")

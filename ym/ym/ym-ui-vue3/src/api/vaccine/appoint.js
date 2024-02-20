@@ -1,5 +1,13 @@
 import request from '@/utils/request'
 
+export function getVaccines() {
+}
+
+
+export function getAppointAddress() {
+}
+
+
 // 查询预约列表
 export function listAppoint(query) {
   return request({

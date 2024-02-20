@@ -1,10 +1,18 @@
 package com.ym.vaccine.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+import cn.dev33.satoken.annotation.SaIgnore;
+import cn.dev33.satoken.stp.StpUtil;
+import com.ym.common.core.domain.entity.SysUser;
+import com.ym.common.core.domain.model.LoginUser;
+import com.ym.common.helper.LoginHelper;
 import com.ym.common.utils.StringUtils;
+import com.ym.system.service.ISysUserService;
 import com.ym.vaccine.mapper.YmVaccineMapper;
 import com.ym.vaccine.mapper.YmInoculateSiteMapper;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
 import com.ym.common.annotation.RepeatSubmit;
@@ -39,6 +48,7 @@ import com.ym.common.core.page.TableDataInfo;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/vaccine/appoint")
+@Slf4j
 public class YmAppointController extends BaseController {
 
     private final IYmAppointService iYmAppointService;
@@ -47,6 +57,30 @@ public class YmAppointController extends BaseController {
     private final YmInoculateSiteMapper inoculateSiteMapper;
     private final YmVaccineMapper ymVaccineMapper;
 
+    private final ISysUserService userService;
+
+
+
+    @SaIgnore
+    @GetMapping("/currentLoginUser")
+    public R<SysUser> getCurrentLoginUser() {
+        Long userId = LoginHelper.getUserId();
+        log.info("loginId: {}", userId);
+        SysUser user = userService.selectUserById(userId);
+        return R.ok(user);
+    }
+
+    @SaIgnore
+    @GetMapping("/currentLoginUser2")
+    public R<Map<String, Object>> getCurrentLoginUser2() {
+        LoginUser loginUser = LoginHelper.getLoginUser();
+        SysUser user = userService.selectUserById(loginUser.getUserId());
+        Map<String, Object> ajax = new HashMap<>();
+        ajax.put("user", user);
+        ajax.put("roles", loginUser.getRolePermission());
+        ajax.put("permissions", loginUser.getMenuPermission());
+        return R.ok(ajax);
+    }
 
     /* 后台管理接口 */
 

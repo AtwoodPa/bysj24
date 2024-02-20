@@ -76,6 +76,7 @@
       </el-table-column>
       <el-table-column label="接种点名称" align="center" prop="name" />
       <el-table-column label="接种点地址" align="center" prop="address" />
+      <el-table-column label="联系方式" align="center" prop="contact" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
           <el-tooltip content="修改" placement="top" >
@@ -108,7 +109,7 @@
         <el-form-item label="" prop="imgUrl">
           <el-upload
             class="avatar-uploader"
-            action="http://43.142.255.148:36060/vaccine/inoculateSite/inoculateSiteImage/upload"
+            action="http://localhost:8080/vaccine/inoculateSite/inoculateSiteImage/upload"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"

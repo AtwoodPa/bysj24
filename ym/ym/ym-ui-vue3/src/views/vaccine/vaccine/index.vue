@@ -98,6 +98,7 @@
       <el-table-column label="疫苗编号" align="center" prop="id" v-if="columns[0].visible"/>
       <el-table-column label="疫苗名称" align="center" prop="name" v-if="columns[1].visible"/>
       <el-table-column label="疫苗价格" align="center" prop="price" v-if="columns[2].visible" />
+      <el-table-column label="疫苗库存" align="center" prop="amount" v-if="true" />
       <el-table-column label="疫苗厂家" align="center" prop="manufacturer"  v-if="columns[3].visible"/>
       <el-table-column label="疫苗分类" align="center" prop="category" v-if="columns[4].visible" />
       <el-table-column label="疫苗详情" align="center" prop="detail" v-if="columns[5].visible" />
@@ -135,6 +136,9 @@
         <el-form-item label="疫苗价格" prop="price">
           <el-input v-model="form.price" placeholder="请输入疫苗价格" />
         </el-form-item>
+        <el-form-item label="疫苗库存" prop="price">
+          <el-input v-model="form.amount" placeholder="请输入疫苗库存" />
+        </el-form-item>
         <el-form-item label="疫苗厂家" prop="manufacturer">
           <el-input v-model="form.manufacturer" placeholder="请输入疫苗厂家" />
         </el-form-item>
@@ -147,7 +151,7 @@
         <el-form-item label="疫苗图片" prop="imgUrl">
           <el-upload
             class="avatar-uploader"
-            action="http://43.142.255.148:36060/vaccine/vaccine/vaccineImage/upload"
+            action="http://localhost:8080/vaccine/vaccine/vaccineImage/upload"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
