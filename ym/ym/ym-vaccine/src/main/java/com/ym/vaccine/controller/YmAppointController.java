@@ -100,6 +100,7 @@ public class YmAppointController extends BaseController {
 
     /**
      * 获取用户预约记录，当前登陆账户的所有预约记录
+     *
      * @param pageQuery
      * @return
      */
@@ -110,15 +111,15 @@ public class YmAppointController extends BaseController {
         YmAppointBo bo = new YmAppointBo();
         TableDataInfo<YmAppointVo> ymAppointVoTableDataInfo = iYmAppointService.queryPageList(bo, pageQuery);
 
-        if (userId == 1L){// 管理员返回所有数据
+        if (userId == 1L) {// 管理员返回所有数据
             List<YmAppointVo> rows = ymAppointVoTableDataInfo.getRows();
             List<YmAppointVo> collect = rows.stream().map(item -> {
                 Long status = item.getStatus();
-                if (status == 0){
+                if (status == 0) {
                     item.setStatusName("待支付");
-                }else if (status == 1){
+                } else if (status == 1) {
                     item.setStatusName("已支付");
-                }else if (status == 2){
+                } else if (status == 2) {
                     item.setStatusName("已接种");
                 }
                 SysUser sysUser = userService.selectUserById(item.getUserId());
@@ -131,17 +132,17 @@ public class YmAppointController extends BaseController {
             }).collect(Collectors.toList());
             ymAppointVoTableDataInfo.setRows(collect);
             return ymAppointVoTableDataInfo;
-        }else {
+        } else {
             bo.setUserId(userId);
             ymAppointVoTableDataInfo = iYmAppointService.queryPageList(bo, pageQuery);
             List<YmAppointVo> rows = ymAppointVoTableDataInfo.getRows();
             List<YmAppointVo> collect = rows.stream().map(item -> {
                 Long status = item.getStatus();
-                if (status == 0){
+                if (status == 0) {
                     item.setStatusName("待支付");
-                }else if (status == 1){
+                } else if (status == 1) {
                     item.setStatusName("已支付");
-                }else if (status == 2){
+                } else if (status == 2) {
                     item.setStatusName("已接种");
                 }
                 SysUser sysUser = userService.selectUserById(item.getUserId());
@@ -161,6 +162,7 @@ public class YmAppointController extends BaseController {
 
     /**
      * 支付功能
+     *
      * @param id
      * @return
      */
@@ -169,7 +171,7 @@ public class YmAppointController extends BaseController {
     public R<Void> addOrder(@RequestBody Long id) {
         // 根据id查询预约信息
         YmAppointVo appoint = iYmAppointService.queryById(id);
-        if(appoint.getStatus() == 1L){
+        if (appoint.getStatus() == 1L) {
             return R.fail("该预约已支付");
         }
         // 修改预约状态为已支付
@@ -208,7 +210,7 @@ public class YmAppointController extends BaseController {
     public R<YmAppointVo> getInfo(@NotNull(message = "主键不能为空")
                                   @PathVariable Long id) {
         YmAppointVo data = iYmAppointService.queryById(id);
-        if(data.getStatus() == 1L){
+        if (data.getStatus() == 1L) {
             return R.fail("该预约已支付，无法修改");
         }
         return R.ok(data);

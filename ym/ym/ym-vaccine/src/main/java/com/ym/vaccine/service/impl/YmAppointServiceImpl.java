@@ -37,7 +37,6 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper, YmAppoint
     private final IYmVaccineService vaccineService;
 
 
-
     /**
      * 查询预约
      */

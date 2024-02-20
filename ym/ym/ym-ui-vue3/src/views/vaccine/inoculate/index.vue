@@ -1,36 +1,23 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm"  :inline="true" v-show="showSearch" label-width="100px">
-      <el-form-item label="接种人姓名" prop="realName">
-        <el-input
-          v-model="queryParams.realName"
-          placeholder="请输入接种人姓名"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" icon="Search"  @click="handleQuery">搜索</el-button>
-        <el-button icon="Refresh"  @click="resetQuery">重置</el-button>
-      </el-form-item>
-    </el-form>
-
-
+    <div slot="header" class="clearfix">
+      <span>我的接种记录</span>
+    </div>
 
     <el-table v-loading="loading" :data="inoculateList" >
       <el-table-column label="ID" width="55" align="center" prop="id" v-if="false"/>
-      <el-table-column label="接种人姓名" align="center" prop="realName" />
+      <el-table-column label="接种人姓名" align="center" prop="nickName" />
       <el-table-column label="接种部位" align="center" prop="part" />
-      <el-table-column label="接种点名称" align="center" prop="siteName" />
-      <el-table-column label="医护人员姓名" align="center" prop="workerName" />
+      <el-table-column label="接种点名称" align="center" prop="inoculateSiteName" />
+      <el-table-column label="医护人员姓名" align="center" prop="workName" />
       <el-table-column label="接种时间" align="center" prop="createTime" width="180">
         <template #default="{row}">
           <span>{{ parseTime(row.createTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
       <el-table-column label="疫苗名称" align="center" prop="vaccineName" />
-      <el-table-column label="疫苗批号" align="center" prop="vaccineBatchCode" />
-      <el-table-column label="备注" align="center" prop="note" />
+      <el-table-column label="疫苗批号" align="center" prop="batchNumber" />
+      <el-table-column label="备注" align="center" prop="remark" />
     </el-table>
 
     <pagination
@@ -44,9 +31,23 @@
 
   </div>
 </template>
-
+<style scoped>
+.clearfix {
+  text-align: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+</style>
 <script setup name="Inoculate">
-import { listInoculate, getInoculate, delInoculate, addInoculate, updateInoculate } from "@/api/vaccine/inoculate";
+import {
+  listInoculate,
+  getInoculate,
+  delInoculate,
+  addInoculate,
+  updateInoculate,
+  getUserInoculates
+} from "@/api/vaccine/inoculate";
 import {parseTime} from "@/utils/ruoyi";
 
 const {proxy} = getCurrentInstance();
@@ -72,7 +73,7 @@ const {queryParams} = toRefs(data);
 
 function getList() {
   loading.value = true;
-  listInoculate(data.queryParams).then(response => {
+  getUserInoculates(data.queryParams).then(response => {
     inoculateList.value = response.rows;
     total.value = response.total;
     loading.value = false;

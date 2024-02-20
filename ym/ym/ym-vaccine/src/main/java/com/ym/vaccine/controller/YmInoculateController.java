@@ -1,6 +1,7 @@
 package com.ym.vaccine.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.dev33.satoken.annotation.SaIgnore;
 import com.ym.common.annotation.Log;
 import com.ym.common.annotation.RepeatSubmit;
 import com.ym.common.core.controller.BaseController;
@@ -10,10 +11,15 @@ import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.validate.AddGroup;
 import com.ym.common.core.validate.EditGroup;
 import com.ym.common.enums.BusinessType;
+import com.ym.common.helper.LoginHelper;
 import com.ym.common.utils.poi.ExcelUtil;
+import com.ym.system.service.ISysUserService;
 import com.ym.vaccine.domain.bo.YmInoculateBo;
 import com.ym.vaccine.domain.vo.YmInoculateVo;
+import com.ym.vaccine.service.IYmAppointService;
 import com.ym.vaccine.service.IYmInoculateService;
+import com.ym.vaccine.service.IYmInoculateSiteService;
+import com.ym.vaccine.service.IYmVaccineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +29,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 疫苗接种记录
@@ -37,14 +44,50 @@ import java.util.List;
 public class YmInoculateController extends BaseController {
 
     private final IYmInoculateService iYmInoculateService;
+    private final IYmInoculateSiteService iYmInoculateSiteService;
+    private final IYmAppointService appointService;
+    private final IYmVaccineService iYmVaccineService;
+
+    private final ISysUserService userService;
 
     /**
-     * 查询疫苗接种记录列表
+     * 查询疫苗接种记录列表 - 医护人员/管理员使用
      */
     @SaCheckPermission("vaccine:inoculate:list")
     @GetMapping("/list")
     public TableDataInfo<YmInoculateVo> list(YmInoculateBo bo, PageQuery pageQuery) {
-        return iYmInoculateService.queryPageList(bo, pageQuery);
+        TableDataInfo<YmInoculateVo> result = iYmInoculateService.queryPageList(bo, pageQuery);
+        modifyResultData(result);
+        return result;
+    }
+
+    /**
+     * 查询疫苗接种记录列表 - 当前登录用户使用
+     *
+     * @param pageQuery
+     * @return
+     */
+    @SaIgnore
+    @GetMapping("/getInoculateByCurrentLoginUser")
+    public TableDataInfo<YmInoculateVo> getInoculateByCurrentLoginUser(PageQuery pageQuery) {
+        TableDataInfo<YmInoculateVo> result = iYmInoculateService.getUserInoculates(LoginHelper.getUserId(), pageQuery);
+        modifyResultData(result);
+        return result;
+    }
+
+    private void modifyResultData(TableDataInfo<YmInoculateVo> result) {
+        List<YmInoculateVo> dataList = result.getRows();
+        List<YmInoculateVo> modifyDataList =
+            dataList.stream().map(item -> {
+                item.setNickName(userService.selectUserById(item.getUserId()).getNickName());
+                item.setInoculateSiteName(iYmInoculateSiteService.queryById(appointService.getById(item.getAppointId()).getInoculateSiteId()).getName());
+                item.setWorkName(userService.selectUserById(iYmInoculateService.getById(item.getId()).getWorkId()).getNickName());
+                item.setVaccineName(iYmVaccineService.queryById(item.getVaccineId()).getName());
+                item.setBatchNumber(iYmVaccineService.queryById(item.getVaccineId()).getBatchNumber());
+                return item;
+            }).collect(Collectors.toList());
+
+        result.setRows(modifyDataList);
     }
 
     /**

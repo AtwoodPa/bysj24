@@ -87,6 +87,7 @@ public class YmOrdersController extends BaseController {
         iYmOrdersService.updateByBo(BeanUtil.copyProperties(ordersVo, YmOrdersBo.class));
         return toAjax(inoculateService.save(inoculate));
     }
+
     /**
      * 查询订单管理列表
      */

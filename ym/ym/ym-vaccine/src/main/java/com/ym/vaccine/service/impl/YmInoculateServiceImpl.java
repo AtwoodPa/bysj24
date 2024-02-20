@@ -110,6 +110,15 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper, YmIno
         return lqw;
     }
 
+    @Override
+    public TableDataInfo<YmInoculateVo> getUserInoculates(Long userId, PageQuery pageQuery) {
+
+        LambdaQueryWrapper<YmInoculate> lqw = Wrappers.lambdaQuery();
+        lqw.eq(userId != null, YmInoculate::getUserId, userId);
+        Page<YmInoculateVo> result = baseMapper.selectVoPage(pageQuery.build(), lqw);
+        return TableDataInfo.build(result);
+    }
+
     /**
      * 新增疫苗接种记录
      */
@@ -151,4 +160,6 @@ public class YmInoculateServiceImpl extends ServiceImpl<YmInoculateMapper, YmIno
         }
         return baseMapper.deleteBatchIds(ids) > 0;
     }
+
+
 }

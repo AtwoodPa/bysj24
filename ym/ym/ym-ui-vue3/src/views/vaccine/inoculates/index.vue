@@ -1,7 +1,6 @@
 <template>
   <div class="app-container">
-    11111111
-    <el-form :model="queryParams" ref="queryForm"  :inline="true" v-show="showSearch" label-width="100px">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="100px">
       <el-form-item label="接种人姓名" prop="realName">
         <el-input
           v-model="queryParams.realName"
@@ -11,27 +10,26 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="Search"  @click="handleQuery">搜索</el-button>
-        <el-button icon="Refresh"  @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
+        <el-button icon="Refresh" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
 
-
-    <el-table v-loading="loading" :data="inoculateList" >
+    <el-table v-loading="loading" :data="inoculateList">
       <el-table-column label="ID" width="55" align="center" prop="id" v-if="false"/>
-      <el-table-column label="接种人姓名" align="center" prop="realName" />
-      <el-table-column label="接种部位" align="center" prop="part" />
-      <el-table-column label="接种点名称" align="center" prop="siteName" />
-      <el-table-column label="医护人员姓名" align="center" prop="workerName" />
+      <el-table-column label="接种人姓名" align="center" prop="nickName"/>
+      <el-table-column label="接种部位" align="center" prop="part"/>
+      <el-table-column label="接种点名称" align="center" prop="inoculateSiteName"/>
+      <el-table-column label="医护人员姓名" align="center" prop="workName"/>
       <el-table-column label="接种时间" align="center" prop="createTime" width="180">
         <template #default="{row}">
           <span>{{ parseTime(row.createTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="疫苗名称" align="center" prop="vaccineName" />
-      <el-table-column label="疫苗批号" align="center" prop="vaccineBatchCode" />
-      <el-table-column label="备注" align="center" prop="note" />
+      <el-table-column label="疫苗名称" align="center" prop="vaccineName"/>
+      <el-table-column label="疫苗批号" align="center" prop="batchNumber"/>
+      <el-table-column label="备注" align="center" prop="remark"/>
     </el-table>
 
     <pagination
@@ -42,12 +40,11 @@
       @pagination="getList"
     />
 
-
   </div>
 </template>
 
-<script setup name="Inoculate">
-import { listInoculate, getInoculate, delInoculate, addInoculate, updateInoculate } from "@/api/vaccine/inoculate";
+<script setup name="Inoculates">
+import {listInoculate, getInoculate, delInoculate, addInoculate, updateInoculate} from "@/api/vaccine/inoculate";
 import {parseTime} from "@/utils/ruoyi";
 
 const {proxy} = getCurrentInstance();

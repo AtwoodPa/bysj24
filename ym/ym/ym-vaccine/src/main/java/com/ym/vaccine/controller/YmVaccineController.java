@@ -62,7 +62,6 @@ public class YmVaccineController extends BaseController {
     }
 
 
-
     @SaIgnore
     @GetMapping("/findAll")
     public Result findAll() {

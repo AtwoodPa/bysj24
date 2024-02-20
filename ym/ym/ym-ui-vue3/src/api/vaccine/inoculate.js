@@ -9,6 +9,14 @@ export function listInoculate(query) {
   })
 }
 
+export function getUserInoculates(query) {
+  return request({
+    url: '/vaccine/inoculate/getInoculateByCurrentLoginUser',
+    method: 'get',
+    params: query
+  })
+}
+
 // 查询疫苗接种记录详细
 export function getInoculate(id) {
   return request({

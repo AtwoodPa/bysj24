@@ -52,4 +52,6 @@ public interface IYmInoculateService extends IService<YmInoculate> {
      * 校验并批量删除疫苗接种记录信息
      */
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+    TableDataInfo<YmInoculateVo> getUserInoculates(Long userId, PageQuery pageQuery);
 }
