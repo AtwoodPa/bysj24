@@ -40,7 +40,11 @@ public class YmInoculate implements Serializable {
      */
     private Long vaccineId;
     /**
-     * 医护信息
+     * 医护人员id
+     */
+    private Long workId;
+    /**
+     * 预约用户id
      */
     private Long userId;
     /**
@@ -55,5 +59,6 @@ public class YmInoculate implements Serializable {
      * 接种时间
      */
     private Date inoculateTime;
+    private Date createTime;
 
 }

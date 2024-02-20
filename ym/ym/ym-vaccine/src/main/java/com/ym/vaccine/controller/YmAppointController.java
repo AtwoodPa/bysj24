@@ -108,29 +108,55 @@ public class YmAppointController extends BaseController {
     public TableDataInfo<YmAppointVo> getAppointRecordsByUserId(PageQuery pageQuery) {
         Long userId = LoginHelper.getUserId();
         YmAppointBo bo = new YmAppointBo();
-        bo.setUserId(userId);
         TableDataInfo<YmAppointVo> ymAppointVoTableDataInfo = iYmAppointService.queryPageList(bo, pageQuery);
-        List<YmAppointVo> rows = ymAppointVoTableDataInfo.getRows();
-        List<YmAppointVo> collect = rows.stream().map(item -> {
-            Long status = item.getStatus();
-            if (status == 0){
-                item.setStatusName("待支付");
-            }else if (status == 1){
-                item.setStatusName("已支付");
-            }else if (status == 2){
-                item.setStatusName("已接种");
-            }
-            SysUser sysUser = userService.selectUserById(item.getUserId());
-            item.setUserName(sysUser.getNickName());
-            YmVaccine vaccine = iYmVaccineService.getById(item.getVaccineId());
-            item.setVaccineName(vaccine.getName());
-            YmInoculateSite site = iYmInoculateSiteService.getById(item.getInoculateSiteId());
-            item.setInoculateSiteName(site.getName());
-            return item;
-        }).collect(Collectors.toList());
 
-        ymAppointVoTableDataInfo.setRows(collect);
-        return ymAppointVoTableDataInfo;
+        if (userId == 1L){// 管理员返回所有数据
+            List<YmAppointVo> rows = ymAppointVoTableDataInfo.getRows();
+            List<YmAppointVo> collect = rows.stream().map(item -> {
+                Long status = item.getStatus();
+                if (status == 0){
+                    item.setStatusName("待支付");
+                }else if (status == 1){
+                    item.setStatusName("已支付");
+                }else if (status == 2){
+                    item.setStatusName("已接种");
+                }
+                SysUser sysUser = userService.selectUserById(item.getUserId());
+                item.setUserName(sysUser.getNickName());
+                YmVaccine vaccine = iYmVaccineService.getById(item.getVaccineId());
+                item.setVaccineName(vaccine.getName());
+                YmInoculateSite site = iYmInoculateSiteService.getById(item.getInoculateSiteId());
+                item.setInoculateSiteName(site.getName());
+                return item;
+            }).collect(Collectors.toList());
+            ymAppointVoTableDataInfo.setRows(collect);
+            return ymAppointVoTableDataInfo;
+        }else {
+            bo.setUserId(userId);
+            ymAppointVoTableDataInfo = iYmAppointService.queryPageList(bo, pageQuery);
+            List<YmAppointVo> rows = ymAppointVoTableDataInfo.getRows();
+            List<YmAppointVo> collect = rows.stream().map(item -> {
+                Long status = item.getStatus();
+                if (status == 0){
+                    item.setStatusName("待支付");
+                }else if (status == 1){
+                    item.setStatusName("已支付");
+                }else if (status == 2){
+                    item.setStatusName("已接种");
+                }
+                SysUser sysUser = userService.selectUserById(item.getUserId());
+                item.setUserName(sysUser.getNickName());
+                YmVaccine vaccine = iYmVaccineService.getById(item.getVaccineId());
+                item.setVaccineName(vaccine.getName());
+                YmInoculateSite site = iYmInoculateSiteService.getById(item.getInoculateSiteId());
+                item.setInoculateSiteName(site.getName());
+                return item;
+            }).collect(Collectors.toList());
+
+            ymAppointVoTableDataInfo.setRows(collect);
+            return ymAppointVoTableDataInfo;
+        }
+
     }
 
     /**
@@ -160,25 +186,6 @@ public class YmAppointController extends BaseController {
         return toAjax(ordersService.insertByBo(ordersBo));
     }
     /* 后台管理接口 */
-
-    /**
-     * 查询预约列表
-     */
-    @SaCheckPermission("vaccine:appoint:list")
-    @GetMapping("/list")
-    public TableDataInfo<YmAppointVo> list(YmAppointBo bo, PageQuery pageQuery) {
-
-        TableDataInfo<YmAppointVo> data = iYmAppointService.queryPageList(bo, pageQuery);
-        List<YmAppointVo> dataList = data.getRows();
-        List<YmAppointVo> resultData = dataList.stream().map(item -> {
-
-            return item;
-        }).collect(Collectors.toList());
-
-
-        data.setRows(resultData);
-        return data;
-    }
 
     /**
      * 导出预约列表

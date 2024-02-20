@@ -8,7 +8,13 @@ export function listOrders(query) {
     params: query
   })
 }
-
+export function addInoculate(data) {
+  return request({
+    url: '/vaccine/orders/inoculate' ,
+    method: 'post',
+    data: data
+  })
+}
 // 查询订单管理详细
 export function getOrders(id) {
   return request({
