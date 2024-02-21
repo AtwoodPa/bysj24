@@ -30,6 +30,7 @@ public class SysRegisterService {
     private final ISysUserService userService;
     private final ISysConfigService configService;
 
+
     /**
      * 注册
      */
@@ -57,6 +58,9 @@ public class SysRegisterService {
         if (!regFlag) {
             throw new UserException("user.register.error");
         }
+        // 根据username查询出用户id，将用户id和用户类型存入user_role表
+        SysUser registerUser = userService.selectUserByUserName(username);
+        userService.insertUserAuth(registerUser.getUserId(), new Long[]{4L});
         recordLogininfor(username, Constants.REGISTER, MessageUtils.message("user.register.success"));
     }
 
