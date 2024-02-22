@@ -10,8 +10,8 @@ import useSettingsStore from '@/store/modules/settings'
 import usePermissionStore from '@/store/modules/permission'
 
 NProgress.configure({ showSpinner: false });
-
-const whiteList = ['/login', '/register'];
+// 默认加载页面home
+const whiteList = ['/login', '/register', '/home'];
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
@@ -47,12 +47,17 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
+    // 如果路由配置了 meta.bypassAuth 为 true，则跳过守卫
+    if (to.meta.bypassAuth) {
+      next();
+    }else
     // 没有token
     if (whiteList.indexOf(to.path) !== -1) {
       // 在免登录白名单，直接进入
       next()
     } else {
-      next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
+      // next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
+      next('/home'); // 其他页面重定向到Home页面
       NProgress.done()
     }
   }

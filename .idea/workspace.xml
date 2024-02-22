@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97c99b41-ba55-4f3a-8dfe-6b589657457d" name="Changes" comment="Enhancement: 租房小程序.md" />
+    <list default="true" id="97c99b41-ba55-4f3a-8dfe-6b589657457d" name="Changes" comment="Enhancement: 租房小程序.md">
+      <change afterPath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/assets/home/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/views/Home/components/VaccinationProject.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/views/Home/components/VaccineHome.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/views/Home/components/VaccineKnowledge.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/views/Home/home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/permission.js" beforeDir="false" afterPath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/permission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/views/demo/demo/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ym/ym/ym-ui-vue3/src/views/demo/tree/index.vue" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,6 +126,7 @@
       <workItem from="1708243239611" duration="141000" />
       <workItem from="1708243767834" duration="1985000" />
       <workItem from="1708260609123" duration="99000" />
+      <workItem from="1708591223996" duration="678000" />
     </task>
     <task id="LOCAL-00001" summary="Enhancement: 租房小程序.md">
       <option name="closed" value="true" />
