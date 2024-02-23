@@ -6,6 +6,7 @@ import VaccineHome from '@/views/Home/components/VaccineHome.vue'
 import VaccineKnowledge from '@/views/Home/components/VaccineKnowledge.vue'
 import VaccinationProject from '@/views/Home/components/VaccinationProject.vue'
 import VaccineDetail from '@/views/Home/components/VaccineDetail.vue'
+import InoculateSiteDetail from '@/views/Home/components/InoculateSiteDetail.vue'
 import BackHelp from "@/views/Home/components/Backhelp.vue";
 
 /**
@@ -57,6 +58,13 @@ export const constantRoutes = [
       {
         path: '/vaccine-detail/:id', // 路由传参
         component: VaccineDetail,
+        meta: {
+          bypassAuth: true
+        }
+      },
+      {
+        path: '/inoculate-site-detail/:id', // 路由传参
+        component: InoculateSiteDetail,
         meta: {
           bypassAuth: true
         }

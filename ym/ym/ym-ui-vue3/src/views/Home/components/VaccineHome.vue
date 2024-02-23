@@ -11,14 +11,17 @@
             :span="8"
           >
             <div style="width: 300px;height: 100%;">
-              <el-card :body-style="{ padding: '10px' }">
-                <img :src="getServerUrl()+'inoculateSiteImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
-                <div style="padding: 10px;font-size: 14px">
-                  <div style="margin-top: 2px">医院名称：{{ vaccine.name }} </div>
-                  <div style="margin-top: 2px">医院地址：{{ vaccine.address }} </div>
-                  <div style="margin-top: 2px">联系方式：{{ vaccine.contact }} </div>
-                </div>
-              </el-card>
+              <router-link :to="'/inoculate-site-detail/' + vaccine.id">
+                <el-card :body-style="{ padding: '10px' }">
+                  <img :src="getServerUrl()+'inoculateSiteImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
+                  <div style="padding: 10px;font-size: 14px">
+                    <div style="margin-top: 2px">医院名称：{{ vaccine.name }} </div>
+                    <div style="margin-top: 2px">医院地址：{{ vaccine.address }} </div>
+                    <div style="margin-top: 2px">联系方式：{{ vaccine.contact }} </div>
+                  </div>
+                </el-card>
+              </router-link>
+
             </div>
 
           </el-col>
@@ -58,32 +61,6 @@
         </div>
       </div>
     </div>
-
-
-    <!--    <div class="vaccine-list">-->
-    <!--      <el-divider  content-position="left" >-->
-    <!--        <span> 疫苗信息 </span>-->
-    <!--      </el-divider>-->
-    <!--      <el-row>-->
-    <!--        <el-col-->
-    <!--          v-for="(vaccine, index) in vaccineList" :key="index"-->
-    <!--          :span="4"-->
-    <!--        >-->
-    <!--          <div style="width: 300px;height: 100%;">-->
-    <!--            <el-card :body-style="{ padding: '10px' }">-->
-    <!--              <img :src="getServerUrl()+'vaccineImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>-->
-
-    <!--              <div style="padding: 10px;font-size: 14px">-->
-    <!--                <div>疫苗名称：{{ vaccine.name }} </div>-->
-    <!--                <div>疫苗厂家：{{ vaccine.manufacturer }} </div>-->
-    <!--                <div>价格：<span style="color: red;margin-left: 10px">{{ vaccine.price }}¥</span> </div>-->
-    <!--              </div>-->
-    <!--            </el-card>-->
-    <!--          </div>-->
-    <!--        </el-col>-->
-    <!--      </el-row>-->
-    <!--    </div>-->
-
   </div>
 </template>
 

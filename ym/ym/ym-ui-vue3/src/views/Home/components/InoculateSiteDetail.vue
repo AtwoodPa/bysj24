@@ -8,14 +8,19 @@
         <div class="back-button-container">
           <button @click="goBack"><el-icon><CaretLeft /></el-icon></button>
         </div>
-        <img :src="getServerUrl() + 'vaccineImage' + vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
+        <img :src="getServerUrl() + 'inoculateSiteImage' + vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
       </div>
       <!-- 右侧商品信息 -->
       <div class="right-section">
         <h1>{{ vaccine.name }}</h1>
-        <p style="color: #3d4147;">价格: <span class="price">{{ vaccine.price }}¥</span></p>
-        <p style="color: #3d4147;">详情描述: <span style="color: #000000" >{{ vaccine.detail }}</span></p>
-        <!-- 其他商品信息 -->
+        <div>
+          <span style="color: #3d4147;">医院地址:</span>
+          <span style="margin-left: 10px">{{ vaccine.address }}</span>
+        </div>
+        <div>
+          <span style="color: #3d4147;">联系方式:</span>
+          <span style="margin-left: 10px">{{ vaccine.contact }}</span>
+        </div>
       </div>
     </div>
 
@@ -25,7 +30,7 @@
 
 <script setup name="VaccineDetail">
 import {getServerUrl} from "@/utils/request";
-import {getVaccine} from "@/api/vaccine/vaccine";
+import {getInoculateSite} from "@/api/vaccine/inoculateSite";
 const { proxy } = getCurrentInstance();
 // 路由信息
 import { useRoute,useRouter } from "vue-router";
@@ -43,7 +48,7 @@ onMounted(() => {
 })
 // getVaccine
 function getVaccineDetail(id){
- getVaccine(id).then(resp => {
+  getInoculateSite(id).then(resp => {
    vaccine.value = resp.data
    console.log(vaccine)
  })
@@ -108,30 +113,13 @@ const goBack = () => {
   margin-bottom: 5px; /* 价格信息下方外边距 */
 }
 
-.right-section .price {
+.right-section .address {
   /* 价格字体样式 */
   font-weight: bold; /* 价格加粗 */
   color: #ff0000; /* 价格字体颜色，比如红色 */
 }
 
-.bottom-section {
-  /* 下部分样式 */
-  /* 根据需要添加样式，比如内边距等 */
-  padding: 20px;
-}
 
-.bottom-section h3 {
-  /* 商品详情描述标题样式 */
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.bottom-section p {
-  /* 商品详情描述段落样式 */
-  line-height: 1.5; /* 行高设置 */
-  margin-bottom: 15px; /* 段落下方外边距 */
-}
 .back-button-container {
   position: absolute; /* 绝对定位，相对于 .left-section 定位 */
   top: 10px; /* 距离顶部的位置 */
