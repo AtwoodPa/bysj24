@@ -1,106 +1,155 @@
 <template>
-  <div class="page-content">
-    <!--  使用el-carousel展示图片  -->
-    <div>
-      <el-carousel :interval="2000" trigger="click" height="400px">
-        <el-carousel-item  v-for="item in carousels" :key="item">
-          <img :src="item.image" alt="notice-image" style="width: 100%;height: 100%">
-        </el-carousel-item>
-      </el-carousel>
-    </div>
-    <!-- 公告滚动栏 -->
-    <div class="notice-scroll">
-      <h2>系统公告</h2>
-      <ul>
-        <li v-for="(notice, index) in notices" :key="index">
-          <img :src="notice.image" alt="notice-image">
-          <p>{{ notice.text }}</p>
-        </li>
-      </ul>
-    </div>
-    <el-row>
-      <el-col
-        v-for="(vaccine, index) in vaccines" :key="index"
-        :span="8"
-        :offset="index > 0 ? 2 : 0"
-      >
-        <el-card :body-style="{ padding: '0px' }">
-          <img :src="vaccine.image" alt="vaccine-image" class="vaccine-image">
-          <div style="padding: 14px">
-            <span>Yummy hamburger</span>
-            <div class="bottom">
-              <time class="time">{{ currentDate }}</time>
-              <el-button text class="button">Operating</el-button>
+  <div class="page-content vaccine-list">
+    <div class="lr-container">
+      <div class="c-left">
+        <el-divider   >
+          <span> 医院信息 </span>
+        </el-divider>
+        <el-row>
+          <el-col
+            v-for="(vaccine, index) in inoculateSiteList" :key="index"
+            :span="8"
+          >
+            <div style="width: 300px;height: 100%;">
+              <el-card :body-style="{ padding: '10px' }">
+                <img :src="getServerUrl()+'inoculateSiteImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
+                <div style="padding: 10px;font-size: 14px">
+                  <div style="margin-top: 2px">医院名称：{{ vaccine.name }} </div>
+                  <div style="margin-top: 2px">医院地址：{{ vaccine.address }} </div>
+                  <div style="margin-top: 2px">联系方式：{{ vaccine.contact }} </div>
+                </div>
+              </el-card>
             </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
 
-    <!-- 可接种疫苗信息 -->
-    <div class="vaccine-info">
-      <h2>可接种疫苗信息</h2>
-      <div class="vaccine-card" v-for="(vaccine, index) in vaccines" :key="index">
-        <img :src="vaccine.image" alt="vaccine-image">
-        <p>{{ vaccine.name }}</p>
+          </el-col>
+
+        </el-row>
+
+      </div>
+
+      <div class="c-right">
+        <el-divider  >
+          <span> 公告中心 </span>
+          <!-- <el-button class="thebutton" text>接种须知</el-button> -->
+        </el-divider>
+        <div class="cardlist">
+          <el-timeline>
+            <el-timeline-item
+              v-for="notice in noticesLists"
+              :key="notice.id"
+              :timestamp="notice.createTime"
+              type = primary
+              hollow
+            >
+              <el-card >
+                <h6>系统公告</h6>
+                <el-collapse >
+                  <el-collapse-item  :name="notice.id">
+                    <template #title>
+                      <h5>{{notice.noticeTitle}}</h5>
+                    </template>
+                    <div class="content">
+                      <p>{{ notice.noticeContent }}</p>
+                    </div>
+                  </el-collapse-item></el-collapse>
+              </el-card>
+            </el-timeline-item>
+          </el-timeline>
+        </div>
       </div>
     </div>
+
+
+    <!--    <div class="vaccine-list">-->
+    <!--      <el-divider  content-position="left" >-->
+    <!--        <span> 疫苗信息 </span>-->
+    <!--      </el-divider>-->
+    <!--      <el-row>-->
+    <!--        <el-col-->
+    <!--          v-for="(vaccine, index) in vaccineList" :key="index"-->
+    <!--          :span="4"-->
+    <!--        >-->
+    <!--          <div style="width: 300px;height: 100%;">-->
+    <!--            <el-card :body-style="{ padding: '10px' }">-->
+    <!--              <img :src="getServerUrl()+'vaccineImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>-->
+
+    <!--              <div style="padding: 10px;font-size: 14px">-->
+    <!--                <div>疫苗名称：{{ vaccine.name }} </div>-->
+    <!--                <div>疫苗厂家：{{ vaccine.manufacturer }} </div>-->
+    <!--                <div>价格：<span style="color: red;margin-left: 10px">{{ vaccine.price }}¥</span> </div>-->
+    <!--              </div>-->
+    <!--            </el-card>-->
+    <!--          </div>-->
+    <!--        </el-col>-->
+    <!--      </el-row>-->
+    <!--    </div>-->
+
   </div>
 </template>
 
 <script setup>
-const currentDate = ref(new Date())
-const carousels = [
-  { text: '公告1', image: 'https://file2.renrendoc.com/fileroot_temp3/2021-3/26/8179a26d-d3f9-479c-a5c9-89f38d2de3ec/8179a26d-d3f9-479c-a5c9-89f38d2de3ec5.gif' },
-  { text: '公告2', image: 'https://www.usts.edu.cn/dfiles/11467/static/images/logo.jpg' },
-  { text: '公告3', image: 'https://www.usts.edu.cn/dfiles/11467/static/images/logo.jpg' }
-]; // 模拟系统公告信息
+import { listNotice } from "@/api/system/notice.js";
+import { listInoculateSite } from "@/api/vaccine/inoculateSite";
+import {getServerUrl} from "@/utils/request";
+import {listVaccine} from "@/api/vaccine/vaccine";
 
-const notices = [
-  { text: '公告1', image: 'https://www.usts.edu.cn/dfiles/11467/static/images/logo.jpg' },
-  { text: '公告2', image: 'https://www.usts.edu.cn/dfiles/11467/static/images/logo.jpg' },
-  { text: '公告3', image: 'https://www.usts.edu.cn/dfiles/11467/static/images/logo.jpg' }
-]; // 模拟系统公告信息
+const { proxy } = getCurrentInstance();
+const inoculateSiteList = ref([]);
+const vaccineList = ref([]);
 
-const vaccines = [ // 模拟可接种疫苗信息
-  { name: '疫苗1', image: 'https://www.usts.edu.cn/dfiles/11467/static/images/logo.jpg' },
-  { name: '疫苗2', image: 'https://www.usts.edu.cn/dfiles/11467/static/images/logo.jpg' },
-  { name: '疫苗3', image: 'https://www.usts.edu.cn/dfiles/11467/static/images/logo.jpg' }
-];
+// 系统公告信息
+const noticesLists = ref([]);
+
+function noticesList(){
+  listNotice().then(resp => {
+    noticesLists.value = resp.rows
+  })
+}
+function getInoculateSiteList() {
+
+  listInoculateSite().then(response => {
+    inoculateSiteList.value = response.rows;
+  });
+}
+function getVaccineList() {
+
+  listVaccine().then(response => {
+    vaccineList.value = response.rows;
+
+  });
+}
+
+// 获取系统公告
+noticesList();
+// 获取站点信息
+getInoculateSiteList();
+// 获取疫苗信息
+getVaccineList();
 </script>
 
 <style scoped lang="scss">
 .page-content {
-  height: 100vh;
-  padding: 20px;
-  margin: 0 100px 0 100px;
+  //height: 100vh;
+  padding: 10px;
+  margin: 0 50px 0 50px;
 }
 
-.notice-scroll {
+
+.vaccine-list {
   margin-bottom: 20px;
 }
 
-.notice-scroll ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
+.vaccine-image {
+  //display: flex;
+  //flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width:250px;
+
 }
 
-.notice-scroll li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.vaccine-image{
-  height: 200px;
-  width: 100%;
-  display: block;
-}
-.notice-scroll img {
-  width: 50px;
-  height: auto;
-  margin-right: 10px;
-}
 
 .vaccine-info {
   display: flex;
@@ -123,4 +172,42 @@ const vaccines = [ // 模拟可接种疫苗信息
   text-align: center;
 }
 
+.title {
+  text-align: center;
+  padding: 10px 0 10px 0;
+  box-shadow : 0 0 0px rgba(255, 0, 0, .8);
+  margin: 10px 0 20px 0;
+  border-color: #82c4f8;
+  color: #fff;
+  border-radius: 32px;
+  align-items: center;
+  border-width: 0 10px;
+  font-size: 16px;
+  border-style: solid;
+  background-color: #82c4f8;
+}
+.lr-container {
+  display: flex;
+}
+
+.c-left {
+  flex: 1; /* 左侧内容占据可用空间的比例，这里设为1表示占据剩余空间 */
+}
+
+.c-right {
+  margin-left: 30px;
+  flex: 1; /* 右侧内容占据可用空间的比例，这里设为1表示占据剩余空间 */
+}
+.cardlist {
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+.cardlist h6 {
+  font-weight: 500;
+}
+.cardlist h5 {
+  font-size: 13px;
+  line-height: 14px;
+}
 </style>

@@ -1,6 +1,7 @@
 package com.ym.web.controller.system;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.dev33.satoken.annotation.SaIgnore;
 import com.ym.common.annotation.Log;
 import com.ym.common.core.controller.BaseController;
 import com.ym.common.core.domain.PageQuery;
@@ -29,8 +30,9 @@ public class SysNoticeController extends BaseController {
     /**
      * 获取通知公告列表
      */
-    @SaCheckPermission("system:notice:list")
+//    @SaCheckPermission("system:notice:list")
     @GetMapping("/list")
+    @SaIgnore
     public TableDataInfo<SysNotice> list(SysNotice notice, PageQuery pageQuery) {
         return noticeService.selectPageNoticeList(notice, pageQuery);
     }

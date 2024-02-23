@@ -55,8 +55,9 @@ public class YmInoculateSiteController extends BaseController {
     /**
      * 查询疫苗接种站点管理列表
      */
-    @SaCheckPermission("vaccine:inoculateSite:list")
+//    @SaCheckPermission("vaccine:inoculateSite:list")
     @GetMapping("/list")
+    @SaIgnore
     public TableDataInfo<YmInoculateSiteVo> list(YmInoculateSiteBo bo, PageQuery pageQuery) {
         return iYmInoculateSiteService.queryPageList(bo, pageQuery);
     }
@@ -77,8 +78,9 @@ public class YmInoculateSiteController extends BaseController {
      *
      * @param id 主键
      */
-    @SaCheckPermission("vaccine:inoculateSite:query")
+//    @SaCheckPermission("vaccine:inoculateSite:query")
     @GetMapping("/{id}")
+    @SaIgnore
     public R<YmInoculateSiteVo> getInfo(@NotNull(message = "主键不能为空")
                                         @PathVariable Long id) {
         return R.ok(iYmInoculateSiteService.queryById(id));

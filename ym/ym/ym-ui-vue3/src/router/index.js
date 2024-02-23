@@ -5,6 +5,8 @@ import VaccineHome from '@/views/Home/components/VaccineHome.vue'
 
 import VaccineKnowledge from '@/views/Home/components/VaccineKnowledge.vue'
 import VaccinationProject from '@/views/Home/components/VaccinationProject.vue'
+import VaccineDetail from '@/views/Home/components/VaccineDetail.vue'
+import BackHelp from "@/views/Home/components/Backhelp.vue";
 
 /**
  * Note: 路由配置项
@@ -52,9 +54,20 @@ export const constantRoutes = [
           bypassAuth: true
         }
       },
-
+      {
+        path: '/vaccine-detail/:id', // 路由传参
+        component: VaccineDetail,
+        meta: {
+          bypassAuth: true
+        }
+      },
       {
         path: '/vaccine-knowledge', component: VaccineKnowledge, meta: {
+          bypassAuth: true
+        }
+      },
+      {
+        path: '/back-help', component: BackHelp, meta: {
           bypassAuth: true
         }
       },

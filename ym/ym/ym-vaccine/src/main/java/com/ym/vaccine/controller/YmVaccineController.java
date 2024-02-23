@@ -57,6 +57,7 @@ public class YmVaccineController extends BaseController {
      * 查询疫苗信息列表
      */
     @GetMapping("/list")
+    @SaIgnore
     public TableDataInfo<YmVaccineVo> list(YmVaccineBo bo, PageQuery pageQuery) {
         return iYmVaccineService.queryPageList(bo, pageQuery);
     }
@@ -119,6 +120,7 @@ public class YmVaccineController extends BaseController {
      * @param id 主键
      */
     @GetMapping("/{id}")
+    @SaIgnore
     public R<YmVaccineVo> getInfo(@NotNull(message = "主键不能为空")
                                   @PathVariable Long id) {
         return R.ok(iYmVaccineService.queryById(id));
