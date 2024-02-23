@@ -14,7 +14,7 @@
           ><el-icon><HomeFilled /></el-icon> <span>首页</span></router-link
           >
           <router-link to="/vaccine-knowledge">
-            <el-icon><Opportunity /></el-icon> <span>疫苗知识</span></router-link
+            <el-icon><Opportunity /></el-icon> <span>医院信息</span></router-link
           >
           <router-link to="/vaccination-project"
           ><el-icon><Flag /></el-icon><span>疫苗预约</span></router-link

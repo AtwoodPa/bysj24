@@ -34,28 +34,28 @@
             </template>
             <el-row> <el-col :span="4"></el-col>
               <el-col :span="16">
-                <h4>新冠疫苗打完禁忌症和注意事项</h4>
+                <h4>疫苗打完禁忌症和注意事项</h4>
             <el-collapse  accordion>
               <el-collapse-item name="1">
                 <template #title>
                         <h5>接种后留观</h5>
                 </template>
                 <div>1.接种后留观：</div>
-                <div>接种新冠肺炎疫苗有引起严重不良反应的可能，因此接种新冠肺炎疫苗后最好在接种现场观察至少30分钟，如果30分钟内没有异常现象则可正常离开，30分钟内出现任何异常均应联系医生或接种人员。</div>
+                <div>接种疫苗有引起严重不良反应的可能，因此接种疫苗后最好在接种现场观察至少30分钟，如果30分钟内没有异常现象则可正常离开，30分钟内出现任何异常均应联系医生或接种人员。</div>
               </el-collapse-item>
               <el-collapse-item  name="2">
                 <template #title>
                         <h5>注意饮食</h5>
                 </template>
                 <div>2.注意饮食：</div>
-                <div>建议清淡饮食、多喝水。资料显示，接种新冠肺炎疫苗后一周内应避免进食辛辣刺激食物及海鲜类食物，避免饮用含有乙醇成分的饮品。</div>
+                <div>建议清淡饮食、多喝水。资料显示，接种疫苗后一周内应避免进食辛辣刺激食物及海鲜类食物，避免饮用含有乙醇成分的饮品。</div>
               </el-collapse-item>
               <el-collapse-item  name="3">
                 <template #title>
                         <h5>注意局部卫生</h5>
                 </template>
                 <div>3.注意局部卫生：</div>
-                <div>接种新冠肺炎疫苗者在接种后当日应避免注射部位沾水并注意局部卫生，以防皮肤感染。</div>
+                <div>接种疫苗者在接种后当日应避免注射部位沾水并注意局部卫生，以防皮肤感染。</div>
               </el-collapse-item>
               <el-collapse-item  name="4">
                 <template #title>
@@ -113,95 +113,14 @@
     </el-row>
  <div class="theend">
   <div class="endproblem">没有找到答案？ 或接种疫苗仍有问题？</div>
-  <el-button type="primary" class="endbut" @click="addmessage">联系反馈</el-button>
+   <div style="font-size: 28px;margin-top: 20px">请致电：<span style="color: #1ab394">0527-871621</span></div>
  </div>
 </div>
- <!-- 添加反馈的弹窗 -->
- <el-dialog title="反馈帮助" v-model="dialogFormVisible" width="50%">
-  <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
-        <el-form-item label="身份证号" label-width="100px">
-          <el-input v-model="ruleForm.userid"></el-input>
-        </el-form-item>
-        <el-form-item label="反馈信息" label-width="100px" prop="themessage">
-          <el-input v-model="ruleForm.message"></el-input>
-        </el-form-item>
-        <el-form-item label="开始时间" label-width="100px" prop="thetime">
-          <el-date-picker
-              v-model="ruleForm.submittime"
-              type="datetime"
-              placeholder="选择日期和时间"
-               />
-        </el-form-item>
-      </el-form>
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="dialogFormVisible = false"> 取消</el-button>
-          <el-button type="primary" @click="saveData('ruleForm')"> 确认</el-button>
-        </span>
-      </template>
-    </el-dialog>
+
 </template>
 
-<script>
-import { ElMessage } from 'element-plus';
-export default {
-  name: "BackHelp",
-  data() {
-    return {
-        ruleForm: {
-        userid: '',
-        message: '',
-        submittime: '',
-      }, //添加反馈信息的数据
-      dialogFormVisible: false, //信息弹出框是否展示
-      rules: {
-        message: [
-          { required: true, message: "请输入内容", trigger: "blur" },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-        ],
-        time: [
-          { required: true, message: "请选择时间", trigger: "change" },
-        ],
-      },
-    }
-  },
-  methods: {
-    // 添加
-    addmessage() {
-      this.form = {};
-      this.dialogFormVisible = true;
-    },
-    //用于数据的添加和更新
-    saveData() {
-      this.$refs.ruleForm.validate((valid) => {
-        if (valid) {
-          this.$http
-            .post("/inoculations/feedback/save", this.ruleForm)
-            .then((res) => {
-              if (res.statusCode == "200") {
-                ElMessage({
-                  message: "成功！",
-                  type: "success",
-                });
-                this.dialogFormVisible = false;
-                this.form = "";
-              }
-            })
-            .catch(() => {
-              ElMessage.error("失败！");
-            });
-        } else {
-          ElMessage({
-            message: "请填写！",
-            type: "warning",
-          });
-          return false;
-        }
-      });
-    },
-  },
+<script setup name="BackHelp">
 
-}
 </script>
 
 <style>
