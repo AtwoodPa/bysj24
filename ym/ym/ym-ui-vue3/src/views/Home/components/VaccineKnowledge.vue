@@ -62,7 +62,8 @@ getInoculateSiteList();
   justify-content: center;
   align-items: center;
   height: 300px;
-  width:250px;
+  width: 100%;
+  border-radius: 8px 8px 0 0; /* 图片圆角 */
 
 }
 
@@ -126,4 +127,17 @@ getInoculateSiteList();
   font-size: 13px;
   line-height: 14px;
 }
+.el-card {
+  width: 300px; /* 设置卡片宽度 */
+  border-radius: 8px; /* 圆角 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  background-color: #fff; /* 背景色 */
+  transition: box-shadow 0.3s ease; /* 阴影过渡效果 */
+  margin-bottom: 20px; /* 卡片间距 */
+}
+
+.el-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* 鼠标悬停时的阴影效果 */
+}
+
 </style>

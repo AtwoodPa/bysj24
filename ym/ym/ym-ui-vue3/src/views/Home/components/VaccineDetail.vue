@@ -14,6 +14,9 @@
       <div class="right-section">
         <h1>{{ vaccine.name }}</h1>
         <p style="color: #3d4147;">价格: <span class="price">{{ vaccine.price }}¥</span></p>
+
+        <div>疫苗批次：{{ vaccine.batchNumber }} </div>
+        <div>疫苗分类：{{ vaccine.category }} </div>
         <p style="color: #3d4147;">详情描述: <span style="color: #000000" >{{ vaccine.detail }}</span></p>
         <!-- 其他商品信息 -->
       </div>
@@ -107,7 +110,10 @@ const goBack = () => {
   /* 价格信息样式 */
   margin-bottom: 5px; /* 价格信息下方外边距 */
 }
-
+.right-section div {
+  /* 价格信息样式 */
+  margin-bottom: 5px; /* 价格信息下方外边距 */
+}
 .right-section .price {
   /* 价格字体样式 */
   font-weight: bold; /* 价格加粗 */

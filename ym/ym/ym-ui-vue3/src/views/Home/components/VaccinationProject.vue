@@ -17,6 +17,8 @@
                       <div>疫苗名称：{{ vaccine.name }} </div>
                       <div>疫苗厂家：{{ vaccine.manufacturer }} </div>
                       <div>价格：<span style="color: red;margin-left: 10px">{{ vaccine.price }}¥</span> </div>
+                      <div>疫苗批次：{{ vaccine.batchNumber }} </div>
+                      <div>疫苗分类：{{ vaccine.category }} </div>
                     </div>
                   </el-card>
                 </router-link>
@@ -49,7 +51,8 @@ getVaccineList();
 .page-content {
   height: 100vh;
   padding: 20px;
-  margin: 0 100px 0 100px;
+  margin: 0 50px 0 50px;
+
 }
 
 
@@ -61,11 +64,22 @@ getVaccineList();
 .vaccine-image {
   //display: flex;
   //flex: 1;
-  justify-content: center;
-  align-items: center;
+  border-radius: 8px 8px 0 0; /* 图片圆角 */
+  object-fit: cover; /* 保持图片比例 */
+
   height: 300px;
-  width:250px;
+  width: 100%;
 
 }
-
+.el-card {
+  width: 300px; /* 设置卡片宽度 */
+  border-radius: 8px; /* 圆角 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  background-color: #fff; /* 背景色 */
+  transition: box-shadow 0.3s ease; /* 阴影过渡效果 */
+  margin-bottom: 20px; /* 卡片间距 */
+}
+.el-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* 鼠标悬停时的阴影效果 */
+}
 </style>

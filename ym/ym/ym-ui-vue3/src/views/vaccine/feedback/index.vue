@@ -24,7 +24,7 @@
           <span>{{ parseTime(scope.row.submittime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="反馈内容" align="center" prop="message" width="240"/>
+      <el-table-column label="反馈内容" :disabled="true" align="center" prop="message" width="240"/>
       <el-table-column label="回复反馈时间" align="center" prop="backtime" width="180">
         <template  #default="scope">
           <span>{{ parseTime(scope.row.backtime, '{y}-{m}-{d}') }}</span>

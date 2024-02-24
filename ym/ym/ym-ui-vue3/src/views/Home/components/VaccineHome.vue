@@ -118,16 +118,21 @@ getVaccineList();
 
 
 .vaccine-image {
-  //display: flex;
-  //flex: 1;
-  justify-content: center;
-  align-items: center;
   height: 300px;
-  width:250px;
-
+  width: 100%;
+  border-radius: 8px 8px 0 0;
 }
 
 
+.el-card__body {
+  padding: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+.el-card__body div {
+  margin-top: 8px;
+}
 .vaccine-info {
   display: flex;
   flex-wrap: wrap;
@@ -174,6 +179,17 @@ getVaccineList();
 .c-right {
   margin-left: 30px;
   flex: 1; /* 右侧内容占据可用空间的比例，这里设为1表示占据剩余空间 */
+}
+.el-card {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.el-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 .cardlist {
   width: 100%;
