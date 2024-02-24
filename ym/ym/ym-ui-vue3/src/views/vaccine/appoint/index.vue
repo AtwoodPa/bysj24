@@ -32,8 +32,8 @@
     <pagination
       v-show="total>0"
       :total="total"
-      :page.sync="queryParams.pageNum"
-      :limit.sync="queryParams.pageSize"
+      v-model:page="queryParams.pageNum"
+      v-model:limit="queryParams.pageSize"
       @pagination="getList"
     />
 
@@ -197,6 +197,7 @@ function getList(){
     loading.value = false;
   });
 }
+
 function cancel(){
   open.value = false;
   reset();

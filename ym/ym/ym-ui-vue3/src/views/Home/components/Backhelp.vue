@@ -113,13 +113,68 @@
     </el-row>
  <div class="theend">
   <div class="endproblem">没有找到答案？ 或接种疫苗仍有问题？</div>
-   <div style="font-size: 28px;margin-top: 20px">请致电：<span style="color: #1ab394">0527-871621</span></div>
+   <el-button type="primary" class="endbut" @click="addmessage">联系反馈</el-button>
  </div>
 </div>
-
+  <!-- 添加反馈的弹窗 -->
+  <el-dialog title="反馈帮助" v-model="dialogFormVisible" width="50%">
+    <el-form :model="form" :rules="rules" ref="ruleForm" label-width="100px">
+      <el-form-item label="身份证号" label-width="100px">
+        <el-input v-model="form.userid"></el-input>
+      </el-form-item>
+      <el-form-item label="反馈信息" label-width="100px" prop="themessage">
+        <el-input v-model="form.message"></el-input>
+      </el-form-item>
+      <el-form-item label="开始时间" label-width="100px" prop="thetime">
+        <el-date-picker
+          v-model="form.submittime"
+          type="datetime"
+          format="YYYY-MM-DD HH:mm:ss"
+          value-format="YYYY-MM-DD HH:mm:ss"
+          placeholder="选择日期和时间"
+        />
+      </el-form-item>
+    </el-form>
+    <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="dialogFormVisible = false"> 取消</el-button>
+          <el-button type="primary" @click="saveData('ruleForm')"> 确认</el-button>
+        </span>
+    </template>
+  </el-dialog>
 </template>
 
 <script setup name="BackHelp">
+import { addFeedback } from "@/api/vaccine/feedback";
+
+const { proxy } = getCurrentInstance();
+const dialogFormVisible = ref(false);
+const ruleForm = ref({});
+
+const data = reactive({
+  form: {},
+  rules: {
+    userid: [{ required: true, message: "身份证号不能为空", trigger: "blur" }],
+    message: [{ required: true, message: "反馈信息不能为空", trigger: "blur" }],
+    submittime: [{ required: true, message: "请选择日期和时间", trigger: "blur" }]
+  },
+});
+
+const {  form, rules } = toRefs(data);
+function saveData(){
+
+  proxy.$refs["ruleForm"].validate(valid => {
+    addFeedback(form.value).then(resp => {
+      proxy.$modal.msgSuccess("新增成功");
+      dialogFormVisible.value = false;
+    })
+  });
+
+}
+function addmessage(row){
+  dialogFormVisible.value = true;
+
+}
 
 </script>
 
