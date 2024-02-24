@@ -101,7 +101,7 @@
       <el-table-column label="疫苗库存" align="center" prop="amount" v-if="true" />
       <el-table-column label="疫苗厂家" align="center" prop="manufacturer"  v-if="columns[3].visible"/>
       <el-table-column label="疫苗分类" align="center" prop="category" v-if="columns[4].visible" />
-      <el-table-column label="疫苗详情" align="center" prop="detail" v-if="columns[5].visible" />
+      <el-table-column label="疫苗详情" align="center" :show-overflow-tooltip="true"  prop="detail" v-if="columns[5].visible" />
       <el-table-column label="疫苗图片" width="300rpx" align="center" prop="imgUrl" v-if="columns[6].visible" >
         <template #default="{ row }">
           <img :src="getServerUrl()+'vaccineImage'+row.imgUrl" style='width: 178px;height: 178px;display: block;'/>

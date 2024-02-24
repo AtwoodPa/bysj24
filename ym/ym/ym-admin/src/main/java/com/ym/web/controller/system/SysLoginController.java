@@ -25,6 +25,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 登录验证
@@ -139,6 +140,9 @@ public class SysLoginController {
     public R<List<RouterVo>> getRouters() {
         Long userId = LoginHelper.getUserId();
         List<SysMenu> menus = menuService.selectMenuTreeByUserId(userId);
+        if (LoginHelper.isAdmin(userId)) {
+            menus = menus.stream().filter(m -> !m.getMenuId().equals(7L)).collect(Collectors.toList());
+        }
         return R.ok(menuService.buildMenus(menus));
     }
 }

@@ -25,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 菜单 业务层处理
@@ -67,6 +68,9 @@ public class SysMenuServiceImpl implements ISysMenuService {
                 .eq(StringUtils.isNotBlank(menu.getStatus()), SysMenu::getStatus, menu.getStatus())
                 .orderByAsc(SysMenu::getParentId)
                 .orderByAsc(SysMenu::getOrderNum));
+            // 移除菜单id为7的菜单
+            menuList = menuList.stream().filter(m -> !m.getMenuId().equals(7L)).collect(Collectors.toList());
+
         } else {
             QueryWrapper<SysMenu> wrapper = Wrappers.query();
             wrapper.eq("sur.user_id", userId)
@@ -127,6 +131,8 @@ public class SysMenuServiceImpl implements ISysMenuService {
         List<SysMenu> menus = null;
         if (LoginHelper.isAdmin(userId)) {
             menus = baseMapper.selectMenuTreeAll();
+            menus = menus.stream().filter(m -> !m.getMenuId().equals(7L)).collect(Collectors.toList());
+
         } else {
             menus = baseMapper.selectMenuTreeByUserId(userId);
         }
