@@ -2,12 +2,16 @@ import {createWebHistory, createRouter} from 'vue-router'
 /* Layout */
 import Layout from '@/layout'
 import VaccineHome from '@/views/Home/components/VaccineHome.vue'
-
 import VaccineKnowledge from '@/views/Home/components/VaccineKnowledge.vue'
 import VaccinationProject from '@/views/Home/components/VaccinationProject.vue'
 import VaccineDetail from '@/views/Home/components/VaccineDetail.vue'
 import InoculateSiteDetail from '@/views/Home/components/InoculateSiteDetail.vue'
 import BackHelp from "@/views/Home/components/Backhelp.vue";
+
+import UserInfo from '@/views/PersonalCenter/component/UserInfo.vue'
+import UserAppointHistory from '@/views/PersonalCenter/component/UserAppointHistory.vue'
+import UserInoculateHistory from '@/views/PersonalCenter/component/UserInoculateHistory.vue'
+
 
 /**
  * Note: 路由配置项
@@ -83,10 +87,50 @@ export const constantRoutes = [
         path: '/vaccination-project', component: VaccinationProject, meta: {
           bypassAuth: true
         }
-      }
+      },
+      {
+        path: '/personal-center',
+        component: () => import('@/views/PersonalCenter/PersonalCenter.vue'),
+        redirect: '/user-info',
+        hidden: true,
+        meta: {
+          bypassAuth: true
+        },
+        children: [
+          // 用户信息
+          {
+            path: '/user-info', component: UserInfo,
+            meta: {
+              bypassAuth: true
+            }
+          },
+          // 预约记录
+          {
+            path: '/user-appoint-history', // 路由传参
+            component: UserAppointHistory,
+            meta: {
+              bypassAuth: true
+            }
+          },
+          // 接种记录
+          {
+            path: '/user-inoculate-history', // 路由传参
+            component: UserInoculateHistory,
+            meta: {
+              bypassAuth: true
+            }
+          }
+        ]
+      },
     ]
   },
 
+  // 用户登陆界面
+  {
+    path: '/userlogin',
+    component: () => import('@/views/PersonalCenter/component/Userlogin.vue'),
+    hidden: true
+  },
   {
     path: '/login',
     component: () => import('@/views/login'),

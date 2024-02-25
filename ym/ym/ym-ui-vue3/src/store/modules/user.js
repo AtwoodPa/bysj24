@@ -6,12 +6,16 @@ const useUserStore = defineStore(
   'user',
   {
     state: () => ({
+      // 后台用户
       token: getToken(),
       id: '',
       name: '',
       avatar: '',
       roles: [],
-      permissions: []
+      permissions: [],
+      // 前台用户
+      isLoggedIn: false,
+      user : null
     }),
     actions: {
       // 登录
@@ -24,6 +28,8 @@ const useUserStore = defineStore(
           login(username, password, code, uuid).then(res => {
             setToken(res.data.token)
             this.token = res.data.token
+            this.isLoggedIn = true;
+            this.user = userInfo;
             resolve()
           }).catch(error => {
             reject(error)
@@ -56,9 +62,12 @@ const useUserStore = defineStore(
       logOut() {
         return new Promise((resolve, reject) => {
           logout(this.token).then(() => {
-            this.token = ''
-            this.roles = []
-            this.permissions = []
+            this.token = '';
+            this.roles = [];
+            this.permissions = [];
+            // 前台用户退出登录
+            this.isLoggedIn = false;
+            this.user = null;
             removeToken()
             resolve()
           }).catch(error => {

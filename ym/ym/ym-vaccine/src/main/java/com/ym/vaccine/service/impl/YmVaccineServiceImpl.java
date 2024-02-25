@@ -112,4 +112,6 @@ public class YmVaccineServiceImpl extends ServiceImpl<YmVaccineMapper, YmVaccine
         }
         return baseMapper.deleteBatchIds(ids) > 0;
     }
+
+
 }

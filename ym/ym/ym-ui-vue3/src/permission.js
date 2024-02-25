@@ -11,7 +11,7 @@ import usePermissionStore from '@/store/modules/permission'
 
 NProgress.configure({ showSpinner: false });
 // 默认加载页面home
-const whiteList = ['/login', '/register', '/home'];
+const whiteList = ['/login', '/register', '/home', '/personal-center','/user-info','/userlogin'];
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
@@ -43,6 +43,9 @@ router.beforeEach((to, from, next) => {
           })
         })
       } else {
+        // if (useUserStore().name != "admin"){
+        //   next('/home'); // 其他页面重定向到Home页面
+        // }
         next()
       }
     }
@@ -50,7 +53,7 @@ router.beforeEach((to, from, next) => {
     // 如果路由配置了 meta.bypassAuth 为 true，则跳过守卫
     if (to.meta.bypassAuth) {
       next();
-    }else
+    } else
     // 没有token
     if (whiteList.indexOf(to.path) !== -1) {
       // 在免登录白名单，直接进入

@@ -1,10 +1,19 @@
 <template>
   <div class="page-content vaccine-list">
+    <!--  使用el-carousel展示图片  -->
+    <div style="margin-top: 10px">
+      <el-carousel type="card" :interval="2000" trigger="click" height="350px" >
+        <el-carousel-item  v-for="item in carousels" :key="item">
+          <img :src="item.image" alt="notice-image" style="width: 100%;height: 100%">
+        </el-carousel-item>
+      </el-carousel>
+    </div>
     <div class="lr-container">
       <div class="c-left">
         <el-divider   >
           <span> 医院信息 </span>
         </el-divider>
+
         <el-row>
           <el-col
             v-for="(vaccine, index) in inoculateSiteList" :key="index"
@@ -73,7 +82,12 @@ import {listVaccine} from "@/api/vaccine/vaccine";
 const { proxy } = getCurrentInstance();
 const inoculateSiteList = ref([]);
 const vaccineList = ref([]);
-
+const carousels = [
+  { text: '公告1', image: 'https://file2.renrendoc.com/fileroot_temp3/2021-3/26/8179a26d-d3f9-479c-a5c9-89f38d2de3ec/8179a26d-d3f9-479c-a5c9-89f38d2de3ec5.gif' },
+  { text: '公告2', image: 'https://img-qn-2.51miz.com/preview/muban/00/00/44/88/M-448844-BA8ED576.jpg' },
+  { text: '公告3', image: 'https://p9.itc.cn/q_70/images03/20210923/27829eb7b0ba47ea86793d265dfb7f7c.jpeg' },
+  { text: '公告4', image: 'https://img0.baidu.com/it/u=3642696431,462406593&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500' }
+];
 // 系统公告信息
 const noticesLists = ref([]);
 

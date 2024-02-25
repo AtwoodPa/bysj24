@@ -1,6 +1,8 @@
 package com.ym.common.core.domain.model;
 
+import com.ym.common.annotation.Sensitive;
 import com.ym.common.constant.UserConstants;
+import com.ym.common.enums.SensitiveStrategy;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -28,6 +30,15 @@ public class LoginBody {
     @NotBlank(message = "{user.password.not.blank}")
     @Length(min = UserConstants.PASSWORD_MIN_LENGTH, max = UserConstants.PASSWORD_MAX_LENGTH, message = "{user.password.length.valid}")
     private String password;
+
+    /**
+     * 身份证号
+     */
+    private String idCard;
+    /**
+     * 手机号码
+     */
+    private String phonenumber;
 
     /**
      * 验证码

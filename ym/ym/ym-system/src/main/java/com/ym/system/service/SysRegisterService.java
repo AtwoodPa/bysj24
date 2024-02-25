@@ -63,6 +63,38 @@ public class SysRegisterService {
         userService.insertUserAuth(registerUser.getUserId(), new Long[]{4L});
         recordLogininfor(username, Constants.REGISTER, MessageUtils.message("user.register.success"));
     }
+    public void registerYmUser(RegisterBody registerBody) {
+        String username = registerBody.getUsername();
+        String password = registerBody.getPassword();
+        // 校验用户类型是否存在
+        String userType = UserType.getUserType(registerBody.getUserType()).getUserType();
+        String address = registerBody.getAddress();//家庭住址
+        String card = registerBody.getIdCard();//身份证号
+        String phone = registerBody.getPhonenumber();//手机号
+        String sex = registerBody.getSex();
+
+        SysUser sysUser = new SysUser();
+        sysUser.setUserName(username);
+        sysUser.setNickName(username);
+        sysUser.setPassword(BCrypt.hashpw(password));
+        sysUser.setUserType(userType);
+        sysUser.setAddress(address);
+        sysUser.setIdCard(card);
+        sysUser.setPhonenumber(phone);
+        sysUser.setSex(sex);
+
+        if (!userService.checkUserNameUnique(sysUser)) {
+            throw new UserException("user.register.save.error", username);
+        }
+        boolean regFlag = userService.registerUser(sysUser);
+        if (!regFlag) {
+            throw new UserException("user.register.error");
+        }
+        // 根据username查询出用户id，将用户id和用户类型存入user_role表
+        SysUser registerUser = userService.selectUserByUserName(username);
+        userService.insertUserAuth(registerUser.getUserId(), new Long[]{4L});
+        recordLogininfor(username, Constants.REGISTER, MessageUtils.message("user.register.success"));
+    }
 
     /**
      * 校验验证码

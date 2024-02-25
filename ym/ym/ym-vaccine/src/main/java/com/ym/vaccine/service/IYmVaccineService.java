@@ -48,4 +48,5 @@ public interface IYmVaccineService extends IService<YmVaccine> {
      * 校验并批量删除疫苗信息信息
      */
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
 }

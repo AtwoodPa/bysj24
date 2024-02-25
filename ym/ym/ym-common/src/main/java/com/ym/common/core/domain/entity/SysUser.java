@@ -63,6 +63,15 @@ public class SysUser extends BaseEntity {
     private String userType;
 
     /**
+     * 身份证号
+     */
+    @Sensitive(strategy = SensitiveStrategy.ID_CARD)
+    private String idCard;
+    /**
+     * 家庭住址
+     */
+    private String address;
+    /**
      * 用户邮箱
      */
     @Sensitive(strategy = SensitiveStrategy.EMAIL)

@@ -12,6 +12,8 @@
         <result property="userType" column="user_type"/>
         <result property="email" column="email"/>
         <result property="phonenumber" column="phonenumber"/>
+        <result property="idCard" column="id_card"/>
+        <result property="address" column="address"/>
         <result property="sex" column="sex"/>
         <result property="avatar" column="avatar"/>
         <result property="password" column="password"/>
@@ -55,6 +57,8 @@
                u.user_type,
                u.email,
                u.avatar,
+               u.id_card,
+               u.address,
                u.phonenumber,
                u.password,
                u.sex,

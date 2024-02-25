@@ -2,6 +2,7 @@ package com.ym.vaccine.mapper;
 
 import com.ym.common.core.mapper.BaseMapperPlus;
 import com.ym.vaccine.domain.YmVaccine;
+import com.ym.vaccine.domain.bo.YmVaccineBo;
 import com.ym.vaccine.domain.vo.YmVaccineVo;
 
 import java.util.Optional;
@@ -15,4 +16,5 @@ import java.util.Optional;
 public interface YmVaccineMapper extends BaseMapperPlus<YmVaccineMapper, YmVaccine, YmVaccineVo> {
 
     Optional<YmVaccine> selectVaccineByName(String vaccineName);
+
 }

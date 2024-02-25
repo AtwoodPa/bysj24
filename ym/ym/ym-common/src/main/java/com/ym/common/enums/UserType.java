@@ -22,7 +22,8 @@ public enum UserType {
     /**
      * app端
      */
-    APP_USER("app_user");
+    APP_USER("app_user"),
+    YM_USER("ym_user");
 
     private final String userType;
 

@@ -53,9 +53,6 @@ public class YmVaccineController extends BaseController {
     @Value("${upload.image.vaccineImage.url}")
     private String uploadImageVaccineImageUrl;
 
-    public R increment(){
-        return R.ok();
-    }
     /**
      * 查询疫苗信息列表
      */

@@ -17,7 +17,7 @@ export function login(username, password, code, uuid) {
     data: data
   })
 }
-
+register_ym
 // 注册方法
 export function register(data) {
   return request({
@@ -29,6 +29,17 @@ export function register(data) {
     data: data
   })
 }
+export function register_ym(data) {
+  return request({
+    url: '/register_ym',
+    headers: {
+      isToken: false
+    },
+    method: 'post',
+    data: data
+  })
+}
+
 
 // 获取用户详细信息
 export function getInfo() {

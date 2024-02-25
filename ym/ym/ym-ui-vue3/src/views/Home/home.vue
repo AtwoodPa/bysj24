@@ -10,7 +10,7 @@
       </el-row>
       <el-row>
         <div class="navbar top-nav">
-          <router-link to="/"
+          <router-link to="/home"
           ><el-icon><HomeFilled /></el-icon> <span>首页</span></router-link
           >
           <router-link to="/vaccine-knowledge">
@@ -22,22 +22,19 @@
           <router-link to="/back-help"
           ><el-icon><Comment /></el-icon> <span>反馈帮助</span></router-link
           >
+          <!-- 根据 isLoggedIn 状态显示不同的链接 -->
+          <router-link v-if="isLoggedIn" to="/personal-center" ><el-icon><UserFilled /></el-icon> <span>个人中心</span></router-link>
+          <router-link v-else to="/userlogin"
+          ><el-icon><UserFilled /></el-icon> <span>用户登录</span></router-link
+          >
           <router-link to="/login"
-          ><el-icon><UserFilled /></el-icon> <span>个人中心</span></router-link
+          ><el-icon><Tools /></el-icon> <span>后台</span></router-link
           >
         </div>
       </el-row>
     </el-header>
 <!--    <el-scrollbar height="100vh">-->
       <el-main>
-        <!--  使用el-carousel展示图片  -->
-        <div style="margin-top: 10px">
-          <el-carousel type="card" :interval="2000" trigger="click" height="550px" >
-            <el-carousel-item  v-for="item in carousels" :key="item">
-              <img :src="item.image" alt="notice-image" style="width: 100%;height: 100%">
-            </el-carousel-item>
-          </el-carousel>
-        </div>
         <router-view></router-view>
       </el-main>
       <el-footer class="footer">
@@ -65,27 +62,30 @@
 
 <script setup name="Home">
 
+import useUserStore from '@/store/modules/user'
+const userStore = useUserStore()
 const {proxy} = getCurrentInstance();
 const selectedIndex = ref(0);
-const navItems = [
-  {label: '疫苗首页', route: '/vaccine-home', icon: ''},
-  {label: '疫苗知识', route: '/vaccine-knowledge'},
-  {label: '接种项目', route: '/vaccination-project'},
-  {label: '后台管理', route: '/login'}
-];
+
+const personalCenterComponent = () => import('@/views/PersonalCenter.vue') // 动态导入
+const router = useRouter();
+const version = ref('1.0.0')
+const isLoggedIn = userStore.isLoggedIn
 // 固定轮播图
-const carousels = [
-  { text: '公告1', image: 'https://file2.renrendoc.com/fileroot_temp3/2021-3/26/8179a26d-d3f9-479c-a5c9-89f38d2de3ec/8179a26d-d3f9-479c-a5c9-89f38d2de3ec5.gif' },
-  { text: '公告2', image: 'https://img-qn-2.51miz.com/preview/muban/00/00/44/88/M-448844-BA8ED576.jpg' },
-  { text: '公告3', image: 'https://p9.itc.cn/q_70/images03/20210923/27829eb7b0ba47ea86793d265dfb7f7c.jpeg' },
-  { text: '公告4', image: 'https://img0.baidu.com/it/u=3642696431,462406593&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500' }
-];
+
 
 function selectNavItem(index) {
   selectedIndex.value = index;
 }
+function toLoginOrCenter(){
 
-const version = ref('1.0.0')
+  if (isLoggedIn == true){
+    // 已登录
+    router.push("/userlogin");
+  }else {
+    router.push("/personal-center");
+  }
+}
 
 </script>
 
