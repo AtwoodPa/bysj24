@@ -3,6 +3,7 @@ import {createWebHistory, createRouter} from 'vue-router'
 import Layout from '@/layout'
 import VaccineHome from '@/views/Home/components/VaccineHome.vue'
 import VaccineKnowledge from '@/views/Home/components/VaccineKnowledge.vue'
+import InoculateSite from '@/views/Home/components/InoculateSite.vue'
 import VaccinationProject from '@/views/Home/components/VaccinationProject.vue'
 import VaccineDetail from '@/views/Home/components/VaccineDetail.vue'
 import InoculateSiteDetail from '@/views/Home/components/InoculateSiteDetail.vue'
@@ -75,6 +76,11 @@ export const constantRoutes = [
       },
       {
         path: '/vaccine-knowledge', component: VaccineKnowledge, meta: {
+          bypassAuth: true
+        }
+      },
+      {
+        path: '/inoculate-site', component: InoculateSite, meta: {
           bypassAuth: true
         }
       },

@@ -1,12 +1,33 @@
 <template>
   <div class="page-content vaccine-list">
     <el-divider   >
-      <span> 疫苗知识 </span>
+      <span> 医院信息 </span>
     </el-divider>
+    <el-row>
+      <el-col
+        v-for="(vaccine, index) in inoculateSiteList" :key="index"
+        :span="4"
+      >
+        <div style="height: 100%;">
+          <router-link :to="'/inoculate-site-detail/' + vaccine.id">
+            <el-card :body-style="{ padding: '10px' }">
+              <img :src="getServerUrl()+'inoculateSiteImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
+              <div style="padding: 10px;font-size: 14px">
+                <div style="margin-top: 2px">医院名称：{{ vaccine.name }} </div>
+                <div style="margin-top: 2px">医院地址：{{ vaccine.address }} </div>
+                <div style="margin-top: 2px">联系方式：{{ vaccine.contact }} </div>
+              </div>
+            </el-card>
+          </router-link>
 
+        </div>
+
+      </el-col>
+
+    </el-row>
   </div>
 </template>
-<script setup name="VaccineKnowledge">
+<script setup name="InoculateSite">
 import { listInoculateSite } from "@/api/vaccine/inoculateSite";
 import {getServerUrl} from "@/utils/request";
 
@@ -36,14 +57,9 @@ getInoculateSiteList();
 
 
 .vaccine-image {
-  //display: flex;
-  //flex: 1;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
+  height: 200px;
   width: 100%;
-  border-radius: 8px 8px 0 0; /* 图片圆角 */
-
+  border-radius: 8px 8px 8px 8px;
 }
 
 
@@ -107,12 +123,12 @@ getInoculateSiteList();
   line-height: 14px;
 }
 .el-card {
-  width: 300px; /* 设置卡片宽度 */
   border-radius: 8px; /* 圆角 */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
   background-color: #fff; /* 背景色 */
   transition: box-shadow 0.3s ease; /* 阴影过渡效果 */
-  margin-bottom: 20px; /* 卡片间距 */
+  margin-bottom: 5px; /* 卡片间距 */
+  margin-right: 5px;
 }
 
 .el-card:hover {

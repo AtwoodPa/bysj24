@@ -1,6 +1,6 @@
 <template>
 
-  <div style="margin-top:108px;">
+  <div class="page-content">
     <el-row>
       <el-col :span="2"></el-col>
         <el-col :span="20">
@@ -179,6 +179,11 @@ function addmessage(row){
 </script>
 
 <style>
+.page-content {
+  height: 100vh;
+  padding: 10px;
+  margin: 0 50px 0 50px;
+}
 .custom-tabs-label {
   text-align: center;
 }

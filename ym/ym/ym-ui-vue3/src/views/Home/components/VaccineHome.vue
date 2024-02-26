@@ -19,9 +19,9 @@
             v-for="(vaccine, index) in inoculateSiteList" :key="index"
             :span="8"
           >
-            <div style="width: 300px;height: 100%;">
+            <div style="height: 100%;">
               <router-link :to="'/inoculate-site-detail/' + vaccine.id">
-                <el-card :body-style="{ padding: '10px' }">
+                <el-card  :body-style="{ padding: '10px' }">
                   <img :src="getServerUrl()+'inoculateSiteImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
                   <div style="padding: 10px;font-size: 14px">
                     <div style="margin-top: 2px">医院名称：{{ vaccine.name }} </div>
@@ -132,9 +132,9 @@ getVaccineList();
 
 
 .vaccine-image {
-  height: 300px;
+  height: 200px;
   width: 100%;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px 8px 8px 8px;
 }
 
 
@@ -195,11 +195,12 @@ getVaccineList();
   flex: 1; /* 右侧内容占据可用空间的比例，这里设为1表示占据剩余空间 */
 }
 .el-card {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  transition: all 0.3s ease;
+  border-radius: 8px; /* 圆角 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  background-color: #fff; /* 背景色 */
+  transition: box-shadow 0.3s ease; /* 阴影过渡效果 */
+  margin-bottom: 5px; /* 卡片间距 */
+  margin-right: 5px;
 }
 
 .el-card:hover {
@@ -207,7 +208,7 @@ getVaccineList();
 }
 .cardlist {
   width: 100%;
-  margin: auto;
+  //margin: auto;
   padding: 20px;
 }
 .cardlist h6 {

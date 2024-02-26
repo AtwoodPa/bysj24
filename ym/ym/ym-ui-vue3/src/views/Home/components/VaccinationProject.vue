@@ -9,7 +9,7 @@
               v-for="(vaccine, index) in vaccineList" :key="index"
               :span="4"
             >
-              <div style="width: 300px;height: 100%;">
+              <div style="height: 100%;">
                 <router-link :to="'/vaccine-detail/' + vaccine.id">
                   <el-card :body-style="{ padding: '10px' }">
                     <img :src="getServerUrl()+'vaccineImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
@@ -61,23 +61,20 @@ getVaccineList();
 }
 
 
+
 .vaccine-image {
-  //display: flex;
-  //flex: 1;
-  border-radius: 8px 8px 0 0; /* 图片圆角 */
-  object-fit: cover; /* 保持图片比例 */
-
-  height: 300px;
+  height: 200px;
   width: 100%;
-
+  border-radius: 8px 8px 8px 8px;
 }
 .el-card {
-  width: 300px; /* 设置卡片宽度 */
   border-radius: 8px; /* 圆角 */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
   background-color: #fff; /* 背景色 */
   transition: box-shadow 0.3s ease; /* 阴影过渡效果 */
-  margin-bottom: 20px; /* 卡片间距 */
+  margin-bottom: 5px; /* 卡片间距 */
+  margin-right: 5px;
+
 }
 .el-card:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* 鼠标悬停时的阴影效果 */

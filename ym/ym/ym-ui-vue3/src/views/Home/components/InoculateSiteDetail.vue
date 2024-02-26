@@ -87,14 +87,12 @@ const goBack = () => {
   position: relative; /* 相对定位，用于定位按钮容器 */
   width: 45%; /* 设置图片宽度 */
 }
-
 .vaccine-image {
-  /* 图片样式 */
-  width: 100%; /* 图片宽度100% */
-  height: auto; /* 图片高度自适应 */
-  border-radius: 10px; /* 图片圆角 */
-  object-fit: cover; /* 图片保持宽高比，不变形 */
+  height: 200px;
+  width: 100%;
+  border-radius: 8px 8px 8px 8px;
 }
+
 
 .right-section {
   /* 右侧样式 */

@@ -151,7 +151,7 @@ import {ElMessage, ElMessageBox} from "element-plus";
 import {getCodeImg, register_ym} from "@/api/login";
 import Cookies from "js-cookie";
 import {decrypt, encrypt} from "@/utils/jsencrypt";
-
+const {proxy} = getCurrentInstance();
 import useUserStore from '@/store/modules/user'
 const userStore = useUserStore()
 
@@ -161,7 +161,7 @@ const loading = ref(false);
 // const isLoggedIn = userStore.isLoggedIn
 // const personalCenterComponent = () => import('./views/PersonalCenter.vue') // 动态导入
 const router = useRouter();
-const {proxy} = getCurrentInstance();
+
 // 注册表单
 const registerForm = ref({
   username: "",
