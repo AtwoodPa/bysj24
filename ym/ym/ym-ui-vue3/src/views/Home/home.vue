@@ -18,14 +18,14 @@
             <el-icon><Opportunity /></el-icon> <span>疫苗知识</span></router-link
           >
           <router-link to="/inoculate-site">
-            <el-icon><Opportunity /></el-icon> <span>医院信息</span></router-link
+            <el-icon><Opportunity /></el-icon> <span>接种站点</span></router-link
           >
-          <router-link to="/vaccination-project"
-          ><el-icon><Flag /></el-icon><span>疫苗预约</span></router-link
-          >
-          <router-link to="/back-help"
-          ><el-icon><Comment /></el-icon> <span>反馈帮助</span></router-link
-          >
+<!--          <router-link to="/vaccination-project">-->
+<!--            <el-icon><Flag /></el-icon><span>疫苗预约</span>-->
+<!--          </router-link>-->
+          <router-link to="/back-help">
+            <el-icon><Comment /></el-icon> <span>反馈帮助</span>
+          </router-link>
 
           <!-- 根据 isLoggedIn 状态显示不同的链接 -->
           <router-link v-if="isLoggedIn" to="/personal-center" ><el-icon><UserFilled /></el-icon> <span>个人中心</span></router-link>

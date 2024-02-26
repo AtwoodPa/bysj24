@@ -122,9 +122,9 @@ public class YmAppointServiceImpl extends ServiceImpl<YmAppointMapper, YmAppoint
     public Boolean appoint(OnlineAppointBo bo) {
         // 检查库存是否充足
         YmVaccine vaccine = vaccineService.getById(bo.getVaccineId());
-        if (vaccine.getAmount() < 1) {
-            return false;
-        }
+//        if (vaccine.getAmount() < 1) {
+//            return false;
+//        }
         // 获取当前登陆用户信息
         Long loginUserId = LoginHelper.getUserId();
         YmAppoint online = BeanUtil.toBean(bo, YmAppoint.class);
