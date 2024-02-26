@@ -7,6 +7,7 @@ import com.ym.common.annotation.RepeatSubmit;
 import com.ym.common.core.controller.BaseController;
 import com.ym.common.core.domain.PageQuery;
 import com.ym.common.core.domain.R;
+import com.ym.common.core.domain.entity.SysUser;
 import com.ym.common.core.page.TableDataInfo;
 import com.ym.common.core.validate.AddGroup;
 import com.ym.common.core.validate.EditGroup;
@@ -79,7 +80,10 @@ public class YmInoculateController extends BaseController {
         List<YmInoculateVo> dataList = result.getRows();
         List<YmInoculateVo> modifyDataList =
             dataList.stream().map(item -> {
-                item.setNickName(userService.selectUserById(item.getUserId()).getNickName());
+                Long userId = item.getUserId();
+                SysUser sysUser = userService.selectUserById(userId);
+
+                item.setNickName(sysUser.getNickName());
                 item.setInoculateSiteName(iYmInoculateSiteService.queryById(appointService.getById(item.getAppointId()).getInoculateSiteId()).getName());
                 item.setWorkName(userService.selectUserById(iYmInoculateService.getById(item.getId()).getWorkId()).getNickName());
                 item.setVaccineName(iYmVaccineService.queryById(item.getVaccineId()).getName());

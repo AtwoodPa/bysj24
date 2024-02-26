@@ -18,8 +18,8 @@
               </el-input>
             </el-form-item>
 
-            <el-form-item prop="phoneNumber">
-              <el-input v-model="registerForm.phoneNumber" type="text" placeholder="手机号码">
+            <el-form-item prop="phonenumber">
+              <el-input v-model="registerForm.phonenumber" type="text" placeholder="手机号码">
                 <template #prefix>
                   <svg-icon icon-class="phone" class="el-input__icon input-icon"/>
                 </template>
@@ -79,8 +79,7 @@
         </el-row>
 
         <div class="primary-btn"
-             @click.prevent="handleRegister"
-             @click=" register">立即注册
+             @click="handleRegister">立即注册
         </div>
       </el-form>
     </div>
@@ -89,7 +88,7 @@
     >
       <el-form :model="loginForm" status-icon :rules="loginRules" ref="loginRef" class="login-form">
         <h2 class="title">登录网站</h2>
-        <span class="text">你可以用身份证号登录系统，你也可以用你的手机号进行登录</span>
+        <span class="text">请使用用户名进行登录</span>
 
         <el-form-item prop="username">
           <el-input placeholder="用户名" v-model="loginForm.username">
@@ -171,7 +170,8 @@ const registerForm = ref({
   address: "",
   sex: "",
   confirmPassword: "",
-  userType: "ym_user"
+  userType: "ym_user",
+  avatar: "http://43.142.255.148:9000/ym2024/2024/01/25/376fdcb664db4dccb054e538a418db8f.png"
 });
 // 验证二次密码正确性
 const equalToPassword = (rule, value, callback) => {
@@ -215,7 +215,7 @@ function handleRegister() {
       loading.value = true;
       register_ym(registerForm.value).then(res => {
         const username = registerForm.value.username;
-        ElMessageBox.alert("<font color='red'>恭喜你，您的账号 " + username + "</font>", "注册成功！请使用用户名&密码进行登录", "系统提示", {
+        ElMessageBox.alert("<font color='red'>恭喜你，您的账号 " + username + "注册成功！请使用用户名&密码进行登录</font>", "系统提示", {
           dangerouslyUseHTMLString: true,
           type: "success",
         }).then(() => {

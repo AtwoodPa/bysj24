@@ -84,7 +84,7 @@ function selectNavItem(index) {
 }
 function toLoginOrCenter(){
 
-  if (isLoggedIn == true){
+  if (isLoggedIn.value == true){
     // 已登录
     router.push("/userlogin");
   }else {

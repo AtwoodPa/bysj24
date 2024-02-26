@@ -72,6 +72,7 @@ public class SysRegisterService {
         String card = registerBody.getIdCard();//身份证号
         String phone = registerBody.getPhonenumber();//手机号
         String sex = registerBody.getSex();
+        String avatar = registerBody.getAvatar();
 
         SysUser sysUser = new SysUser();
         sysUser.setUserName(username);
@@ -82,6 +83,7 @@ public class SysRegisterService {
         sysUser.setIdCard(card);
         sysUser.setPhonenumber(phone);
         sysUser.setSex(sex);
+        sysUser.setAvatar(avatar);
 
         if (!userService.checkUserNameUnique(sysUser)) {
             throw new UserException("user.register.save.error", username);

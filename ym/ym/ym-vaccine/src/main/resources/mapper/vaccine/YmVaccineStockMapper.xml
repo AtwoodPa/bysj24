@@ -10,6 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="siteAmount" column="site_amount"/>
         <result property="createTime" column="create_time"/>
     </resultMap>
+    <select id="vaccineBySiteId" resultType="com.ym.vaccine.domain.vo.YmVaccineStockVo"
+            parameterType="java.lang.Long">
+        SELECT * FROM ym_vaccine_stock WHERE site_id = #{siteId}
+    </select>
 
 
 </mapper>

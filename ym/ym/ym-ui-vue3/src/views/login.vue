@@ -45,7 +45,6 @@
         <el-radio-group v-model="radio">
           <el-radio :label="3" size="small">管理员</el-radio>
           <el-radio :label="6" size="small">医护人员</el-radio>
-          <el-radio :label="9" size="small">用户</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>

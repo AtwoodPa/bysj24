@@ -19,9 +19,13 @@
         <div>疫苗分类：{{ vaccine.category }} </div>
         <p style="color: #3d4147;">详情描述: <span style="color: #000000" >{{ vaccine.detail }}</span></p>
         <!-- 其他商品信息 -->
+        <div class="appointment-button-container">
+          <button @click="handleAppointment" class="appointment-button">预约</button>
+        </div>
       </div>
-    </div>
+      <!-- 添加预约按钮 -->
 
+    </div>
 
   </div>
 </template>
@@ -51,7 +55,13 @@ function getVaccineDetail(id){
    console.log(vaccine)
  })
 }
-
+function handleAppointment() {
+  // 在这里处理预约逻辑
+  // 例如，你可以发送一个请求到后端来预约疫苗
+  const id = route.params.id;
+  console.log(id)
+  console.log('预约按钮被点击');
+}
 // 定义返回函数
 const goBack = () => {
   router.back(); // 使用Vue Router的back方法返回上一页
@@ -63,12 +73,11 @@ const goBack = () => {
   /* 整体样式，居中显示数据，灰色背景圆角边框 */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5f5f5; /* 灰色背景 */
+  //background-color: #f5f5f5; /* 灰色背景 */
   border-radius: 10px; /* 圆角边框 */
   padding: 20px; /* 内边距 */
   box-sizing: border-box; /* 盒模型设置 */
+  height: 100vh;
   margin-left: 300px;
   margin-right: 300px;
 }
@@ -95,8 +104,9 @@ const goBack = () => {
 }
 
 .right-section {
-  /* 右侧样式 */
-  width: 50%; /* 设置信息宽度 */
+  /* 调整右侧商品信息的样式 */
+  flex: 2;
+  padding-left: 20px;
 }
 
 .right-section h2 {
@@ -111,6 +121,7 @@ const goBack = () => {
   margin-bottom: 5px; /* 价格信息下方外边距 */
 }
 .right-section div {
+  width: 40%;
   /* 价格信息样式 */
   margin-bottom: 5px; /* 价格信息下方外边距 */
 }
@@ -155,5 +166,27 @@ const goBack = () => {
   color: #333;
   font-size: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-button-container {
+  /* 调整预约按钮容器的样式 */
+  //text-align: center;
+  margin-top: 20px;
+}
+
+.appointment-button {
+  /* 调整预约按钮的样式 */
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.appointment-button:hover {
+  /* 添加鼠标悬停效果 */
+  background-color: #0056b3;
 }
 </style>

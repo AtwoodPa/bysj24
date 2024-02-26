@@ -4,14 +4,17 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 import java.util.UUID;
 
 import cn.dev33.satoken.annotation.SaIgnore;
 import com.ym.vaccine.domain.common.Result;
+import com.ym.vaccine.domain.vo.YmVaccineStockVo;
 import com.ym.vaccine.domain.vo.YmVaccineVo;
 import com.ym.vaccine.service.IYmVaccineService;
+import com.ym.vaccine.service.IYmVaccineStockService;
 import lombok.RequiredArgsConstructor;
 
 import javax.servlet.http.HttpServletResponse;
@@ -53,6 +56,8 @@ public class YmVaccineController extends BaseController {
     @Value("${upload.image.vaccineImage.url}")
     private String uploadImageVaccineImageUrl;
 
+    private final IYmVaccineStockService iYmVaccineStockService;
+
     /**
      * 查询疫苗信息列表
      */
@@ -62,6 +67,19 @@ public class YmVaccineController extends BaseController {
         return iYmVaccineService.queryPageList(bo, pageQuery);
     }
 
+    @GetMapping("/vaccineBySiteId/{id}")
+    @SaIgnore
+    public R vaccineBySiteId(@NotNull(message = "接种点id不能为空") @PathVariable("id") Long siteId) {
+        List<YmVaccineVo> result = new ArrayList<>();
+        List<YmVaccineStockVo> resultStock = iYmVaccineStockService.vaccineBySiteId(siteId);
+        // 根据站点id查询所有疫苗
+        resultStock.forEach(stock -> {
+            YmVaccineVo vaccine = iYmVaccineService.queryById(stock.getVaccineId());
+            vaccine.setAmount(stock.getSiteAmount());
+            result.add(vaccine);
+        });
+        return R.ok( result);
+    }
 
     @SaIgnore
     @GetMapping("/findAll")
@@ -71,7 +89,6 @@ public class YmVaccineController extends BaseController {
 
     @SaIgnore
     @PostMapping("/vaccineImage/upload")
-
     public Result uploadVaccineImage(@RequestParam("file") MultipartFile imgFile) {
         try {
             uploadImageVaccineImageUrl = new String(uploadImageVaccineImageUrl.getBytes("iso8859-1"), StandardCharsets.UTF_8);

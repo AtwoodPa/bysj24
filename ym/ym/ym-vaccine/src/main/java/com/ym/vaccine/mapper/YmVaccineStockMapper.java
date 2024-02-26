@@ -4,6 +4,8 @@ import com.ym.vaccine.domain.YmVaccineStock;
 import com.ym.vaccine.domain.vo.YmVaccineStockVo;
 import com.ym.common.core.mapper.BaseMapperPlus;
 
+import java.util.List;
+
 /**
  * 疫苗出入库Mapper接口
  *
@@ -12,4 +14,5 @@ import com.ym.common.core.mapper.BaseMapperPlus;
  */
 public interface YmVaccineStockMapper extends BaseMapperPlus<YmVaccineStockMapper, YmVaccineStock, YmVaccineStockVo> {
 
+    List<YmVaccineStockVo> vaccineBySiteId(Long siteId);
 }

@@ -49,5 +49,9 @@ public class LoginBody {
      * 唯一标识
      */
     private String uuid;
+    /**
+     * 头像
+     */
+    private String avatar;
 
 }

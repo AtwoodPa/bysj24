@@ -16,9 +16,8 @@ import com.ym.common.core.domain.BaseEntity;
  * @date 2024-02-25
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @TableName("ym_vaccine_stock")
-public class YmVaccineStock extends BaseEntity {
+public class YmVaccineStock implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -36,5 +35,7 @@ public class YmVaccineStock extends BaseEntity {
      * 疫苗库存
      */
     private Long siteAmount;
+
+    private Date createTime;
 
 }

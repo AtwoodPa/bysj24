@@ -46,4 +46,6 @@ public interface IYmVaccineStockService {
      * 校验并批量删除疫苗出入库信息
      */
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+    List<YmVaccineStockVo> vaccineBySiteId(Long siteId);
 }

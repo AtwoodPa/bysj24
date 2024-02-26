@@ -59,7 +59,7 @@ public class YmVaccineStockServiceImpl implements IYmVaccineStockService {
     }
 
     private LambdaQueryWrapper<YmVaccineStock> buildQueryWrapper(YmVaccineStockBo bo) {
-        Map<String, Object> params = bo.getParams();
+        // Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmVaccineStock> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getSiteAmount() != null, YmVaccineStock::getSiteAmount, bo.getSiteAmount());
         return lqw;
@@ -105,5 +105,10 @@ public class YmVaccineStockServiceImpl implements IYmVaccineStockService {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteBatchIds(ids) > 0;
+    }
+
+    @Override
+    public List<YmVaccineStockVo> vaccineBySiteId(Long siteId) {
+        return baseMapper.vaccineBySiteId(siteId);
     }
 }

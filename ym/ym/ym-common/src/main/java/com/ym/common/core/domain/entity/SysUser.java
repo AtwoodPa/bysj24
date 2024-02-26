@@ -65,7 +65,7 @@ public class SysUser extends BaseEntity {
     /**
      * 身份证号
      */
-    @Sensitive(strategy = SensitiveStrategy.ID_CARD)
+//    @Sensitive(strategy = SensitiveStrategy.ID_CARD)
     private String idCard;
     /**
      * 家庭住址
@@ -82,9 +82,8 @@ public class SysUser extends BaseEntity {
     /**
      * 手机号码
      */
-    @Sensitive(strategy = SensitiveStrategy.PHONE)
+//    @Sensitive(strategy = SensitiveStrategy.PHONE)
     private String phonenumber;
-
     /**
      * 用户性别
      */

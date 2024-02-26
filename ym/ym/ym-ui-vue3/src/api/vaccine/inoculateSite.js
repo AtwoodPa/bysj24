@@ -16,6 +16,12 @@ export function getInoculateSite(id) {
     method: 'get'
   })
 }
+export function getVaccineBySiteId(id) {
+  return request({
+    url: '/vaccine/vaccine/vaccineBySiteId/' + id,
+    method: 'get'
+  })
+}
 
 // 新增疫苗接种站点管理
 export function addInoculateSite(data) {
