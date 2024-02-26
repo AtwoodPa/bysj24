@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import com.ym.vaccine.service.IYmVaccineService;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -38,6 +39,7 @@ import com.ym.common.core.page.TableDataInfo;
 public class YmVaccineStockController extends BaseController {
 
     private final IYmVaccineStockService iYmVaccineStockService;
+    private final IYmVaccineService vaccineService;
 
     /**
      * 查询疫苗出入库列表

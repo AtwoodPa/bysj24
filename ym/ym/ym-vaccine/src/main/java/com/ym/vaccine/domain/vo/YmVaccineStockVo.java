@@ -20,13 +20,17 @@ import java.io.Serializable;
 public class YmVaccineStockVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private Long id;
 
     /**
      * 医院ID
      */
     @ExcelProperty(value = "医院ID")
     private Long siteId;
-
+    /**
+     * 医院名称
+     */
+    private String siteName;
     /**
      * 疫苗ID
      */

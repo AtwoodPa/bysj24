@@ -10,9 +10,9 @@ export function listVaccineStock(query) {
 }
 
 // 查询疫苗出入库详细
-export function getVaccineStock(siteId) {
+export function getVaccineStock(id) {
   return request({
-    url: '/vaccine/vaccineStock/' + siteId,
+    url: '/vaccine/vaccineStock/' + id,
     method: 'get'
   })
 }

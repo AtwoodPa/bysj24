@@ -20,6 +20,7 @@ import com.ym.common.core.domain.BaseEntity;
 
 @Data
 public class YmVaccineStockBo implements Serializable {
+    private Long id;
 
     /**
      * 医院ID

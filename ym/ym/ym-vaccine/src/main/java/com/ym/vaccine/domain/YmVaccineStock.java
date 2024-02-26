@@ -20,11 +20,12 @@ import com.ym.common.core.domain.BaseEntity;
 public class YmVaccineStock implements Serializable {
 
     private static final long serialVersionUID=1L;
-
+    @TableId(value = "id")
+    private Long id;
     /**
      * 医院ID
      */
-    @TableId(value = "site_id")
+
     private Long siteId;
     /**
      * 疫苗ID

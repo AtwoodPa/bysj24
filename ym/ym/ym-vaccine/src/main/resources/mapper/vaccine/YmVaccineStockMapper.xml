@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.ym.vaccine.mapper.YmVaccineStockMapper">
 
     <resultMap type="com.ym.vaccine.domain.YmVaccineStock" id="YmVaccineStockResult">
+        <result property="id" column="id"/>
         <result property="siteId" column="site_id"/>
         <result property="vaccineId" column="vaccine_id"/>
         <result property="siteAmount" column="site_amount"/>

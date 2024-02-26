@@ -74,7 +74,7 @@ public class YmVaccineStockServiceImpl implements IYmVaccineStockService {
         validEntityBeforeSave(add);
         boolean flag = baseMapper.insert(add) > 0;
         if (flag) {
-            bo.setSiteId(add.getSiteId());
+            bo.setId(add.getId());
         }
         return flag;
     }
