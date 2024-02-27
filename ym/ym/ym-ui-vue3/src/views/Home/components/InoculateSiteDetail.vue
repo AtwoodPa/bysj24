@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <div class="site-detail">
       <!-- 上部分 -->
       <div class="top-section">
@@ -9,13 +9,13 @@
           <div class="back-button-container">
             <button @click="goBack"><el-icon><CaretLeft /></el-icon></button>
           </div>
-          <img :src="getServerUrl() + 'inoculateSiteImage' + site.imgUrl" alt="vaccine-image" class="vaccine-image"/>
+          <img :src="getServerUrl() + 'inoculateSiteImage' + site.imgUrl" alt="site-image" class="site-image"/>
         </div>
         <!-- 右侧商品信息 -->
         <div class="right-section">
           <h1>{{ site.name }}</h1>
           <div>
-            <span style="color: #3d4147;font-weight: bold;s">医院地址:</span>
+            <span style="color: #3d4147;font-weight: bold;">医院地址:</span>
             <span style="margin-left: 10px">{{ site.address }}</span>
           </div>
           <div>
@@ -24,34 +24,30 @@
           </div>
         </div>
       </div>
-
     </div>
+    <div class="bookable-title">可预约项目</div>
 
     <div class="vaccine-detail">
       <!-- 下部分（可接种疫苗项目）以卡片列表呈现 -->
-
-      <div class="vaccine-cards">
-        <div style="margin:0 0 10px 10px;color: #0068b7;font-weight: bold;">可预约项目</div>
-        <el-row>
-          <el-col
-            v-for="(vaccine, index) in vaccines" :key="index"
-            :span="8">
-            <div style="height: 100%;">
-              <router-link :to="'/vaccine-detail/' + vaccine.id">
-                <el-card :body-style="{ padding: '10px' }">
-                  <img :src="getServerUrl()+'vaccineImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
-                  <div style="padding: 10px;font-size: 18px">
-                    <div>疫苗名称：{{ vaccine.name }} </div>
-                    <div>疫苗厂家：{{ vaccine.manufacturer }} </div>
-                    <div>价格：<span style="color: #ff0000;margin-left: 10px;font-weight: bold;">{{ vaccine.price }}¥</span> </div>
-                    <div>疫苗批次：{{ vaccine.batchNumber }} </div>
-                    <div>疫苗分类：{{ vaccine.category }} </div>
-                  </div>
-                </el-card>
-              </router-link>
-            </div>
-          </el-col>
-        </el-row>
+      <div class="vaccine-list">
+        <!--        水平依次排列-->
+        <div
+          v-for="(vaccine, index) in vaccines" :key="index">
+          <div>
+            <router-link :to="'/vaccine-detail/' + vaccine.id">
+              <el-card class="vaccine-card">
+                <img :src="getServerUrl()+'vaccineImage'+vaccine.imgUrl" alt="vaccine-image" class="vaccine-image"/>
+                <div class="vaccine-card-body">
+                  <div class="vaccine-info-title">疫苗名称：{{ vaccine.name }} </div>
+                  <div class="vaccine-info-item">疫苗厂家：{{ vaccine.manufacturer }} </div>
+                  <div class="vaccine-info-item">价格：<span class="vaccine-price">{{ vaccine.price }}¥</span> </div>
+                  <div class="vaccine-info-item">疫苗批次：{{ vaccine.batchNumber }} </div>
+                  <div class="vaccine-info-item">疫苗分类：{{ vaccine.category }} </div>
+                </div>
+              </el-card>
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -101,30 +97,30 @@ const goBack = () => {
 <style scoped>
 /* 样式 */
 .vaccine-detail {
+  display: flex;
   background-color: #f5f5f5; /* 灰色背景 */
   border-radius: 10px; /* 圆角边框 */
   padding: 20px; /* 内边距 */
-  //box-sizing: border-box; /* 盒模型设置 */
-  margin-left: 300px;
+  flex-wrap: wrap;
+  box-sizing: border-box; /* 盒模型设置 */
+  margin-left: 200px;
   margin-top: 10px;
-  margin-right: 300px;
-  height: 100vh;
+  margin-right: 200px;
+  height: 80vh;
 
 }
+
 .site-detail  {
   /* 整体样式，居中显示数据，灰色背景圆角边框 */
   display: flex;
   justify-content: flex-start;
-  //height: 100vh;
-  //flex-direction: column;
   align-items: center;
-
   background-color: #f5f5f5; /* 灰色背景 */
   border-radius: 10px; /* 圆角边框 */
   padding: 20px; /* 内边距 */
   box-sizing: border-box; /* 盒模型设置 */
-  margin-left: 300px;
-  margin-right: 300px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 .top-section {
   /* 上部分样式 */
@@ -139,11 +135,12 @@ const goBack = () => {
   width: 40%; /* 设置图片宽度 */
   height: 300px;
 }
-.vaccine-image {
-  height: 300px;
+.site-image {
+  height: 280px;
   width: 100%;
   border-radius: 8px 8px 8px 8px;
 }
+
 
 
 .right-section {
@@ -195,9 +192,6 @@ const goBack = () => {
   background-color: #fff; /* 背景色 */
   transition: box-shadow 0.3s ease; /* 阴影过渡效果 */
   margin-bottom: 5px; /* 卡片间距 */
-  margin-right: 5px;
-
-
 }
 .el-card:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
@@ -214,24 +208,80 @@ const goBack = () => {
 .el-card__body div {
   margin-top: 8px;
 }
-.vaccine-info {
+
+
+/* 疫苗卡片容器样式 */
+.vaccine-detail {
+  /* 根据需要添加样式，如宽度、边距等 */
+}
+
+/* 疫苗卡片列表样式 */
+.vaccine-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px; /* 卡片之间的间距 */
+
 }
 
+/* 疫苗卡片样式 */
 .vaccine-card {
-  flex: 0 0 calc(33.33% - 200px);
-  margin-top: 100px;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative;
 }
 
-.vaccine-card img {
+/* 疫苗卡片内部样式 */
+.vaccine-card-body {
+  padding: 10px;
+  text-align: left;
+}
+
+/* 疫苗图片样式 */
+.vaccine-image {
   width: 100%;
-  height: auto;
+  height: 180px;
+  border-radius: 8px;
 }
 
-.vaccine-card p {
-  text-align: center;
+/* 疫苗信息标题样式 */
+.vaccine-info-title {
+  margin: 0;
+  font-size: 18px;
+  color: #333333;
 }
+
+/* 疫苗信息列表样式 */
+.vaccine-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 疫苗信息列表项样式 */
+.vaccine-info-item {
+  padding: 5px 0;
+  font-size: 14px;
+  color: #666666;
+}
+
+/* 疫苗价格样式 */
+.vaccine-price {
+  color: #ff0000;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+/* 可预约项目标题样式 */
+.bookable-title {
+  margin: 10px 0 10px 220px;
+  color: #0068b7;
+  font-weight: bold;
+}
+
+
+
 </style>

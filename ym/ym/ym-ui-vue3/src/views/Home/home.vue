@@ -18,7 +18,7 @@
             <el-icon><Opportunity /></el-icon> <span>疫苗知识</span></router-link
           >
           <router-link to="/inoculate-site">
-            <el-icon><Opportunity /></el-icon> <span>接种站点</span></router-link
+            <el-icon><LocationInformation /></el-icon><span>接种站点</span></router-link
           >
 <!--          <router-link to="/vaccination-project">-->
 <!--            <el-icon><Flag /></el-icon><span>疫苗预约</span>-->
