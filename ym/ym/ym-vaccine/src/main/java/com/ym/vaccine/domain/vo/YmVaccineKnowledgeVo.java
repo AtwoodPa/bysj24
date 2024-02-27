@@ -27,49 +27,49 @@ public class YmVaccineKnowledgeVo implements Serializable {
      * 唯一标识每一条疫苗知识记录的自增ID
      */
     @ExcelProperty(value = "唯一标识每一条疫苗知识记录的自增ID")
-    private Long ID;
+    private Long id;
 
     /**
      * 疫苗知识的标题
      */
     @ExcelProperty(value = "疫苗知识的标题")
-    private String Title;
+    private String title;
 
     /**
      * 接种该疫苗的好处
      */
     @ExcelProperty(value = "接种该疫苗的好处")
-    private String Benefits;
+    private String benefits;
 
     /**
      * 接种该疫苗前需要注意的事项
      */
     @ExcelProperty(value = "接种该疫苗前需要注意的事项")
-    private String Instructions;
+    private String instructions;
 
     /**
      * 疫苗知识的发布时间
      */
     @ExcelProperty(value = "疫苗知识的发布时间")
-    private Date PublishTime;
+    private Date publishTime;
 
     /**
      * 发布疫苗知识的用户或管理员的姓名或标识符
      */
     @ExcelProperty(value = "发布疫苗知识的用户或管理员的姓名或标识符")
-    private String Publisher;
+    private String publisher;
 
     /**
      * 详细描述疫苗知识的文本
      */
     @ExcelProperty(value = "详细描述疫苗知识的文本")
-    private String Knowledge;
+    private String knowledge;
 
     /**
      * 封面图片的URL或路径
      */
     @ExcelProperty(value = "封面图片的URL或路径")
-    private String CoverImage;
+    private String coverImage;
 
 
 }

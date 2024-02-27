@@ -26,50 +26,35 @@ public class YmVaccineKnowledgeBo extends BaseEntity {
     /**
      * 唯一标识每一条疫苗知识记录的自增ID
      */
-    @NotNull(message = "唯一标识每一条疫苗知识记录的自增ID不能为空", groups = { EditGroup.class })
-    private Long ID;
-
+    private Long id;
     /**
      * 疫苗知识的标题
      */
-    @NotBlank(message = "疫苗知识的标题不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String Title;
-
+    private String title;
     /**
      * 接种该疫苗的好处
      */
-    @NotBlank(message = "接种该疫苗的好处不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String Benefits;
-
+    private String benefits;
     /**
      * 接种该疫苗前需要注意的事项
      */
-    @NotBlank(message = "接种该疫苗前需要注意的事项不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String Instructions;
-
+    private String instructions;
     /**
      * 疫苗知识的发布时间
      */
-    @NotNull(message = "疫苗知识的发布时间不能为空", groups = { AddGroup.class, EditGroup.class })
-    private Date PublishTime;
-
+    private Date publishTime;
     /**
      * 发布疫苗知识的用户或管理员的姓名或标识符
      */
-    @NotBlank(message = "发布疫苗知识的用户或管理员的姓名或标识符不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String Publisher;
-
+    private String publisher;
     /**
      * 详细描述疫苗知识的文本
      */
-    @NotBlank(message = "详细描述疫苗知识的文本不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String Knowledge;
-
+    private String knowledge;
     /**
      * 封面图片的URL或路径
      */
-    @NotBlank(message = "封面图片的URL或路径不能为空", groups = { AddGroup.class, EditGroup.class })
-    private String CoverImage;
+    private String coverImage;
 
 
 }

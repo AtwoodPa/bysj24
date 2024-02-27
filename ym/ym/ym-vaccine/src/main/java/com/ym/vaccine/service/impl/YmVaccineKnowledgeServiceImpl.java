@@ -80,7 +80,7 @@ public class YmVaccineKnowledgeServiceImpl implements IYmVaccineKnowledgeService
         validEntityBeforeSave(add);
         boolean flag = baseMapper.insert(add) > 0;
         if (flag) {
-            bo.setID(add.getID());
+            bo.setId(add.getId());
         }
         return flag;
     }

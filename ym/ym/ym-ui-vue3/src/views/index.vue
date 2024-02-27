@@ -1,16 +1,6 @@
 <template>
   <div class="app-container home">
-    <el-row :gutter="20">
-      <el-col :sm="24" :lg="12" style="padding-left: 20px">
-        <h2>疫苗预约管理系统</h2>
-
-        <p>
-          <b>当前版本:</b> <span>v{{ version }}</span>
-        </p>
-        <!--为echarts准备一个具备大小的容器dom-->
-
-      </el-col>
-    </el-row>
+    <h2>疫苗预约管理系统</h2>
     <el-divider/>
     <el-row>
       <el-col :span="12" class="card-box">
