@@ -42,6 +42,7 @@
                   <div class="vaccine-info-item">疫苗厂家：{{ vaccine.manufacturer }} </div>
                   <div class="vaccine-info-item">价格：<span class="vaccine-price">{{ vaccine.price }}¥</span> </div>
                   <div class="vaccine-info-item">疫苗批次：{{ vaccine.batchNumber }} </div>
+                  <div class="vaccine-info-item">库存剩余：{{ vaccine.amount }} </div>
                   <div class="vaccine-info-item">疫苗分类：{{ vaccine.category }} </div>
                 </div>
               </el-card>
@@ -266,6 +267,8 @@ const goBack = () => {
   padding: 5px 0;
   font-size: 14px;
   color: #666666;
+  font-weight: bold;
+
 }
 
 /* 疫苗价格样式 */

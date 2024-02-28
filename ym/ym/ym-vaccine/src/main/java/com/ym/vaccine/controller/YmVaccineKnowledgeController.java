@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -42,7 +43,7 @@ public class YmVaccineKnowledgeController extends BaseController {
     /**
      * 查询存储疫苗知识信息的列表
      */
-    @SaCheckPermission("vaccine:vaccineKnowledge:list")
+    @SaIgnore
     @GetMapping("/list")
     public TableDataInfo<YmVaccineKnowledgeVo> list(YmVaccineKnowledgeBo bo, PageQuery pageQuery) {
         return iYmVaccineKnowledgeService.queryPageList(bo, pageQuery);
@@ -51,7 +52,7 @@ public class YmVaccineKnowledgeController extends BaseController {
     /**
      * 导出存储疫苗知识信息的列表
      */
-    @SaCheckPermission("vaccine:vaccineKnowledge:export")
+    @SaIgnore
     @Log(title = "存储疫苗知识信息的", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(YmVaccineKnowledgeBo bo, HttpServletResponse response) {
@@ -62,19 +63,18 @@ public class YmVaccineKnowledgeController extends BaseController {
     /**
      * 获取存储疫苗知识信息的详细信息
      *
-     * @param ID 主键
+     * @param id 主键
      */
-    @SaCheckPermission("vaccine:vaccineKnowledge:query")
-    @GetMapping("/{ID}")
-    public R<YmVaccineKnowledgeVo> getInfo(@NotNull(message = "主键不能为空")
-                                     @PathVariable Long ID) {
-        return R.ok(iYmVaccineKnowledgeService.queryById(ID));
+    @SaIgnore
+    @GetMapping("/{id}")
+    public R<YmVaccineKnowledgeVo> getInfo(@NotNull(message = "主键不能为空") @PathVariable("id") Long id) {
+        return R.ok(iYmVaccineKnowledgeService.queryById(id));
     }
 
     /**
      * 新增存储疫苗知识信息的
      */
-    @SaCheckPermission("vaccine:vaccineKnowledge:add")
+    @SaIgnore
     @Log(title = "存储疫苗知识信息的", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
@@ -85,7 +85,7 @@ public class YmVaccineKnowledgeController extends BaseController {
     /**
      * 修改存储疫苗知识信息的
      */
-    @SaCheckPermission("vaccine:vaccineKnowledge:edit")
+    @SaIgnore
     @Log(title = "存储疫苗知识信息的", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
@@ -98,11 +98,11 @@ public class YmVaccineKnowledgeController extends BaseController {
      *
      * @param IDs 主键串
      */
-    @SaCheckPermission("vaccine:vaccineKnowledge:remove")
+    @SaIgnore
     @Log(title = "存储疫苗知识信息的", businessType = BusinessType.DELETE)
-    @DeleteMapping("/{IDs}")
+    @DeleteMapping("/{ids}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空")
-                          @PathVariable Long[] IDs) {
-        return toAjax(iYmVaccineKnowledgeService.deleteWithValidByIds(Arrays.asList(IDs), true));
+                          @PathVariable Long[] ids) {
+        return toAjax(iYmVaccineKnowledgeService.deleteWithValidByIds(Arrays.asList(ids), true));
     }
 }

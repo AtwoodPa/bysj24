@@ -59,7 +59,7 @@ public class YmVaccineKnowledgeServiceImpl implements IYmVaccineKnowledgeService
     }
 
     private LambdaQueryWrapper<YmVaccineKnowledge> buildQueryWrapper(YmVaccineKnowledgeBo bo) {
-        Map<String, Object> params = bo.getParams();
+        // Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<YmVaccineKnowledge> lqw = Wrappers.lambdaQuery();
         lqw.eq(StringUtils.isNotBlank(bo.getTitle()), YmVaccineKnowledge::getTitle, bo.getTitle());
         lqw.eq(StringUtils.isNotBlank(bo.getBenefits()), YmVaccineKnowledge::getBenefits, bo.getBenefits());

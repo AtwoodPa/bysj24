@@ -14,33 +14,24 @@
       <h1>{{ article.title }}</h1>
       <div class="article-meta">
         <span class="left">发布人: {{ article.publisher }}</span>
-        <span class="right">{{ article.publish_time }}</span>
+        <span class="right">{{ article.publishTime }}</span>
       </div>
       <div class="article-content">
         <div>
-          <h3>接种疫苗的好处</h3>
-          <ul>
-            <li v-for="(benefit, index) in benefits" :key="index">
-              {{ benefit }}
-            </li>
-          </ul>
+          <h4>接种疫苗的好处</h4>
+          <span>{{article.benefits}}</span>
         </div>
 
         <div>
-          <h3>接种注意事项</h3>
-          <ul>
-            <li v-for="(instruction, index) in instructions" :key="index">
-              {{ instruction }}
-            </li>
-          </ul>
+          <h4>接种注意事项</h4>
+          <span>{{article.instructions}}</span>
         </div>
-
       </div>
       <div style="border: 1px solid #ccc;height: 70%;margin-top: 10px">
-        <h3>疫苗知识详情</h3>
+        <h4>疫苗知识</h4>
         <p v-if="article.content">{{ article.content }}</p>
-        <div v-if="knowledge" class="vaccine-knowledge">
-          <p>{{ knowledge }}</p>
+        <div v-if="article.knowledge" class="vaccine-knowledge">
+          <p>{{ article.knowledge }}</p>
         </div>
       </div>
     </div>
@@ -49,14 +40,14 @@
 </template>
 
 <script setup name="VaccineKnowledgeDetail">
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted } from 'vue';
+import { getVaccineKnowledge } from "@/api/vaccine/vaccineKnowledge";
+
 import { useRoute } from 'vue-router';
 const route = useRoute();
 // 实例化路由
 const router = useRouter();
-// 路由信息
-const knowledgeId = route.params.knowledgeId;
-const knowledgeItem = ref(null);
+
 const article = ref({
   title: '文章标题',
   content: '文章正文内容',
@@ -64,40 +55,20 @@ const article = ref({
   publisher: '发布者姓名',
 });
 
-const benefits = ref([
-  '好处1',
-  '好处2',
-  '好处3',
-  // 更多好处...
-]);
-
-const instructions = ref([
-  '接种前请告知医生您的健康状况和过敏史',
-  '接种前请咨询医生，确保无过敏史',
-  '接种前请确保身体健康，遵循医生建议'
-  // 更多注意事项...
-]);
-
-const knowledge = ref('疫苗知识详情内容');
-// 模拟从API获取数据
-const fetchData = async () => {
-  // const response = await fetch(`/api/vaccine-knowledge/${knowledgeId}`);
-  // const data = await response.json();
-  // knowledgeItem.value = data;
-};
-
 const goBack = () => {
   router.back(); // 使用Vue Router的back方法返回上一页
 };
 onMounted(() => {
-  fetchData();
+  const id = route.params.id;// url中的id信息
+  getKnowledgeById(id);
 });
 
-// watch(knowledgeId, (newId) => {
-//   if (newId) {
-//     fetchData();
-//   }
-// });
+function getKnowledgeById(id){
+  getVaccineKnowledge(id).then(resp => {
+    article.value = resp.data;
+    console.log(resp)
+  })
+}
 </script>
 
 <style scoped>

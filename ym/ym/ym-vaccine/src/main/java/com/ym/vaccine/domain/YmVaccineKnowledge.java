@@ -18,9 +18,8 @@ import com.ym.common.core.domain.BaseEntity;
  * @date 2024-02-25
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @TableName("ym_vaccine_knowledge")
-public class YmVaccineKnowledge extends BaseEntity {
+public class YmVaccineKnowledge implements Serializable {
 
     private static final long serialVersionUID=1L;
 

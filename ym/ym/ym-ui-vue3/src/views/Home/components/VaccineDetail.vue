@@ -17,11 +17,13 @@
       <!-- 右侧商品信息 -->
       <div class="right-section">
         <h1>{{ vaccine.name }}</h1>
-        <p style="color: #3d4147;">价格: <span class="price">{{ vaccine.price }}¥</span></p>
+        <p class="vaccine-info-item" >价格: <span class="price vaccine-info-item">{{ vaccine.price }}¥</span></p>
 
-        <div>疫苗批次：{{ vaccine.batchNumber }}</div>
-        <div>疫苗分类：{{ vaccine.category }}</div>
-        <p style="color: #3d4147;">详情描述: <span style="color: #000000">{{ vaccine.detail }}</span></p>
+        <div class="vaccine-info-item">疫苗批次：{{ vaccine.batchNumber }}</div>
+        <div class="vaccine-info-item">疫苗分类：{{ vaccine.category }}</div>
+        <div class="vaccine-info-item">库存剩余：{{ vaccine.amount }} </div>
+
+        <p class="vaccine-info-item" >详情描述: <span class="vaccine-info-item" >{{ vaccine.detail }}</span></p>
         <!-- 添加预约按钮 -->
         <div class="appointment-button-container">
           <el-button class="appointment-button" @click="handleAppointment" type="primary">
@@ -373,7 +375,12 @@ getVaccineList();
   font-size: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+.vaccine-info-item {
+  padding: 5px 0;
+  font-size: 14px;
+  color: #666666;
+  font-weight: bold;
+}
 .appointment-button-container {
   /* 调整预约按钮容器的样式 */
   margin-top: 20px;

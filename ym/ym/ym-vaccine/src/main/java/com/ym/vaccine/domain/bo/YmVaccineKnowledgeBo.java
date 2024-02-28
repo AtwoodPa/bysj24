@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import java.util.Date;
@@ -20,8 +21,7 @@ import com.ym.common.core.domain.BaseEntity;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class YmVaccineKnowledgeBo extends BaseEntity {
+public class YmVaccineKnowledgeBo implements Serializable {
 
     /**
      * 唯一标识每一条疫苗知识记录的自增ID

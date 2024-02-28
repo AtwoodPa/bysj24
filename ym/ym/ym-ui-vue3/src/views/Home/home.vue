@@ -20,9 +20,6 @@
           <router-link to="/inoculate-site">
             <el-icon><LocationInformation /></el-icon><span>接种站点</span></router-link
           >
-<!--          <router-link to="/vaccination-project">-->
-<!--            <el-icon><Flag /></el-icon><span>疫苗预约</span>-->
-<!--          </router-link>-->
           <router-link to="/back-help">
             <el-icon><Comment /></el-icon> <span>反馈帮助</span>
           </router-link>
