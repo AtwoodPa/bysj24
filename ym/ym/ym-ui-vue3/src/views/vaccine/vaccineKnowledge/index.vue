@@ -1,57 +1,18 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="疫苗知识的标题" prop="Title">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="40px">
+      <el-form-item label="标题" prop="title">
         <el-input
-          v-model="queryParams.Title"
+          v-model="queryParams.title"
           placeholder="请输入疫苗知识的标题"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="接种该疫苗的好处" prop="Benefits">
-        <el-input
-          v-model="queryParams.Benefits"
-          placeholder="请输入接种该疫苗的好处"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="接种该疫苗前需要注意的事项" prop="Instructions">
-        <el-input
-          v-model="queryParams.Instructions"
-          placeholder="请输入接种该疫苗前需要注意的事项"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="疫苗知识的发布时间" prop="PublishTime">
-        <el-date-picker clearable
-          v-model="queryParams.PublishTime"
-          type="date"
-          value-format="yyyy-MM-dd"
-          placeholder="请选择疫苗知识的发布时间">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="发布疫苗知识的用户或管理员的姓名或标识符" prop="Publisher">
-        <el-input
-          v-model="queryParams.Publisher"
-          placeholder="请输入发布疫苗知识的用户或管理员的姓名或标识符"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="详细描述疫苗知识的文本" prop="Knowledge">
-        <el-input
-          v-model="queryParams.Knowledge"
-          placeholder="请输入详细描述疫苗知识的文本"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="Search" size="default" @click="handleQuery">搜索</el-button>
+        <el-button icon="Refresh" size="default" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
@@ -60,81 +21,59 @@
         <el-button
           type="primary"
           plain
-          icon="el-icon-plus"
-          size="mini"
+          icon="Plus"
+          size="default"
           @click="handleAdd"
-          v-hasPermi="['vaccine:vaccineKnowledge:add']"
+
         >新增</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
           type="success"
           plain
-          icon="el-icon-edit"
-          size="mini"
+          icon="Edit"
+          size="default"
           :disabled="single"
           @click="handleUpdate"
-          v-hasPermi="['vaccine:vaccineKnowledge:edit']"
+
         >修改</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
           type="danger"
           plain
-          icon="el-icon-delete"
-          size="mini"
+          icon="Delete"
+          size="default"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['vaccine:vaccineKnowledge:remove']"
+
         >删除</el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['vaccine:vaccineKnowledge:export']"
-        >导出</el-button>
-      </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
+      <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="vaccineKnowledgeList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="唯一标识每一条疫苗知识记录的自增ID" align="center" prop="ID" v-if="true"/>
-      <el-table-column label="疫苗知识的标题" align="center" prop="Title" />
-      <el-table-column label="接种该疫苗的好处" align="center" prop="Benefits" />
-      <el-table-column label="接种该疫苗前需要注意的事项" align="center" prop="Instructions" />
-      <el-table-column label="疫苗知识的发布时间" align="center" prop="PublishTime" width="180">
-        <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.PublishTime, '{y}-{m}-{d}') }}</span>
+      <el-table-column label="ID" align="center" prop="id" v-if="true"/>
+      <el-table-column label="标题" align="center" prop="title" />
+      <el-table-column label="接种好处" show-overflow-tooltip align="center" prop="benefits" />
+      <el-table-column label="注意的事项" show-overflow-tooltip align="center" prop="instructions" />
+      <el-table-column label="发布时间" align="center" prop="publishTime" width="180">
+        <template #default="{ row }">
+          <span>{{ parseTime(row.publishTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="发布疫苗知识的用户或管理员的姓名或标识符" align="center" prop="Publisher" />
-      <el-table-column label="详细描述疫苗知识的文本" align="center" prop="Knowledge" />
-      <el-table-column label="封面图片的URL或路径" align="center" prop="CoverImage" width="100">
-        <template slot-scope="scope">
-          <image-preview :src="scope.row.CoverImage" :width="50" :height="50"/>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['vaccine:vaccineKnowledge:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['vaccine:vaccineKnowledge:remove']"
-          >删除</el-button>
+      <el-table-column label="发布用户" align="center" prop="publisher" />
+      <el-table-column label="知识详情" show-overflow-tooltip align="center" prop="knowledge" />
+
+      <el-table-column label="操作" align="center" >
+        <template #default="scope">
+          <el-tooltip content="修改" placement="top" >
+            <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)"></el-button>
+          </el-tooltip>
+          <el-tooltip content="删除" placement="top" >
+            <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" ></el-button>
+          </el-tooltip>
         </template>
       </el-table-column>
     </el-table>
@@ -148,34 +87,33 @@
     />
 
     <!-- 添加或修改存储疫苗知识信息的对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="疫苗知识的标题" prop="Title">
-          <el-input v-model="form.Title" placeholder="请输入疫苗知识的标题" />
+    <el-dialog :title="title" v-model="open" width="500px" append-to-body>
+      <el-form ref="kForm" :model="form" :rules="rules" label-width="80px">
+        <el-form-item label="标题" prop="Title">
+          <el-input v-model="form.title" placeholder="请输入疫苗知识的标题" />
         </el-form-item>
-        <el-form-item label="接种该疫苗的好处" prop="Benefits">
-          <el-input v-model="form.Benefits" type="textarea" placeholder="请输入内容" />
+        <el-form-item label="好处" prop="Benefits">
+          <el-input v-model="form.benefits" type="textarea" placeholder="请输入内容" />
         </el-form-item>
-        <el-form-item label="接种该疫苗前需要注意的事项" prop="Instructions">
-          <el-input v-model="form.Instructions" type="textarea" placeholder="请输入内容" />
+        <el-form-item label="注意的事项" prop="Instructions">
+          <el-input v-model="form.instructions" type="textarea" placeholder="请输入内容" />
         </el-form-item>
-        <el-form-item label="疫苗知识的发布时间" prop="PublishTime">
+        <el-form-item label="发布时间" prop="PublishTime">
           <el-date-picker clearable
-            v-model="form.PublishTime"
-            type="datetime"
-            value-format="yyyy-MM-dd HH:mm:ss"
-            placeholder="请选择疫苗知识的发布时间">
+            v-model="form.publishTime"
+                          type="datetime"
+                          format="YYYY-MM-DD HH:mm:ss"
+                          value-format="YYYY-MM-DD HH:mm:ss"
+            placeholder="请选择发布时间">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="发布疫苗知识的用户或管理员的姓名或标识符" prop="Publisher">
-          <el-input v-model="form.Publisher" placeholder="请输入发布疫苗知识的用户或管理员的姓名或标识符" />
+        <el-form-item label="发布人" prop="Publisher">
+          <el-input v-model="form.publisher" placeholder="请输入发布疫苗知识的用户或管理员的姓名或标识符" />
         </el-form-item>
-        <el-form-item label="详细描述疫苗知识的文本" prop="Knowledge">
-          <el-input v-model="form.Knowledge" type="textarea" placeholder="请输入内容" />
+        <el-form-item label="知识详情" prop="Knowledge">
+          <el-input v-model="form.knowledge" type="textarea" placeholder="请输入内容" />
         </el-form-item>
-        <el-form-item label="封面图片的URL或路径" prop="CoverImage">
-          <image-upload v-model="form.CoverImage"/>
-        </el-form-item>
+
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button :loading="buttonLoading" type="primary" @click="submitForm">确 定</el-button>
@@ -185,188 +123,160 @@
   </div>
 </template>
 
-<script>
+<script setup name="VaccineKnowledge">
 import { listVaccineKnowledge, getVaccineKnowledge, delVaccineKnowledge, addVaccineKnowledge, updateVaccineKnowledge } from "@/api/vaccine/vaccineKnowledge";
+import {getVaccine} from "@/api/vaccine/vaccine";
 
-export default {
-  name: "VaccineKnowledge",
-  data() {
-    return {
-      // 按钮loading
-      buttonLoading: false,
-      // 遮罩层
-      loading: true,
-      // 选中数组
-      ids: [],
-      // 非单个禁用
-      single: true,
-      // 非多个禁用
-      multiple: true,
-      // 显示搜索条件
-      showSearch: true,
-      // 总条数
-      total: 0,
-      // 存储疫苗知识信息的表格数据
-      vaccineKnowledgeList: [],
-      // 弹出层标题
-      title: "",
-      // 是否显示弹出层
-      open: false,
-      // 查询参数
-      queryParams: {
-        pageNum: 1,
-        pageSize: 10,
-        Title: undefined,
-        Benefits: undefined,
-        Instructions: undefined,
-        PublishTime: undefined,
-        Publisher: undefined,
-        Knowledge: undefined,
-        CoverImage: undefined
-      },
-      // 表单参数
-      form: {},
-      // 表单校验
-      rules: {
-        ID: [
-          { required: true, message: "唯一标识每一条疫苗知识记录的自增ID不能为空", trigger: "blur" }
-        ],
-        Title: [
-          { required: true, message: "疫苗知识的标题不能为空", trigger: "blur" }
-        ],
-        Benefits: [
-          { required: true, message: "接种该疫苗的好处不能为空", trigger: "blur" }
-        ],
-        Instructions: [
-          { required: true, message: "接种该疫苗前需要注意的事项不能为空", trigger: "blur" }
-        ],
-        PublishTime: [
-          { required: true, message: "疫苗知识的发布时间不能为空", trigger: "blur" }
-        ],
-        Publisher: [
-          { required: true, message: "发布疫苗知识的用户或管理员的姓名或标识符不能为空", trigger: "blur" }
-        ],
-        Knowledge: [
-          { required: true, message: "详细描述疫苗知识的文本不能为空", trigger: "blur" }
-        ],
-        CoverImage: [
-          { required: true, message: "封面图片的URL或路径不能为空", trigger: "blur" }
-        ]
-      }
-    };
+const {proxy} = getCurrentInstance();
+
+const vaccineKnowledgeList = ref([]);
+const open = ref(false);
+const buttonLoading = ref(false);
+const loading = ref(true);
+const showSearch = ref(true);
+const ids = ref([]);
+const single = ref(true);
+const multiple = ref(true);
+const total = ref(0);
+const title = ref("");
+
+
+const data = reactive({
+  queryParams: {
+    pageNum: 1,
+    pageSize: 10,
+    title: undefined,
+    benefits: undefined,
+    instructions: undefined,
+    publishTime: undefined,
+    publisher: undefined,
+    knowledge: undefined,
+    coverImage: undefined
   },
-  created() {
-    this.getList();
-  },
-  methods: {
-    /** 查询存储疫苗知识信息的列表 */
-    getList() {
-      this.loading = true;
-      listVaccineKnowledge(this.queryParams).then(response => {
-        this.vaccineKnowledgeList = response.rows;
-        this.total = response.total;
-        this.loading = false;
-      });
-    },
-    // 取消按钮
-    cancel() {
-      this.open = false;
-      this.reset();
-    },
-    // 表单重置
-    reset() {
-      this.form = {
-        ID: undefined,
-        Title: undefined,
-        Benefits: undefined,
-        Instructions: undefined,
-        PublishTime: undefined,
-        Publisher: undefined,
-        Knowledge: undefined,
-        CoverImage: undefined
-      };
-      this.resetForm("form");
-    },
-    /** 搜索按钮操作 */
-    handleQuery() {
-      this.queryParams.pageNum = 1;
-      this.getList();
-    },
-    /** 重置按钮操作 */
-    resetQuery() {
-      this.resetForm("queryForm");
-      this.handleQuery();
-    },
-    // 多选框选中数据
-    handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.ID)
-      this.single = selection.length!==1
-      this.multiple = !selection.length
-    },
-    /** 新增按钮操作 */
-    handleAdd() {
-      this.reset();
-      this.open = true;
-      this.title = "添加存储疫苗知识信息的";
-    },
-    /** 修改按钮操作 */
-    handleUpdate(row) {
-      this.loading = true;
-      this.reset();
-      const ID = row.ID || this.ids
-      getVaccineKnowledge(ID).then(response => {
-        this.loading = false;
-        this.form = response.data;
-        this.open = true;
-        this.title = "修改存储疫苗知识信息的";
-      });
-    },
-    /** 提交按钮 */
-    submitForm() {
-      this.$refs["form"].validate(valid => {
-        if (valid) {
-          this.buttonLoading = true;
-          if (this.form.ID != null) {
-            updateVaccineKnowledge(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
-              this.open = false;
-              this.getList();
-            }).finally(() => {
-              this.buttonLoading = false;
-            });
-          } else {
-            addVaccineKnowledge(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            }).finally(() => {
-              this.buttonLoading = false;
-            });
-          }
-        }
-      });
-    },
-    /** 删除按钮操作 */
-    handleDelete(row) {
-      const IDs = row.ID || this.ids;
-      this.$modal.confirm('是否确认删除存储疫苗知识信息的编号为"' + IDs + '"的数据项？').then(() => {
-        this.loading = true;
-        return delVaccineKnowledge(IDs);
-      }).then(() => {
-        this.loading = false;
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      }).finally(() => {
-        this.loading = false;
-      });
-    },
-    /** 导出按钮操作 */
-    handleExport() {
-      this.download('vaccine/vaccineKnowledge/export', {
-        ...this.queryParams
-      }, `vaccineKnowledge_${new Date().getTime()}.xlsx`)
-    }
+  // 表单参数
+  form: {},
+  // 表单校验
+  rules: {
+    id: [
+      { required: true, message: "唯一标识每一条疫苗知识记录的自增ID不能为空", trigger: "blur" }
+    ],
+    title: [
+      { required: true, message: "疫苗知识的标题不能为空", trigger: "blur" }
+    ],
+    benefits: [
+      { required: true, message: "接种该疫苗的好处不能为空", trigger: "blur" }
+    ],
+    instructions: [
+      { required: true, message: "接种该疫苗前需要注意的事项不能为空", trigger: "blur" }
+    ],
+    publishTime: [
+      { required: true, message: "疫苗知识的发布时间不能为空", trigger: "blur" }
+    ],
+    publisher: [
+      { required: true, message: "发布疫苗知识的用户或管理员的姓名或标识符不能为空", trigger: "blur" }
+    ],
+    knowledge: [
+      { required: true, message: "详细描述疫苗知识的文本不能为空", trigger: "blur" }
+    ]
   }
+});
+const {queryParams, form, rules} = toRefs(data);
+
+function getList(){
+  loading.value = true;
+  listVaccineKnowledge(data.queryParams).then(resp => {
+    vaccineKnowledgeList.value = resp.rows;
+    total.value = resp.total;
+    loading.value = false;
+  })
+}
+function cancel() {
+  open.value = false;
+  reset();
 };
+function reset() {
+  form.value = {
+    id: undefined,
+    title: undefined,
+    benefits: undefined,
+    instructions: undefined,
+    publishTime: undefined,
+    publisher: undefined,
+    knowledge: undefined,
+    coverImage: undefined
+  };
+  proxy.resetForm["kForm"];
+};
+function handleQuery() {
+  queryParams.value.pageNum = 1;
+  getList();
+};
+function resetQuery() {
+  proxy.resetForm("queryForm");
+  handleQuery();
+};
+/** 多选框选中数据 **/
+function handleSelectionChange(selection) {
+  ids.value = selection.map(item => item.id);
+  single.value = selection.length !== 1;
+  multiple.value = !selection.length;
+}
+
+/** 新增按钮操作 */
+function handleAdd() {
+  reset();
+  open.value = true;
+  title.value = "添加疫苗知识信息";
+}
+function handleUpdate(row) {
+  loading.value = true;
+  reset();
+  const id = row.id || ids.value
+  getVaccineKnowledge(id).then(response => {
+    loading.value = false;
+    form.value = response.data;
+    open.value = true;
+    title.value = "修改疫苗信息";
+  });
+}
+
+/** 提交按钮 */
+function submitForm() {
+  proxy.$refs["kForm"].validate(valid => {
+    if (valid) {
+      buttonLoading.value = true;
+      if (form.value.id != null) {
+        updateVaccineKnowledge(form.value).then(response => {
+          proxy.$modal.msgSuccess("修改成功");
+          open.value = false;
+          getList();
+        }).finally(() => {
+          buttonLoading.value = false;
+        });
+      } else {
+        addVaccineKnowledge(form.value).then(response => {
+          proxy.$modal.msgSuccess("新增成功");
+          open.value = false;
+          getList();
+        }).finally(() => {
+          buttonLoading.value = false;
+        });
+      }
+    }
+  });
+}
+
+/** 删除按钮操作 */
+function handleDelete(row) {
+  const id = row.id || ids.value
+  proxy.$modal.confirm('是否确认删除编号为"' + id + '"的数据项？').then(function () {
+    return  delVaccineKnowledge(id);
+  }).then(() => {
+    getList();
+    proxy.$modal.msgSuccess("删除成功");
+  }).catch(() => {
+  });
+}
+
+getList();
 </script>

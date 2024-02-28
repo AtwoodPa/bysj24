@@ -51,10 +51,7 @@ public class YmVaccineKnowledgeBo implements Serializable {
      * 详细描述疫苗知识的文本
      */
     private String knowledge;
-    /**
-     * 封面图片的URL或路径
-     */
-    private String coverImage;
+
 
 
 }

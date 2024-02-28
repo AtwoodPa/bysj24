@@ -32,6 +32,10 @@ public class YmVaccineStockVo implements Serializable {
      */
     private String siteName;
     /**
+     * 疫苗名称
+     */
+    private String vaccineName;
+    /**
      * 疫苗ID
      */
     @ExcelProperty(value = "疫苗ID")

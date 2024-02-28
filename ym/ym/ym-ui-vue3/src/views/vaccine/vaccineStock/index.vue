@@ -29,7 +29,6 @@
     <el-row :gutter="10" class="mb8">
     </el-row>
     <el-table stripe v-loading="loading" :data="vaccineList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="疫苗编号" align="center" prop="id" width="80" v-if="columns[0].visible"/>
       <el-table-column label="疫苗名称" align="center" prop="name" width="320" v-if="columns[1].visible"/>
       <el-table-column label="疫苗价格" align="center" prop="price" width="120" v-if="columns[2].visible">
@@ -51,7 +50,7 @@
           <img :src="getServerUrl()+'vaccineImage'+row.imgUrl" style='width: 78px;height: 78px;display: block;'/>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding " v-if="columns[7].visible">
+      <el-table-column label="操作" fixed="right" align="center" class-name="small-padding " v-if="columns[7].visible">
         <template #default="scope">
           <el-tooltip content="添加库存" placement="top">
             <el-button link type="primary" @click="handleUpdate(scope.row)" v-hasPermi="['vaccine:vaccine:edit']">
@@ -80,7 +79,7 @@
         <el-form-item label="疫苗名称" prop="name">
           <el-input v-model="form.name" :disabled="true" placeholder="请输入疫苗名称"/>
         </el-form-item>
-        <el-form-item label="疫苗库存" prop="price">
+        <el-form-item label="疫苗库存" prop="amount">
           <!--          <el-input v-model="form.amount" placeholder="请输入疫苗库存" />-->
           <el-input-number v-model="form.amount" :min="1"/>
         </el-form-item>

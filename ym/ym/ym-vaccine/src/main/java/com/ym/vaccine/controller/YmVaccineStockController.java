@@ -3,7 +3,10 @@ package com.ym.vaccine.controller;
 import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import cn.dev33.satoken.annotation.SaIgnore;
+import com.ym.vaccine.service.IYmInoculateSiteService;
 import com.ym.vaccine.service.IYmVaccineService;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
@@ -40,6 +43,7 @@ public class YmVaccineStockController extends BaseController {
 
     private final IYmVaccineStockService iYmVaccineStockService;
     private final IYmVaccineService vaccineService;
+    private final IYmInoculateSiteService siteService;
 
     /**
      * 查询疫苗出入库列表
@@ -47,7 +51,16 @@ public class YmVaccineStockController extends BaseController {
     @SaCheckPermission("vaccine:vaccineStock:list")
     @GetMapping("/list")
     public TableDataInfo<YmVaccineStockVo> list(YmVaccineStockBo bo, PageQuery pageQuery) {
-        return iYmVaccineStockService.queryPageList(bo, pageQuery);
+        TableDataInfo<YmVaccineStockVo> resultData = iYmVaccineStockService.queryPageList(bo, pageQuery);
+        List<YmVaccineStockVo> rows = resultData.getRows();
+        List<YmVaccineStockVo> collect = rows.stream().map(row -> {
+            row.setVaccineName(vaccineService.queryById(row.getVaccineId()).getName());
+            row.setSiteName(siteService.queryById(row.getSiteId()).getName());
+            return row;
+        }).collect(Collectors.toList());
+
+        resultData.setRows(collect);
+        return resultData;
     }
 
     /**
@@ -100,7 +113,7 @@ public class YmVaccineStockController extends BaseController {
      *
      * @param siteIds 主键串
      */
-    @SaCheckPermission("vaccine:vaccineStock:remove")
+    @SaIgnore
     @Log(title = "疫苗出入库", businessType = BusinessType.DELETE)
     @DeleteMapping("/{siteIds}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空")

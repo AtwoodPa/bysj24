@@ -65,11 +65,5 @@ public class YmVaccineKnowledgeVo implements Serializable {
     @ExcelProperty(value = "详细描述疫苗知识的文本")
     private String knowledge;
 
-    /**
-     * 封面图片的URL或路径
-     */
-    @ExcelProperty(value = "封面图片的URL或路径")
-    private String coverImage;
-
 
 }

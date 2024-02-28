@@ -66,7 +66,9 @@ public class YmVaccineStockServiceImpl implements IYmVaccineStockService {
     }
 
     /**
-     * 新增疫苗出入库
+     * 新增疫苗出库
+     *
+     * 分配疫苗到接种点
      */
     @Override
     public Boolean insertByBo(YmVaccineStockBo bo) {
@@ -94,6 +96,22 @@ public class YmVaccineStockServiceImpl implements IYmVaccineStockService {
      */
     private void validEntityBeforeSave(YmVaccineStock entity){
         //TODO 做一些数据校验,如唯一约束
+        // siteId和vaccineId组合是唯一的,则需要校验
+        Long siteId = entity.getSiteId();
+        Long vaccineId = entity.getVaccineId();
+        if (siteId != null && vaccineId != null) {
+            LambdaQueryWrapper<YmVaccineStock> lqw = Wrappers.lambdaQuery();
+            lqw.eq(YmVaccineStock::getSiteId, siteId);
+            lqw.eq(YmVaccineStock::getVaccineId, vaccineId);
+            if (entity.getId() != null) {
+                lqw.ne(YmVaccineStock::getId, entity.getId());
+            }
+            int count = Math.toIntExact(baseMapper.selectCount(lqw));
+            if (count > 0) {
+                throw new RuntimeException("疫苗库存已存在");
+            }
+        }
+
     }
 
     /**

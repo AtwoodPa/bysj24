@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryRef"  :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="疫苗库存" prop="siteAmount">
         <el-input
           v-model="queryParams.siteAmount"
@@ -12,57 +12,31 @@
       <el-form-item>
         <el-button type="primary" icon="Search" size="default" @click="handleQuery">搜索</el-button>
         <el-button icon="Refresh" size="default" @click="resetQuery">重置</el-button>
-      </el-form-item>
-    </el-form>
-
-    <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
         <el-button
           type="primary"
           plain
           icon="Plus"
           size="default"
           @click="handleAdd"
-          v-hasPermi="['vaccine:vaccineStock:add']"
-        >新增</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="Edit"
-          size="default"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['vaccine:vaccineStock:edit']"
-        >修改</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="Delete"
-          size="default"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['vaccine:vaccineStock:remove']"
-        >删除</el-button>
-      </el-col>
 
-      <right-toolbar v-model:showSearch="showSearch"  @queryTable="getList"></right-toolbar>
-    </el-row>
+        >新增
+        </el-button>
+      </el-form-item>
+    </el-form>
 
     <el-table v-loading="loading" :data="vaccineStockList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
+      <el-table-column label="ID" show-overflow-tooltip width="150" align="center" prop="id" v-if="true"/>
       <el-table-column label="医院ID" align="center" prop="siteId" v-if="true"/>
+      <el-table-column label="医院名称" align="center" prop="siteName" v-if="true"/>
       <el-table-column label="疫苗ID" align="center" prop="vaccineId" v-if="true"/>
-      <el-table-column label="疫苗库存" align="center" prop="siteAmount" />
+      <el-table-column label="疫苗名称" align="center" prop="vaccineName" v-if="true"/>
+      <el-table-column label="疫苗库存" align="center" prop="siteAmount"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
-          <el-tooltip content="修改" placement="top" >
-            <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" ></el-button>
+          <el-tooltip content="修改" placement="top">
+            <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)"></el-button>
           </el-tooltip>
-          <el-tooltip content="删除" placement="top" >
+          <el-tooltip content="删除" placement="top">
             <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)"></el-button>
           </el-tooltip>
         </template>
@@ -79,9 +53,40 @@
 
     <!-- 添加或修改疫苗出入库对话框 -->
     <el-dialog :title="title" v-model="open" width="500px" append-to-body>
+
       <el-form ref="stockRef" :model="form" :rules="rules" label-width="80px">
+        <el-form-item label="接种地点" prop="siteId">
+          <el-select
+            v-model="form.siteId"
+            placeholder="请选择接种地点"
+            size="default"
+            style="width: 240px"
+          >
+            <el-option
+              v-for="item in siteList"
+              :key="item.key"
+              :label="item.value"
+              :value="item.key"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="接种疫苗" prop="vaccineId">
+          <el-select
+            v-model="form.vaccineId"
+            placeholder="请选择接种疫苗"
+            size="default"
+            style="width: 240px"
+          >
+            <el-option
+              v-for="item in vaccines"
+              :key="item.key"
+              :label="item.value"
+              :value="item.key"
+            ></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="疫苗库存" prop="siteAmount">
-          <el-input v-model="form.siteAmount" placeholder="请输入疫苗库存" />
+          <el-input-number v-model="form.siteAmount" :min="1"/>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -93,10 +98,17 @@
 </template>
 
 <script setup name="VaccineStock">
-import { listVaccineStock, getVaccineStock, delVaccineStock, addVaccineStock, updateVaccineStock } from "@/api/vaccine/vaccineStock";
-import {getAppointAddress, getVaccines, addAppoint} from '@/api/vaccine/appoint'
+import {
+  listVaccineStock,
+  getVaccineStock,
+  delVaccineStock,
+  addVaccineStock,
+  updateVaccineStock
+} from "@/api/vaccine/vaccineStock";
+import {getAppointAddress, getVaccines} from '@/api/vaccine/appoint'
 
 import {addVaccine, updateVaccine} from "@/api/vaccine/vaccine";
+
 const {proxy} = getCurrentInstance();
 const vaccineStockList = ref([]);
 const siteList = ref([]);
@@ -116,24 +128,26 @@ const data = reactive({
   queryParams: {
     pageNum: 1,
     pageSize: 10,
-    siteAmount: undefined,
+    siteId: undefined,
+    vaccineId: undefined,
+    siteAmount: undefined
   },
   // 表单参数
   form: {},
   // 表单校验
   rules: {
     siteId: [
-      { required: true, message: "医院ID不能为空", trigger: "blur" }
+      {required: true, message: "医院ID不能为空", trigger: "blur"}
     ],
     vaccineId: [
-      { required: true, message: "疫苗ID不能为空", trigger: "blur" }
+      {required: true, message: "疫苗ID不能为空", trigger: "blur"}
     ],
     siteAmount: [
-      { required: true, message: "疫苗库存不能为空", trigger: "blur" }
+      {required: true, message: "疫苗库存不能为空", trigger: "blur"}
     ],
   }
 });
-const { queryParams, form, rules } = toRefs(data);
+const {queryParams, form, rules} = toRefs(data);
 
 function getInoculateSite() {
   getAppointAddress().then(resp => {
@@ -146,6 +160,7 @@ function getVaccineList() {
     vaccines.value = response
   })
 }
+
 function getList() {
   loading.value = true;
   listVaccineStock(queryParams.value).then(res => {
@@ -154,21 +169,25 @@ function getList() {
     total.value = res.total;
   });
 };
+
 /** 搜索按钮操作 */
 function handleQuery() {
   queryParams.value.pageNum = 1;
   getList();
 };
+
 /** 重置按钮操作 */
 function resetQuery() {
   proxy.resetForm("queryRef");
   handleQuery();
 };
+
 function handleAdd() {
   reset();
   open.value = true;
-  title.value = "添加疫苗信息";
+  title.value = "分配站点疫苗";
 }
+
 /**修改按钮操作 */
 function handleUpdate(row) {
   loading.value = true;
@@ -181,15 +200,18 @@ function handleUpdate(row) {
     title.value = "修改疫苗信息";
   });
 }
+
 function handleDelete(row) {
-  const stockIds = row.roleId || ids.value;
+  const stockIds = row.id ;
   proxy.$modal.confirm('是否确认删除出库编号为"' + stockIds + '"的数据项?').then(function () {
     return delVaccineStock(stockIds);
   }).then(() => {
     getList();
     proxy.$modal.msgSuccess("删除成功");
-  }).catch(() => {});
+  }).catch(() => {
+  });
 }
+
 /** 多选框选中数据 */
 function handleSelectionChange(selection) {
   ids.value = selection.map(item => item.roleId);
@@ -197,10 +219,11 @@ function handleSelectionChange(selection) {
   multiple.value = !selection.length;
 }
 
-function reset(){
+function reset() {
 
   proxy.resetForm("stockRef")
 }
+
 /** 提交按钮 */
 function submitForm() {
   proxy.$refs["stockRef"].validate(valid => {
@@ -226,11 +249,13 @@ function submitForm() {
     }
   });
 }
+
 /** 取消按钮 */
 function cancel() {
   open.value = false;
   reset();
 }
+
 // 获取接种站点数据
 getInoculateSite();
 // 获取疫苗信息数据

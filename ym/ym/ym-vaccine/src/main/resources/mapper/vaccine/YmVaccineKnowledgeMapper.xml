@@ -5,14 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.ym.vaccine.mapper.YmVaccineKnowledgeMapper">
 
     <resultMap type="com.ym.vaccine.domain.YmVaccineKnowledge" id="YmVaccineKnowledgeResult">
-        <result property="ID" column="ID"/>
-        <result property="Title" column="Title"/>
-        <result property="Benefits" column="Benefits"/>
-        <result property="Instructions" column="Instructions"/>
-        <result property="PublishTime" column="PublishTime"/>
-        <result property="Publisher" column="Publisher"/>
-        <result property="Knowledge" column="Knowledge"/>
-        <result property="CoverImage" column="CoverImage"/>
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="benefits" column="benefits"/>
+        <result property="instructions" column="instructions"/>
+        <result property="publishTime" column="publish_time"/>
+        <result property="publisher" column="publisher"/>
+        <result property="knowledge" column="knowledge"/>
+
     </resultMap>
 
 

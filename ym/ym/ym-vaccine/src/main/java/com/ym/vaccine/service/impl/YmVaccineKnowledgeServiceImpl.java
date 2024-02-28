@@ -67,7 +67,6 @@ public class YmVaccineKnowledgeServiceImpl implements IYmVaccineKnowledgeService
         lqw.eq(bo.getPublishTime() != null, YmVaccineKnowledge::getPublishTime, bo.getPublishTime());
         lqw.eq(StringUtils.isNotBlank(bo.getPublisher()), YmVaccineKnowledge::getPublisher, bo.getPublisher());
         lqw.eq(StringUtils.isNotBlank(bo.getKnowledge()), YmVaccineKnowledge::getKnowledge, bo.getKnowledge());
-        lqw.eq(StringUtils.isNotBlank(bo.getCoverImage()), YmVaccineKnowledge::getCoverImage, bo.getCoverImage());
         return lqw;
     }
 
