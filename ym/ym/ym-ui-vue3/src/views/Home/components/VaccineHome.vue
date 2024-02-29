@@ -9,6 +9,7 @@
       </el-carousel>
     </div>
     <div class="lr-container">
+
       <div class="c-left">
         <el-divider   >
           <span> 医院信息 </span>
@@ -206,6 +207,8 @@ getVaccineList();
 .el-card:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
+
+
 .cardlist {
   width: 100%;
   //margin: auto;

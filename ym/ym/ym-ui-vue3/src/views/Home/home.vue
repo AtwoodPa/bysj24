@@ -2,11 +2,14 @@
   <el-container>
     <el-header class="top-content">
       <el-row justify="end">
-        <img
-          src="../../assets/front-logo.png"
-          alt="LOGO"
-          style="height: 30px"
-        />
+        <router-link to="/home">
+          <img
+            src="../../assets/front-logo.png"
+            alt="LOGO"
+            style="height: 30px"
+          />
+        </router-link>
+
       </el-row>
       <el-row>
         <div class="navbar top-nav">
@@ -15,8 +18,8 @@
           >
 
           <router-link to="/vaccine-knowledge">
-            <el-icon><Opportunity /></el-icon> <span>疫苗知识</span></router-link
-          >
+            <el-icon><Opportunity /></el-icon> <span>疫苗知识</span>
+          </router-link>
           <router-link to="/inoculate-site">
             <el-icon><LocationInformation /></el-icon><span>接种站点</span></router-link
           >
