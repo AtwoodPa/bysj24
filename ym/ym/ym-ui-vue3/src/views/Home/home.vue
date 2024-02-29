@@ -29,7 +29,7 @@
           <router-link v-else to="/userlogin"
           ><el-icon><UserFilled /></el-icon> <span>用户登录</span></router-link
           >
-          <router-link to="/login"
+          <router-link to="/login" @click="logout"
           ><el-icon><Promotion /></el-icon> <span>后台</span></router-link
           >
         </div>
@@ -65,6 +65,7 @@
 <script setup name="Home">
 
 import useUserStore from '@/store/modules/user'
+// import {logout} from "@/api/login";
 const userStore = useUserStore()
 const {proxy} = getCurrentInstance();
 const selectedIndex = ref(0);
@@ -79,16 +80,13 @@ const isLoggedIn = userStore.isLoggedIn
 function selectNavItem(index) {
   selectedIndex.value = index;
 }
-function toLoginOrCenter(){
 
-  if (isLoggedIn.value == true){
-    // 已登录
-    router.push("/userlogin");
-  }else {
-    router.push("/personal-center");
-  }
+function logout() {
+  userStore.logOut().then(() => {
+    // 清除前台用户状态，路由跳转到管理系统登录页面
+    router.push("/login");
+  })
 }
-
 </script>
 
 <style scoped lang="scss">
@@ -103,7 +101,18 @@ function toLoginOrCenter(){
   overflow-x: hidden;
 
 }
+.el-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 确保容器占据整个视口高度 */
+}
 
+
+
+.el-main {
+  flex: 1; /* 占据剩余空间 */
+  overflow-y: auto; /* 如果需要，可以添加垂直滚动条 */
+}
 .top-content {
   display: flex;
   justify-content: space-between;

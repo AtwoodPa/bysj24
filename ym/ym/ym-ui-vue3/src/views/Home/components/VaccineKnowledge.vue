@@ -56,7 +56,7 @@
     </ul>
   </div>
   <!--分页-->
-  <div style="padding: 10px 20px; margin-left: 30px">
+  <div >
     <pagination
       v-show="total>0"
       :total="total"
@@ -140,8 +140,7 @@ getList();
 <style scoped>
 .blogs {
   /*左对齐*/
-  padding: 15px;
-  height: 90vh;
+  //height: 90vh;
   box-shadow: 7px 15px 40px #dfe3e3;
 }
 
