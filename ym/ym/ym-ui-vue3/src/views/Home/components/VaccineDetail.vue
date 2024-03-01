@@ -153,6 +153,7 @@ const vaccines = ref([]);
 // 路由信息
 import {useRoute, useRouter} from "vue-router";
 import {onMounted} from "vue";
+import useUserStore from "@/store/modules/user";
 
 const buttonLoading = ref(false);
 // 定义弹窗显示状态
@@ -215,14 +216,30 @@ function getVaccineDetail(id) {
     console.log(vaccine)
   })
 }
-
+// 获取全局状态（pinia）
+const userStore = useUserStore()
+const isLoggedIn = userStore.isLoggedIn
+import { ElMessage } from 'element-plus'
 function handleAppointment() {
-  dialogVisible.value = true; // 显示弹窗
+
   // 在这里处理预约逻辑
   // 例如，你可以发送一个请求到后端来预约疫苗
   const id = route.params.id;
-  console.log(id)
-  console.log('预约按钮被点击');
+
+// 检查登录状态，这里假设存在一个全局的认证状态（如：useAuth）
+  if (!isLoggedIn) {
+    // 添加一个弹窗，提示用户未登录
+    // 跳转到 用户登录页面
+    ElMessage.error('用户未登录，请登录后再进行预约！')
+    // 延迟1秒后跳转到登录页面
+    setTimeout(() => {
+      router.push('/userlogin');
+    }, 1000);
+  } else {
+    // 已登录，可以进行下一步操作
+    dialogVisible.value = true; // 显示弹窗
+  }
+
 }
 
 function cancelAppointment() {
