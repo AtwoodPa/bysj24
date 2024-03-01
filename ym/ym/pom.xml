@@ -272,7 +272,7 @@
                 <artifactId>ym-oss</artifactId>
                 <version>${ym-vue-plus.version}</version>
             </dependency>
-           
+
             <!-- vaccine模块 -->
             <dependency>
                 <groupId>com.ym</groupId>
