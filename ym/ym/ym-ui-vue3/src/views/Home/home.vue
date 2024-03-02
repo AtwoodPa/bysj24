@@ -33,7 +33,7 @@
           ><el-icon><UserFilled /></el-icon> <span>用户登录</span></router-link
           >
           <router-link to="/login" @click="logout"
-          ><el-icon><Promotion /></el-icon> <span>后台</span></router-link
+          ><el-icon><Promotion /></el-icon> <span>管理员入口</span></router-link
           >
         </div>
       </el-row>

@@ -28,7 +28,7 @@
           <router-link :to="'/vaccine-knowledge-detail/' + item.id">
             <h5 class="title">{{ item.title }}</h5>
           </router-link>
-          <p class="description">{{ item.knowledge }}</p>
+          <p class="description" >{{ item.knowledge.substring(0, 10) + '......' }}</p>
           <div class="meta">
             <el-row >
               <el-col :span="8">
@@ -119,6 +119,7 @@ function handleQuery() {
   queryParams.value.pageNum = 1;
   getList();
 };
+
 
 function resetQuery() {
   proxy.resetForm("queryForm");

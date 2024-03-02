@@ -67,7 +67,9 @@ getVaccineList();
   width: 100%;
   border-radius: 8px 8px 8px 8px;
 }
+
 .el-card {
+
   border-radius: 8px; /* 圆角 */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
   background-color: #fff; /* 背景色 */

@@ -101,6 +101,7 @@
       <el-table-column label="疫苗库存" align="center" prop="amount" v-if="true" />
       <el-table-column label="疫苗厂家" align="center" prop="manufacturer"  v-if="columns[3].visible"/>
       <el-table-column label="疫苗分类" align="center" prop="category" v-if="columns[4].visible" />
+      <el-table-column label="疫苗批号" align="center" prop="batchNumber" v-if="true" />
       <el-table-column label="疫苗详情" align="center" :show-overflow-tooltip="true"  prop="detail" v-if="columns[5].visible" />
       <el-table-column label="疫苗图片" width="300rpx" align="center" prop="imgUrl" v-if="columns[6].visible" >
         <template #default="{ row }">
@@ -145,9 +146,13 @@
         <el-form-item label="疫苗分类" prop="category">
           <el-input v-model="form.category" placeholder="请输入疫苗分类" />
         </el-form-item>
+        <el-form-item label="疫苗批号" prop="batch">
+          <el-input v-model="form.batchNumber" placeholder="请输入疫苗批号" />
+        </el-form-item>
         <el-form-item label="疫苗详情" prop="detail">
           <el-input v-model="form.detail" placeholder="请输入疫苗详情" />
         </el-form-item>
+
         <el-form-item label="疫苗图片" prop="imgUrl">
           <el-upload
             class="avatar-uploader"
@@ -232,6 +237,9 @@ const data = reactive({
     ],
     category: [
       { required: true, message: "疫苗分类不能为空", trigger: "blur" }
+    ],
+    batchNumber: [
+      { required: true, message: "疫苗批号不能为空", trigger: "blur" }
     ],
     detail: [
       { required: true, message: "疫苗详情不能为空", trigger: "blur" }
