@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -42,7 +43,7 @@ public class CmsFeedbackController extends BaseController {
     /**
      * 查询用户反馈管理列表
      */
-    @SaCheckPermission("core:feedback:list")
+    @SaIgnore
     @GetMapping("/list")
     public TableDataInfo<CmsFeedbackVo> list(CmsFeedbackBo bo, PageQuery pageQuery) {
         return iCmsFeedbackService.queryPageList(bo, pageQuery);
@@ -51,7 +52,7 @@ public class CmsFeedbackController extends BaseController {
     /**
      * 导出用户反馈管理列表
      */
-    @SaCheckPermission("core:feedback:export")
+    @SaIgnore
     @Log(title = "用户反馈管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(CmsFeedbackBo bo, HttpServletResponse response) {
@@ -64,7 +65,7 @@ public class CmsFeedbackController extends BaseController {
      *
      * @param id 主键
      */
-    @SaCheckPermission("core:feedback:query")
+    @SaIgnore
     @GetMapping("/{id}")
     public R<CmsFeedbackVo> getInfo(@NotNull(message = "主键不能为空")
                                      @PathVariable Long id) {
@@ -74,7 +75,7 @@ public class CmsFeedbackController extends BaseController {
     /**
      * 新增用户反馈管理
      */
-    @SaCheckPermission("core:feedback:add")
+    @SaIgnore
     @Log(title = "用户反馈管理", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
@@ -85,7 +86,7 @@ public class CmsFeedbackController extends BaseController {
     /**
      * 修改用户反馈管理
      */
-    @SaCheckPermission("core:feedback:edit")
+    @SaIgnore
     @Log(title = "用户反馈管理", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
@@ -98,7 +99,7 @@ public class CmsFeedbackController extends BaseController {
      *
      * @param ids 主键串
      */
-    @SaCheckPermission("core:feedback:remove")
+    @SaIgnore
     @Log(title = "用户反馈管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空")

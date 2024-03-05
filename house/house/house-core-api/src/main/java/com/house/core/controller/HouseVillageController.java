@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -42,7 +43,7 @@ public class HouseVillageController extends BaseController {
     /**
      * 查询小区管理列表
      */
-    @SaCheckPermission("core:village:list")
+    @SaIgnore
     @GetMapping("/list")
     public TableDataInfo<HouseVillageVo> list(HouseVillageBo bo, PageQuery pageQuery) {
         return iHouseVillageService.queryPageList(bo, pageQuery);
@@ -51,7 +52,7 @@ public class HouseVillageController extends BaseController {
     /**
      * 导出小区管理列表
      */
-    @SaCheckPermission("core:village:export")
+    @SaIgnore
     @Log(title = "小区管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HouseVillageBo bo, HttpServletResponse response) {
@@ -64,7 +65,7 @@ public class HouseVillageController extends BaseController {
      *
      * @param id 主键
      */
-    @SaCheckPermission("core:village:query")
+    @SaIgnore
     @GetMapping("/{id}")
     public R<HouseVillageVo> getInfo(@NotNull(message = "主键不能为空")
                                      @PathVariable Long id) {
@@ -74,7 +75,7 @@ public class HouseVillageController extends BaseController {
     /**
      * 新增小区管理
      */
-    @SaCheckPermission("core:village:add")
+    @SaIgnore
     @Log(title = "小区管理", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
@@ -85,7 +86,7 @@ public class HouseVillageController extends BaseController {
     /**
      * 修改小区管理
      */
-    @SaCheckPermission("core:village:edit")
+    @SaIgnore
     @Log(title = "小区管理", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
@@ -98,7 +99,7 @@ public class HouseVillageController extends BaseController {
      *
      * @param ids 主键串
      */
-    @SaCheckPermission("core:village:remove")
+    @SaIgnore
     @Log(title = "小区管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空")

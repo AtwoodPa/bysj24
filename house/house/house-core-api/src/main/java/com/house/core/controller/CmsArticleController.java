@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -42,7 +43,7 @@ public class CmsArticleController extends BaseController {
     /**
      * 查询文章内容管理列表
      */
-    @SaCheckPermission("core:article:list")
+    @SaIgnore
     @GetMapping("/list")
     public TableDataInfo<CmsArticleVo> list(CmsArticleBo bo, PageQuery pageQuery) {
         return iCmsArticleService.queryPageList(bo, pageQuery);
@@ -51,7 +52,7 @@ public class CmsArticleController extends BaseController {
     /**
      * 导出文章内容管理列表
      */
-    @SaCheckPermission("core:article:export")
+    @SaIgnore
     @Log(title = "文章内容管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(CmsArticleBo bo, HttpServletResponse response) {
@@ -64,7 +65,7 @@ public class CmsArticleController extends BaseController {
      *
      * @param id 主键
      */
-    @SaCheckPermission("core:article:query")
+    @SaIgnore
     @GetMapping("/{id}")
     public R<CmsArticleVo> getInfo(@NotNull(message = "主键不能为空")
                                      @PathVariable Long id) {
@@ -74,7 +75,7 @@ public class CmsArticleController extends BaseController {
     /**
      * 新增文章内容管理
      */
-    @SaCheckPermission("core:article:add")
+    @SaIgnore
     @Log(title = "文章内容管理", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
@@ -85,7 +86,7 @@ public class CmsArticleController extends BaseController {
     /**
      * 修改文章内容管理
      */
-    @SaCheckPermission("core:article:edit")
+    @SaIgnore
     @Log(title = "文章内容管理", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
@@ -98,7 +99,7 @@ public class CmsArticleController extends BaseController {
      *
      * @param ids 主键串
      */
-    @SaCheckPermission("core:article:remove")
+    @SaIgnore
     @Log(title = "文章内容管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空")

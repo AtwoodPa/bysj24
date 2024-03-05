@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -42,7 +43,7 @@ public class HouseUserController extends BaseController {
     /**
      * 查询出租管理列表
      */
-    @SaCheckPermission("core:user:list")
+    @SaIgnore
     @GetMapping("/list")
     public TableDataInfo<HouseUserVo> list(HouseUserBo bo, PageQuery pageQuery) {
         return iHouseUserService.queryPageList(bo, pageQuery);
@@ -51,7 +52,7 @@ public class HouseUserController extends BaseController {
     /**
      * 导出出租管理列表
      */
-    @SaCheckPermission("core:user:export")
+    @SaIgnore
     @Log(title = "出租管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HouseUserBo bo, HttpServletResponse response) {
@@ -64,7 +65,7 @@ public class HouseUserController extends BaseController {
      *
      * @param id 主键
      */
-    @SaCheckPermission("core:user:query")
+    @SaIgnore
     @GetMapping("/{id}")
     public R<HouseUserVo> getInfo(@NotNull(message = "主键不能为空")
                                      @PathVariable Long id) {
@@ -74,7 +75,7 @@ public class HouseUserController extends BaseController {
     /**
      * 新增出租管理
      */
-    @SaCheckPermission("core:user:add")
+    @SaIgnore
     @Log(title = "出租管理", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
@@ -85,7 +86,7 @@ public class HouseUserController extends BaseController {
     /**
      * 修改出租管理
      */
-    @SaCheckPermission("core:user:edit")
+    @SaIgnore
     @Log(title = "出租管理", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
@@ -98,7 +99,7 @@ public class HouseUserController extends BaseController {
      *
      * @param ids 主键串
      */
-    @SaCheckPermission("core:user:remove")
+    @SaIgnore
     @Log(title = "出租管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空")

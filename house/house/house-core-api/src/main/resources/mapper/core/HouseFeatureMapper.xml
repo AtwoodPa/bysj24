@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.core.mapper.HouseFeatureMapper">
+
+    <resultMap type="com.house.core.domain.HouseFeature" id="HouseFeatureResult">
+        <result property="id" column="id"/>
+        <result property="houseId" column="house_id"/>
+        <result property="feature" column="feature"/>
+    </resultMap>
+
+
+</mapper>

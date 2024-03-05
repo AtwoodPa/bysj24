@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.core.mapper.HouseImageMapper">
+
+    <resultMap type="com.house.core.domain.HouseImage" id="HouseImageResult">
+        <result property="id" column="id"/>
+        <result property="houseId" column="house_id"/>
+        <result property="imageName" column="image_name"/>
+        <result property="imagePath" column="image_path"/>
+        <result property="imgUrl" column="img_url"/>
+        <result property="imageSize" column="image_size"/>
+    </resultMap>
+
+
+</mapper>

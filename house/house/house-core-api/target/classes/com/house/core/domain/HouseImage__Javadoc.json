@@ -1,0 +1,1 @@
+{"doc":" 房源图片对象 house_image\n\n @author house\n @date 2024-03-05\n","fields":[{"name":"houseId","doc":" 房源id\n"},{"name":"imageName","doc":" 图片名称\n"},{"name":"imagePath","doc":" 图片路径\n"},{"name":"imgUrl","doc":" 图片url\n"},{"name":"imageSize","doc":" 图片大小\n"}],"enumConstants":[],"methods":[],"constructors":[]}

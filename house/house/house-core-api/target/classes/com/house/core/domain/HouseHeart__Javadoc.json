@@ -1,0 +1,1 @@
+{"doc":" 房屋收藏对象 house_heart\n\n @author house\n @date 2024-03-05\n","fields":[{"name":"houseId","doc":" 房屋id\n"},{"name":"userId","doc":" 用户id\n"}],"enumConstants":[],"methods":[],"constructors":[]}

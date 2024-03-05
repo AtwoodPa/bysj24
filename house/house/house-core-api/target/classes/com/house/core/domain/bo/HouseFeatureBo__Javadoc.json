@@ -1,0 +1,1 @@
+{"doc":" 房源特色业务对象 house_feature\n\n @author house\n @date 2024-03-05\n","fields":[{"name":"id","doc":" 特色id\n"},{"name":"houseId","doc":" 房源id\n"},{"name":"feature","doc":" 特色描述\n"}],"enumConstants":[],"methods":[],"constructors":[]}

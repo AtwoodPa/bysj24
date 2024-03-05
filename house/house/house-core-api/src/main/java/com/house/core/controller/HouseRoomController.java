@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import cn.dev33.satoken.annotation.SaIgnore;
+import com.house.core.domain.bo.HouseVillageBo;
+import com.house.core.domain.vo.HouseVillageVo;
+import com.house.core.service.IHouseVillageService;
 import lombok.RequiredArgsConstructor;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.*;
@@ -39,10 +43,24 @@ public class HouseRoomController extends BaseController {
 
     private final IHouseRoomService iHouseRoomService;
 
+    // 小区
+    private final IHouseVillageService iHouseVillageService;
+
+    /**
+     * 获取小区列表
+     * @param bo
+     * @param
+     * @return
+     */
+    @SaIgnore
+    @GetMapping("/findVillageList")
+    public List<HouseVillageVo> list(HouseVillageBo bo) {
+        return iHouseVillageService.queryList(bo);
+    }
     /**
      * 查询房源管理列表
      */
-    @SaCheckPermission("core:room:list")
+    @SaIgnore
     @GetMapping("/list")
     public TableDataInfo<HouseRoomVo> list(HouseRoomBo bo, PageQuery pageQuery) {
         return iHouseRoomService.queryPageList(bo, pageQuery);
@@ -51,7 +69,7 @@ public class HouseRoomController extends BaseController {
     /**
      * 导出房源管理列表
      */
-    @SaCheckPermission("core:room:export")
+    @SaIgnore
     @Log(title = "房源管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HouseRoomBo bo, HttpServletResponse response) {
@@ -64,7 +82,7 @@ public class HouseRoomController extends BaseController {
      *
      * @param id 主键
      */
-    @SaCheckPermission("core:room:query")
+    @SaIgnore
     @GetMapping("/{id}")
     public R<HouseRoomVo> getInfo(@NotNull(message = "主键不能为空")
                                      @PathVariable Long id) {
@@ -74,7 +92,7 @@ public class HouseRoomController extends BaseController {
     /**
      * 新增房源管理
      */
-    @SaCheckPermission("core:room:add")
+    @SaIgnore
     @Log(title = "房源管理", businessType = BusinessType.INSERT)
     @RepeatSubmit()
     @PostMapping()
@@ -85,7 +103,7 @@ public class HouseRoomController extends BaseController {
     /**
      * 修改房源管理
      */
-    @SaCheckPermission("core:room:edit")
+    @SaIgnore
     @Log(title = "房源管理", businessType = BusinessType.UPDATE)
     @RepeatSubmit()
     @PutMapping()
@@ -98,7 +116,7 @@ public class HouseRoomController extends BaseController {
      *
      * @param ids 主键串
      */
-    @SaCheckPermission("core:room:remove")
+    @SaIgnore
     @Log(title = "房源管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空")
