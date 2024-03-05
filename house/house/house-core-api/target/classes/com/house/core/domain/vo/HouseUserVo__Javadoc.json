@@ -1,0 +1,1 @@
+{"doc":" 出租管理视图对象 house_user\n\n @author house\n @date 2024-03-05\n","fields":[{"name":"houseId","doc":" 房源id\n"},{"name":"userId","doc":" 用户id\n"},{"name":"publishId","doc":" 发布人id(房东id)\n"},{"name":"actualPrice","doc":" 实际价格\n"},{"name":"state","doc":" 0：待出租, 1：已出租, 2:下架\n"}],"enumConstants":[],"methods":[],"constructors":[]}

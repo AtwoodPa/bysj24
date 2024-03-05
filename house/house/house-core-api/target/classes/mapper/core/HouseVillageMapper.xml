@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.core.mapper.HouseVillageMapper">
+
+    <resultMap type="com.house.core.domain.HouseVillage" id="HouseVillageResult">
+        <result property="id" column="id"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="area" column="area"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="year" column="year"/>
+        <result property="type" column="type"/>
+        <result property="green" column="green"/>
+        <result property="introduce" column="introduce"/>
+        <result property="wayState" column="way_state"/>
+        <result property="wayCode" column="way_code"/>
+        <result property="waySpace" column="way_space"/>
+        <result property="lon" column="lon"/>
+        <result property="Lat" column="Lat"/>
+        <result property="state" column="state"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+
+</mapper>

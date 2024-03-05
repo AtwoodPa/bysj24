@@ -67,7 +67,7 @@
       <recent name="$PROJECT_DIR$/house-core-api/src/main/resources/mapper/core" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.HouseApplication">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="HouseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="house-admin" />
