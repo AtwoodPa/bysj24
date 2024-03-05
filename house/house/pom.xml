@@ -321,6 +321,12 @@
                 <version>${house-vue-plus.version}</version>
             </dependency>
 
+            <!--    租房模块    -->
+            <dependency>
+                <groupId>com.house</groupId>
+                <artifactId>house-core-api</artifactId>
+                <version>${house-vue-plus.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -335,6 +341,7 @@
 
         <module>house-oss</module>
         <module>house-sms</module>
+        <module>house-core-api</module>
     </modules>
     <packaging>pom</packaging>
 

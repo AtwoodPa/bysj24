@@ -1,8 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/house-core-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/sql/house.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/house-admin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/acorn" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/acorn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/atob" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/atob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/esbuild" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/esbuild" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/he" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/he" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/image-size" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/image-size" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/json5" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/json5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/nanoid" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/nanoid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/parser" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/parser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/resolve" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/resolve" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/rollup" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/rollup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/sass" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/svgo" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/svgo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/vite" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.bin/vite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.vite/deps_temp/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/@vueuse/core/node_modules/.bin/vue-demi-fix" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/@vueuse/core/node_modules/.bin/vue-demi-fix" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/@vueuse/core/node_modules/.bin/vue-demi-switch" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/@vueuse/core/node_modules/.bin/vue-demi-switch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/@vueuse/shared/node_modules/.bin/vue-demi-fix" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/@vueuse/shared/node_modules/.bin/vue-demi-fix" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/@vueuse/shared/node_modules/.bin/vue-demi-switch" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/@vueuse/shared/node_modules/.bin/vue-demi-switch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/pinia/node_modules/.bin/vue-demi-fix" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/pinia/node_modules/.bin/vue-demi-fix" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/pinia/node_modules/.bin/vue-demi-switch" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/pinia/node_modules/.bin/vue-demi-switch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/sys-console.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-console.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/sys-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/sys-info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-info.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/oracle/oracle_ry_vue_4.X.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/oracle/oracle_test.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/postgres/postgres_ry_vue_4.X.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/postgres/postgres_test.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/sqlserver/sqlserver_ry_vue_4.X.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/sqlserver/sqlserver_test.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/oracle/update-4.1-4.2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/oracle/update-4.2-4.3.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/oracle/update-4.3-4.4.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/postgres/update-4.1-4.2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/postgres/update-4.2-4.3.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/postgres/update-4.3-4.4.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/sqlserver/update-4.1-4.2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/sqlserver/update-4.2-4.3.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/sqlserver/update-4.3-4.4.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/update-3.X-4.0.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/update-4.0-4.1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/update-4.1-4.2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/update-4.2-4.3.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/sql/update/update-4.3-4.4.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2dFsmD5JI3T4YyBBz1kg5nFMdjV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.HouseApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Library/PP/Java/github/bysj24/house/house",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "ts.external.directory.path": "/Users/panpan/Applications/IntelliJ IDEA Ultimate.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="HouseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="house-admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.house.HouseApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/house-ui-vue3/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v18.4.0/bin/node" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.house-monitor-admin" />
+      <item itemvalue="Docker.house-server" />
+      <item itemvalue="Docker.house-xxl-job-admin" />
+      <item itemvalue="npm.dev" />
+      <item itemvalue="Spring Boot.HouseApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="" />
+      <created>1709615318503</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709615318503</updated>
+      <workItem from="1709615320973" duration="4289000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
 </project>
