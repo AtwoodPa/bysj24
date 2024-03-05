@@ -1,0 +1,1 @@
+{"doc":" 校友风采管理业务对象 style\n\n @author alumni\n @date 2024-03-03\n","fields":[{"name":"id","doc":" 主键ID\n"},{"name":"name","doc":" 校友姓名\n"},{"name":"descs","doc":" 校友描述\n"},{"name":"imgUrl","doc":" 图片URL\n"}],"enumConstants":[],"methods":[],"constructors":[]}

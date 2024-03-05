@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "gen",
+      "type": "com.alumni.generator.config.GenConfig",
+      "sourceType": "com.alumni.generator.config.GenConfig"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

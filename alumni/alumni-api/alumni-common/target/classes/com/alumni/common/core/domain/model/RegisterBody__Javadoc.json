@@ -1,0 +1,1 @@
+{"doc":" 用户注册对象\n\n @author Lion Li\n","fields":[{"name":"userType","doc":" 用户类型 （sys_user系统用户、ym_doctor医生、ym_user疫苗用户）\n\n"},{"name":"address","doc":" 家庭住址\n"}],"enumConstants":[],"methods":[],"constructors":[]}

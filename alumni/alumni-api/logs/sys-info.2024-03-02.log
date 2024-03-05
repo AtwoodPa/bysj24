@@ -1,0 +1,118 @@
+2024-03-02 11:18:50 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-03-02 11:18:50 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[170]毫秒
+2024-03-02 12:08:23 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-03-02 12:08:23 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[75]毫秒
+2024-03-02 12:35:37 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2024-03-02 12:35:39 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[1389]毫秒
+2024-03-02 12:35:42 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /login],参数类型[json],参数:[{"username":"admin","password":"admin123","code":"48","uuid":"ac3daac6e0514c09825e146e42ea35fb"}]
+2024-03-02 12:35:43 [XNIO-1 task-1] INFO  c.a.f.listener.UserActionListener - user doLogin, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJEZHp1eERWSzhkUlNSWng4TkVPbnowOFlTcFNIbjRvTSIsInVzZXJJZCI6MX0.UYXyN08gBIHdtyVzeKNQQWm0s5sBua5msZ4ONonDxC0
+2024-03-02 12:35:43 [schedule-pool-1] INFO  c.a.s.s.i.SysLogininforServiceImpl - [0:0:0:0:0:0:0:1]内网IP[admin][Success][登录成功]
+2024-03-02 12:35:43 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /login],耗时:[1192]毫秒
+2024-03-02 12:35:43 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-02 12:35:43 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[339]毫秒
+2024-03-02 12:35:43 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2024-03-02 12:35:44 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[172]毫秒
+2024-03-02 12:35:44 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccineImageundefined],无参数
+2024-03-02 12:35:44 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccineImageundefined],耗时:[2]毫秒
+2024-03-02 12:35:44 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-03-02 12:35:44 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[1]毫秒
+2024-03-02 12:35:44 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/user/profile],无参数
+2024-03-02 12:35:44 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/user/profile],耗时:[243]毫秒
+2024-03-02 12:35:44 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/user/profile],无参数
+2024-03-02 12:35:44 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccineImage],无参数
+2024-03-02 12:35:44 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccineImage],耗时:[0]毫秒
+2024-03-02 12:35:44 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-03-02 12:35:44 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[0]毫秒
+2024-03-02 12:35:44 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/user/profile],耗时:[210]毫秒
+2024-03-02 12:35:53 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-03-02 12:35:53 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[73]毫秒
+2024-03-02 12:48:10 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-02 12:48:10 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[283]毫秒
+2024-03-02 12:48:10 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2024-03-02 12:48:10 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[151]毫秒
+2024-03-02 13:57:24 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-03-02 13:57:24 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[75]毫秒
+2024-03-02 13:57:50 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-02 13:57:50 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[26]毫秒
+2024-03-02 13:57:50 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /logout],无参数
+2024-03-02 13:57:50 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /logout],耗时:[85]毫秒
+2024-03-02 13:57:50 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-03-02 13:57:50 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[65]毫秒
+2024-03-02 13:57:59 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /logout],无参数
+2024-03-02 13:57:59 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /logout],耗时:[1]毫秒
+2024-03-02 13:58:00 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2024-03-02 13:58:00 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[113]毫秒
+2024-03-02 13:58:01 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-03-02 13:58:01 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[76]毫秒
+2024-03-02 13:58:02 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2024-03-02 13:58:02 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[77]毫秒
+2024-03-02 13:58:05 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /login],参数类型[json],参数:[{"username":"admin","password":"admin123","code":"9","uuid":"10a45740d0204298a892054f0a044edc"}]
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.listener.UserActionListener - user doLogin, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJ6ZzYwWEgyT3dNblRYRXNQaG1QOHJjelNQYVY4S2NZdyIsInVzZXJJZCI6MX0.6Uv9DVoWtLfNYTopZi6S3fG7EtWvzqwgwYHEH-Y75ZE
+2024-03-02 13:58:06 [schedule-pool-1] INFO  c.a.s.s.i.SysLogininforServiceImpl - [0:0:0:0:0:0:0:1]内网IP[admin][Success][登录成功]
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /login],耗时:[784]毫秒
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[257]毫秒
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[149]毫秒
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccineImageundefined],无参数
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccineImageundefined],耗时:[0]毫秒
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-03-02 13:58:06 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[1]毫秒
+2024-03-02 13:58:07 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/user/profile],无参数
+2024-03-02 13:58:07 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/user/profile],耗时:[232]毫秒
+2024-03-02 13:58:07 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/user/profile],无参数
+2024-03-02 13:58:07 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccineImage],无参数
+2024-03-02 13:58:07 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccineImage],耗时:[0]毫秒
+2024-03-02 13:58:07 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-03-02 13:58:07 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[0]毫秒
+2024-03-02 13:58:07 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/user/profile],耗时:[189]毫秒
+2024-03-02 13:58:09 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /logout],无参数
+2024-03-02 13:58:09 [schedule-pool-2] INFO  c.a.s.s.i.SysLogininforServiceImpl - [0:0:0:0:0:0:0:1]内网IP[admin][Logout][退出成功]
+2024-03-02 13:58:10 [XNIO-1 task-1] INFO  c.a.f.listener.UserActionListener - user doLogout, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJ6ZzYwWEgyT3dNblRYRXNQaG1QOHJjelNQYVY4S2NZdyIsInVzZXJJZCI6MX0.6Uv9DVoWtLfNYTopZi6S3fG7EtWvzqwgwYHEH-Y75ZE
+2024-03-02 13:58:10 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /logout],耗时:[345]毫秒
+2024-03-02 13:58:10 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2024-03-02 13:58:10 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[48]毫秒
+2024-03-02 13:58:12 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-03-02 13:58:12 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[62]毫秒
+2024-03-02 13:58:14 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-03-02 13:58:14 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[206]毫秒
+2024-03-02 14:20:06 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-03-02 14:20:06 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-03-02 14:20:06 [SpringApplicationShutdownHook] INFO  c.a.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-03-02 14:20:06 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2024-03-02 14:20:06 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2024-03-02 14:20:06 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2024-03-02 14:20:06 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
+2024-03-02 14:20:09 [main] INFO  com.alumni.AlumniApplication - Starting AlumniApplication using Java 21.0.1 on 192.168.1.6 with PID 32753 (/Library/PP/my-project/bysj24/alumni-association/alumni-api/alumni-admin/target/classes started by panpan in /Library/PP/my-project/bysj24/alumni-association/alumni-api)
+2024-03-02 14:20:09 [main] INFO  com.alumni.AlumniApplication - The following 1 profile is active: "dev"
+2024-03-02 14:20:09 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2024-03-02 14:20:12 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2024-03-02 14:20:12 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource detect P6SPY plugin and enabled it
+2024-03-02 14:20:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Starting...
+2024-03-02 14:20:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Start completed.
+2024-03-02 14:20:13 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [slave] success
+2024-03-02 14:20:13 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [master] success
+2024-03-02 14:20:13 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [master]
+2024-03-02 14:20:14 [main] INFO  c.a.framework.config.JacksonConfig - 初始化 jackson 配置
+2024-03-02 14:20:14 [main] INFO  c.a.framework.config.RedisConfig - 初始化 redis 配置
+2024-03-02 14:20:14 [main] INFO  org.redisson.Version - Redisson 3.20.1
+2024-03-02 14:20:14 [redisson-netty-2-6] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-02 14:20:14 [redisson-netty-2-3] INFO  o.r.c.pool.MasterConnectionPool - 8 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-02 14:20:16 [main] INFO  io.undertow - starting server: Undertow - 2.2.28.Final
+2024-03-02 14:20:16 [main] INFO  org.xnio - XNIO version 3.8.7.Final
+2024-03-02 14:20:16 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.8.7.Final
+2024-03-02 14:20:16 [main] INFO  org.jboss.threads - JBoss Threads version 3.1.0.Final
+2024-03-02 14:20:17 [main] INFO  com.alumni.AlumniApplication - Started AlumniApplication in 7.902 seconds (JVM running for 9.03)
+2024-03-02 14:20:17 [main] INFO  c.a.s.runner.SystemApplicationRunner - 初始化OSS配置成功
+2024-03-02 14:20:17 [main] INFO  c.a.s.runner.SystemApplicationRunner - 加载参数缓存数据成功
+2024-03-02 14:20:17 [main] INFO  c.a.s.runner.SystemApplicationRunner - 加载字典缓存数据成功
+2024-03-02 14:20:18 [RMI TCP Connection(3)-192.168.1.6] INFO  io.undertow.servlet - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-02 14:23:58 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-03-02 14:23:58 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[328]毫秒
+2024-03-02 15:26:58 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-03-02 15:26:58 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-03-02 15:26:58 [SpringApplicationShutdownHook] INFO  c.a.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-03-02 15:26:58 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2024-03-02 15:26:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2024-03-02 15:26:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2024-03-02 15:26:58 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye

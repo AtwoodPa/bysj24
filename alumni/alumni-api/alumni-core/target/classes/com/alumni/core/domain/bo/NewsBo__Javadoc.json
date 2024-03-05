@@ -1,0 +1,1 @@
+{"doc":" 新闻动态管理业务对象 news\n\n @author alumni\n @date 2024-03-03\n","fields":[{"name":"id","doc":" 主键ID\n"},{"name":"title","doc":" 新闻标题\n"},{"name":"author","doc":" 作者\n"},{"name":"content","doc":" 新闻内容\n"},{"name":"imgUrl","doc":" 图片URL\n"}],"enumConstants":[],"methods":[],"constructors":[]}

@@ -1,0 +1,3252 @@
+<html lang="" class="no-touch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <!-- 图标 -->
+  <link href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/static/font/iconfont.css" rel="stylesheet"
+        type="text/css">
+  <!-- 初始化样式 -->
+  <link href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/css/base.css" rel="stylesheet" type="text/css">
+  <!-- 导航样式 -->
+  <link href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/css/nav/index.css" rel="stylesheet"
+        type="text/css">
+  <!-- 头部样式 -->
+  <link href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/css/header/index.css" rel="stylesheet"
+        type="text/css">
+  <!-- 分页样式 -->
+  <link href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/css/list-pro/index.css" rel="stylesheet"
+        type="text/css">
+  <!-- 底部样式 -->
+  <link href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/css/bottom/index.css" rel="stylesheet"
+        type="text/css">
+  <!-- 列表样式 -->
+  <link href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/css/list/index.css" rel="stylesheet"
+        type="text/css">
+  <link href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/css/organization/index.css" rel="stylesheet"
+        type="text/css">
+  <!-- 活动页面 -->
+  <link href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/css/activity/index.css" rel="stylesheet"
+        type="text/css">
+  <link rel="SHORTCUT ICON" href="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/static/favicon.ico">
+  <title>华中师范大学校友会</title>
+  <style>.swal2-popup.swal2-toast {
+    box-sizing: border-box;
+    grid-column: 1/4 !important;
+    grid-row: 1/4 !important;
+    grid-template-columns:min-content auto min-content;
+    padding: 1em;
+    overflow-y: hidden;
+    background: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, .075), 0 1px 2px rgba(0, 0, 0, .075), 1px 2px 4px rgba(0, 0, 0, .075), 1px 3px 8px rgba(0, 0, 0, .075), 2px 4px 16px rgba(0, 0, 0, .075);
+    pointer-events: all
+  }
+
+  .swal2-popup.swal2-toast > * {
+    grid-column: 2
+  }
+
+  .swal2-popup.swal2-toast .swal2-title {
+    margin: .5em 1em;
+    padding: 0;
+    font-size: 1em;
+    text-align: initial
+  }
+
+  .swal2-popup.swal2-toast .swal2-loading {
+    justify-content: center
+  }
+
+  .swal2-popup.swal2-toast .swal2-input {
+    height: 2em;
+    margin: .5em;
+    font-size: 1em
+  }
+
+  .swal2-popup.swal2-toast .swal2-validation-message {
+    font-size: 1em
+  }
+
+  .swal2-popup.swal2-toast .swal2-footer {
+    margin: .5em 0 0;
+    padding: .5em 0 0;
+    font-size: .8em
+  }
+
+  .swal2-popup.swal2-toast .swal2-close {
+    grid-column: 3/3;
+    grid-row: 1/99;
+    align-self: center;
+    width: .8em;
+    height: .8em;
+    margin: 0;
+    font-size: 2em
+  }
+
+  .swal2-popup.swal2-toast .swal2-html-container {
+    margin: .5em 1em;
+    padding: 0;
+    overflow: initial;
+    font-size: 1em;
+    text-align: initial
+  }
+
+  .swal2-popup.swal2-toast .swal2-html-container:empty {
+    padding: 0
+  }
+
+  .swal2-popup.swal2-toast .swal2-loader {
+    grid-column: 1;
+    grid-row: 1/99;
+    align-self: center;
+    width: 2em;
+    height: 2em;
+    margin: .25em
+  }
+
+  .swal2-popup.swal2-toast .swal2-icon {
+    grid-column: 1;
+    grid-row: 1/99;
+    align-self: center;
+    width: 2em;
+    min-width: 2em;
+    height: 2em;
+    margin: 0 .5em 0 0
+  }
+
+  .swal2-popup.swal2-toast .swal2-icon .swal2-icon-content {
+    display: flex;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: bold
+  }
+
+  .swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring {
+    width: 2em;
+    height: 2em
+  }
+
+  .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+    top: .875em;
+    width: 1.375em
+  }
+
+  .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
+    left: .3125em
+  }
+
+  .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {
+    right: .3125em
+  }
+
+  .swal2-popup.swal2-toast .swal2-actions {
+    justify-content: flex-start;
+    height: auto;
+    margin: 0;
+    margin-top: .5em;
+    padding: 0 .5em
+  }
+
+  .swal2-popup.swal2-toast .swal2-styled {
+    margin: .25em .5em;
+    padding: .4em .6em;
+    font-size: 1em
+  }
+
+  .swal2-popup.swal2-toast .swal2-success {
+    border-color: #a5dc86
+  }
+
+  .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line] {
+    position: absolute;
+    width: 1.6em;
+    height: 3em;
+    transform: rotate(45deg);
+    border-radius: 50%
+  }
+
+  .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left] {
+    top: -0.8em;
+    left: -0.5em;
+    transform: rotate(-45deg);
+    transform-origin: 2em 2em;
+    border-radius: 4em 0 0 4em
+  }
+
+  .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right] {
+    top: -0.25em;
+    left: .9375em;
+    transform-origin: 0 1.5em;
+    border-radius: 0 4em 4em 0
+  }
+
+  .swal2-popup.swal2-toast .swal2-success .swal2-success-ring {
+    width: 2em;
+    height: 2em
+  }
+
+  .swal2-popup.swal2-toast .swal2-success .swal2-success-fix {
+    top: 0;
+    left: .4375em;
+    width: .4375em;
+    height: 2.6875em
+  }
+
+  .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line] {
+    height: .3125em
+  }
+
+  .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip] {
+    top: 1.125em;
+    left: .1875em;
+    width: .75em
+  }
+
+  .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long] {
+    top: .9375em;
+    right: .1875em;
+    width: 1.375em
+  }
+
+  .swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip {
+    animation: swal2-toast-animate-success-line-tip .75s
+  }
+
+  .swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long {
+    animation: swal2-toast-animate-success-line-long .75s
+  }
+
+  .swal2-popup.swal2-toast.swal2-show {
+    animation: swal2-toast-show .5s
+  }
+
+  .swal2-popup.swal2-toast.swal2-hide {
+    animation: swal2-toast-hide .1s forwards
+  }
+
+  div:where(.swal2-container) {
+    display: grid;
+    position: fixed;
+    z-index: 1060;
+    inset: 0;
+    box-sizing: border-box;
+    grid-template-areas:"top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";
+    grid-template-rows:minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
+    height: 100%;
+    padding: .625em;
+    overflow-x: hidden;
+    transition: background-color .1s;
+    -webkit-overflow-scrolling: touch
+  }
+
+  div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swal2-noanimation {
+    background: rgba(0, 0, 0, .4)
+  }
+
+  div:where(.swal2-container).swal2-backdrop-hide {
+    background: rgba(0, 0, 0, 0) !important
+  }
+
+  div:where(.swal2-container).swal2-top-start, div:where(.swal2-container).swal2-center-start, div:where(.swal2-container).swal2-bottom-start {
+    grid-template-columns:minmax(0, 1fr) auto auto
+  }
+
+  div:where(.swal2-container).swal2-top, div:where(.swal2-container).swal2-center, div:where(.swal2-container).swal2-bottom {
+    grid-template-columns:auto minmax(0, 1fr) auto
+  }
+
+  div:where(.swal2-container).swal2-top-end, div:where(.swal2-container).swal2-center-end, div:where(.swal2-container).swal2-bottom-end {
+    grid-template-columns:auto auto minmax(0, 1fr)
+  }
+
+  div:where(.swal2-container).swal2-top-start > .swal2-popup {
+    align-self: start
+  }
+
+  div:where(.swal2-container).swal2-top > .swal2-popup {
+    grid-column: 2;
+    place-self: start center
+  }
+
+  div:where(.swal2-container).swal2-top-end > .swal2-popup, div:where(.swal2-container).swal2-top-right > .swal2-popup {
+    grid-column: 3;
+    place-self: start end
+  }
+
+  div:where(.swal2-container).swal2-center-start > .swal2-popup, div:where(.swal2-container).swal2-center-left > .swal2-popup {
+    grid-row: 2;
+    align-self: center
+  }
+
+  div:where(.swal2-container).swal2-center > .swal2-popup {
+    grid-column: 2;
+    grid-row: 2;
+    place-self: center center
+  }
+
+  div:where(.swal2-container).swal2-center-end > .swal2-popup, div:where(.swal2-container).swal2-center-right > .swal2-popup {
+    grid-column: 3;
+    grid-row: 2;
+    place-self: center end
+  }
+
+  div:where(.swal2-container).swal2-bottom-start > .swal2-popup, div:where(.swal2-container).swal2-bottom-left > .swal2-popup {
+    grid-column: 1;
+    grid-row: 3;
+    align-self: end
+  }
+
+  div:where(.swal2-container).swal2-bottom > .swal2-popup {
+    grid-column: 2;
+    grid-row: 3;
+    place-self: end center
+  }
+
+  div:where(.swal2-container).swal2-bottom-end > .swal2-popup, div:where(.swal2-container).swal2-bottom-right > .swal2-popup {
+    grid-column: 3;
+    grid-row: 3;
+    place-self: end end
+  }
+
+  div:where(.swal2-container).swal2-grow-row > .swal2-popup, div:where(.swal2-container).swal2-grow-fullscreen > .swal2-popup {
+    grid-column: 1/4;
+    width: 100%
+  }
+
+  div:where(.swal2-container).swal2-grow-column > .swal2-popup, div:where(.swal2-container).swal2-grow-fullscreen > .swal2-popup {
+    grid-row: 1/4;
+    align-self: stretch
+  }
+
+  div:where(.swal2-container).swal2-no-transition {
+    transition: none !important
+  }
+
+  div:where(.swal2-container) div:where(.swal2-popup) {
+    display: none;
+    position: relative;
+    box-sizing: border-box;
+    grid-template-columns:minmax(0, 100%);
+    width: 32em;
+    max-width: 100%;
+    padding: 0 0 1.25em;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    color: #545454;
+    font-family: inherit;
+    font-size: 1rem
+  }
+
+  div:where(.swal2-container) div:where(.swal2-popup):focus {
+    outline: none
+  }
+
+  div:where(.swal2-container) div:where(.swal2-popup).swal2-loading {
+    overflow-y: hidden
+  }
+
+  div:where(.swal2-container) h2:where(.swal2-title) {
+    position: relative;
+    max-width: 100%;
+    margin: 0;
+    padding: .8em 1em 0;
+    color: inherit;
+    font-size: 1.875em;
+    font-weight: 600;
+    text-align: center;
+    text-transform: none;
+    word-wrap: break-word
+  }
+
+  div:where(.swal2-container) div:where(.swal2-actions) {
+    display: flex;
+    z-index: 1;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin: 1.25em auto 0;
+    padding: 0
+  }
+
+  div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled[disabled] {
+    opacity: .4
+  }
+
+  div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
+  }
+
+  div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:active {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))
+  }
+
+  div:where(.swal2-container) div:where(.swal2-loader) {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.2em;
+    height: 2.2em;
+    margin: 0 1.875em;
+    animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+    border-width: .25em;
+    border-style: solid;
+    border-radius: 100%;
+    border-color: #2778c4 rgba(0, 0, 0, 0) #2778c4 rgba(0, 0, 0, 0)
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled) {
+    margin: .3125em;
+    padding: .625em 1.1em;
+    transition: box-shadow .1s;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0);
+    font-weight: 500
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled):not([disabled]) {
+    cursor: pointer
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    border: 0;
+    border-radius: .25em;
+    background: initial;
+    background-color: #7066e0;
+    color: #fff;
+    font-size: 1em
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm:focus {
+    box-shadow: 0 0 0 3px rgba(112, 102, 224, .5)
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled).swal2-deny {
+    border: 0;
+    border-radius: .25em;
+    background: initial;
+    background-color: #dc3741;
+    color: #fff;
+    font-size: 1em
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled).swal2-deny:focus {
+    box-shadow: 0 0 0 3px rgba(220, 55, 65, .5)
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled).swal2-cancel {
+    border: 0;
+    border-radius: .25em;
+    background: initial;
+    background-color: #6e7881;
+    color: #fff;
+    font-size: 1em
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled).swal2-cancel:focus {
+    box-shadow: 0 0 0 3px rgba(110, 120, 129, .5)
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:focus {
+    box-shadow: 0 0 0 3px rgba(100, 150, 200, .5)
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled):focus {
+    outline: none
+  }
+
+  div:where(.swal2-container) button:where(.swal2-styled)::-moz-focus-inner {
+    border: 0
+  }
+
+  div:where(.swal2-container) div:where(.swal2-footer) {
+    margin: 1em 0 0;
+    padding: 1em 1em 0;
+    border-top: 1px solid #eee;
+    color: inherit;
+    font-size: 1em;
+    text-align: center
+  }
+
+  div:where(.swal2-container) .swal2-timer-progress-bar-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    grid-column: auto !important;
+    overflow: hidden;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px
+  }
+
+  div:where(.swal2-container) div:where(.swal2-timer-progress-bar) {
+    width: 100%;
+    height: .25em;
+    background: rgba(0, 0, 0, .2)
+  }
+
+  div:where(.swal2-container) img:where(.swal2-image) {
+    max-width: 100%;
+    margin: 2em auto 1em
+  }
+
+  div:where(.swal2-container) button:where(.swal2-close) {
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    width: 1.2em;
+    height: 1.2em;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: -1.2em;
+    padding: 0;
+    overflow: hidden;
+    transition: color .1s, box-shadow .1s;
+    border: none;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0);
+    color: #ccc;
+    font-family: monospace;
+    font-size: 2.5em;
+    cursor: pointer;
+    justify-self: end
+  }
+
+  div:where(.swal2-container) button:where(.swal2-close):hover {
+    transform: none;
+    background: rgba(0, 0, 0, 0);
+    color: #f27474
+  }
+
+  div:where(.swal2-container) button:where(.swal2-close):focus {
+    outline: none;
+    box-shadow: inset 0 0 0 3px rgba(100, 150, 200, .5)
+  }
+
+  div:where(.swal2-container) button:where(.swal2-close)::-moz-focus-inner {
+    border: 0
+  }
+
+  div:where(.swal2-container) .swal2-html-container {
+    z-index: 1;
+    justify-content: center;
+    margin: 1em 1.6em .3em;
+    padding: 0;
+    overflow: auto;
+    color: inherit;
+    font-size: 1.125em;
+    font-weight: normal;
+    line-height: normal;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-word
+  }
+
+  div:where(.swal2-container) input:where(.swal2-input), div:where(.swal2-container) input:where(.swal2-file), div:where(.swal2-container) textarea:where(.swal2-textarea), div:where(.swal2-container) select:where(.swal2-select), div:where(.swal2-container) div:where(.swal2-radio), div:where(.swal2-container) label:where(.swal2-checkbox) {
+    margin: 1em 2em 3px
+  }
+
+  div:where(.swal2-container) input:where(.swal2-input), div:where(.swal2-container) input:where(.swal2-file), div:where(.swal2-container) textarea:where(.swal2-textarea) {
+    box-sizing: border-box;
+    width: auto;
+    transition: border-color .1s, box-shadow .1s;
+    border: 1px solid #d9d9d9;
+    border-radius: .1875em;
+    background: rgba(0, 0, 0, 0);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06), 0 0 0 3px rgba(0, 0, 0, 0);
+    color: inherit;
+    font-size: 1.125em
+  }
+
+  div:where(.swal2-container) input:where(.swal2-input).swal2-inputerror, div:where(.swal2-container) input:where(.swal2-file).swal2-inputerror, div:where(.swal2-container) textarea:where(.swal2-textarea).swal2-inputerror {
+    border-color: #f27474 !important;
+    box-shadow: 0 0 2px #f27474 !important
+  }
+
+  div:where(.swal2-container) input:where(.swal2-input):focus, div:where(.swal2-container) input:where(.swal2-file):focus, div:where(.swal2-container) textarea:where(.swal2-textarea):focus {
+    border: 1px solid #b4dbed;
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06), 0 0 0 3px rgba(100, 150, 200, .5)
+  }
+
+  div:where(.swal2-container) input:where(.swal2-input)::placeholder, div:where(.swal2-container) input:where(.swal2-file)::placeholder, div:where(.swal2-container) textarea:where(.swal2-textarea)::placeholder {
+    color: #ccc
+  }
+
+  div:where(.swal2-container) .swal2-range {
+    margin: 1em 2em 3px;
+    background: #fff
+  }
+
+  div:where(.swal2-container) .swal2-range input {
+    width: 80%
+  }
+
+  div:where(.swal2-container) .swal2-range output {
+    width: 20%;
+    color: inherit;
+    font-weight: 600;
+    text-align: center
+  }
+
+  div:where(.swal2-container) .swal2-range input, div:where(.swal2-container) .swal2-range output {
+    height: 2.625em;
+    padding: 0;
+    font-size: 1.125em;
+    line-height: 2.625em
+  }
+
+  div:where(.swal2-container) .swal2-input {
+    height: 2.625em;
+    padding: 0 .75em
+  }
+
+  div:where(.swal2-container) .swal2-file {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    background: rgba(0, 0, 0, 0);
+    font-size: 1.125em
+  }
+
+  div:where(.swal2-container) .swal2-textarea {
+    height: 6.75em;
+    padding: .75em
+  }
+
+  div:where(.swal2-container) .swal2-select {
+    min-width: 50%;
+    max-width: 100%;
+    padding: .375em .625em;
+    background: rgba(0, 0, 0, 0);
+    color: inherit;
+    font-size: 1.125em
+  }
+
+  div:where(.swal2-container) .swal2-radio, div:where(.swal2-container) .swal2-checkbox {
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: inherit
+  }
+
+  div:where(.swal2-container) .swal2-radio label, div:where(.swal2-container) .swal2-checkbox label {
+    margin: 0 .6em;
+    font-size: 1.125em
+  }
+
+  div:where(.swal2-container) .swal2-radio input, div:where(.swal2-container) .swal2-checkbox input {
+    flex-shrink: 0;
+    margin: 0 .4em
+  }
+
+  div:where(.swal2-container) label:where(.swal2-input-label) {
+    display: flex;
+    justify-content: center;
+    margin: 1em auto 0
+  }
+
+  div:where(.swal2-container) div:where(.swal2-validation-message) {
+    align-items: center;
+    justify-content: center;
+    margin: 1em 0 0;
+    padding: .625em;
+    overflow: hidden;
+    background: #f0f0f0;
+    color: #666;
+    font-size: 1em;
+    font-weight: 300
+  }
+
+  div:where(.swal2-container) div:where(.swal2-validation-message)::before {
+    content: "!";
+    display: inline-block;
+    width: 1.5em;
+    min-width: 1.5em;
+    height: 1.5em;
+    margin: 0 .625em;
+    border-radius: 50%;
+    background-color: #f27474;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.5em;
+    text-align: center
+  }
+
+  div:where(.swal2-container) .swal2-progress-steps {
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 100%;
+    margin: 1.25em auto;
+    padding: 0;
+    background: rgba(0, 0, 0, 0);
+    font-weight: 600
+  }
+
+  div:where(.swal2-container) .swal2-progress-steps li {
+    display: inline-block;
+    position: relative
+  }
+
+  div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step {
+    z-index: 20;
+    flex-shrink: 0;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    background: #2778c4;
+    color: #fff;
+    line-height: 2em;
+    text-align: center
+  }
+
+  div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step {
+    background: #2778c4
+  }
+
+  div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step ~ .swal2-progress-step {
+    background: #add8e6;
+    color: #fff
+  }
+
+  div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step ~ .swal2-progress-step-line {
+    background: #add8e6
+  }
+
+  div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step-line {
+    z-index: 10;
+    flex-shrink: 0;
+    width: 2.5em;
+    height: .4em;
+    margin: 0 -1px;
+    background: #2778c4
+  }
+
+  div:where(.swal2-icon) {
+    position: relative;
+    box-sizing: content-box;
+    justify-content: center;
+    width: 5em;
+    height: 5em;
+    margin: 2.5em auto .6em;
+    border: 0.25em solid rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    border-color: #000;
+    font-family: inherit;
+    line-height: 5em;
+    cursor: default;
+    user-select: none
+  }
+
+  div:where(.swal2-icon) .swal2-icon-content {
+    display: flex;
+    align-items: center;
+    font-size: 3.75em
+  }
+
+  div:where(.swal2-icon).swal2-error {
+    border-color: #f27474;
+    color: #f27474
+  }
+
+  div:where(.swal2-icon).swal2-error .swal2-x-mark {
+    position: relative;
+    flex-grow: 1
+  }
+
+  div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line] {
+    display: block;
+    position: absolute;
+    top: 2.3125em;
+    width: 2.9375em;
+    height: .3125em;
+    border-radius: .125em;
+    background-color: #f27474
+  }
+
+  div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=left] {
+    left: 1.0625em;
+    transform: rotate(45deg)
+  }
+
+  div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=right] {
+    right: 1em;
+    transform: rotate(-45deg)
+  }
+
+  div:where(.swal2-icon).swal2-error.swal2-icon-show {
+    animation: swal2-animate-error-icon .5s
+  }
+
+  div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark {
+    animation: swal2-animate-error-x-mark .5s
+  }
+
+  div:where(.swal2-icon).swal2-warning {
+    border-color: #facea8;
+    color: #f8bb86
+  }
+
+  div:where(.swal2-icon).swal2-warning.swal2-icon-show {
+    animation: swal2-animate-error-icon .5s
+  }
+
+  div:where(.swal2-icon).swal2-warning.swal2-icon-show .swal2-icon-content {
+    animation: swal2-animate-i-mark .5s
+  }
+
+  div:where(.swal2-icon).swal2-info {
+    border-color: #9de0f6;
+    color: #3fc3ee
+  }
+
+  div:where(.swal2-icon).swal2-info.swal2-icon-show {
+    animation: swal2-animate-error-icon .5s
+  }
+
+  div:where(.swal2-icon).swal2-info.swal2-icon-show .swal2-icon-content {
+    animation: swal2-animate-i-mark .8s
+  }
+
+  div:where(.swal2-icon).swal2-question {
+    border-color: #c9dae1;
+    color: #87adbd
+  }
+
+  div:where(.swal2-icon).swal2-question.swal2-icon-show {
+    animation: swal2-animate-error-icon .5s
+  }
+
+  div:where(.swal2-icon).swal2-question.swal2-icon-show .swal2-icon-content {
+    animation: swal2-animate-question-mark .8s
+  }
+
+  div:where(.swal2-icon).swal2-success {
+    border-color: #a5dc86;
+    color: #a5dc86
+  }
+
+  div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line] {
+    position: absolute;
+    width: 3.75em;
+    height: 7.5em;
+    transform: rotate(45deg);
+    border-radius: 50%
+  }
+
+  div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=left] {
+    top: -0.4375em;
+    left: -2.0635em;
+    transform: rotate(-45deg);
+    transform-origin: 3.75em 3.75em;
+    border-radius: 7.5em 0 0 7.5em
+  }
+
+  div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=right] {
+    top: -0.6875em;
+    left: 1.875em;
+    transform: rotate(-45deg);
+    transform-origin: 0 3.75em;
+    border-radius: 0 7.5em 7.5em 0
+  }
+
+  div:where(.swal2-icon).swal2-success .swal2-success-ring {
+    position: absolute;
+    z-index: 2;
+    top: -0.25em;
+    left: -0.25em;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    border: .25em solid rgba(165, 220, 134, .3);
+    border-radius: 50%
+  }
+
+  div:where(.swal2-icon).swal2-success .swal2-success-fix {
+    position: absolute;
+    z-index: 1;
+    top: .5em;
+    left: 1.625em;
+    width: .4375em;
+    height: 5.625em;
+    transform: rotate(-45deg)
+  }
+
+  div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    height: .3125em;
+    border-radius: .125em;
+    background-color: #a5dc86
+  }
+
+  div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=tip] {
+    top: 2.875em;
+    left: .8125em;
+    width: 1.5625em;
+    transform: rotate(45deg)
+  }
+
+  div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=long] {
+    top: 2.375em;
+    right: .5em;
+    width: 2.9375em;
+    transform: rotate(-45deg)
+  }
+
+  div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-tip {
+    animation: swal2-animate-success-line-tip .75s
+  }
+
+  div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-long {
+    animation: swal2-animate-success-line-long .75s
+  }
+
+  div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-circular-line-right {
+    animation: swal2-rotate-success-circular-line 4.25s ease-in
+  }
+
+  [class^=swal2] {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  }
+
+  .swal2-show {
+    animation: swal2-show .3s
+  }
+
+  .swal2-hide {
+    animation: swal2-hide .15s forwards
+  }
+
+  .swal2-noanimation {
+    transition: none
+  }
+
+  .swal2-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll
+  }
+
+  .swal2-rtl .swal2-close {
+    margin-right: initial;
+    margin-left: 0
+  }
+
+  .swal2-rtl .swal2-timer-progress-bar {
+    right: 0;
+    left: auto
+  }
+
+  @keyframes swal2-toast-show {
+    0% {
+      transform: translateY(-0.625em) rotateZ(2deg)
+    }
+    33% {
+      transform: translateY(0) rotateZ(-2deg)
+    }
+    66% {
+      transform: translateY(0.3125em) rotateZ(2deg)
+    }
+    100% {
+      transform: translateY(0) rotateZ(0deg)
+    }
+  }
+
+  @keyframes swal2-toast-hide {
+    100% {
+      transform: rotateZ(1deg);
+      opacity: 0
+    }
+  }
+
+  @keyframes swal2-toast-animate-success-line-tip {
+    0% {
+      top: .5625em;
+      left: .0625em;
+      width: 0
+    }
+    54% {
+      top: .125em;
+      left: .125em;
+      width: 0
+    }
+    70% {
+      top: .625em;
+      left: -0.25em;
+      width: 1.625em
+    }
+    84% {
+      top: 1.0625em;
+      left: .75em;
+      width: .5em
+    }
+    100% {
+      top: 1.125em;
+      left: .1875em;
+      width: .75em
+    }
+  }
+
+  @keyframes swal2-toast-animate-success-line-long {
+    0% {
+      top: 1.625em;
+      right: 1.375em;
+      width: 0
+    }
+    65% {
+      top: 1.25em;
+      right: .9375em;
+      width: 0
+    }
+    84% {
+      top: .9375em;
+      right: 0;
+      width: 1.125em
+    }
+    100% {
+      top: .9375em;
+      right: .1875em;
+      width: 1.375em
+    }
+  }
+
+  @keyframes swal2-show {
+    0% {
+      transform: scale(0.7)
+    }
+    45% {
+      transform: scale(1.05)
+    }
+    80% {
+      transform: scale(0.95)
+    }
+    100% {
+      transform: scale(1)
+    }
+  }
+
+  @keyframes swal2-hide {
+    0% {
+      transform: scale(1);
+      opacity: 1
+    }
+    100% {
+      transform: scale(0.5);
+      opacity: 0
+    }
+  }
+
+  @keyframes swal2-animate-success-line-tip {
+    0% {
+      top: 1.1875em;
+      left: .0625em;
+      width: 0
+    }
+    54% {
+      top: 1.0625em;
+      left: .125em;
+      width: 0
+    }
+    70% {
+      top: 2.1875em;
+      left: -0.375em;
+      width: 3.125em
+    }
+    84% {
+      top: 3em;
+      left: 1.3125em;
+      width: 1.0625em
+    }
+    100% {
+      top: 2.8125em;
+      left: .8125em;
+      width: 1.5625em
+    }
+  }
+
+  @keyframes swal2-animate-success-line-long {
+    0% {
+      top: 3.375em;
+      right: 2.875em;
+      width: 0
+    }
+    65% {
+      top: 3.375em;
+      right: 2.875em;
+      width: 0
+    }
+    84% {
+      top: 2.1875em;
+      right: 0;
+      width: 3.4375em
+    }
+    100% {
+      top: 2.375em;
+      right: .5em;
+      width: 2.9375em
+    }
+  }
+
+  @keyframes swal2-rotate-success-circular-line {
+    0% {
+      transform: rotate(-45deg)
+    }
+    5% {
+      transform: rotate(-45deg)
+    }
+    12% {
+      transform: rotate(-405deg)
+    }
+    100% {
+      transform: rotate(-405deg)
+    }
+  }
+
+  @keyframes swal2-animate-error-x-mark {
+    0% {
+      margin-top: 1.625em;
+      transform: scale(0.4);
+      opacity: 0
+    }
+    50% {
+      margin-top: 1.625em;
+      transform: scale(0.4);
+      opacity: 0
+    }
+    80% {
+      margin-top: -0.375em;
+      transform: scale(1.15)
+    }
+    100% {
+      margin-top: 0;
+      transform: scale(1);
+      opacity: 1
+    }
+  }
+
+  @keyframes swal2-animate-error-icon {
+    0% {
+      transform: rotateX(100deg);
+      opacity: 0
+    }
+    100% {
+      transform: rotateX(0deg);
+      opacity: 1
+    }
+  }
+
+  @keyframes swal2-rotate-loading {
+    0% {
+      transform: rotate(0deg)
+    }
+    100% {
+      transform: rotate(360deg)
+    }
+  }
+
+  @keyframes swal2-animate-question-mark {
+    0% {
+      transform: rotateY(-360deg)
+    }
+    100% {
+      transform: rotateY(0)
+    }
+  }
+
+  @keyframes swal2-animate-i-mark {
+    0% {
+      transform: rotateZ(45deg);
+      opacity: 0
+    }
+    25% {
+      transform: rotateZ(-25deg);
+      opacity: .4
+    }
+    50% {
+      transform: rotateZ(15deg);
+      opacity: .8
+    }
+    75% {
+      transform: rotateZ(-5deg);
+      opacity: 1
+    }
+    100% {
+      transform: rotateX(0);
+      opacity: 1
+    }
+  }
+
+  body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+    overflow: hidden
+  }
+
+  body.swal2-height-auto {
+    height: auto !important
+  }
+
+  body.swal2-no-backdrop .swal2-container {
+    background-color: rgba(0, 0, 0, 0) !important;
+    pointer-events: none
+  }
+
+  body.swal2-no-backdrop .swal2-container .swal2-popup {
+    pointer-events: all
+  }
+
+  body.swal2-no-backdrop .swal2-container .swal2-modal {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4)
+  }
+
+  @media print {
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+      overflow-y: scroll !important
+    }
+
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) > [aria-hidden=true] {
+      display: none
+    }
+
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {
+      position: static !important
+    }
+  }
+
+  body.swal2-toast-shown .swal2-container {
+    box-sizing: border-box;
+    width: 360px;
+    max-width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none
+  }
+
+  body.swal2-toast-shown .swal2-container.swal2-top {
+    inset: 0 auto auto 50%;
+    transform: translateX(-50%)
+  }
+
+  body.swal2-toast-shown .swal2-container.swal2-top-end, body.swal2-toast-shown .swal2-container.swal2-top-right {
+    inset: 0 0 auto auto
+  }
+
+  body.swal2-toast-shown .swal2-container.swal2-top-start, body.swal2-toast-shown .swal2-container.swal2-top-left {
+    inset: 0 auto auto 0
+  }
+
+  body.swal2-toast-shown .swal2-container.swal2-center-start, body.swal2-toast-shown .swal2-container.swal2-center-left {
+    inset: 50% auto auto 0;
+    transform: translateY(-50%)
+  }
+
+  body.swal2-toast-shown .swal2-container.swal2-center {
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%)
+  }
+
+  body.swal2-toast-shown .swal2-container.swal2-center-end, body.swal2-toast-shown .swal2-container.swal2-center-right {
+    inset: 50% 0 auto auto;
+    transform: translateY(-50%)
+  }
+
+  body.swal2-toast-shown .swal2-container.swal2-bottom-start, body.swal2-toast-shown .swal2-container.swal2-bottom-left {
+    inset: auto auto 0 0
+  }
+
+  body.swal2-toast-shown .swal2-container.swal2-bottom {
+    inset: auto auto 0 50%;
+    transform: translateX(-50%)
+  }
+
+  body.swal2-toast-shown .swal2-container.swal2-bottom-end, body.swal2-toast-shown .swal2-container.swal2-bottom-right {
+    inset: auto 0 0 auto
+  }</style>
+  <style type="text/css">.TnITTtw-fp-collapsed-button {
+    display: none;
+    position: fixed !important;
+    top: 16px !important;
+    right: 16px !important;
+  }
+
+  .TnITTtw-fp-collapsed-button:hover {
+    opacity: 1.0 !important;
+  }
+
+  .TnITTtw-mate-fp-bar {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif !important;
+    color: #000;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 999;
+    background: rgb(255 255 255 / 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 16px;
+    border-radius: 11px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+    width: 320px;
+    line-height: initial;
+  }
+
+  @-moz-document url-prefix() {
+    .TnITTtw-mate-fp-bar {
+      background: rgb(255 255 255 / 1.0);
+    }
+  }
+
+  .TnITTtw-mate-fp-bar.TnITTtw-dark-mode {
+    background: rgb(44, 44, 43);
+  }
+
+  .TnITTtw-hide-fp-bar {
+    width: 12px;
+    height: 12px;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/regular-close-tt.png) !important;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+  }
+
+  .TnITTtw-hide-fp-bar:hover {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/hover-close-tt.png) !important;
+  }
+
+  .TnITTtw-current-page-lang {
+    color: #6d6d72;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .TnITTtw-dark-mode .TnITTtw-current-page-lang {
+    color: #98989D;
+  }
+
+  .TnITTtw-fp-translate {
+    width: calc(100% - 73px) !important;
+    font-size: 14px !important;
+    text-transform: none !important;
+  }
+
+  .TnITTtw-fp-translate.TnITTtw-in-progress {
+    animation-name: funky-bg;
+    animation-duration: 10s;
+    animation-timing-function: ease-in;
+  }
+
+  .TnITTtw-fp-translate.TnITTtw-show-original {
+    width: calc(100% - 20px) !important;
+  }
+
+  @keyframes funky-bg {
+    from {
+      background-image: linear-gradient(145deg, #01EF92, #00D8FB),
+      linear-gradient(35deg, rgba(1, 239, 146, 0.25), rgba(0, 216, 251, 0.25)) !important;
+    }
+
+    to {
+      background-image: linear-gradient(90deg, #01EF92, #00D8FB),
+      linear-gradient(35deg, rgba(1, 239, 146, 0.25), rgba(0, 216, 251, 0.25)) !important;
+    }
+  }
+
+  .TnITTtw-change-language, .TnITTtw-stop-fp {
+    width: 38px;
+    height: 38px;
+    background-color: #EFEFF4;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    border-radius: 11px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+  }
+
+  .TnITTtw-change-language {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/globe-earth.png) !important;
+  }
+
+  .TnITTtw-dark-mode .TnITTtw-change-language {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/globe-earth-dark.png) !important;
+  }
+
+  .TnITTtw-stop-fp {
+    display: none;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/regular-stt-stop.png) !important;
+    background-size: 12px 12px;
+  }
+
+  .TnITTtw-dark-mode .TnITTtw-change-language, .TnITTtw-dark-mode .TnITTtw-stop-fp {
+    background-color: #525251 !important;
+  }
+
+  .TnITTtw-change-language:hover, .TnITTtw-stop-fp:hover {
+    background-color: #F6F6F6;
+  }
+
+  .TnITTtw-change-language:active, .TnITTtw-stop-fp:active {
+    background-color: #E9E9E9;
+  }
+
+  .TnITTtw-dark-mode .TnITTtw-change-language:hover,
+  .TnITTtw-dark-mode .TnITTtw-stop-fp:hover,
+  .TnITTtw-dark-mode .TnITTtw-change-language:active,
+  .TnITTtw-dark-mode .TnITTtw-stop-fp:active {
+    background-color: #767675;
+  }
+
+  #TnITTtw-always-translate {
+  }
+
+  .TnITTtw-fp-options input {
+    padding: initial;
+    width: auto;
+    border: initial;
+    box-shadow: initial;
+    line-height: initial;
+    height: auto;
+    display: initial;
+    position: initial;
+    appearance: auto;
+    top: initial;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .TnITTtw-fp-options input[readonly="readonly"] {
+    opacity: 0.5;
+  }
+
+  #TnITTtw-always-translate + label,
+  #TnITTtw-never-translate-lang + label,
+  #TnITTtw-never-translate-site + label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif !important;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 4px;
+    color: #000;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 296px;
+    vertical-align: top;
+    line-height: initial;
+    letter-spacing: initial;
+    text-transform: initial;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  #TnITTtw-always-translate + label::before,
+  #TnITTtw-never-translate-lang + label::before,
+  #TnITTtw-never-translate-site + label::before,
+  #TnITTtw-always-translate + label::after,
+  #TnITTtw-never-translate-lang + label::after,
+  #TnITTtw-never-translate-site + label::after {
+    content: initial;
+  }
+
+  .TnITTtw-always-translate-inner-label {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 252px;
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  .TnITTtw-dark-mode #TnITTtw-always-translate + label,
+  .TnITTtw-dark-mode #TnITTtw-never-translate-lang + label,
+  .TnITTtw-dark-mode #TnITTtw-never-translate-site + label {
+    color: #FFF;
+  }
+
+  #TnITTtw-always-translate + label.TnITTtw-not-pro {
+    opacity: 0.5;
+  }
+
+  #TnITTtw-always-translate + label .TnITTtw-pro-label {
+    position: relative;
+    background: #000;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #FFF;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-left: 10px;
+    top: -1px;
+    user-select: none;
+    -webkit-user-select: none;
+    display: inline;
+    font-weight: 500;
+  }
+
+  .TnITTtw-dark-mode #TnITTtw-always-translate + label .TnITTtw-pro-label {
+    background: #FFF;
+    color: #000;
+  }
+
+  .TnITTtw-inline-original-tooltip {
+    display: none;
+    position: absolute;
+    margin: 0px;
+    border: none;
+    padding: 16px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255 255 255 / 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 11px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: normal;
+  }
+
+  .TnITTtw-dark-mode.TnITTtw-inline-original-tooltip {
+    background-color: rgb(0 0 0 / 0.915);
+    color: #FFF;
+  }
+
+  .TnITTtw-inline-original-tooltip .TnITTtw-close-original-tooltip {
+    width: 12px;
+    height: 12px;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/regular-close-tt.png) !important;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+  }
+
+  .TnITTtw-inline-original-tooltip .TnITTtw-close-original-tooltip:hover {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/hover-close-tt.png) !important;
+  }
+
+  .TnITTtw-inline-original-tooltip .TnITTtw-original-label {
+    margin: 0;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #6d6d72;
+    margin-bottom: 10px;
+  }
+
+  .TnITTtw-inline-original-tooltip.TnITTtw-dark-mode .TnITTtw-original-label {
+    color: #98989D;
+  }
+
+  .TnITTtw-inline-original-tooltip .TnITTtw-text-layout {
+    display: inline-block;
+    margin: 0;
+    font-size: 16px;
+    color: #000;
+  }
+
+  .TnITTtw-inline-original-tooltip.TnITTtw-dark-mode .TnITTtw-text-layout {
+    color: #FFF;
+  }
+
+  .TnITTtw-highlighted-for-original {
+    color: #0F0F5F;
+    background-color: #F0F0A0;
+  }
+
+  /* Dropdown scrollbars */
+
+  #selVisibleScroll-1, #selVisibleScroll-2, #selVisibleScroll-3 {
+    overflow: hidden;
+    height: 259px;
+    width: 100%;
+    position: relative;
+  }
+
+  #sel-scrollbar-1, #sel-scrollbar-2, #sel-scrollbar-3 {
+    position: absolute;
+    width: 4px;
+    height: 259px;
+    left: 225px;
+  }
+
+  #sel-track-1, #sel-track-2, #sel-track-3 {
+    position: absolute;
+    top: 1px;
+    width: 4px;
+    height: calc(100% - 6px);
+  }
+
+  #sel-dragBar-1, #sel-dragBar-2, #sel-dragBar-3 {
+    position: absolute;
+    top: 1px;
+    width: 4px;
+    background: rgba(43, 43, 43, 0.5);
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .dark-mode #sel-dragBar-1, .dark-mode #sel-dragBar-2, .dark-mode #sel-dragBar-3 {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  #sel-dragBar-1:hover, #sel-dragBar-2:hover, #sel-dragBar-3:hover,
+  #sel-dragBar-1:active, #sel-dragBar-2:active, #sel-dragBar-3:active {
+    background: rgba(43, 43, 43, 0.675);
+  }
+
+  .dark-mode #sel-dragBar-1:hover,
+  .dark-mode #sel-dragBar-2:hover,
+  .dark-mode #sel-dragBar-3:hover,
+  .dark-mode #sel-dragBar-1:active,
+  .dark-mode #sel-dragBar-2:active,
+  .dark-mode #sel-dragBar-3:active {
+    background: rgba(255, 255, 255, 0.675);
+  }
+
+  #sel-scrollbar-1, #sel-track-1, #sel-dragBar-1,
+  #sel-scrollbar-2, #sel-track-2, #sel-dragBar-2,
+  #sel-scrollbar-3, #sel-track-3, #sel-dragBar-3 {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Spinner for when it's translating a page */
+
+  .TnITTtw-cta-button-layout {
+    position: relative;
+    display: inline;
+  }
+
+  .TnITTtw-spinner {
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  @media screen and (max-width: 800px) {
+    .TnITTtw-spinner {
+      top: 28px;
+    }
+  }
+
+  .TnITTtw-spinner.in-text {
+    display: block;
+    background: transparent;
+    position: initial;
+  }
+
+  .TnITTtw-spinner.left {
+    text-align: left;
+  }
+
+  .TnITTtw-spinner > div {
+    width: 12px;
+    height: 12px;
+    background-color: rgb(0, 71, 46);
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+
+  .TnITTtw-spinner.in-text > div {
+    background-color: #000;
+  }
+
+  .TnITTtw-spinner .TnITTtw-bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+
+  .TnITTtw-spinner .TnITTtw-bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+
+  @-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% {
+      -webkit-transform: scale(0)
+    }
+    40% {
+      -webkit-transform: scale(1.0)
+    }
+  }
+
+  @keyframes sk-bouncedelay {
+    0%, 80%, 100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+    40% {
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
+    }
+  }</style>
+  <style type="text/css">/*
+ * contextMenu.js v 1.4.0
+ * Author: Sudhanshu Yadav
+ * s-yadav.github.com
+ * Copyright (c) 2013 Sudhanshu Yadav.
+ * Dual licensed under the MIT and GPL licenses
+**/
+
+  .iw-contextMenu {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.10) !important;
+    border: 1px solid #c8c7cc !important;
+    border-radius: 11px !important;
+    display: none;
+    z-index: 1000000132;
+    max-width: 300px !important;
+    width: auto !important;
+  }
+
+  .dark-mode .iw-contextMenu,
+  .TnITTtw-dark-mode.iw-contextMenu,
+  .TnITTtw-dark-mode .iw-contextMenu {
+    border-color: #747473 !important;
+  }
+
+  .iw-cm-menu {
+    background: #fff !important;
+    color: #000 !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    overflow: visible !important;
+  }
+
+  .dark-mode .iw-cm-menu,
+  .TnITTtw-dark-mode.iw-cm-menu,
+  .TnITTtw-dark-mode .iw-cm-menu {
+    background: #525251 !important;
+    color: #FFF !important;
+  }
+
+  .iw-curMenu {
+  }
+
+  .iw-cm-menu li {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif !important;
+    list-style: none !important;
+    padding: 10px !important;
+    padding-right: 20px !important;
+    border-bottom: 1px solid #c8c7cc !important;
+    font-weight: 400 !important;
+    cursor: pointer !important;
+    position: relative !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+    line-height: inherit !important;
+    border-radius: 0 !important;
+    display: block !important;
+  }
+
+  .dark-mode .iw-cm-menu li, .TnITTtw-dark-mode .iw-cm-menu li {
+    border-bottom-color: #747473 !important;
+  }
+
+  .iw-cm-menu li:first-child {
+    border-top-left-radius: 11px !important;
+    border-top-right-radius: 11px !important;
+  }
+
+  .iw-cm-menu li:last-child {
+    border-bottom-left-radius: 11px !important;
+    border-bottom-right-radius: 11px !important;
+    border-bottom: none !important;
+  }
+
+  .iw-mOverlay {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0px !important;
+    left: 0px !important;
+    background: #FFF !important;
+    opacity: .5 !important;
+  }
+
+  .iw-contextMenu li.iw-mDisable {
+    opacity: 0.3 !important;
+    cursor: default !important;
+  }
+
+  .iw-mSelected {
+    background-color: #F6F6F6 !important;
+  }
+
+  .dark-mode .iw-mSelected, .TnITTtw-dark-mode .iw-mSelected {
+    background-color: #676766 !important;
+  }
+
+  .iw-cm-arrow-right {
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 5px solid transparent !important;
+    border-bottom: 5px solid transparent !important;
+    border-left: 5px solid #000 !important;
+    position: absolute !important;
+    right: 5px !important;
+    top: 50% !important;
+    margin-top: -5px !important;
+  }
+
+  .dark-mode .iw-cm-arrow-right, .TnITTtw-dark-mode .iw-cm-arrow-right {
+    border-left-color: #FFF !important;
+  }
+
+  .iw-mSelected > .iw-cm-arrow-right {
+  }
+
+  /*context menu css end */</style>
+  <style type="text/css">.ui_selector, .TnITTtw-ui_selector {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif;
+    display: inline-block;
+  }
+
+  .ui_selector .select, .TnITTtw-ui_selector .TnITTtw-select {
+    color: #000;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid rgba(200, 199, 204, 0.5);
+    padding: 10px 15px;
+    width: 201px;
+    -webkit-user-select: none;
+    cursor: pointer;
+    border-radius: 11px;
+    display: inline-block;
+    background-image: -webkit-linear-gradient(top, #FAFAFA, #F6F6F6);
+    background-image: -moz-linear-gradient(top, #FAFAFA, #F6F6F6);
+    background-size: auto 48px;
+    background-position: 0px -11px;
+    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.10);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .dark-mode .ui_selector .select,
+  .TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-select {
+    background-image: -webkit-linear-gradient(top, #4A4A49, #40403F);
+    background-image: -moz-linear-gradient(top, #4A4A49, #40403F);
+    color: #FFF;
+    border-color: #747473;
+  }
+
+  .ui_selector .select:hover,
+  .TnITTtw-ui_selector .TnITTtw-select:hover {
+    color: #424242;
+    background-image: -webkit-linear-gradient(top, #FAFAFA, #FAFAFA);
+    background-image: -moz-linear-gradient(top, #FAFAFA, #FAFAFA);
+  }
+
+  .ui_selector .select:active,
+  .TnITTtw-ui_selector .TnITTtw-select:active {
+    color: #6d6d72;
+    background-image: -webkit-linear-gradient(top, #F6F6F6, #F6F6F6);
+    background-image: -moz-linear-gradient(top, #F6F6F6, #F6F6F6);
+  }
+
+  .dark-mode .ui_selector .select:hover,
+  .dark-mode .ui_selector .select:active,
+  .TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-select:hover,
+  .TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-select:active {
+    background-image: -webkit-linear-gradient(top, #4A4A49, #4A4A49);
+    background-image: -moz-linear-gradient(top, #4A4A49, #4A4A49);
+    color: #FFF;
+    border-color: #747473;
+  }
+
+  .ui_selector .select .detected-ico,
+  .TnITTtw-ui_selector .TnITTtw-select .TnITTtw-detected-ico {
+    display: inline-block;
+  }
+
+  .ui_selector .active, .ui_selector .active:hover, .ui_selector .active:active,
+  .TnITTtw-ui_selector .TnITTtw-active, .TnITTtw-ui_selector .TnITTtw-active:hover, .TnITTtw-ui_selector .TnITTtw-active:active {
+    box-shadow: 0 -1px 15px -10px rgba(0, 0, 0, 0.85) !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: #F3F3F3;
+  }
+
+  .sliding-text,
+  .TnITTtw-sliding-text {
+    position: relative;
+  }
+
+  .ui_selector .options,
+  .TnITTtw-ui_selector .TnITTtw-options {
+    margin-left: 0px;
+    margin-top: -4px;
+    background: #fff;
+    border: 1px solid rgba(200, 199, 204, 0.5);
+    width: 231px;
+    overflow: hidden;
+    max-height: 313px;
+    position: absolute;
+    font-size: 12px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    display: none;
+  }
+
+  .ui_selector .options.standalone,
+  .TnITTtw-ui_selector .TnITTtw-options.TnITTtw-standalone {
+    border-radius: 11px;
+    margin-top: 16px;
+  }
+
+  /* for now, it can only be on the top */
+  .ui_selector .options-arrow,
+  .TnITTtw-ui_selector .TnITTtw-options-arrow {
+    display: none;
+    position: absolute;
+    width: 32px !important;
+    height: 18px !important;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/tt-dropdown-arrow.png);
+    background-size: 32px 18px;
+    transform: rotate(180deg);
+    margin-top: -1px;
+  }
+
+  .dark-mode .ui_selector .options-arrow,
+  .TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options-arrow {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/tt-dropdown-arrow-dark.png);
+  }
+
+  .dark-mode .ui_selector .options,
+  .TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options {
+    background: #525251;
+  }
+
+  .ui_selector .options ul,
+  .TnITTtw-ui_selector .TnITTtw-options ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 232px;
+  }
+
+  .ui_selector .options ul li,
+  .TnITTtw-ui_selector .TnITTtw-options ul li {
+    padding: 10px 0px;
+    -webkit-user-select: none;
+    text-align: center;
+    font-size: 17px;
+    -webkit-transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+    margin: 0 10px;
+    border-radius: 6px;
+    position: relative;
+  }
+
+  .dark-mode .options ul li,
+  .TnITTtw-dark-mode .TnITTtw-options ul li {
+    color: #fff;
+  }
+
+  .ui_selector .options ul li:last-child,
+  .TnITTtw-ui_selector .TnITTtw-options ul li:last-child {
+    margin-bottom: 16px;
+  }
+
+  .ui_selector .options ul li.option:first-child,
+  .ui_selector .options ul li.option_selected:first-child,
+  .TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-option:first-child,
+  .TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-option_selected:first-child {
+    margin-top: 16px;
+  }
+
+  .ui_selector .options ul li.whenHover,
+  .TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-whenHover {
+    cursor: pointer;
+    background: #f3f3f3;
+    text-align: center;
+  }
+
+  .dark-mode .ui_selector .options ul li.whenHover,
+  .TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-whenHover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .ui_selector .options ul li.option_selected,
+  .TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-option_selected {
+    cursor: pointer;
+    background-image: linear-gradient(145deg, #01EF92, #00D8FB),
+    linear-gradient(35deg, rgba(1, 239, 146, 0.25), rgba(0, 216, 251, 0.25)) !important;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .ui_selector .options ul .group,
+  .ui_selector .options ul .group:hover,
+  .ui_selector .options ul .group.whenHover,
+  .TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group,
+  .TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group:hover,
+  .TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group.whenHover {
+    padding: 16px 10px;
+    color: #8e8e93;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: center;
+    cursor: default;
+    background: #FFF;
+  }
+
+  .dark-mode .ui_selector .options ul .group,
+  .dark-mode .ui_selector .options ul .group:hover,
+  .dark-mode .ui_selector .options ul .group.whenHover,
+  .TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group,
+  .TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group:hover,
+  .TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group.TnITTtw-whenHover {
+    color: #98989D;
+    background: #525251;
+  }
+
+  .group-element,
+  .TnITTtw-group-element {
+    width: 153px;
+  }
+
+  .options .dd-search,
+  .TnITTtw-options .TnITTtw-dd-search {
+    border-bottom: 1px solid rgba(200, 199, 204, 0.5);
+  }
+
+  .dark-mode .options .dd-search,
+  .TnITTtw-dark-mode .TnITTtw-options .TnITTtw-dd-search {
+    border-bottom-color: #747473;
+  }
+
+  .dd-search .dd-input,
+  .TnITTtw-dd-search .TnITTtw-dd-input {
+    padding: 16px;
+    padding-left: calc(16px * 3);
+    width: 168px;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif;
+    text-align: left;
+    color: #000;
+    font-size: 17px;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/searchfield-icon.png);
+    background-position: 16px;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: auto;
+  }
+
+  .dark-mode .dd-search .dd-input,
+  .TnITTtw-dark-mode .TnITTtw-dd-search .TnITTtw-dd-input {
+    color: #FFF;
+    background-color: #525251;
+  }
+
+  .dd-search .dd-input:focus,
+  .TnITTtw-dd-search .TnITTtw-dd-input:focus {
+    -webkit-transition: all 275ms cubic-bezier(0.23, 1, 0.32, 1);
+    outline: none;
+    text-align: left;
+  }
+
+  .dd-input::-webkit-input-placeholder,
+  .TnITTtw-dd-input::-webkit-input-placeholder {
+    color: #8e8e93;
+  }
+
+  .search-failed-plaque,
+  .TnITTtw-search-failed-plaque {
+    text-align: center;
+    padding: 20px;
+    color: #8e8e93;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .dark-mode .search-failed-plaque,
+  .TnITTtw-dark-mode .TnITTtw-search-failed-plaque {
+    color: #98989D;
+  }
+
+  .rm-recent,
+  .TnITTtw-rm-recent {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/regular-lang-remove.png);
+    background-size: 10px 10px;
+    top: 15px;
+    right: 10px;
+  }
+
+  .rm-recent:hover,
+  .TnITTtw-rm-recent:hover {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/hover-lang-remove.png);
+  }
+
+  .rm-recent:active,
+  .TnITTtw-rm-recent:active {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/down-lang-remove.png);
+  }
+
+  .option_selected .rm-recent,
+  .TnITTtw-option_selected .TnITTtw-rm-recent {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/down-active-lang-remove.png);
+  }
+
+  .option_selected .rm-recent:hover,
+  .TnITTtw-option_selected .TnITTtw-rm-recent:hover {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/hover-active-lang-remove.png);
+  }
+
+  .option_selected .rm-recent:active,
+  .TnITTtw-option_selected .TnITTtw-rm-recent:active {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/down-active-lang-remove.png);
+  }
+
+  .TnITTtw-hidden {
+    display: none;
+  }</style>
+  <style type="text/css">@-webkit-keyframes load4 {
+                           0%,
+                           100% {
+                             box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+                           }
+                           12.5% {
+                             box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+                           }
+                           25% {
+                             box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+                           }
+                           37.5% {
+                             box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+                           }
+                           50% {
+                             box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+                           }
+                           62.5% {
+                             box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+                           }
+                           75% {
+                             box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+                           }
+                           87.5% {
+                             box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+                           }
+                         }
+
+  @keyframes load4 {
+    0%,
+    100% {
+      box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+      box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+      box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+      box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+      box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+  }</style>
+  <style type="text/css">/* This is not a zero-length file! */</style>
+  <style data-id="immersive-translate-input-injected-css">.immersive-translate-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2147483647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .immersive-translate-loading-spinner {
+    vertical-align: middle !important;
+    width: 10px !important;
+    height: 10px !important;
+    display: inline-block !important;
+    margin: 0 4px !important;
+    border: 2px rgba(221, 244, 255, 0.6) solid !important;
+    border-top: 2px rgba(0, 0, 0, 0.375) solid !important;
+    border-left: 2px rgba(0, 0, 0, 0.375) solid !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    -webkit-animation: immersive-translate-loading-animation 0.6s infinite linear !important;
+    animation: immersive-translate-loading-animation 0.6s infinite linear !important;
+  }
+
+  @-webkit-keyframes immersive-translate-loading-animation {
+    from {
+      -webkit-transform: rotate(0deg);
+    }
+
+    to {
+      -webkit-transform: rotate(359deg);
+    }
+  }
+
+  @keyframes immersive-translate-loading-animation {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+
+  .immersive-translate-input-loading {
+    --loading-color: #f78fb6;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: block;
+    margin: 12px auto;
+    position: relative;
+    color: white;
+    left: -100px;
+    box-sizing: border-box;
+    animation: immersiveTranslateShadowRolling 1.5s linear infinite;
+  }
+
+  @keyframes immersiveTranslateShadowRolling {
+    0% {
+      box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    12% {
+      box-shadow: 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    25% {
+      box-shadow: 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    36% {
+      box-shadow: 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    50% {
+      box-shadow: 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color);
+    }
+
+    62% {
+      box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color);
+    }
+
+    75% {
+      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color);
+    }
+
+    87% {
+      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color);
+    }
+
+    100% {
+      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+    }
+  }
+
+
+  .immersive-translate-search-recomend {
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    position: relative;
+    font-size: 16px;
+  }
+
+  .immersive-translate-search-enhancement-en-title {
+    color: #4d5156;
+  }
+
+  /* dark */
+  @media (prefers-color-scheme: dark) {
+    .immersive-translate-search-recomend {
+      border: 1px solid #3c4043;
+    }
+
+    .immersive-translate-close-action svg {
+      fill: #bdc1c6;
+    }
+
+    .immersive-translate-search-enhancement-en-title {
+      color: #bdc1c6;
+    }
+  }
+
+
+  .immersive-translate-search-settings {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+  }
+
+  .immersive-translate-search-recomend::before {
+    /* content: " "; */
+    /* width: 20px; */
+    /* height: 20px; */
+    /* top: 16px; */
+    /* position: absolute; */
+    /* background: center / contain url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAxlBMVEUAAADpTInqTIjpSofnSIfqS4nfS4XqS4nqTIjsTYnrTInqTIroS4jvQIDqTIn////+/v7rSYjpTIn8/v7uaZzrTIr9/f3wfansWJL88/b85e73qc39+/v3xNnylrvrVI/98fb62Obva5/8+fr76vH4y9zpSIj74e353Oj1ocTzm77xhK/veKbtYpjsXJTqU47oTInxjrXyh7L99fj40eH2ttH1udD3sc31ssz1rMnykLXucqPtbqD85e/1xdn2u9DzqcXrUY6FaJb8AAAADnRSTlMA34BgIM8Q37/fz7+/EGOHcVQAAAGhSURBVDjLhZPncuowEEZFTW7bXVU7xsYYTO/p7bb3f6lICIOYJOT4h7/VnFmvrBFjrF3/CR/SajBHswafctG0Qg3O8O0Xa8BZ6uw7eLjqr30SofCDVSkemMinfL1ecy20r5ygR5zz3ArcAqJExPTPKhDENEmS30Q9+yo4lEQkqVTiIEAHCT10xWERRdH0Bq0aCOPZNDV3s0xaYce1lHEoDHU8wEh3qRJypNcTAeKUIjgKMeGLDoRCLVLTVf+Ownj8Kk6H9HM6QXPgYjQSB0F00EJEu10ILQrs/QeP77BSSr0MzLOyuJJQbnUoOOIUI/A8EeJk9E4YUHUWiRyTVKGgQUB8/3e/NpdGlfI+FMQyWsCBWyz4A/ZyHXyiiz0Ne5aGZssoxRmcChw8/EFKQ5JwwkUo3FRT5yXS7q+Y/rHDZmFktzpGMvO+5QofA4FPpEmGw+EWRCFvnaof7Zhe8NuYSLR0xErKLThUSs8gnODh87ssy6438yzbLzxl012HS19vfCf3CNhnbWOL1eEsDda+gDPUvri8tSZzNFrwIZf1NmNvqC1I/t8j7nYAAAAASUVORK5CYII='); */
+  }
+
+  .immersive-translate-search-title {
+  }
+
+  .immersive-translate-search-title-wrapper {
+  }
+
+  .immersive-translate-search-time {
+    font-size: 12px;
+    margin: 4px 0 24px;
+    color: #70757a;
+  }
+
+  .immersive-translate-expand-items {
+    display: none;
+  }
+
+  .immersive-translate-search-more {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+
+  .immersive-translate-modal {
+    display: none;
+    position: fixed;
+    z-index: 2147483647;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    font-size: 15px;
+  }
+
+  .immersive-translate-modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 40px 24px 24px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 270px;
+    font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
+    "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+    position: relative
+  }
+
+  .immersive-translate-modal .immersive-translate-modal-content-in-input {
+    max-width: 500px;
+  }
+
+  .immersive-translate-modal-content-in-input .immersive-translate-modal-body {
+    text-align: left;
+    max-height: unset;
+  }
+
+  .immersive-translate-modal-title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333333;
+  }
+
+  .immersive-translate-modal-body {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    word-break: break-all;
+    margin-top: 24px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .immersive-translate-modal-body {
+      max-height: 250px;
+      overflow-y: auto;
+    }
+  }
+
+  .immersive-translate-close {
+    color: #666666;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .immersive-translate-close:hover,
+  .immersive-translate-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .immersive-translate-modal-footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .immersive-translate-btn {
+    width: fit-content;
+    color: #fff;
+    background-color: #ea4c89;
+    border: none;
+    font-size: 16px;
+    margin: 0 8px;
+    padding: 9px 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .immersive-translate-btn:hover {
+    background-color: #f082ac;
+  }
+
+  .immersive-translate-cancel-btn {
+    /* gray color */
+    background-color: rgb(89, 107, 120);
+  }
+
+
+  .immersive-translate-cancel-btn:hover {
+    background-color: hsl(205, 20%, 32%);
+  }
+
+  .immersive-translate-action-btn {
+    background-color: transparent;
+    color: #EA4C89;
+    border: 1px solid #EA4C89
+  }
+
+  .immersive-translate-btn svg {
+    margin-right: 5px;
+  }
+
+  .immersive-translate-link {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+    text-decoration: none;
+    color: #007bff;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+  }
+
+  .immersive-translate-primary-link {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+    text-decoration: none;
+    color: #ea4c89;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+  }
+
+  .immersive-translate-modal input[type="radio"] {
+    margin: 0 6px;
+    cursor: pointer;
+  }
+
+  .immersive-translate-modal label {
+    cursor: pointer;
+  }
+
+  .immersive-translate-close-action {
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    cursor: pointer;
+  }</style>
+</head>
+
+<body>
+<div class="home-banner">
+  <!-- 顶部+栏目 -->
+  <div class="home-header">
+    <div class="nav-box inner">
+      <div class="home-header-title contain">
+        <img class="top-logo" src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/static/home/logo.png">
+        <div class="nav transition">
+          <div class="nav-list transition pointer" onclick="location.href='//xyh.ccnu.edu.cn'">
+            首页
+          </div>
+
+
+          <!-- 栏目跳转链接 -->
+          <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+          <div class="nav-list transition pointer">
+            <span onclick="location.href='//xyh.ccnu.edu.cn/category/21/p1'">新闻动态</span>
+            <div class="nav-list-more">
+              <div class="nav-list-more-inner">
+                <div class="nav-list-more-list">
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/21/p1'">
+                    母校动态
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/3/p1'">
+                    总会动态
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/130/p1'">
+                    校友动态
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/22/p1'">
+                    地方动态
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/23/p1'">
+                    学院动态
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/24/p1'">
+                    行业动态
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/129/p1'">
+                    通知公告
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 栏目跳转链接 -->
+          <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+          <div class="nav-list transition pointer">
+            <span onclick="location.href='//xyh.ccnu.edu.cn/category/11/p1'">走进我们</span>
+            <div class="nav-list-more">
+              <div class="nav-list-more-inner">
+                <div class="nav-list-more-list">
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/11/p1'">
+                    总会简介
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/13/p1'">
+                    规章制度
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/14/p1'">
+                    组织架构
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/15/p1'">
+                    联系我们
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 栏目跳转链接 -->
+          <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+          <div class="nav-list transition pointer">
+            <span onclick="location.href='//xyh.ccnu.edu.cn/category/17/p1'">校友组织</span>
+            <div class="nav-list-more">
+              <div class="nav-list-more-inner">
+                <div class="nav-list-more-list">
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/17/p1'">
+                    地方校友会
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/18/p1'">
+                    院系校友会
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/19/p1'">
+                    行业校友会
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="logo">
+            <img src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/static/home/logo.png">
+          </p>
+
+
+          <!-- 栏目跳转链接 -->
+          <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+          <div class="nav-list transition pointer">
+            <span onclick="location.href='//xyh.ccnu.edu.cn/category/26/p1'">校友活动</span>
+            <div class="nav-list-more">
+              <div class="nav-list-more-inner">
+                <div class="nav-list-more-list">
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/26/p1'">
+                    活动报名
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/28/p1'">
+                    照片集锦
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/29/p1'">
+                    视频集锦
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 栏目跳转链接 -->
+          <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+          <div class="nav-list transition pointer">
+            <span onclick="location.href='//xyh.ccnu.edu.cn/category/104/p1'">校友群芳</span>
+            <div class="nav-list-more">
+              <div class="nav-list-more-inner">
+                <div class="nav-list-more-list">
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/104/p1'">
+                    革命先烈
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/105/p1'">
+                    教育大家
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/106/p1'">
+                    两院院士
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/107/p1'">
+                    学术大师
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/111/p1'">
+                    文艺名家
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/109/p1'">
+                    基教名师
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/108/p1'">
+                    政界名流
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/110/p1'">
+                    军队将领
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/112/p1'">
+                    商海骄子
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/113/p1'">
+                    世界冠军
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 栏目跳转链接 -->
+          <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+          <div class="nav-list transition pointer">
+            <span onclick="location.href='//xyh.ccnu.edu.cn/category/35/p1'">校友服务</span>
+            <div class="nav-list-more">
+              <div class="nav-list-more-inner">
+                <div class="nav-list-more-list">
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/35/p1'">
+                    注册认证
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/36/p1'">
+                    校友卡申领
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/37/p1'">
+                    校友返校
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/38/p1'">
+                    场馆预约
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/40/p1'">
+                    校友优惠
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/41/p1'">
+                    档案查询
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/42/p1'">
+                    证书补办
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/43/p1'">
+                    找校友
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/44/p1'">
+                    校友互助
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/45/p1'">
+                    终身学习
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/46/p1'">
+                    校企入驻
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/47/p1'">
+                    校友企业
+                  </div>
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/48/p1'">
+                    校企招聘
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 栏目跳转链接 -->
+          <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+          <div class="nav-list transition pointer">
+            <span onclick="location.href='//xyh.ccnu.edu.cn/category/50/p1'">校友通讯</span>
+            <div class="nav-list-more">
+              <div class="nav-list-more-inner">
+                <div class="nav-list-more-list">
+                  <div class="item pointer" onclick="location.href='//xyh.ccnu.edu.cn/category/50/p1'">
+                    校友通讯
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="home-header-inner">
+          <form action="//xyh.ccnu.edu.cn/search/p1" method="get">
+            <div class="search-icon">
+              <div class="search-border zjut transition pointer">
+                <div class="input search-input">
+                  <input type="text" name="keyword" placeholder="搜索">
+                </div>
+                <i class="iconfont icon-search"></i>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- 小屏移动端头部 -->
+    <header class="mobile_header">
+      <div>
+
+        <a href="" class="mobile_header_logo"><img
+          src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/images/top-logo.png" alt=""></a>
+        <div class="mobile_header_menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div id="menu-wrapper" class="active">
+    <div>
+      <ul>
+        <li class="mobile_menu_item">
+          <div class="mobile_menu_item1">
+            <a href="//xyh.ccnu.edu.cn">网站首页</a>
+          </div>
+        </li>
+        <!-- 栏目跳转链接 -->
+        <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+        <li class="mobile_menu_item">
+          <div class="mobile_menu_item1">
+            <a href="//xyh.ccnu.edu.cn/category/21/p1">新闻动态</a>
+            <i class="arrow_btn cursor"></i>
+          </div>
+          <ol class="mobile_menu_item2">
+            <li><a href="//xyh.ccnu.edu.cn/category/21/p1">母校动态</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/3/p1">总会动态</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/130/p1">校友动态</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/22/p1">地方动态</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/23/p1">学院动态</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/24/p1">行业动态</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/129/p1">通知公告</a></li>
+          </ol>
+        </li>
+        <!-- 栏目跳转链接 -->
+        <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+        <li class="mobile_menu_item">
+          <div class="mobile_menu_item1">
+            <a href="//xyh.ccnu.edu.cn/category/11/p1">走进我们</a>
+            <i class="arrow_btn cursor"></i>
+          </div>
+          <ol class="mobile_menu_item2">
+            <li><a href="//xyh.ccnu.edu.cn/category/11/p1">总会简介</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/13/p1">规章制度</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/14/p1">组织架构</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/15/p1">联系我们</a></li>
+          </ol>
+        </li>
+        <!-- 栏目跳转链接 -->
+        <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+        <li class="mobile_menu_item">
+          <div class="mobile_menu_item1">
+            <a href="//xyh.ccnu.edu.cn/category/17/p1">校友组织</a>
+            <i class="arrow_btn cursor"></i>
+          </div>
+          <ol class="mobile_menu_item2">
+            <li><a href="//xyh.ccnu.edu.cn/category/17/p1">地方校友会</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/18/p1">院系校友会</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/19/p1">行业校友会</a></li>
+          </ol>
+        </li>
+        <!-- 栏目跳转链接 -->
+        <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+        <li class="mobile_menu_item">
+          <div class="mobile_menu_item1">
+            <a href="//xyh.ccnu.edu.cn/category/26/p1">校友活动</a>
+            <i class="arrow_btn cursor"></i>
+          </div>
+          <ol class="mobile_menu_item2">
+            <li><a href="//xyh.ccnu.edu.cn/category/26/p1">活动报名</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/28/p1">照片集锦</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/29/p1">视频集锦</a></li>
+          </ol>
+        </li>
+        <!-- 栏目跳转链接 -->
+        <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+        <li class="mobile_menu_item">
+          <div class="mobile_menu_item1">
+            <a href="//xyh.ccnu.edu.cn/category/104/p1">校友群芳</a>
+            <i class="arrow_btn cursor"></i>
+          </div>
+          <ol class="mobile_menu_item2">
+            <li><a href="//xyh.ccnu.edu.cn/category/104/p1">革命先烈</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/105/p1">教育大家</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/106/p1">两院院士</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/107/p1">学术大师</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/111/p1">文艺名家</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/109/p1">基教名师</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/108/p1">政界名流</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/110/p1">军队将领</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/112/p1">商海骄子</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/113/p1">世界冠军</a></li>
+          </ol>
+        </li>
+        <!-- 栏目跳转链接 -->
+        <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+        <li class="mobile_menu_item">
+          <div class="mobile_menu_item1">
+            <a href="//xyh.ccnu.edu.cn/category/35/p1">校友服务</a>
+            <i class="arrow_btn cursor"></i>
+          </div>
+          <ol class="mobile_menu_item2">
+            <li><a href="//xyh.ccnu.edu.cn/category/35/p1">注册认证</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/36/p1">校友卡申领</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/37/p1">校友返校</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/38/p1">场馆预约</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/40/p1">校友优惠</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/41/p1">档案查询</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/42/p1">证书补办</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/43/p1">找校友</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/44/p1">校友互助</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/45/p1">终身学习</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/46/p1">校企入驻</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/47/p1">校友企业</a></li>
+            <li><a href="//xyh.ccnu.edu.cn/category/48/p1">校企招聘</a></li>
+          </ol>
+        </li>
+        <!-- 栏目跳转链接 -->
+        <!-- 如果有子栏目，取子栏目的第一个当跳转链接 -->
+        <li class="mobile_menu_item">
+          <div class="mobile_menu_item1">
+            <a href="//xyh.ccnu.edu.cn/category/50/p1">校友通讯</a>
+            <i class="arrow_btn cursor"></i>
+          </div>
+          <ol class="mobile_menu_item2">
+            <li><a href="//xyh.ccnu.edu.cn/category/50/p1">校友通讯</a></li>
+          </ol>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <div class="image-g">
+    <div class="image-inner">
+      <img class="image-card" src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/static/common/banner.png">
+    </div>
+  </div>
+</div>
+
+<div class="body activ subpage-main">
+  <!-- 面包屑 -->
+  <div class="inner">
+    <div class="subpage-bread">
+      <span onclick="location.href='//xyh.ccnu.edu.cn'">首页</span>
+      /<span onclick="location.href='//xyh.ccnu.edu.cn/category/26/p1'">校友活动</span>
+      /<span onclick="location.href='//xyh.ccnu.edu.cn/category/26/p1'">活动报名</span>
+    </div>
+  </div>
+
+  <div class=" inner subpage-imglist">
+    <!-- 栏目列表 -->
+    <div class="sub-tab">
+      <div class="sub-item sub-item-active" onclick="location.href='//xyh.ccnu.edu.cn/category/26/p1'">
+        活动报名
+      </div>
+      <div class="sub-item " onclick="location.href='//xyh.ccnu.edu.cn/category/28/p1'">
+        照片集锦
+      </div>
+      <div class="sub-item " onclick="location.href='//xyh.ccnu.edu.cn/category/29/p1'">
+        视频集锦
+      </div>
+    </div>
+    <div class="content ">
+      <div class="subpage-con-t">
+                    <span>活动报名<img src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/static/common/index-t-icon.png" alt=""></span>
+      </div>
+
+      <div class="alumni-right-periodical">
+        <div class="activity-list">
+          <div class="item pointer" onclick="location.href='/xyh/category_article/26/25'">
+            <div class="img-box">
+              <img class="transition"
+                   src="https://lsh.ccnu.edu.cn/upload/static/2024/01/10/529bb3ded284427e9b77c780fd7a271a.jpg" alt="">
+            </div>
+            <div class="item-info">
+              <div class="p">读书俱乐部2402期</div>
+              <div class="p">
+                <i class="iconfont icon-time"></i>
+                2024-1-14 19:30:00 至 2024-1-14 21:30:00
+              </div>
+              <div class="p">
+                <i class="iconfont icon-local"></i>
+                广东省深圳市南山区高新南九道61号
+              </div>
+              <div class="p">
+                <i class="iconfont font-icon"></i>
+                深圳校友会
+                <div class="avatar">
+                  <img src="https://lsh.ccnu.edu.cn/upload/static/2022/07/14/12f63643e7e44795809ede1f1ccd19e0.png"
+                       alt="">
+                </div>
+                钱百万
+              </div>
+              <div class="item-btn transition info close">活动已结束</div>
+            </div>
+
+          </div>
+        </div>
+        <!-- 分页器 -->
+        <!-- 分页 -->
+        <div class="list-pr-g">
+          <!-- 上一页判断，第一页不能点击 -->
+          <div class="list-pr-btn l zjut pointer transition">
+            <i class="iconfont icon-arrow-left"></i>
+          </div>
+
+          <!-- 当前页大于3，默认显示第一页 -->
+
+
+          <!-- 当前页 -->
+          <a class="changePage active list-pr-btn">1</a>
+
+          <div class="list-pr-btn pointer transition" onclick="location.href='//xyh.ccnu.edu.cn/category/26/p2'">2</div>
+
+
+          <!-- 总页数超过当前3页 -->
+
+
+          <!-- 下一页判断，最后一页不能点击 -->
+          <div class="list-pr-btn r zjut pointer transition" onclick="location.href='//xyh.ccnu.edu.cn/category/26/p2'">
+            <i class="iconfont icon-arrow"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- 尾部 -->
+<footer>
+  <div class="inner">
+    <div class="logo">
+      <img src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/static/footer-logo.png" alt="">
+    </div>
+    <div class="flex-sb link-list">
+      <div onclick="window.open('https://www.ccnu.edu.cn')">华中师范大学</div>
+      <span></span>
+      <div onclick="window.open('https://jjh.ccnu.edu.cn')">华中师范大学教育发展基金会</div>
+      <span></span>
+      <div onclick="window.open('http://zuaa.zju.edu.cn/')">浙江大学校友网</div>
+      <span></span>
+      <div onclick="window.open('https://xyh.bnu.edu.cn/')">北京师范大学校友网</div>
+      <span></span>
+      <div onclick="window.open('https://www.tsinghua.org.cn/')">清华校友网</div>
+      <span></span>
+    </div>
+    <div class="two">
+      <div class="item1">
+        <img src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/static/bottom/code1.png" alt="">
+        <span>校友会公众号</span>
+      </div>
+      <div class="item1">
+        <img src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/static/bottom/code2.jpg" alt="">
+        <span>校友会小程序</span>
+      </div>
+    </div>
+    <p>
+      <span>地址：湖北省武汉市珞喻路152号华中师范大学校友会</span><span>电话：027-67861051</span><span>传真：027-67861051</span><span>E-mail：hsxy@mail.ccnu.edu.cn</span><span>微信：华中师范大学校友总会（ID:ccnuxyh)</span>
+    </p>
+    <p>版权所有 © 2022 华中师范大学校友会 |鄂ICP备0503325号</p>
+  </div>
+
+</footer>
+<script src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/js/jquery-3.4.1.min.js"></script>
+<script src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/js/base/index.js"></script>
+<script src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/js/common/index.js"></script>
+<script src="//xyh.ccnu.edu.cn/xyh/4902669b-a8b8-4530-b714-2d3c2291ac19/js/nav/index.js"></script>
+
+<textarea id="BFI_DATA" style="width: 1px; height: 1px; display: none;"></textarea><title></title>
+<div id="WidgetFloaterPanels" translate="no"
+     style="display: none; text-align: left; direction: ltr; visibility: hidden;" class="LTRStyle">
+  <div id="WidgetFloater" style="display: none" onmouseover="Microsoft.Translator.OnMouseOverFloater()"
+       onmouseout="Microsoft.Translator.OnMouseOutFloater()">
+    <div id="WidgetLogoPanel"><span id="WidgetTranslateWithSpan"><span>TRANSLATE with </span><img
+      id="FloaterLogo"></span> <span id="WidgetCloseButton" title="Exit Translation"
+                                     onclick="Microsoft.Translator.FloaterOnClose()">x</span></div>
+    <div id="LanguageMenuPanel">
+      <div class="DDStyle_outer"><input name="LanguageMenu_svid" type="text" id="LanguageMenu_svid"
+                                        style="display:none;" autocomplete="on" value="en" onclick="this.select()">
+        <input name="LanguageMenu_textid" type="text" id="LanguageMenu_textid" style="display:none;" autocomplete="on"
+               onclick="this.select()"> <span onselectstart="return false" tabindex="0" class="DDStyle"
+                                              id="__LanguageMenu_header"
+                                              onclick="return LanguageMenu &amp;&amp; !LanguageMenu.Show('__LanguageMenu_popup', event);"
+                                              onkeydown="return LanguageMenu &amp;&amp; !LanguageMenu.Show('__LanguageMenu_popup', event);">English</span>
+        <div style="position:relative;text-align:left;left:0;">
+          <div style="position:absolute;width:;left:0px;">
+            <div class="DDStyle" style="display:none;" id="__LanguageMenu_popup">
+              <table id="LanguageMenu" border="0">
+                <tbody>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('ar');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#ar">Arabic</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('he');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#he">Hebrew</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('pl');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#pl">Polish</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('bg');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#bg">Bulgarian</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('hi');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#hi">Hindi</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('pt');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#pt">Portuguese</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('ca');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#ca">Catalan</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('mww');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#mww">Hmong Daw</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('ro');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#ro">Romanian</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('zh-CHS');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#zh-CHS">Chinese Simplified</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('hu');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#hu">Hungarian</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('ru');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#ru">Russian</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('zh-CHT');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#zh-CHT">Chinese Traditional</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('id');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#id">Indonesian</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('sk');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#sk">Slovak</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('cs');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#cs">Czech</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('it');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#it">Italian</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('sl');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#sl">Slovenian</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('da');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#da">Danish</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('ja');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#ja">Japanese</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('es');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#es">Spanish</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('nl');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#nl">Dutch</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('tlh');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#tlh">Klingon</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('sv');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#sv">Swedish</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('en');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#en">English</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('ko');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#ko">Korean</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('th');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#th">Thai</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('et');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#et">Estonian</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('lv');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#lv">Latvian</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('tr');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#tr">Turkish</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('fi');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#fi">Finnish</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('lt');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#lt">Lithuanian</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('uk');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#uk">Ukrainian</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('fr');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#fr">French</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('ms');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#ms">Malay</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('ur');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#ur">Urdu</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('de');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#de">German</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('mt');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#mt">Maltese</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('vi');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#vi">Vietnamese</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('el');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#el">Greek</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('no');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#no">Norwegian</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('cy');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#cy">Welsh</a></td>
+                </tr>
+                <tr>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('ht');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#ht">Haitian Creole</a></td>
+                  <td><a tabindex="-1" onclick="return LanguageMenu.onclick('fa');"
+                         ondragstart="LanguageMenu.ondragstart(event);" href="#fa">Persian</a></td>
+                  <td></td>
+                </tr>
+                </tbody>
+              </table>
+              <img alt="" style="height:7px;width:17px;border-width:0px;left:20px;"></div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript"> var LanguageMenu;
+      var LanguageMenu_keys = ["ar", "bg", "ca", "zh-CHS", "zh-CHT", "cs", "da", "nl", "en", "et", "fi", "fr", "de", "el", "ht", "he", "hi", "mww", "hu", "id", "it", "ja", "tlh", "ko", "lv", "lt", "ms", "mt", "no", "fa", "pl", "pt", "ro", "ru", "sk", "sl", "es", "sv", "th", "tr", "uk", "ur", "vi", "cy"];
+      var LanguageMenu_values = ["Arabic", "Bulgarian", "Catalan", "Chinese Simplified", "Chinese Traditional", "Czech", "Danish", "Dutch", "English", "Estonian", "Finnish", "French", "German", "Greek", "Haitian Creole", "Hebrew", "Hindi", "Hmong Daw", "Hungarian", "Indonesian", "Italian", "Japanese", "Klingon", "Korean", "Latvian", "Lithuanian", "Malay", "Maltese", "Norwegian", "Persian", "Polish", "Portuguese", "Romanian", "Russian", "Slovak", "Slovenian", "Spanish", "Swedish", "Thai", "Turkish", "Ukrainian", "Urdu", "Vietnamese", "Welsh"];
+      var LanguageMenu_callback = function () {
+      };
+      var LanguageMenu_popupid = '__LanguageMenu_popup'; </script>
+    </div>
+    <div id="CTFLinksPanel"><span id="ExternalLinksPanel"><a id="HelpLink" title="Help" target="_blank"
+                                                             href="https://go.microsoft.com/?linkid=9722454"> <img
+      id="HelpImg"></a> <a id="EmbedLink" href="javascript:Microsoft.Translator.FloaterShowEmbed()"
+                           title="Get this widget for your own site"> <img id="EmbedImg"></a> <a id="ShareLink"
+                                                                                                 title="Share translated page with friends"
+                                                                                                 href="javascript:Microsoft.Translator.FloaterShowSharePanel()"> <img
+      id="ShareImg"></a> </span></div>
+    <div id="FloaterProgressBar"><span id="ProgressFill"></span></div>
+  </div>
+  <div id="WidgetFloaterCollapsed" style="display: none" onmouseover="Microsoft.Translator.OnMouseOverFloater()"><span>TRANSLATE with </span><img
+    id="CollapsedLogoImg"></div>
+  <div id="FloaterSharePanel" style="display: none">
+    <div id="ShareTextDiv"><span id="ShareTextSpan"> COPY THE URL BELOW </span></div>
+    <div id="ShareTextboxDiv"><input name="ShareTextbox" type="text" id="ShareTextbox" readonly="readonly"
+                                     onclick="this.select()">
+      <!--a id="TwitterLink" title="Share on Twitter"> <img id="TwitterImg" /></a> <a-- id="FacebookLink" title="Share on Facebook"> <img id="FacebookImg" /></a-->
+      <a id="EmailLink" title="Email this translation"> <img id="EmailImg"></a></div>
+    <div id="ShareFooter"><span id="ShareHelpSpan"><a id="ShareHelpLink"> <img id="ShareHelpImg"></a></span> <span
+      id="ShareBackSpan"><a id="ShareBack" href="javascript:Microsoft.Translator.FloaterOnShareBackClick()"
+                            title="Back To Translation"> Back</a></span></div>
+    <input name="EmailSubject" type="hidden" id="EmailSubject" value="Check out this page in {0} translated from {1}">
+    <input name="EmailBody" type="hidden" id="EmailBody"
+           value="Translated: {0}%0d%0aOriginal: {1}%0d%0a%0d%0aAutomatic translation powered by Microsoft® Translator%0d%0ahttp://www.bing.com/translator?ref=MSTWidget">
+    <input type="hidden" id="ShareHelpText"
+           value="This link allows visitors to launch this page and automatically translate it to {0}."></div>
+  <div id="FloaterEmbed" style="display: none">
+    <div id="EmbedTextDiv"><span id="EmbedTextSpan">EMBED THE SNIPPET BELOW IN YOUR SITE</span> <a id="EmbedHelpLink"
+                                                                                                   title="Copy this code and place it into your HTML.">
+      <img id="EmbedHelpImg"></a></div>
+    <div id="EmbedTextboxDiv"><input name="EmbedSnippetTextBox" type="text" id="EmbedSnippetTextBox" readonly="readonly"
+                                     value="<div id='MicrosoftTranslatorWidget' class='Dark' style='color:white;background-color:#555555'></div><script type='text/javascript'>setTimeout(function(){var s=document.createElement('script');s.type='text/javascript';s.charset='UTF-8';s.src=((location &amp;&amp; location.href &amp;&amp; location.href.indexOf('https') == 0)?'https://ssl.microsofttranslator.com':'http://www.microsofttranslator.com')+'/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**&amp;ctf=true&amp;ui=true&amp;settings=manual&amp;from=en';var p=document.getElementsByTagName('head')[0]||document.documentElement;p.insertBefore(s,p.firstChild); },0);</script>"
+                                     onclick="this.select()"></div>
+    <div id="EmbedNoticeDiv"><span id="EmbedNoticeSpan">Enable collaborative features and customize widget: <a
+      href="http://www.bing.com/widget/translator" target="_blank">Bing Webmaster Portal</a></span></div>
+    <div id="EmbedFooterDiv"><span id="EmbedBackSpan"><a
+      href="javascript:Microsoft.Translator.FloaterOnEmbedBackClick()" title="Back To Translation">Back</a></span></div>
+  </div>
+  <script type="text/javascript"> var intervalId = setInterval(function () {
+    if (MtPopUpList) {
+      LanguageMenu = new MtPopUpList();
+      var langMenu = document.getElementById(LanguageMenu_popupid);
+      var origLangDiv = document.createElement("div");
+      origLangDiv.id = "OriginalLanguageDiv";
+      origLangDiv.innerHTML = "<span id='OriginalTextSpan'>ORIGINAL: </span><span id='OriginalLanguageSpan'></span>";
+      langMenu.appendChild(origLangDiv);
+      LanguageMenu.Init('LanguageMenu', LanguageMenu_keys, LanguageMenu_values, LanguageMenu_callback, LanguageMenu_popupid);
+      window["LanguageMenu"] = LanguageMenu;
+      clearInterval(intervalId);
+    }
+  }, 1); </script>
+</div>
+<webchatgpt-custom-element-2a1ef2a4-96b5-41b1-959e-42b247d00e5b id="webchatgpt-snackbar"
+                                                                style="color: rgb(255, 255, 255);"></webchatgpt-custom-element-2a1ef2a4-96b5-41b1-959e-42b247d00e5b>
+</body>
+<div id="immersive-translate-popup" style="all: initial"></div>
+</html>

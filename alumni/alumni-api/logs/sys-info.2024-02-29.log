@@ -1,0 +1,96 @@
+2024-02-29 13:32:14 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2024-02-29 13:32:14 [main] INFO  com.alumni.AlumniApplication - Starting AlumniApplication using Java 21.0.1 on 192.168.1.6 with PID 91764 (/Library/PP/my-project/bysj24/alumni-association/alumni-api/alumni-admin/target/classes started by panpan in /Library/PP/my-project/bysj24/alumni-association/alumni-api)
+2024-02-29 13:32:14 [main] INFO  com.alumni.AlumniApplication - The following 1 profile is active: "dev"
+2024-02-29 13:32:19 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2024-02-29 13:32:19 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource detect P6SPY plugin and enabled it
+2024-02-29 13:32:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Starting...
+2024-02-29 13:32:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Start completed.
+2024-02-29 13:32:20 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [slave] success
+2024-02-29 13:32:20 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [master] success
+2024-02-29 13:32:20 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [master]
+2024-02-29 13:32:21 [main] INFO  c.a.framework.config.JacksonConfig - 初始化 jackson 配置
+2024-02-29 13:32:21 [main] INFO  c.a.framework.config.RedisConfig - 初始化 redis 配置
+2024-02-29 13:32:22 [main] INFO  org.redisson.Version - Redisson 3.20.1
+2024-02-29 13:32:22 [redisson-netty-2-6] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-02-29 13:32:22 [redisson-netty-2-3] INFO  o.r.c.pool.MasterConnectionPool - 8 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-02-29 13:32:25 [main] INFO  io.undertow - starting server: Undertow - 2.2.28.Final
+2024-02-29 13:32:25 [main] INFO  org.xnio - XNIO version 3.8.7.Final
+2024-02-29 13:32:25 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.8.7.Final
+2024-02-29 13:32:25 [main] INFO  org.jboss.threads - JBoss Threads version 3.1.0.Final
+2024-02-29 13:32:25 [main] INFO  com.alumni.AlumniApplication - Started AlumniApplication in 11.039 seconds (JVM running for 12.411)
+2024-02-29 13:32:25 [main] INFO  c.a.s.runner.SystemApplicationRunner - 初始化OSS配置成功
+2024-02-29 13:32:25 [main] INFO  c.a.s.runner.SystemApplicationRunner - 加载参数缓存数据成功
+2024-02-29 13:32:26 [main] INFO  c.a.s.runner.SystemApplicationRunner - 加载字典缓存数据成功
+2024-02-29 13:32:26 [RMI TCP Connection(16)-192.168.1.6] INFO  io.undertow.servlet - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-29 13:32:30 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-02-29 13:32:31 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[204]毫秒
+2024-02-29 13:32:31 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /logout],无参数
+2024-02-29 13:32:31 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /logout],耗时:[283]毫秒
+2024-02-29 13:32:31 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-02-29 13:32:31 [XNIO-1 task-1] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[1]毫秒
+2024-02-29 13:32:31 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccine/vaccine/list],无参数
+2024-02-29 13:32:31 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccine/inoculateSite/list],无参数
+2024-02-29 13:32:31 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccine/vaccine/list],耗时:[2]毫秒
+2024-02-29 13:32:31 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccine/inoculateSite/list],耗时:[2]毫秒
+2024-02-29 13:32:31 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-02-29 13:32:31 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-02-29 13:32:31 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[6]毫秒
+2024-02-29 13:32:31 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[6]毫秒
+2024-02-29 13:32:34 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccine/vaccineKnowledge/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-02-29 13:32:34 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccine/vaccineKnowledge/list],耗时:[1]毫秒
+2024-02-29 13:32:34 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-02-29 13:32:34 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[0]毫秒
+2024-02-29 13:32:35 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccine/inoculateSite/list],无参数
+2024-02-29 13:32:35 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccine/inoculateSite/list],耗时:[0]毫秒
+2024-02-29 13:32:35 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-02-29 13:32:35 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[0]毫秒
+2024-02-29 13:32:36 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccine/inoculateSite/list],无参数
+2024-02-29 13:32:36 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccine/inoculateSite/list],耗时:[1]毫秒
+2024-02-29 13:32:36 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-02-29 13:32:36 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[0]毫秒
+2024-02-29 13:32:41 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /system/notice/list],无参数
+2024-02-29 13:32:41 [XNIO-1 task-2] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /system/notice/list],耗时:[0]毫秒
+2024-02-29 13:32:41 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccine/inoculateSite/list],无参数
+2024-02-29 13:32:41 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccine/inoculateSite/list],耗时:[1]毫秒
+2024-02-29 13:32:41 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-02-29 13:32:41 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[0]毫秒
+2024-02-29 13:32:41 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /vaccine/vaccine/list],无参数
+2024-02-29 13:32:41 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /vaccine/vaccine/list],耗时:[0]毫秒
+2024-02-29 13:32:41 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /error],无参数
+2024-02-29 13:32:41 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /error],耗时:[0]毫秒
+2024-02-29 13:32:51 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2024-02-29 13:32:52 [XNIO-1 task-3] INFO  c.a.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[1205]毫秒
+2024-02-29 13:33:11 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-02-29 13:33:11 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-02-29 13:33:11 [SpringApplicationShutdownHook] INFO  c.a.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-02-29 19:42:04 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2024-02-29 19:42:04 [main] INFO  com.alumni.AlumniApplication - Starting AlumniApplication using Java 21.0.1 on 192.168.1.6 with PID 99552 (/Library/PP/my-project/bysj24/alumni-association/alumni-api/alumni-admin/target/classes started by panpan in /Library/PP/my-project/bysj24/alumni-association/alumni-api)
+2024-02-29 19:42:04 [main] INFO  com.alumni.AlumniApplication - The following 1 profile is active: "dev"
+2024-02-29 19:42:08 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2024-02-29 19:42:08 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource detect P6SPY plugin and enabled it
+2024-02-29 19:42:08 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Starting...
+2024-02-29 19:42:09 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Start completed.
+2024-02-29 19:42:09 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [slave] success
+2024-02-29 19:42:09 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [master] success
+2024-02-29 19:42:09 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [master]
+2024-02-29 19:42:10 [main] INFO  c.a.framework.config.JacksonConfig - 初始化 jackson 配置
+2024-02-29 19:42:10 [main] INFO  c.a.framework.config.RedisConfig - 初始化 redis 配置
+2024-02-29 19:42:11 [main] INFO  org.redisson.Version - Redisson 3.20.1
+2024-02-29 19:42:11 [redisson-netty-2-6] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-02-29 19:42:11 [redisson-netty-2-3] INFO  o.r.c.pool.MasterConnectionPool - 8 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-02-29 19:42:13 [main] INFO  io.undertow - starting server: Undertow - 2.2.28.Final
+2024-02-29 19:42:13 [main] INFO  org.xnio - XNIO version 3.8.7.Final
+2024-02-29 19:42:13 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.8.7.Final
+2024-02-29 19:42:14 [main] INFO  org.jboss.threads - JBoss Threads version 3.1.0.Final
+2024-02-29 19:42:14 [main] INFO  com.alumni.AlumniApplication - Started AlumniApplication in 9.955 seconds (JVM running for 11.104)
+2024-02-29 19:42:14 [main] INFO  c.a.s.runner.SystemApplicationRunner - 初始化OSS配置成功
+2024-02-29 19:42:15 [main] INFO  c.a.s.runner.SystemApplicationRunner - 加载参数缓存数据成功
+2024-02-29 19:42:15 [main] INFO  c.a.s.runner.SystemApplicationRunner - 加载字典缓存数据成功
+2024-02-29 19:42:15 [RMI TCP Connection(13)-192.168.1.6] INFO  io.undertow.servlet - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-29 19:49:56 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-02-29 19:49:56 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-02-29 19:49:56 [SpringApplicationShutdownHook] INFO  c.a.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-02-29 19:49:56 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2024-02-29 19:49:56 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2024-02-29 19:49:56 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2024-02-29 19:49:56 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye

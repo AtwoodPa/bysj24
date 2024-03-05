@@ -1,0 +1,36 @@
+{
+  "groups": [
+    {
+      "name": "alumni",
+      "type": "com.alumni.common.config.AlumniConfig",
+      "sourceType": "com.alumni.common.config.AlumniConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "alumni.cache-lazy",
+      "type": "java.lang.Boolean",
+      "description": "缓存懒加载",
+      "sourceType": "com.alumni.common.config.AlumniConfig"
+    },
+    {
+      "name": "alumni.copyright-year",
+      "type": "java.lang.String",
+      "description": "版权年份",
+      "sourceType": "com.alumni.common.config.AlumniConfig"
+    },
+    {
+      "name": "alumni.name",
+      "type": "java.lang.String",
+      "description": "项目名称",
+      "sourceType": "com.alumni.common.config.AlumniConfig"
+    },
+    {
+      "name": "alumni.version",
+      "type": "java.lang.String",
+      "description": "版本",
+      "sourceType": "com.alumni.common.config.AlumniConfig"
+    }
+  ],
+  "hints": []
+}
