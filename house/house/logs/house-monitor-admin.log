@@ -1,0 +1,36 @@
+2024-03-05 12:17:02 [main] INFO  c.h.m.admin.MonitorAdminApplication - Starting MonitorAdminApplication using Java 21.0.1 on 192.168.1.6 with PID 58099 (/Library/PP/my-project/bysj24/house/house/house-extend/house-monitor-admin/target/classes started by panpan in /Library/PP/my-project/bysj24/house/house)
+2024-03-05 12:17:02 [main] INFO  c.h.m.admin.MonitorAdminApplication - The following 1 profile is active: "dev"
+2024-03-05 12:17:04 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+2024-03-05 12:17:04 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+2024-03-05 12:17:04 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-03-05 12:17:04 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2024-03-05 12:17:04 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-03-05 12:17:04 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1509 ms
+2024-03-05 12:17:05 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@586cc15d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6c835217, org.springframework.security.web.context.SecurityContextPersistenceFilter@3d104c9b, org.springframework.security.web.header.HeaderWriterFilter@752b69e3, org.springframework.security.web.authentication.logout.LogoutFilter@5438fa43, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@581c9bb7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2b43f314, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6da54910, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1bd8afc8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4584304, org.springframework.security.web.session.SessionManagementFilter@1fb2eec, org.springframework.security.web.access.ExceptionTranslationFilter@443a06ad, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2eb0cefe]
+2024-03-05 12:17:05 [main] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-03-05 12:17:06 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 14 endpoint(s) beneath base path '/actuator'
+2024-03-05 12:17:06 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+2024-03-05 12:17:06 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+2024-03-05 12:17:06 [main] INFO  c.h.m.admin.MonitorAdminApplication - Started MonitorAdminApplication in 4.703 seconds (JVM running for 5.805)
+2024-03-05 12:17:07 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-05 12:17:07 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-03-05 12:17:07 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2024-03-05 12:17:07 [registrationTask1] INFO  d.c.b.a.c.r.ApplicationRegistrator - Application registered itself as 07cbfd7a1697
+2024-03-05 12:17:08 [reactor-http-nio-2] INFO  c.h.m.admin.notifier.CustomNotifier - Instance Status Change: [house-monitor-admin],[07cbfd7a1697],[UP]
+2024-03-05 12:17:13 [reactor-http-nio-3] INFO  c.h.m.admin.notifier.CustomNotifier - Instance Status Change: [house-Vue-Plus],[2b36aeea3dc7],[UP]
+2024-03-05 12:17:23 [parallel-11] INFO  d.c.b.a.s.services.StatusUpdater - Couldn't retrieve status for Instance(id=931b1aac1a41, version=0, registration=Registration(name=house-xxl-job-admin, managementUrl=http://192.168.1.6:9100/xxl-job-admin/actuator, healthUrl=http://192.168.1.6:9100/xxl-job-admin/actuator/health, serviceUrl=http://192.168.1.6:9100/xxl-job-admin, source=http-api), registered=true, statusInfo=StatusInfo(status=UNKNOWN, details={}), statusTimestamp=2024-03-05T04:17:14.589660Z, info=Info(values={}), endpoints=Endpoints(endpoints={health=Endpoint(id=health, url=http://192.168.1.6:9100/xxl-job-admin/actuator/health)}), buildVersion=null, tags=Tags(values={}))
+java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 9000ms in 'log' (and no fallback has been configured)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:295)
+	at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:280)
+	at reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:419)
+	at reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:271)
+	at reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:286)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-03-05 12:17:23 [parallel-11] INFO  c.h.m.admin.notifier.CustomNotifier - Instance Status Change: [house-xxl-job-admin],[931b1aac1a41],[OFFLINE]

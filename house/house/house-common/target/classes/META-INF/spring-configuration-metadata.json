@@ -1,0 +1,36 @@
+{
+  "groups": [
+    {
+      "name": "house",
+      "type": "com.house.common.config.HouseConfig",
+      "sourceType": "com.house.common.config.HouseConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "house.cache-lazy",
+      "type": "java.lang.Boolean",
+      "description": "缓存懒加载",
+      "sourceType": "com.house.common.config.HouseConfig"
+    },
+    {
+      "name": "house.copyright-year",
+      "type": "java.lang.String",
+      "description": "版权年份",
+      "sourceType": "com.house.common.config.HouseConfig"
+    },
+    {
+      "name": "house.name",
+      "type": "java.lang.String",
+      "description": "项目名称",
+      "sourceType": "com.house.common.config.HouseConfig"
+    },
+    {
+      "name": "house.version",
+      "type": "java.lang.String",
+      "description": "版本",
+      "sourceType": "com.house.common.config.HouseConfig"
+    }
+  ],
+  "hints": []
+}

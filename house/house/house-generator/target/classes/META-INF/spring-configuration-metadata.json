@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "gen",
+      "type": "com.house.generator.config.GenConfig",
+      "sourceType": "com.house.generator.config.GenConfig"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

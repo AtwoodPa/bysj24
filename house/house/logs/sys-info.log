@@ -1,0 +1,84 @@
+2024-03-05 12:16:57 [main] INFO  com.house.HouseApplication - Starting HouseApplication using Java 21.0.1 on 192.168.1.6 with PID 58083 (/Library/PP/my-project/bysj24/house/house/house-admin/target/classes started by panpan in /Library/PP/my-project/bysj24/house/house)
+2024-03-05 12:16:57 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2024-03-05 12:16:57 [main] INFO  com.house.HouseApplication - The following 1 profile is active: "dev"
+2024-03-05 12:17:02 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2024-03-05 12:17:03 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource detect P6SPY plugin and enabled it
+2024-03-05 12:17:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Starting...
+2024-03-05 12:17:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Start completed.
+2024-03-05 12:17:04 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [slave] success
+2024-03-05 12:17:04 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [master] success
+2024-03-05 12:17:04 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [master]
+2024-03-05 12:17:06 [main] INFO  c.h.framework.config.JacksonConfig - 初始化 jackson 配置
+2024-03-05 12:17:06 [main] INFO  c.house.framework.config.RedisConfig - 初始化 redis 配置
+2024-03-05 12:17:06 [main] INFO  org.redisson.Version - Redisson 3.20.1
+2024-03-05 12:17:08 [redisson-netty-2-6] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-05 12:17:08 [redisson-netty-2-3] INFO  o.r.c.pool.MasterConnectionPool - 8 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-05 12:17:09 [main] INFO  com.house.job.config.XxlJobConfig - >>>>>>>>>>> xxl-job config init.
+2024-03-05 12:17:11 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:shardingJobHandler, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@7d440378[class com.house.job.service.SampleService#shardingJobHandler]
+2024-03-05 12:17:11 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:commandJobHandler, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@6d1c15cb[class com.house.job.service.SampleService#commandJobHandler]
+2024-03-05 12:17:11 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:demoJobHandler2, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@7597ae32[class com.house.job.service.SampleService#demoJobHandler2]
+2024-03-05 12:17:11 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:demoJobHandler, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@615f61ec[class com.house.job.service.SampleService#demoJobHandler]
+2024-03-05 12:17:11 [main] INFO  c.x.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:httpJobHandler, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@3c5de17c[class com.house.job.service.SampleService#httpJobHandler]
+2024-03-05 12:17:11 [Thread-8] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server start success, nettype = class com.xxl.job.core.server.EmbedServer, port = 28080
+2024-03-05 12:17:11 [main] INFO  io.undertow - starting server: Undertow - 2.2.28.Final
+2024-03-05 12:17:11 [xxl-job, executor ExecutorRegistryThread] INFO  c.x.j.c.t.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry fail, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='xxl-job-executor', registryValue='http://192.168.1.6:28080/'}, registryResult:ReturnT [code=500, msg=xxl-job remoting error(Connection refused), for url : http://localhost:9100/xxl-job-admin/api/registry, content=null]
+2024-03-05 12:17:11 [main] INFO  org.xnio - XNIO version 3.8.7.Final
+2024-03-05 12:17:12 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.8.7.Final
+2024-03-05 12:17:12 [main] INFO  org.jboss.threads - JBoss Threads version 3.1.0.Final
+2024-03-05 12:17:12 [main] INFO  com.house.HouseApplication - Started HouseApplication in 15.602 seconds (JVM running for 16.51)
+2024-03-05 12:17:12 [main] INFO  c.h.s.runner.SystemApplicationRunner - 初始化OSS配置成功
+2024-03-05 12:17:12 [main] INFO  c.h.s.runner.SystemApplicationRunner - 加载参数缓存数据成功
+2024-03-05 12:17:13 [main] INFO  c.h.s.runner.SystemApplicationRunner - 加载字典缓存数据成功
+2024-03-05 12:17:13 [registrationTask1] INFO  d.c.b.a.c.r.ApplicationRegistrator - Application registered itself as 2b36aeea3dc7
+2024-03-05 12:17:13 [XNIO-1 task-1] INFO  io.undertow.servlet - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-05 12:18:04 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /],无参数
+2024-03-05 12:18:05 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /],耗时:[7]毫秒
+2024-03-05 12:18:44 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-03-05 12:18:44 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-03-05 12:18:44 [Thread-8] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server stop.
+2024-03-05 12:18:44 [xxl-job, executor ExecutorRegistryThread] INFO  c.x.j.c.t.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry-remove success, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='xxl-job-executor', registryValue='http://192.168.1.6:28080/'}, registryResult:ReturnT [code=200, msg=null, content=null]
+2024-03-05 12:18:44 [xxl-job, executor ExecutorRegistryThread] INFO  c.x.j.c.t.ExecutorRegistryThread - >>>>>>>>>>> xxl-job, executor registry thread destroy.
+2024-03-05 12:18:44 [SpringApplicationShutdownHook] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server destroy success.
+2024-03-05 12:18:44 [xxl-job, executor JobLogFileCleanThread] INFO  c.x.j.c.thread.JobLogFileCleanThread - >>>>>>>>>>> xxl-job, executor JobLogFileCleanThread thread destroy.
+2024-03-05 12:18:44 [xxl-job, executor TriggerCallbackThread] INFO  c.x.j.c.thread.TriggerCallbackThread - >>>>>>>>>>> xxl-job, executor callback thread destroy.
+2024-03-05 12:18:44 [Thread-7] INFO  c.x.j.c.thread.TriggerCallbackThread - >>>>>>>>>>> xxl-job, executor retry callback thread destroy.
+2024-03-05 12:18:44 [SpringApplicationShutdownHook] INFO  c.h.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-03-05 12:18:44 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2024-03-05 12:18:44 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2024-03-05 12:18:44 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2024-03-05 12:18:44 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
+2024-03-05 12:21:40 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2024-03-05 12:21:40 [main] INFO  com.house.HouseApplication - Starting HouseApplication using Java 21.0.1 on 192.168.1.6 with PID 58277 (/Library/PP/my-project/bysj24/house/house/house-admin/target/classes started by panpan in /Library/PP/my-project/bysj24/house/house)
+2024-03-05 12:21:40 [main] INFO  com.house.HouseApplication - The following 1 profile is active: "dev"
+2024-03-05 12:21:43 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2024-03-05 12:21:43 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource detect P6SPY plugin and enabled it
+2024-03-05 12:21:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Starting...
+2024-03-05 12:23:16 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2024-03-05 12:23:16 [main] INFO  com.house.HouseApplication - Starting HouseApplication using Java 21.0.1 on 192.168.1.6 with PID 58339 (/Library/PP/my-project/bysj24/house/house/house-admin/target/classes started by panpan in /Library/PP/my-project/bysj24/house/house)
+2024-03-05 12:23:16 [main] INFO  com.house.HouseApplication - The following 1 profile is active: "dev"
+2024-03-05 12:23:19 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2024-03-05 12:23:19 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource detect P6SPY plugin and enabled it
+2024-03-05 12:23:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Starting...
+2024-03-05 12:23:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Start completed.
+2024-03-05 12:23:20 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [slave] success
+2024-03-05 12:23:20 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [master] success
+2024-03-05 12:23:20 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [master]
+2024-03-05 12:23:21 [main] INFO  c.h.framework.config.JacksonConfig - 初始化 jackson 配置
+2024-03-05 12:23:21 [main] INFO  c.house.framework.config.RedisConfig - 初始化 redis 配置
+2024-03-05 12:23:21 [main] INFO  org.redisson.Version - Redisson 3.20.1
+2024-03-05 12:23:21 [redisson-netty-2-6] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-05 12:23:22 [redisson-netty-2-3] INFO  o.r.c.pool.MasterConnectionPool - 8 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-05 12:23:24 [main] INFO  io.undertow - starting server: Undertow - 2.2.28.Final
+2024-03-05 12:23:24 [main] INFO  org.xnio - XNIO version 3.8.7.Final
+2024-03-05 12:23:24 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.8.7.Final
+2024-03-05 12:23:24 [main] INFO  org.jboss.threads - JBoss Threads version 3.1.0.Final
+2024-03-05 12:23:24 [main] INFO  com.house.HouseApplication - Started HouseApplication in 8.66 seconds (JVM running for 10.685)
+2024-03-05 12:23:25 [main] INFO  c.h.s.runner.SystemApplicationRunner - 初始化OSS配置成功
+2024-03-05 12:23:25 [main] INFO  c.h.s.runner.SystemApplicationRunner - 加载参数缓存数据成功
+2024-03-05 12:23:25 [main] INFO  c.h.s.runner.SystemApplicationRunner - 加载字典缓存数据成功
+2024-03-05 12:24:06 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-03-05 12:24:06 [SpringApplicationShutdownHook] INFO  c.h.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-03-05 12:24:06 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2024-03-05 12:24:06 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2024-03-05 12:24:06 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2024-03-05 12:24:06 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
