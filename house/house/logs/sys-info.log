@@ -893,3 +893,162 @@
 2024-03-05 19:36:24 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[2240]毫秒
 2024-03-05 19:36:24 [XNIO-1 task-2] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
 2024-03-05 19:36:24 [XNIO-1 task-2] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[154]毫秒
+2024-03-05 19:37:13 [XNIO-1 task-2] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /login],参数类型[json],参数:[{"username":"admin","password":"admin123","code":"10","uuid":"c23d4198df444a20b8b08dd9e6c6abb2"}]
+2024-03-05 19:37:13 [XNIO-1 task-2] INFO  c.h.f.listener.UserActionListener - user doLogin, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJuOHBBa2hIOWNkNkNMQVJOUUp6Vmtyc1FyTlpucUZBayIsInVzZXJJZCI6MX0.Z0Yp5n-DYFIdQf9aa40_B3tSudRUJKvM91vIU9G3SSg
+2024-03-05 19:37:13 [schedule-pool-1] INFO  c.h.s.s.i.SysLogininforServiceImpl - [0:0:0:0:0:0:0:1]内网IP[admin][Success][登录成功]
+2024-03-05 19:37:14 [XNIO-1 task-2] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /login],耗时:[1070]毫秒
+2024-03-05 19:37:14 [XNIO-1 task-2] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-05 19:37:14 [XNIO-1 task-2] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[406]毫秒
+2024-03-05 19:37:14 [XNIO-1 task-2] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2024-03-05 19:37:14 [XNIO-1 task-2] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[166]毫秒
+2024-03-05 19:40:29 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-03-05 19:40:29 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-03-05 19:40:29 [SpringApplicationShutdownHook] INFO  c.h.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-03-05 19:40:29 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2024-03-05 19:40:29 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2024-03-05 19:40:29 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2024-03-05 19:40:29 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
+2024-03-05 20:39:56 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2024-03-05 20:39:56 [main] INFO  com.house.HouseApplication - Starting HouseApplication using Java 21.0.1 on 192.168.1.6 with PID 82415 (/Library/PP/Java/github/bysj24/house/house/house-admin/target/classes started by panpan in /Library/PP/Java/github/bysj24/house/house)
+2024-03-05 20:39:56 [main] INFO  com.house.HouseApplication - The following 1 profile is active: "dev"
+2024-03-05 20:40:04 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2024-03-05 20:40:04 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource detect P6SPY plugin and enabled it
+2024-03-05 20:40:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Starting...
+2024-03-05 20:40:05 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Start completed.
+2024-03-05 20:40:05 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [slave] success
+2024-03-05 20:40:05 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [master] success
+2024-03-05 20:40:05 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [master]
+2024-03-05 20:40:07 [main] INFO  c.h.framework.config.JacksonConfig - 初始化 jackson 配置
+2024-03-05 20:40:07 [main] INFO  c.house.framework.config.RedisConfig - 初始化 redis 配置
+2024-03-05 20:40:08 [main] INFO  org.redisson.Version - Redisson 3.20.1
+2024-03-05 20:40:08 [redisson-netty-2-6] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-05 20:40:08 [redisson-netty-2-3] INFO  o.r.c.pool.MasterConnectionPool - 8 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-05 20:40:16 [main] INFO  io.undertow - starting server: Undertow - 2.2.28.Final
+2024-03-05 20:40:16 [main] INFO  org.xnio - XNIO version 3.8.7.Final
+2024-03-05 20:40:16 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.8.7.Final
+2024-03-05 20:40:16 [main] INFO  org.jboss.threads - JBoss Threads version 3.1.0.Final
+2024-03-05 20:40:16 [main] INFO  com.house.HouseApplication - Started HouseApplication in 20.334 seconds (JVM running for 22.68)
+2024-03-05 20:40:16 [main] INFO  c.h.s.runner.SystemApplicationRunner - 初始化OSS配置成功
+2024-03-05 20:40:16 [main] INFO  c.h.s.runner.SystemApplicationRunner - 加载参数缓存数据成功
+2024-03-05 20:40:16 [main] INFO  c.h.s.runner.SystemApplicationRunner - 加载字典缓存数据成功
+2024-03-05 20:40:35 [RMI TCP Connection(2)-192.168.1.6] INFO  io.undertow.servlet - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-05 20:41:40 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-05 20:41:40 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[67]毫秒
+2024-03-05 20:41:40 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /logout],无参数
+2024-03-05 20:41:40 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /logout],耗时:[176]毫秒
+2024-03-05 20:41:41 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2024-03-05 20:41:44 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[3085]毫秒
+2024-03-05 20:41:49 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /login],参数类型[json],参数:[{"username":"admin","password":"admin123","code":"8","uuid":"f2668331deff424f88534105080cba24"}]
+2024-03-05 20:41:50 [XNIO-1 task-1] INFO  c.h.f.listener.UserActionListener - user doLogin, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJkajl2YWMwVVg2TUdhSDIzVW1NSGNZRm5wcnp4NWw3ciIsInVzZXJJZCI6MX0.BAx_Jhd_GvpnGT8Jd_eGr8QFjxmFsgBsAOgEqFmQB4M
+2024-03-05 20:41:50 [schedule-pool-1] INFO  c.h.s.s.i.SysLogininforServiceImpl - [0:0:0:0:0:0:0:1]内网IP[admin][Success][登录成功]
+2024-03-05 20:41:50 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /login],耗时:[1606]毫秒
+2024-03-05 20:41:50 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-05 20:41:51 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[310]毫秒
+2024-03-05 20:41:51 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2024-03-05 20:41:51 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[168]毫秒
+2024-03-05 20:42:16 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/room/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 20:42:16 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/room/list],耗时:[168]毫秒
+2024-03-05 20:42:41 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /core/room],参数类型[json],参数:[{"houseNum":"1","toiletNum":"1","houseArea":"1","roomCode":"1","roomArea":"1","direction":"1","price":"1","floor":"1","startDate":"yyyy-03-Tu 20:42:35","introduce":"1","ownerName":"1","owerPhone":"1","villageId":"1","villageName":"1","address":"1","houseNo":"1","publishId":"1","state":"1","createName":"1","updateName":"1","remark":"1","houseHall":"1","code":"1","faceUrl":"1","decoration":"1","agentName":"1","agentPhone":"1","agentUserId":"1","agentAvatar":"1"}]
+2024-03-05 20:42:41 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /core/room],耗时:[17]毫秒
+2024-03-05 20:45:36 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /core/room],参数类型[json],参数:[{"houseNum":"1","toiletNum":"1","houseArea":"1","roomCode":"1","roomArea":"1","direction":"1","price":"1","floor":"1","startDate":"yyyy-03-Tu 20:42:35","introduce":"1","ownerName":"1","owerPhone":"1","villageId":"1","villageName":"1","address":"1","houseNo":"1","publishId":"1","state":"1","createName":"1","updateName":"1","remark":"1","houseHall":"1","code":"1","faceUrl":"1","decoration":"1","agentName":"1","agentPhone":"1","agentUserId":"1","agentAvatar":"1"}]
+2024-03-05 20:45:36 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /core/room],耗时:[4]毫秒
+2024-03-05 20:45:42 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /core/room],参数类型[json],参数:[{"houseNum":"1","toiletNum":"1","houseArea":"1","roomCode":"1","roomArea":"1","direction":"1","price":"1","floor":"1","startDate":"2024-03-05 20:45:40","introduce":"1","ownerName":"1","owerPhone":"1","villageId":"1","villageName":"1","address":"1","houseNo":"1","publishId":"1","state":"1","createName":"1","updateName":"1","remark":"1","houseHall":"1","code":"1","faceUrl":"1","decoration":"1","agentName":"1","agentPhone":"1","agentUserId":"1","agentAvatar":"1"}]
+2024-03-05 20:45:42 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /core/room],耗时:[51]毫秒
+2024-03-05 20:46:06 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/room/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 20:46:06 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/room/list],耗时:[63]毫秒
+2024-03-05 20:47:31 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/room/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 20:47:31 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/room/list],耗时:[48]毫秒
+2024-03-05 20:47:32 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/room/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 20:47:32 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/room/list],耗时:[49]毫秒
+2024-03-05 20:47:51 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /core/room],参数类型[json],参数:[{"houseNum":"1","toiletNum":"1","houseArea":"1","roomCode":"1","roomArea":"1","direction":"1","price":"1","floor":"1","startDate":"2024-03-05 20:47:40","introduce":"1","ownerName":"1","owerPhone":"1","villageId":"1","villageName":"1","address":"1","houseNo":"1","publishId":"1","state":"1","createName":"1","updateName":"1","remark":"1","houseHall":"1","code":"1","faceUrl":"1","decoration":"1","agentName":"1","agentPhone":"1","agentUserId":"1","agentAvatar":"1"}]
+2024-03-05 20:47:51 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /core/room],耗时:[2]毫秒
+2024-03-05 20:48:12 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /core/room],参数类型[json],参数:[{"houseNum":"1","toiletNum":"1","houseArea":"1","roomCode":"1","roomArea":"1","direction":"1","price":"1","floor":"1","startDate":"2024-03-05 20:47:40","introduce":"1","ownerName":"1","owerPhone":"1","villageId":"1","villageName":"1","address":"1","houseNo":"1","publishId":"1","state":"1","createName":"1","updateName":"1","remark":"1","houseHall":"1","code":"1","faceUrl":"1","decoration":"1","agentName":"1","agentPhone":"1","agentUserId":"1","agentAvatar":"1"}]
+2024-03-05 20:48:12 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /core/room],耗时:[2]毫秒
+2024-03-05 20:48:18 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /core/room],参数类型[json],参数:[{"houseNum":"1","toiletNum":"1","houseArea":"1","roomCode":"1","roomArea":"1","direction":"1","price":"1","floor":"1","startDate":"2024-03-05 20:47:40","introduce":"1","ownerName":"1","owerPhone":"1","villageId":"1","villageName":"1","address":"1","houseNo":"1","publishId":"1","state":"1","createName":"1","updateName":"1","remark":"1","houseHall":"1","code":"1","faceUrl":"1","decoration":"1","agentName":"1","agentPhone":"1","agentUserId":"1","agentAvatar":"1"}]
+2024-03-05 20:48:18 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /core/room],耗时:[2]毫秒
+2024-03-05 20:49:00 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-03-05 20:49:00 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-03-05 20:49:00 [SpringApplicationShutdownHook] INFO  c.h.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-03-05 20:49:00 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2024-03-05 20:49:00 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2024-03-05 20:49:00 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2024-03-05 20:49:00 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
+2024-03-05 21:36:55 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2024-03-05 21:36:55 [main] INFO  com.house.HouseApplication - Starting HouseApplication using Java 21.0.1 on 192.168.1.6 with PID 83564 (/Library/PP/Java/github/bysj24/house/house/house-admin/target/classes started by panpan in /Library/PP/Java/github/bysj24/house/house)
+2024-03-05 21:36:55 [main] INFO  com.house.HouseApplication - The following 1 profile is active: "dev"
+2024-03-05 21:37:00 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2024-03-05 21:37:00 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource detect P6SPY plugin and enabled it
+2024-03-05 21:37:01 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Starting...
+2024-03-05 21:37:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - master - Start completed.
+2024-03-05 21:37:02 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [slave] success
+2024-03-05 21:37:02 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource - add a datasource named [master] success
+2024-03-05 21:37:02 [main] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource initial loaded [2] datasource,primary datasource named [master]
+2024-03-05 21:37:04 [main] INFO  c.h.framework.config.JacksonConfig - 初始化 jackson 配置
+2024-03-05 21:37:05 [main] INFO  c.house.framework.config.RedisConfig - 初始化 redis 配置
+2024-03-05 21:37:05 [main] INFO  org.redisson.Version - Redisson 3.20.1
+2024-03-05 21:37:05 [redisson-netty-2-6] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-05 21:37:06 [redisson-netty-2-3] INFO  o.r.c.pool.MasterConnectionPool - 8 connections initialized for 43.142.255.148/43.142.255.148:6379
+2024-03-05 21:37:10 [main] INFO  io.undertow - starting server: Undertow - 2.2.28.Final
+2024-03-05 21:37:10 [main] INFO  org.xnio - XNIO version 3.8.7.Final
+2024-03-05 21:37:10 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.8.7.Final
+2024-03-05 21:37:10 [main] INFO  org.jboss.threads - JBoss Threads version 3.1.0.Final
+2024-03-05 21:37:10 [main] INFO  com.house.HouseApplication - Started HouseApplication in 16.357 seconds (JVM running for 17.738)
+2024-03-05 21:37:11 [main] INFO  c.h.s.runner.SystemApplicationRunner - 初始化OSS配置成功
+2024-03-05 21:37:11 [main] INFO  c.h.s.runner.SystemApplicationRunner - 加载参数缓存数据成功
+2024-03-05 21:37:11 [main] INFO  c.h.s.runner.SystemApplicationRunner - 加载字典缓存数据成功
+2024-03-05 21:37:11 [RMI TCP Connection(37)-192.168.1.6] INFO  io.undertow.servlet - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-05 21:37:28 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-05 21:37:29 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[91]毫秒
+2024-03-05 21:37:29 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /logout],无参数
+2024-03-05 21:37:29 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /logout],耗时:[175]毫秒
+2024-03-05 21:37:29 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2024-03-05 21:37:30 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[998]毫秒
+2024-03-05 21:37:41 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /login],参数类型[json],参数:[{"username":"admin","password":"admin123","code":"0","uuid":"033cd1f6997d4653aefe4507fae7b76f"}]
+2024-03-05 21:37:42 [XNIO-1 task-1] INFO  c.h.f.listener.UserActionListener - user doLogin, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJEVFRicGVpejRLY0d0S1dBQ3BDenc5d21obDRTRjZ1OSIsInVzZXJJZCI6MX0.2NyS1PyfrUr9ydI0UzwbCK6R4oM9p8IDkHDlL-idxtU
+2024-03-05 21:37:42 [schedule-pool-1] INFO  c.h.s.s.i.SysLogininforServiceImpl - [0:0:0:0:0:0:0:1]内网IP[admin][Success][登录成功]
+2024-03-05 21:37:42 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /login],耗时:[1462]毫秒
+2024-03-05 21:37:42 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-05 21:37:42 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[322]毫秒
+2024-03-05 21:37:42 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2024-03-05 21:37:43 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[175]毫秒
+2024-03-05 21:38:00 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/feedback/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 21:38:01 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/feedback/list],耗时:[143]毫秒
+2024-03-05 21:40:04 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/room/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 21:40:04 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/room/list],耗时:[76]毫秒
+2024-03-05 21:40:06 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/village/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 21:40:06 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/village/list],耗时:[91]毫秒
+2024-03-05 21:40:15 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/user/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 21:40:15 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/user/list],耗时:[65]毫秒
+2024-03-05 21:40:19 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-05 21:40:19 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[25]毫秒
+2024-03-05 21:40:20 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /logout],无参数
+2024-03-05 21:40:20 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /logout],耗时:[112]毫秒
+2024-03-05 21:40:21 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /captchaImage],无参数
+2024-03-05 21:40:21 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /captchaImage],耗时:[121]毫秒
+2024-03-05 21:40:25 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /login],参数类型[json],参数:[{"username":"admin","password":"admin123","code":"8","uuid":"ab9a4e0352eb4d6383e311cff0021de9"}]
+2024-03-05 21:40:25 [XNIO-1 task-1] INFO  c.h.f.listener.UserActionListener - user doLogin, userId:sys_user:1, token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJ6dGFZZDhDQ1VxRFRjOFYxcWR4Zll0bUViTHN4R3c0YiIsInVzZXJJZCI6MX0.0pHuqRhsAR4laqKZS-cVVCsvjdO6unIuklkPt0Odkzo
+2024-03-05 21:40:25 [schedule-pool-1] INFO  c.h.s.s.i.SysLogininforServiceImpl - [0:0:0:0:0:0:0:1]内网IP[admin][Success][登录成功]
+2024-03-05 21:40:26 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /login],耗时:[831]毫秒
+2024-03-05 21:40:26 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getInfo],无参数
+2024-03-05 21:40:26 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getInfo],耗时:[266]毫秒
+2024-03-05 21:40:26 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /getRouters],无参数
+2024-03-05 21:40:26 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /getRouters],耗时:[163]毫秒
+2024-03-05 21:40:29 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/article/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 21:40:29 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/article/list],耗时:[64]毫秒
+2024-03-05 21:40:38 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/article/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 21:40:38 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/article/list],耗时:[49]毫秒
+2024-03-05 21:40:38 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/article/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 21:40:38 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/article/list],耗时:[56]毫秒
+2024-03-05 21:40:39 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/article/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 21:40:39 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/article/list],耗时:[28]毫秒
+2024-03-05 21:40:39 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/article/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
+2024-03-05 21:40:39 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/article/list],耗时:[27]毫秒
+2024-03-05 21:40:49 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[POST /core/article],参数类型[json],参数:[{"smallTitle":"21","bigTitle":"2","faceUrl":"2","faceThum":"2","articleContent":"<p>2</p>","articleSource":"2","sortNo":"2","starNum":"2","remark":"2"}]
+2024-03-05 21:40:49 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[POST /core/article],耗时:[24]毫秒
+2024-03-05 21:41:42 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-03-05 21:41:42 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-03-05 21:41:42 [SpringApplicationShutdownHook] INFO  c.h.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-03-05 21:41:42 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2024-03-05 21:41:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2024-03-05 21:41:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2024-03-05 21:41:42 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye

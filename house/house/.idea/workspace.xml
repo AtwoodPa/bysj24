@@ -5,35 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/HouseFeatureController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/HouseHeartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/HouseImageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/HouseFeature.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/HouseHeart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/HouseImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseFeatureBo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseHeartBo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseImageBo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/vo/HouseFeatureVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/vo/HouseHeartVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/vo/HouseImageVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/mapper/HouseFeatureMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/mapper/HouseHeartMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/mapper/HouseImageMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/IHouseFeatureService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/IHouseHeartService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/IHouseImageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseFeatureServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseHeartServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseImageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-ui-vue3/src/api/core/feature.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-ui-vue3/src/api/core/heart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-ui-vue3/src/api/core/image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/CmsArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/CmsArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/CmsFeedbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/CmsFeedbackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/HouseRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/HouseRoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/HouseUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/HouseUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/HouseVillageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/HouseVillageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/article/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/article/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/feedback/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/feedback/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/room/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/room/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/user/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/user/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/village/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/village/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/sys-console.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-console.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/sys-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/sys-info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-info.log" afterDir="false" />
@@ -141,7 +117,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709615318503</updated>
-      <workItem from="1709615320973" duration="12631000" />
+      <workItem from="1709615320973" duration="18449000" />
     </task>
     <servers />
   </component>
