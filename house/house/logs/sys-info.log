@@ -642,3 +642,10 @@
 2024-03-05 15:31:50 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/article/list],耗时:[382]毫秒
 2024-03-05 15:31:52 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]开始请求 => URL[GET /core/feedback/list],参数类型[param],参数:[{"pageSize":["10"],"pageNum":["1"]}]
 2024-03-05 15:31:52 [XNIO-1 task-1] INFO  c.h.f.i.PlusWebInvokeTimeInterceptor - [PLUS]结束请求 => URL[GET /core/feedback/list],耗时:[371]毫秒
+2024-03-05 15:34:30 [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.28.Final
+2024-03-05 15:34:30 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-03-05 15:34:30 [SpringApplicationShutdownHook] INFO  c.h.f.manager.ShutdownManager - ====关闭后台任务任务线程池====
+2024-03-05 15:34:30 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2024-03-05 15:34:30 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown initiated...
+2024-03-05 15:34:30 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - master - Shutdown completed.
+2024-03-05 15:34:30 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
