@@ -4,32 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/CmsArticleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/CmsFeedbackController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/mapper/CmsArticleMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/mapper/CmsFeedbackMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/ICmsArticleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/ICmsFeedbackService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/CmsArticleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/CmsFeedbackServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/resources/mapper/core/CmsArticleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/resources/mapper/core/CmsFeedbackMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-ui-vue3/src/api/core/article.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/house-ui-vue3/src/api/core/feedback.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script/sql/menu.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller/TestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/controller/TestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/sys-console.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-console.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/sys-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/sys-info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-info.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/sql/tables_xxl_job.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/sql/test.sql" beforeDir="false" />
-    </list>
+    <list default="true" id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +43,7 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "21",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Library/PP/Java/github/bysj24/house/house/house-core-api/src/main/resources",
+    "last_opened_file_path": "/Library/PP/Java/github/bysj24/house/house/house-core-api/src/main/resources/mapper/core",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -82,11 +57,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/house-core-api/src/main/resources" />
-      <recent name="$PROJECT_DIR$/house-core-api/src/main" />
+      <recent name="$PROJECT_DIR$/house-core-api/src/main/resources/mapper/core" />
       <recent name="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core" />
       <recent name="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/controller" />
-      <recent name="$PROJECT_DIR$/house-core-api/src" />
+      <recent name="$PROJECT_DIR$/house-ui-vue3/src/views" />
+      <recent name="$PROJECT_DIR$/house-ui-vue3/src/api" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/house-core-api/src/main/resources/mapper/core" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.HouseApplication">
@@ -129,7 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709615318503</updated>
-      <workItem from="1709615320973" duration="7457000" />
+      <workItem from="1709615320973" duration="7779000" />
     </task>
     <servers />
   </component>
