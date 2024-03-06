@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.house.common.core.domain.BaseEntity;
@@ -18,37 +19,31 @@ import com.house.common.core.domain.BaseEntity;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class CmsFeedbackBo extends BaseEntity {
+public class CmsFeedbackBo implements Serializable {
 
     /**
      * id
      */
-    @NotNull(message = "id不能为空", groups = { EditGroup.class })
     private Long id;
 
     /**
      * 类别
      */
-    @NotBlank(message = "类别不能为空", groups = { AddGroup.class, EditGroup.class })
     private String feedType;
 
     /**
      * 标题
      */
-    @NotBlank(message = "标题不能为空", groups = { AddGroup.class, EditGroup.class })
     private String feedTitle;
 
     /**
      * 详情
      */
-    @NotBlank(message = "详情不能为空", groups = { AddGroup.class, EditGroup.class })
     private String feedContent;
 
     /**
      * 备注
      */
-    @NotBlank(message = "备注不能为空", groups = { AddGroup.class, EditGroup.class })
     private String remark;
 
 

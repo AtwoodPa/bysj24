@@ -1,6 +1,7 @@
 package com.house.core.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.house.common.utils.DateUtils;
 import com.house.common.utils.StringUtils;
 import com.house.common.core.page.TableDataInfo;
 import com.house.common.core.domain.PageQuery;
@@ -59,7 +60,6 @@ public class HouseVillageServiceImpl implements IHouseVillageService {
     }
 
     private LambdaQueryWrapper<HouseVillage> buildQueryWrapper(HouseVillageBo bo) {
-        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<HouseVillage> lqw = Wrappers.lambdaQuery();
         lqw.eq(StringUtils.isNotBlank(bo.getProvince()), HouseVillage::getProvince, bo.getProvince());
         lqw.eq(StringUtils.isNotBlank(bo.getCity()), HouseVillage::getCity, bo.getCity());
@@ -85,6 +85,8 @@ public class HouseVillageServiceImpl implements IHouseVillageService {
     @Override
     public Boolean insertByBo(HouseVillageBo bo) {
         HouseVillage add = BeanUtil.toBean(bo, HouseVillage.class);
+        // 设置创建时间
+        add.setCreateTime(DateUtils.getNowDate());
         validEntityBeforeSave(add);
         boolean flag = baseMapper.insert(add) > 0;
         if (flag) {

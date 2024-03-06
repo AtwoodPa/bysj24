@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.house.common.core.domain.BaseEntity;
@@ -18,25 +19,21 @@ import com.house.common.core.domain.BaseEntity;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class HouseHeartBo extends BaseEntity {
+public class HouseHeartBo implements Serializable {
 
     /**
      * 
      */
-    @NotNull(message = "不能为空", groups = { EditGroup.class })
     private Long id;
 
     /**
      * 房屋id
      */
-    @NotNull(message = "房屋id不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long houseId;
 
     /**
      * 用户id
      */
-    @NotNull(message = "用户id不能为空", groups = { AddGroup.class, EditGroup.class })
     private Long userId;
 
 

@@ -59,7 +59,6 @@ public class HouseImageServiceImpl implements IHouseImageService {
     }
 
     private LambdaQueryWrapper<HouseImage> buildQueryWrapper(HouseImageBo bo) {
-        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<HouseImage> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getHouseId() != null, HouseImage::getHouseId, bo.getHouseId());
         lqw.like(StringUtils.isNotBlank(bo.getImageName()), HouseImage::getImageName, bo.getImageName());
@@ -75,6 +74,7 @@ public class HouseImageServiceImpl implements IHouseImageService {
     @Override
     public Boolean insertByBo(HouseImageBo bo) {
         HouseImage add = BeanUtil.toBean(bo, HouseImage.class);
+        // 新增前的数据校验
         validEntityBeforeSave(add);
         boolean flag = baseMapper.insert(add) > 0;
         if (flag) {
@@ -109,5 +109,19 @@ public class HouseImageServiceImpl implements IHouseImageService {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteBatchIds(ids) > 0;
+    }
+
+    /**
+     * 批量新增房源图片
+     *
+     * @param imageList
+     * @param houseRoomId
+     */
+    @Override
+    public void insertBatch(List<HouseImage> imageList, Long houseRoomId) {
+        for (HouseImage houseImage : imageList) {
+            houseImage.setHouseId(houseRoomId);
+            baseMapper.insert(houseImage);
+        }
     }
 }

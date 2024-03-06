@@ -59,7 +59,6 @@ public class HouseHeartServiceImpl implements IHouseHeartService {
     }
 
     private LambdaQueryWrapper<HouseHeart> buildQueryWrapper(HouseHeartBo bo) {
-        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<HouseHeart> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getHouseId() != null, HouseHeart::getHouseId, bo.getHouseId());
         lqw.eq(bo.getUserId() != null, HouseHeart::getUserId, bo.getUserId());

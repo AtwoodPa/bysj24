@@ -1,12 +1,21 @@
 package com.house.core.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.house.common.helper.LoginHelper;
+import com.house.common.utils.DateUtils;
 import com.house.common.utils.StringUtils;
 import com.house.common.core.page.TableDataInfo;
 import com.house.common.core.domain.PageQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.house.core.domain.bo.HouseVillageBo;
+import com.house.core.domain.vo.HouseVillageVo;
+import com.house.core.enums.HouseStatus;
+import com.house.core.service.IHouseFeatureService;
+import com.house.core.service.IHouseImageService;
+import com.house.core.service.IHouseVillageService;
+import com.house.core.utils.CodeUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.house.core.domain.bo.HouseRoomBo;
@@ -16,7 +25,6 @@ import com.house.core.mapper.HouseRoomMapper;
 import com.house.core.service.IHouseRoomService;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Collection;
 
 /**
@@ -30,6 +38,10 @@ import java.util.Collection;
 public class HouseRoomServiceImpl implements IHouseRoomService {
 
     private final HouseRoomMapper baseMapper;
+
+    private final IHouseVillageService houseVillageService;
+    private final IHouseFeatureService featureService;
+    private final IHouseImageService imageService;
 
     /**
      * 查询房源管理
@@ -59,7 +71,6 @@ public class HouseRoomServiceImpl implements IHouseRoomService {
     }
 
     private LambdaQueryWrapper<HouseRoom> buildQueryWrapper(HouseRoomBo bo) {
-        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<HouseRoom> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getType() != null, HouseRoom::getType, bo.getType());
         lqw.eq(StringUtils.isNotBlank(bo.getHouseNum()), HouseRoom::getHouseNum, bo.getHouseNum());
@@ -101,11 +112,47 @@ public class HouseRoomServiceImpl implements IHouseRoomService {
      */
     @Override
     public Boolean insertByBo(HouseRoomBo bo) {
-        HouseRoom add = BeanUtil.toBean(bo, HouseRoom.class);
-        validEntityBeforeSave(add);
-        boolean flag = baseMapper.insert(add) > 0;
+        HouseRoom houseRoom = BeanUtil.toBean(bo, HouseRoom.class);
+        // 待审核
+        houseRoom.setState(HouseStatus.AUDIT.getCode());
+        houseRoom.setCreateTime(DateUtils.getNowDate());
+        if (StringUtils.isEmpty(String.valueOf(houseRoom.getPublishId()))){
+            houseRoom.setPublishId(LoginHelper.getUserId());
+        }
+        // 设置起租日期
+        if (StringUtils.isEmpty(houseRoom.getStartDate().toString())){
+            houseRoom.setStartDate(DateUtils.getNowDate());
+        }
+        // 设置小区名称
+        if (StringUtils.isEmpty(houseRoom.getVillageName())){
+            houseRoom.setVillageName(houseVillageService.queryById(houseRoom.getVillageId()).getName());
+        }
+        if (StringUtils.isEmpty(String.valueOf(houseRoom.getVillageId()))){
+            HouseVillageBo houseVillage = new HouseVillageBo();
+            houseVillage.setName(houseRoom.getVillageName());
+            List<HouseVillageVo> houseVillageVos = houseVillageService.queryList(houseVillage);
+            if (houseVillageVos.size() > 0){
+                houseRoom.setVillageId(houseVillageVos.get(0).getId());
+            }
+        }
+        // 生成随机的房源编号
+        houseRoom.setCode(CodeUtil.getCode());
+        // 封面图设置默认值
+        houseRoom.setFaceUrl("https://sourcebyte.vip/profile/customer/file/loading.png");
+        if (StringUtils.isNotEmpty((CharSequence) bo.getFeatureList()) && bo.getFeatureList().size() > 0){
+            // 批量插入房源特色
+            featureService.insertBatch(bo.getFeatureList(), houseRoom.getId());
+        }
+        if (StringUtils.isNotEmpty(String.valueOf(bo.getImageList())) && bo.getImageList().size() > 0){
+            // 设置封面图（默认是多图列表中的第一张）
+            houseRoom.setFaceUrl(bo.getImageList().get(0).getImgUrl());
+            // 批量插入房源图片
+            imageService.insertBatch(bo.getImageList(), houseRoom.getId());
+        }
+        validEntityBeforeSave(houseRoom);
+        boolean flag = baseMapper.insert(houseRoom) > 0;
         if (flag) {
-            bo.setId(add.getId());
+            bo.setId(houseRoom.getId());
         }
         return flag;
     }

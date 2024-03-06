@@ -46,4 +46,6 @@ public interface IHouseImageService {
      * 校验并批量删除房源图片信息
      */
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+    void insertBatch(List<HouseImage> imageList, Long houseRoomId);
 }

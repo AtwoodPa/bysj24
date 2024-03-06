@@ -59,7 +59,6 @@ public class CmsFeedbackServiceImpl implements ICmsFeedbackService {
     }
 
     private LambdaQueryWrapper<CmsFeedback> buildQueryWrapper(CmsFeedbackBo bo) {
-        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<CmsFeedback> lqw = Wrappers.lambdaQuery();
         lqw.eq(StringUtils.isNotBlank(bo.getFeedType()), CmsFeedback::getFeedType, bo.getFeedType());
         lqw.eq(StringUtils.isNotBlank(bo.getFeedTitle()), CmsFeedback::getFeedTitle, bo.getFeedTitle());

@@ -46,6 +46,8 @@ public class HouseVillageVo implements Serializable {
     @ExcelProperty(value = "区")
     private String area;
 
+    /** 区域，便于显示城市信息 */
+    private String areaCode;
     /**
      * 名称
      */

@@ -5,10 +5,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/article/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/article/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/feedback/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/feedback/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/house-admin/src/main/java/com/house/web/controller/common/CommonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/enums/HouseStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/utils/CodeUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/house-admin/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-common/src/main/java/com/house/common/utils/file/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-common/src/main/java/com/house/common/utils/file/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/HouseRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/HouseRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/CmsArticleBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/CmsArticleBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/CmsFeedbackBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/CmsFeedbackBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseFeatureBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseFeatureBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseHeartBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseHeartBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseImageBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseImageBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseRoomBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseRoomBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseUserBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseUserBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseVillageBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/bo/HouseVillageBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/vo/HouseVillageVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/domain/vo/HouseVillageVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/IHouseFeatureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/IHouseFeatureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/IHouseImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/IHouseImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/CmsArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/CmsArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/CmsFeedbackServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/CmsFeedbackServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseFeatureServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseFeatureServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseHeartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseHeartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseImageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseRoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseRoomServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseVillageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/src/main/java/com/house/core/service/impl/HouseVillageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/HouseRoom.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/HouseRoom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/HouseRoom__Javadoc.json" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/HouseRoom__Javadoc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/CmsArticleBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/CmsArticleBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/CmsFeedbackBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/CmsFeedbackBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseFeatureBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseFeatureBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseHeartBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseHeartBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseImageBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseImageBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseRoomBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseRoomBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseRoomBo__Javadoc.json" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseRoomBo__Javadoc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseUserBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseUserBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseVillageBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/bo/HouseVillageBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/vo/HouseVillageVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/vo/HouseVillageVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/vo/HouseVillageVo__Javadoc.json" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/domain/vo/HouseVillageVo__Javadoc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/IHouseFeatureService.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/IHouseFeatureService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/IHouseImageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/IHouseImageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/CmsArticleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/CmsArticleServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/CmsFeedbackServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/CmsFeedbackServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseFeatureServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseFeatureServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseHeartServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseHeartServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseImageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseImageServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseImageServiceImpl__Javadoc.json" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseImageServiceImpl__Javadoc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseRoomServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseRoomServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseUserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseVillageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/house-core-api/target/classes/com/house/core/service/impl/HouseVillageServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/node_modules/.vite/deps/_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house-ui-vue3/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/room/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/room/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/user/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/user/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house-ui-vue3/src/views/core/village/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/house-ui-vue3/src/views/core/village/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/sys-console.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-console.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/sys-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/sys-error.log" afterDir="false" />
@@ -30,41 +80,44 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/cn/hutool/hutool-core/5.8.22/hutool-core-5.8.22-sources.jar!/cn/hutool/core/io/FileUtil.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2dFsmD5JI3T4YyBBz1kg5nFMdjV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.HouseApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "21",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Library/PP/Java/github/bysj24/house/house/house-ui-vue3/src/api/core",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "ts.external.directory.path": "/Users/panpan/Applications/IntelliJ IDEA Ultimate.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.HouseApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Library/PP/Java/github/bysj24/house/house/house-ui-vue3/src/api/core&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/panpan/Applications/IntelliJ IDEA Ultimate.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/house-ui-vue3/src/api/core" />
@@ -109,6 +162,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-9b16c6e2" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -117,7 +177,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709615318503</updated>
-      <workItem from="1709615320973" duration="18449000" />
+      <workItem from="1709615320973" duration="41737000" />
+      <workItem from="1709728756584" duration="92000" />
+      <workItem from="1709728871126" duration="443000" />
     </task>
     <servers />
   </component>

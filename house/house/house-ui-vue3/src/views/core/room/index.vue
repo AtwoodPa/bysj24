@@ -1,230 +1,33 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm"  :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="居室" prop="houseNum">
-        <el-input
-          v-model="queryParams.houseNum"
-          placeholder="请输入居室"
+      <el-form-item label="类型" prop="type" class="el-form-search-item">
+        <el-select
+          v-model="queryParams.type"
+          placeholder="请选择类型"
           clearable
-          @keyup.enter.native="handleQuery"
-        />
+        >
+          <el-option
+            v-for="(item, index) in typeOptions"
+            :key="index"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
       </el-form-item>
-      <el-form-item label="卫生间" prop="toiletNum">
-        <el-input
-          v-model="queryParams.toiletNum"
-          placeholder="请输入卫生间"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="整套面积" prop="houseArea">
-        <el-input
-          v-model="queryParams.houseArea"
-          placeholder="请输入整套面积"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="房间号" prop="roomCode">
-        <el-input
-          v-model="queryParams.roomCode"
-          placeholder="请输入房间号"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="房屋面积" prop="roomArea">
-        <el-input
-          v-model="queryParams.roomArea"
-          placeholder="请输入房屋面积"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="朝向" prop="direction">
-        <el-input
-          v-model="queryParams.direction"
-          placeholder="请输入朝向"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="租金" prop="price">
-        <el-input
-          v-model="queryParams.price"
-          placeholder="请输入租金"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="楼层" prop="floor">
-        <el-input
-          v-model="queryParams.floor"
-          placeholder="请输入楼层"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="起租日期" prop="startDate">
-        <el-date-picker clearable
-          v-model="queryParams.startDate"
-          type="date"
-          value-format="YYYY-MM-DD HH:mm:ss"
-          placeholder="请选择起租日期">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="房源描述" prop="introduce">
-        <el-input
-          v-model="queryParams.introduce"
-          placeholder="请输入房源描述"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="房东姓名" prop="ownerName">
-        <el-input
-          v-model="queryParams.ownerName"
-          placeholder="请输入房东姓名"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="房东电话" prop="owerPhone">
-        <el-input
-          v-model="queryParams.owerPhone"
-          placeholder="请输入房东电话"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="小区id" prop="villageId">
-        <el-input
-          v-model="queryParams.villageId"
-          placeholder="请输入小区id"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="小区名称" prop="villageName">
-        <el-input
-          v-model="queryParams.villageName"
-          placeholder="请输入小区名称"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="具体地址" prop="address">
-        <el-input
-          v-model="queryParams.address"
-          placeholder="请输入具体地址"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="房牌号" prop="houseNo">
-        <el-input
-          v-model="queryParams.houseNo"
-          placeholder="请输入房牌号"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="发布人id" prop="publishId">
-        <el-input
-          v-model="queryParams.publishId"
-          placeholder="请输入发布人id"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="0：待出租, 1：已出租, 2:下架" prop="state">
-        <el-input
+      <el-form-item label="状态" prop="state" class="el-form-search-item">
+        <el-select
           v-model="queryParams.state"
-          placeholder="请输入0：待出租, 1：已出租, 2:下架"
+          placeholder="请选择状态"
           clearable
-          @keyup.enter.native="handleQuery"
-        />
+        >
+          <el-option label="待审核" value="0"></el-option>
+          <el-option label="待出租" value="1"></el-option>
+          <el-option label="已出租" value="2"></el-option>
+          <el-option label="已下架" value="3"></el-option>
+        </el-select>
       </el-form-item>
-      <el-form-item label="" prop="createName">
-        <el-input
-          v-model="queryParams.createName"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="" prop="updateName">
-        <el-input
-          v-model="queryParams.updateName"
-          placeholder="请输入"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="客厅数量" prop="houseHall">
-        <el-input
-          v-model="queryParams.houseHall"
-          placeholder="请输入客厅数量"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="房源编号" prop="code">
-        <el-input
-          v-model="queryParams.code"
-          placeholder="请输入房源编号"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="封面图" prop="faceUrl">
-        <el-input
-          v-model="queryParams.faceUrl"
-          placeholder="请输入封面图"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="装修情况" prop="decoration">
-        <el-input
-          v-model="queryParams.decoration"
-          placeholder="请输入装修情况"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="经纪人姓名" prop="agentName">
-        <el-input
-          v-model="queryParams.agentName"
-          placeholder="请输入经纪人姓名"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="经纪人电话" prop="agentPhone">
-        <el-input
-          v-model="queryParams.agentPhone"
-          placeholder="请输入经纪人电话"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="经纪人id" prop="agentUserId">
-        <el-input
-          v-model="queryParams.agentUserId"
-          placeholder="请输入经纪人id"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="经纪人头像" prop="agentAvatar">
-        <el-input
-          v-model="queryParams.agentAvatar"
-          placeholder="请输入经纪人头像"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <el-form-item>
         <el-button type="primary" icon="Search"  @click="handleQuery">搜索</el-button>
         <el-button icon="Refresh"  @click="resetQuery">重置</el-button>
@@ -271,45 +74,100 @@
 
     <el-table v-loading="loading" :data="roomList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="" align="center" prop="id" v-if="true"/>
-      <el-table-column label="0整租/1合租" align="center" prop="type" />
-      <el-table-column label="居室" align="center" prop="houseNum" />
-      <el-table-column label="卫生间" align="center" prop="toiletNum" />
-      <el-table-column label="整套面积" align="center" prop="houseArea" />
-      <el-table-column label="1主卧,2次卧" align="center" prop="roomType" />
-      <el-table-column label="房间号" align="center" prop="roomCode" />
-      <el-table-column label="房屋面积" align="center" prop="roomArea" />
-      <el-table-column label="朝向" align="center" prop="direction" />
-      <el-table-column label="租金" align="center" prop="price" />
-      <el-table-column label="楼层" align="center" prop="floor" />
-      <el-table-column label="楼房类型" align="center" prop="stepType" />
-      <el-table-column label="起租日期" align="center" prop="startDate" width="180">
+      <el-table-column label="#" type="index" width="50" align="center">
+        <template #default="scope">
+          <span>{{
+              (queryParams.pageNum - 1) * queryParams.pageSize + scope.$index + 1
+            }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="类型" align="center" prop="type" :formatter="typeFormatter" width="60"></el-table-column>
+      <el-table-column label="户型" align="center" prop="houseCode" width="120"/>
+      <el-table-column label="整套面积" align="center" prop="houseArea" width="80"/>
+      <el-table-column label="出租房间" align="center" prop="roomType" width="80" :formatter="roomTypeFormatter"/>
+      <el-table-column label="房屋面积" align="center" prop="roomArea" width="80"/>
+      <el-table-column label="朝向" align="center" prop="direction" width="60"/>
+      <el-table-column label="装修" align="center" prop="decoration" width="80"/>
+      <el-table-column label="租金" align="center" prop="price" width="60"/>
+
+      <el-table-column label="起租日期" align="center" prop="startDate" width="100">
         <template #default="scope">
           <span>{{ parseTime(scope.row.createTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="房源描述" align="center" prop="introduce" />
-      <el-table-column label="房东姓名" align="center" prop="ownerName" />
-      <el-table-column label="房东电话" align="center" prop="owerPhone" />
-      <el-table-column label="小区id" align="center" prop="villageId" />
-      <el-table-column label="小区名称" align="center" prop="villageName" />
-      <el-table-column label="具体地址" align="center" prop="address" />
-      <el-table-column label="房牌号" align="center" prop="houseNo" />
-      <el-table-column label="付款方式" align="center" prop="payType" />
-      <el-table-column label="发布人id" align="center" prop="publishId" />
-      <el-table-column label="0：待出租, 1：已出租, 2:下架" align="center" prop="state" />
-      <el-table-column label="" align="center" prop="createName" />
-      <el-table-column label="" align="center" prop="updateName" />
-      <el-table-column label="" align="center" prop="remark" />
-      <el-table-column label="客厅数量" align="center" prop="houseHall" />
-      <el-table-column label="房源编号" align="center" prop="code" />
-      <el-table-column label="封面图" align="center" prop="faceUrl" />
-      <el-table-column label="装修情况" align="center" prop="decoration" />
-      <el-table-column label="经纪人姓名" align="center" prop="agentName" />
-      <el-table-column label="经纪人电话" align="center" prop="agentPhone" />
-      <el-table-column label="经纪人id" align="center" prop="agentUserId" />
-      <el-table-column label="经纪人头像" align="center" prop="agentAvatar" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+      <el-table-column label="状态" align="center" prop="state" width="60" :formatter="stateFormatter"/>
+      <el-table-column
+        label="封面图"
+        align="center"
+        prop="faceUrl"
+        width="80"
+      >
+        <template #default="scope">
+          <image-preview :src="scope.row.faceUrl" :width="30" :height="30" />
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="小区名称"
+        align="center"
+        prop="villageName"
+        :show-overflow-tooltip="true"
+        width="180"
+      />
+      <el-table-column
+        label="房牌号"
+        align="center"
+        prop="houseNo"
+        :show-overflow-tooltip="true"
+        width="90"
+      />
+      <el-table-column
+        label="门牌号"
+        align="center"
+        prop="roomCode"
+        width="80"
+      />
+      <el-table-column
+        label="房源代号"
+        align="center"
+        prop="code"
+        width="90"
+      ></el-table-column>
+      <el-table-column
+        label="房东姓名"
+        align="center"
+        prop="ownerName"
+        width="100"
+      />
+      <el-table-column
+        label="房东电话"
+        align="center"
+        prop="owerPhone"
+        width="100"
+      />
+      <el-table-column
+        label="经纪人"
+        align="center"
+        prop="agentName"
+        width="70"
+
+      />
+      <el-table-column
+        label="经纪人电话"
+        align="center"
+        prop="agentPhone"
+        width="100"
+
+      />
+      <el-table-column
+        label="备注"
+        align="center"
+        prop="remark"
+        width="80"
+        :show-overflow-tooltip="true"
+
+      />
+
+      <el-table-column label="操作" fixed="right" align="center"  class-name="small-padding fixed-width">
         <template #default="scope">
           <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" >修改</el-button>
           <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" >删除</el-button>
@@ -326,101 +184,271 @@
     />
 
     <!-- 添加或修改房源管理对话框 -->
-    <el-dialog :title="title" v-model="open" width="500px" append-to-body>
+    <el-dialog :title="title" v-model="open" width="800px" append-to-body>
       <el-form ref="roomRef" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="居室" prop="houseNum">
-          <el-input v-model="form.houseNum" placeholder="请输入居室" />
-        </el-form-item>
-        <el-form-item label="卫生间" prop="toiletNum">
-          <el-input v-model="form.toiletNum" placeholder="请输入卫生间" />
-        </el-form-item>
-        <el-form-item label="整套面积" prop="houseArea">
-          <el-input v-model="form.houseArea" placeholder="请输入整套面积" />
-        </el-form-item>
-        <el-form-item label="房间号" prop="roomCode">
-          <el-input v-model="form.roomCode" placeholder="请输入房间号" />
-        </el-form-item>
-        <el-form-item label="房屋面积" prop="roomArea">
-          <el-input v-model="form.roomArea" placeholder="请输入房屋面积" />
-        </el-form-item>
-        <el-form-item label="朝向" prop="direction">
-          <el-input v-model="form.direction" placeholder="请输入朝向" />
-        </el-form-item>
-        <el-form-item label="租金" prop="price">
-          <el-input v-model="form.price" placeholder="请输入租金" />
-        </el-form-item>
-        <el-form-item label="楼层" prop="floor">
-          <el-input v-model="form.floor" placeholder="请输入楼层" />
-        </el-form-item>
-        <el-form-item label="起租日期" prop="startDate">
-          <el-date-picker clearable
-            v-model="form.startDate"
-                          type="datetime"
-                          format="YYYY-MM-DD HH:mm:ss"
-                          value-format="YYYY-MM-DD HH:mm:ss"
-            placeholder="请选择起租日期">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="房源描述" prop="introduce">
-          <el-input v-model="form.introduce" placeholder="请输入房源描述" />
-        </el-form-item>
-        <el-form-item label="房东姓名" prop="ownerName">
-          <el-input v-model="form.ownerName" placeholder="请输入房东姓名" />
-        </el-form-item>
-        <el-form-item label="房东电话" prop="owerPhone">
-          <el-input v-model="form.owerPhone" placeholder="请输入房东电话" />
-        </el-form-item>
-        <el-form-item label="小区id" prop="villageId">
-          <el-input v-model="form.villageId" placeholder="请输入小区id" />
-        </el-form-item>
-        <el-form-item label="小区名称" prop="villageName">
-          <el-input v-model="form.villageName" placeholder="请输入小区名称" />
-        </el-form-item>
-        <el-form-item label="具体地址" prop="address">
-          <el-input v-model="form.address" placeholder="请输入具体地址" />
-        </el-form-item>
-        <el-form-item label="房牌号" prop="houseNo">
-          <el-input v-model="form.houseNo" placeholder="请输入房牌号" />
-        </el-form-item>
-        <el-form-item label="发布人id" prop="publishId">
-          <el-input v-model="form.publishId" placeholder="请输入发布人id" />
-        </el-form-item>
-        <el-form-item label="0：待出租, 1：已出租, 2:下架" prop="state">
-          <el-input v-model="form.state" placeholder="请输入0：待出租, 1：已出租, 2:下架" />
-        </el-form-item>
-        <el-form-item label="" prop="createName">
-          <el-input v-model="form.createName" placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="" prop="updateName">
-          <el-input v-model="form.updateName" placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="" prop="remark">
-          <el-input v-model="form.remark" placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="客厅数量" prop="houseHall">
-          <el-input v-model="form.houseHall" placeholder="请输入客厅数量" />
-        </el-form-item>
-        <el-form-item label="房源编号" prop="code">
-          <el-input v-model="form.code" placeholder="请输入房源编号" />
-        </el-form-item>
-        <el-form-item label="封面图" prop="faceUrl">
-          <el-input v-model="form.faceUrl" placeholder="请输入封面图" />
-        </el-form-item>
-        <el-form-item label="装修情况" prop="decoration">
-          <el-input v-model="form.decoration" placeholder="请输入装修情况" />
-        </el-form-item>
-        <el-form-item label="经纪人姓名" prop="agentName">
-          <el-input v-model="form.agentName" placeholder="请输入经纪人姓名" />
-        </el-form-item>
-        <el-form-item label="经纪人电话" prop="agentPhone">
-          <el-input v-model="form.agentPhone" placeholder="请输入经纪人电话" />
-        </el-form-item>
-        <el-form-item label="经纪人id" prop="agentUserId">
-          <el-input v-model="form.agentUserId" placeholder="请输入经纪人id" />
-        </el-form-item>
-        <el-form-item label="经纪人头像" prop="agentAvatar">
-          <el-input v-model="form.agentAvatar" placeholder="请输入经纪人头像" />
-        </el-form-item>
+        <el-row :gutter="30">
+          <el-col :span="12">
+            <el-form-item label="类型" prop="type">
+              <el-select
+                v-model="form.type"
+                placeholder="请选择类型"
+                clearable
+                :style="{ width: '100%' }"
+              >
+                <el-option
+                  v-for="(item, index) in typeOptions"
+                  :key="index"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled"
+                ></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="居室" prop="houseNum">
+              <el-select
+                v-model="form.houseNum"
+                placeholder="请选择居室"
+                clearable
+                :style="{ width: '100%' }"
+              >
+                <el-option
+                  v-for="(item, index) in houseNumOptions"
+                  :key="index"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled"
+                ></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="30">
+          <el-col :span="12"
+          ><el-form-item label="厅室" prop="houseHall">
+            <el-select
+              v-model="form.houseHall"
+              placeholder="请选择厅室"
+              clearable
+              :style="{ width: '100%' }"
+            >
+              <el-option
+                v-for="(item, index) in houseHallOptions"
+                :key="index"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          </el-col>
+          <el-col :span="12"
+          ><el-form-item label="卫生间" prop="toiletNum">
+            <el-select
+              v-model="form.toiletNum"
+              placeholder="请选择卫生间"
+              clearable
+              :style="{ width: '100%' }"
+            >
+              <el-option
+                v-for="(item, index) in toiletNumOptions"
+                :key="index"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="30">
+          <el-col :span="12">
+            <el-form-item label="整套面积" prop="houseArea">
+              <el-input v-model="form.houseArea" placeholder="请输入整套面积" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="出租房间" prop="roomType">
+              <el-select
+                v-model="form.roomType"
+                placeholder="请选择出租房间"
+                clearable
+                :style="{ width: '100%' }"
+              >
+                <el-option
+                  v-for="(item, index) in roomTypeOptions"
+                  :key="index"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled"
+                ></el-option>
+              </el-select> </el-form-item
+            ></el-col>
+        </el-row>
+        <el-row :gutter="30">
+          <el-col :span="12"
+          ><el-form-item label="房屋面积" prop="roomArea">
+            <el-input v-model="form.roomArea" placeholder="请输入房屋面积" />
+          </el-form-item>
+          </el-col>
+          <el-col :span="12"
+          ><el-form-item label="朝向" prop="direction">
+            <el-select
+              v-model="form.direction"
+              placeholder="请选择朝向"
+              clearable
+              :style="{ width: '100%' }"
+            >
+              <el-option
+                v-for="(item, index) in directionOptions"
+                :key="index"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="30">
+          <el-col :span="12">
+            <el-form-item label="装修" prop="decoration">
+              <el-select
+                v-model="form.decoration"
+                placeholder="请选择装修"
+                clearable
+                :style="{ width: '100%' }"
+              >
+                <el-option
+                  v-for="(item, index) in decorationOptions"
+                  :key="index"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled"
+                ></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="租金" prop="price">
+              <el-input v-model="form.price" placeholder="请输入租金" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="30">
+          <el-col :span="12">
+            <el-form-item label="起租日期" prop="startDate">
+              <el-date-picker
+                clearable
+                size="small"
+                v-model="form.startDate"
+                type="datetime"
+                format="YYYY-MM-DD HH:mm:ss"
+                value-format="YYYY-MM-DD HH:mm:ss"
+                placeholder="选择起租日期"
+                style="width: 100%"
+              >
+              </el-date-picker> </el-form-item
+            ></el-col>
+          <el-col :span="12">
+            <el-form-item label="房源描述" prop="introduce">
+              <el-input
+                v-model="form.introduce"
+                placeholder="请输入房源描述"
+
+                :style="{ width: '100%' }"
+              ></el-input> </el-form-item
+            ></el-col>
+        </el-row>
+        <el-row :gutter="30">
+          <el-col :span="12">
+            <el-form-item label="房源小区" prop="villageName">
+              <el-select
+                v-model="form.villageName"
+                placeholder="请选择房源小区"
+                clearable
+                :style="{ width: '100%' }"
+                @change="changeVillage"
+              >
+                <el-option
+                  v-for="(item, index) in houseVillageList"
+                  :key="index"
+                  :label="item.name"
+                  :value="{ value: item.id, label: item.name }"
+                  :disabled="item.disabled"
+                ></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="详细地址" prop="address">
+              <el-input
+                v-model="form.address"
+                placeholder="请输入详细地址"
+              /> </el-form-item
+            ></el-col>
+        </el-row>
+        <el-row :gutter="30">
+          <el-col :span="12">
+            <el-form-item label="房牌号" prop="houseNo">
+              <el-input v-model="form.houseNo" placeholder="请输入房牌号" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="门牌号" prop="roomCode">
+              <el-input v-model="form.roomCode" placeholder="请输入门牌号" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="30">
+          <el-col :span="12">
+            <el-form-item label="房东姓名" prop="ownerName">
+              <el-input
+                v-model="form.ownerName"
+                placeholder="请输入房东姓名"
+              /> </el-form-item
+            ></el-col>
+          <el-col :span="12">
+            <el-form-item label="房东电话" prop="owerPhone">
+              <el-input
+                v-model="form.owerPhone"
+                placeholder="请输入房东电话"
+              /> </el-form-item
+            ></el-col>
+        </el-row>
+        <el-row :gutter="30">
+          <el-col :span="24">
+            <el-form-item label="备注" prop="remark">
+              <el-input
+                v-model="form.remark"
+                placeholder="请输入备注"
+              /> </el-form-item
+            ></el-col>
+        </el-row>
+        <el-row :gutter="10">
+          <el-col :span="24">
+            <el-form-item label="房源亮点" prop="featureList">
+              <el-checkbox-group v-model="featureList">
+                <el-checkbox label="看房方便"></el-checkbox>
+                <el-checkbox label="独卫"></el-checkbox>
+                <el-checkbox label="独立阳台"></el-checkbox>
+                <el-checkbox label="智能锁"></el-checkbox>
+                <el-checkbox label="可短租"></el-checkbox>
+                <el-checkbox label="首次出租"></el-checkbox>
+                <el-checkbox label="免物业费"></el-checkbox>
+                <el-checkbox label="民用水电"></el-checkbox>
+              </el-checkbox-group>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="10">
+          <el-col :span="24">
+            <el-form-item label="房源图片" prop="imageList">
+              <image-upload v-model="imageList" :limit="9" />
+            </el-form-item>
+          </el-col>
+        </el-row>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button :loading="buttonLoading" type="primary" @click="submitForm">确 定</el-button>
@@ -432,6 +460,7 @@
 
 <script setup name="Room">
 import { listRoom, getRoom, delRoom, addRoom, updateRoom } from "@/api/core/room";
+import { listVillage } from "@/api/core/village";
 const { proxy } = getCurrentInstance();
 
 const roomList = ref([]);
@@ -444,156 +473,177 @@ const single = ref(true);
 const multiple = ref(true);
 const total = ref(0);
 const title = ref("");
-
-
+// 房源亮点
+let featureList = ref([]);
+// 房源图片
+const imageList = ref([]);
+// 小区列表
+const houseVillageList = ref([]);
+const houseNumOptions = ref([
+  {
+    label: "一室",
+    value: "一室",
+  },
+  {
+    label: "二室",
+    value: "二室",
+  },
+  {
+    label: "三室",
+    value: "三室",
+  },
+  {
+    label: "四室",
+    value: "四室",
+  },
+]);
+const typeOptions = ref([
+  {
+    label: "整租",
+    value: 0,
+  },
+  {
+    label: "合租",
+    value: 1,
+  },
+]);
+const houseHallOptions = ref([
+  {
+    label: "一厅",
+    value: "一厅",
+  },
+  {
+    label: "二厅",
+    value: "二厅",
+  },
+]);
+const toiletNumOptions = ref([
+  {
+    label: "一卫",
+    value: "一卫",
+  },
+  {
+    label: "二卫",
+    value: "二卫",
+  },
+]);
+const roomTypeOptions = ref([
+  {
+    label: "主卧",
+    value: 1,
+  },
+  {
+    label: "次卧",
+    value: 2,
+  }
+]);
+const directionOptions = ref([
+  {
+    label: "东",
+    value: "东",
+  },
+  {
+    label: "南",
+    value: "南",
+  },
+  {
+    label: "西",
+    value: "西",
+  },
+  {
+    label: "北",
+    value: "北",
+  }
+]);
+const decorationOptions = ref([
+  {
+    label: "简装",
+    value: "简装",
+  },
+  {
+    label: "中装",
+    value: "中装",
+  },
+  {
+    label: "精装修",
+    value: "精装修",
+  },
+  {
+    label: "豪装",
+    value: "豪装",
+  }
+]);
+const stepTypeOptions = ref([
+  {
+    label: "电梯房",
+    value: "电梯房",
+  },
+  {
+    label: "楼梯房",
+    value: "楼梯房",
+  },
+]);
 const data = reactive({
   queryParams: {
     pageNum: 1,
-    pageSize: 10,
-    type: undefined,
-    houseNum: undefined,
-    toiletNum: undefined,
-    houseArea: undefined,
-    roomType: undefined,
-    roomCode: undefined,
-    roomArea: undefined,
+    pageSize: 20,
+    orderByColumn: "create_time",
+    isAsc: "desc",
     direction: undefined,
-    price: undefined,
-    floor: undefined,
-    stepType: undefined,
-    startDate: undefined,
-    introduce: undefined,
-    ownerName: undefined,
-    owerPhone: undefined,
-    villageId: undefined,
-    villageName: undefined,
-    address: undefined,
-    houseNo: undefined,
-    payType: undefined,
-    publishId: undefined,
-    state: undefined,
-    createName: undefined,
-    updateName: undefined,
-    houseHall: undefined,
-    code: undefined,
-    faceUrl: undefined,
     decoration: undefined,
-    agentName: undefined,
-    agentPhone: undefined,
-    agentUserId: undefined,
-    agentAvatar: undefined
+    price: undefined,
+    villageName: undefined,
+    agentName: null,
+    agentPhone: undefined
   },
   // 表单参数
   form: {},
   // 表单校验
   rules: {
-    id: [
-      { required: true, message: "不能为空", trigger: "blur" }
-    ],
     type: [
-      { required: true, message: "0整租/1合租不能为空", trigger: "change" }
+      {required: true, message: "请选择类型", trigger: "change",},
     ],
     houseNum: [
-      { required: true, message: "居室不能为空", trigger: "blur" }
+      { required: true, message: "居室不能为空", trigger: "blur" },
     ],
-    toiletNum: [
-      { required: true, message: "卫生间不能为空", trigger: "blur" }
-    ],
-    houseArea: [
-      { required: true, message: "整套面积不能为空", trigger: "blur" }
-    ],
-    roomType: [
-      { required: true, message: "1主卧,2次卧不能为空", trigger: "change" }
-    ],
-    roomCode: [
-      { required: true, message: "房间号不能为空", trigger: "blur" }
-    ],
-    roomArea: [
-      { required: true, message: "房屋面积不能为空", trigger: "blur" }
-    ],
-    direction: [
-      { required: true, message: "朝向不能为空", trigger: "blur" }
-    ],
-    price: [
-      { required: true, message: "租金不能为空", trigger: "blur" }
-    ],
-    floor: [
-      { required: true, message: "楼层不能为空", trigger: "blur" }
-    ],
-    // stepType: [
-    //   { required: true, message: "楼房类型不能为空", trigger: "change" }
+    // houseHall: [
+    //   { required: true, message: "厅室不能为空", trigger: "blur" },
     // ],
+    // toiletNum: [
+    //   { required: true, message: "卫生间不能为空", trigger: "blur" },
+    // ],
+    houseNo: [
+      { required: true, message: "房牌号不能为空", trigger: "blur" },
+    ],
+    // direction: [
+    //   { required: true, message: "朝向不能为空", trigger: "blur" },
+    // ],
+    decoration: [
+      { required: true, message: "装修不能为空", trigger: "blur" },
+    ],
+    price: [{ required: true, message: "租金不能为空", trigger: "blur" }],
     startDate: [
-      { required: true, message: "起租日期不能为空", trigger: "blur" }
-    ],
-    introduce: [
-      { required: true, message: "房源描述不能为空", trigger: "blur" }
-    ],
-    ownerName: [
-      { required: true, message: "房东姓名不能为空", trigger: "blur" }
-    ],
-    owerPhone: [
-      { required: true, message: "房东电话不能为空", trigger: "blur" }
-    ],
-    villageId: [
-      { required: true, message: "小区id不能为空", trigger: "blur" }
+      { required: true, message: "起租日期不能为空", trigger: "blur" },
     ],
     villageName: [
-      { required: true, message: "小区名称不能为空", trigger: "blur" }
+      { required: true, message: "小区名称不能为空", trigger: "blur" },
     ],
-    address: [
-      { required: true, message: "具体地址不能为空", trigger: "blur" }
+    ownerName: [
+      { required: true, message: "房东姓名不能为空", trigger: "blur" },
     ],
-    houseNo: [
-      { required: true, message: "房牌号不能为空", trigger: "blur" }
-    ],
-    payType: [
-      { required: true, message: "付款方式不能为空", trigger: "change" }
-    ],
-    publishId: [
-      { required: true, message: "发布人id不能为空", trigger: "blur" }
-    ],
-    state: [
-      { required: true, message: "0：待出租, 1：已出租, 2:下架不能为空", trigger: "blur" }
-    ],
-    createName: [
-      { required: true, message: "不能为空", trigger: "blur" }
-    ],
-    updateName: [
-      { required: true, message: "不能为空", trigger: "blur" }
-    ],
-    remark: [
-      { required: true, message: "不能为空", trigger: "blur" }
-    ],
-    houseHall: [
-      { required: true, message: "客厅数量不能为空", trigger: "blur" }
-    ],
-    code: [
-      { required: true, message: "房源编号不能为空", trigger: "blur" }
-    ],
-    faceUrl: [
-      { required: true, message: "封面图不能为空", trigger: "blur" }
-    ],
-    decoration: [
-      { required: true, message: "装修情况不能为空", trigger: "blur" }
-    ],
-    agentName: [
-      { required: true, message: "经纪人姓名不能为空", trigger: "blur" }
-    ],
-    agentPhone: [
-      { required: true, message: "经纪人电话不能为空", trigger: "blur" }
-    ],
-    agentUserId: [
-      { required: true, message: "经纪人id不能为空", trigger: "blur" }
-    ],
-    agentAvatar: [
-      { required: true, message: "经纪人头像不能为空", trigger: "blur" }
+    owerPhone: [
+      { required: true, message: "房东电话不能为空", trigger: "blur" },
     ]
   }
 });
 
 const { queryParams, form, rules } = toRefs(data);
 
+function changeVillage(params) {
+  const { value, label } = params;
+  form.value.villageId = value;
+  form.value.villageName = label;
+}
 function getList() {
   loading.value = true;
   listRoom(queryParams.value).then(response => {
@@ -602,6 +652,13 @@ function getList() {
     loading.value = false;
   });
 }
+// 获取小区列表
+function getVillageList() {
+  listVillage().then(response => {
+    houseVillageList.value = response.rows;
+  });
+}
+getVillageList();
 function cancel() {
   open.value = false;
   reset();
@@ -645,6 +702,8 @@ function reset(){
     agentUserId: undefined,
     agentAvatar: undefined
   };
+  featureList.value = [];
+  imageList.value = [];
   proxy.resetForm("roomRef");
 
 }
@@ -684,6 +743,27 @@ function submitForm() {
   proxy.$refs["roomRef"].validate(valid => {
     if (valid) {
       buttonLoading.value = true;
+
+      if (form.featureList && form.featureList.length > 0) {
+        form.featureList = form.featureList.map((val) => ({
+          feature: val,
+        }));
+        //this.form.featureList = featureList;
+      } else {
+        proxy.$modal.msgWarning("请选择房源亮点");
+      }
+      if (form.imageList) {
+        form.imageList = form.imageList.split(",").map((val) => ({
+          imageName: val.split("/")[6],
+          imagePath: val,
+          imgUrl: val,
+          imageSize: -1,
+        }));
+        //this.form.imageList = imageList;
+      } else {
+        proxy.$modal.msgWarning("请选择房源图片");
+      }
+
       if (form.value.id != null) {
         updateRoom(form.value).then(response => {
           proxy.$modal.msgSuccess("修改成功");
@@ -725,6 +805,30 @@ function handleExport() {
     ...queryParams.value
   }, `room_${new Date().getTime()}.xlsx`)
 }
-
+function typeFormatter(row, column) {
+  if (row.type == 0) {
+    return "整租";
+  } else if (row.type == 1) {
+    return "合租";
+  }
+}
+function roomTypeFormatter(row, column) {
+  if (row.roomType == 1) {
+    return "主卧";
+  } else if (row.roomType == 2) {
+    return "次卧";
+  }
+}
+function stateFormatter(row, column) {
+  if (row.state == 0) {
+    return "待审核";
+  } else if (row.state == 1) {
+    return "待出租";
+  } else if (row.state == 2) {
+    return "已出租";
+  } else if (row.state == 3) {
+    return "已下架";
+  }
+}
 getList()
 </script>

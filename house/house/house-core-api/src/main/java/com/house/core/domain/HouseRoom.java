@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.house.common.core.domain.BaseEntity;
 
@@ -83,6 +85,15 @@ public class HouseRoom extends BaseEntity {
      */
     private String introduce;
     /**
+     * 房源图片列表
+     */
+    private List<HouseImage> imageList;
+
+    /**
+     * 房源特色列表
+     */
+    private List<HouseFeature> featureList;
+    /**
      * 房东姓名
      */
     private String ownerName;
@@ -98,6 +109,10 @@ public class HouseRoom extends BaseEntity {
      * 小区名称
      */
     private String villageName;
+    /**
+     * 小区所在城市
+     */
+    private String villageCity;
     /**
      * 具体地址
      */

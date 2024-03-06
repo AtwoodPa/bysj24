@@ -59,7 +59,6 @@ public class HouseFeatureServiceImpl implements IHouseFeatureService {
     }
 
     private LambdaQueryWrapper<HouseFeature> buildQueryWrapper(HouseFeatureBo bo) {
-        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<HouseFeature> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getHouseId() != null, HouseFeature::getHouseId, bo.getHouseId());
         lqw.eq(StringUtils.isNotBlank(bo.getFeature()), HouseFeature::getFeature, bo.getFeature());
@@ -106,5 +105,13 @@ public class HouseFeatureServiceImpl implements IHouseFeatureService {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteBatchIds(ids) > 0;
+    }
+
+    @Override
+    public void insertBatch(List<HouseFeature> featureList, Long houseRoomId) {
+        for (HouseFeature feature : featureList) {
+            feature.setHouseId(houseRoomId);
+            baseMapper.insert(feature);
+        }
     }
 }

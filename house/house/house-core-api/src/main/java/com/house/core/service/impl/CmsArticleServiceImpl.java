@@ -59,7 +59,6 @@ public class CmsArticleServiceImpl implements ICmsArticleService {
     }
 
     private LambdaQueryWrapper<CmsArticle> buildQueryWrapper(CmsArticleBo bo) {
-        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<CmsArticle> lqw = Wrappers.lambdaQuery();
         lqw.eq(StringUtils.isNotBlank(bo.getArticleType()), CmsArticle::getArticleType, bo.getArticleType());
         lqw.eq(StringUtils.isNotBlank(bo.getSmallTitle()), CmsArticle::getSmallTitle, bo.getSmallTitle());

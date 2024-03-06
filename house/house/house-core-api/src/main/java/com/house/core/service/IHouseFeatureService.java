@@ -46,4 +46,6 @@ public interface IHouseFeatureService {
      * 校验并批量删除房源特色信息
      */
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+    void insertBatch(List<HouseFeature> featureList, Long houseRoomId);
 }

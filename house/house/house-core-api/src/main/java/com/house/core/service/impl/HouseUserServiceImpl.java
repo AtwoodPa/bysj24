@@ -59,7 +59,6 @@ public class HouseUserServiceImpl implements IHouseUserService {
     }
 
     private LambdaQueryWrapper<HouseUser> buildQueryWrapper(HouseUserBo bo) {
-        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<HouseUser> lqw = Wrappers.lambdaQuery();
         lqw.eq(bo.getHouseId() != null, HouseUser::getHouseId, bo.getHouseId());
         lqw.eq(bo.getUserId() != null, HouseUser::getUserId, bo.getUserId());
