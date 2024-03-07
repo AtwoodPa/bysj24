@@ -8,6 +8,12 @@
   ],
   "properties": [
     {
+      "name": "house.address-enabled",
+      "type": "java.lang.Boolean",
+      "description": "获取地址开关",
+      "sourceType": "com.house.common.config.HouseConfig"
+    },
+    {
       "name": "house.cache-lazy",
       "type": "java.lang.Boolean",
       "description": "缓存懒加载",
@@ -23,6 +29,12 @@
       "name": "house.name",
       "type": "java.lang.String",
       "description": "项目名称",
+      "sourceType": "com.house.common.config.HouseConfig"
+    },
+    {
+      "name": "house.profile",
+      "type": "java.lang.String",
+      "description": "上传路径",
       "sourceType": "com.house.common.config.HouseConfig"
     },
     {

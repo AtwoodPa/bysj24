@@ -180,12 +180,11 @@ public class FileUploadUtils
         return desc;
     }
 
-    public static final String getPathFileName(String uploadDir, String fileName) throws IOException
+    public static  String getPathFileName(String uploadDir, String fileName) throws IOException
     {
         int dirLastIndex = HouseConfig.getProfile().length() + 1;
         String currentDir = StringUtils.substring(uploadDir, dirLastIndex);
-        String pathFileName = Constants.RESOURCE_PREFIX + "/" + currentDir + "/" + fileName;
-        return pathFileName;
+        return Constants.RESOURCE_PREFIX + "/" + currentDir + "/" + fileName;
     }
 
     /**
@@ -267,7 +266,7 @@ public class FileUploadUtils
         String extension = FilenameUtils.getExtension(file.getOriginalFilename());
         if (StringUtils.isEmpty(extension))
         {
-            extension = MimeTypeUtils.getExtension(Objects.requireNonNull(file.getContentType()));
+            extension = MimeTypeUtils.getExtension(file.getContentType());
         }
         return extension;
     }
@@ -279,6 +278,6 @@ public class FileUploadUtils
      */
     public static final boolean ImageCheck(MultipartFile file)
     {
-        return MimeTypeUtils.ImageCheck(Objects.requireNonNull(file.getContentType()));
+        return MimeTypeUtils.ImageCheck(file.getContentType());
     }
 }

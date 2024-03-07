@@ -1,0 +1,1 @@
+{"doc":" 图片处理工具类\n\n @author ruoyi\n","fields":[],"enumConstants":[],"methods":[{"name":"readFile","paramTypes":["java.lang.String"],"doc":" 读取文件为字节数据\n\n @param url 地址\n @return 字节数据\n"}],"constructors":[]}

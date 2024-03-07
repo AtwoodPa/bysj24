@@ -42,6 +42,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="agentUserId" column="agent_User_Id"/>
         <result property="agentAvatar" column="agent_Avatar"/>
     </resultMap>
+    <insert id="insertHouseFeature" parameterType="com.house.core.domain.bo.HouseRoomBo">
+        insert into house_feature(house_id,feature) VALUES
+        <foreach collection ="featureList" item="houseFeature" separator =",">
+            (#{id}, #{houseFeature.feature})
+        </foreach >
+    </insert>
+    <insert id="insertHouseImage" parameterType="com.house.core.domain.bo.HouseRoomBo">
+        insert into house_image(house_id,image_name,image_path,img_url,image_size) VALUES
+        <foreach collection ="imageList" item="houseImage" separator =",">
+            (#{id}, #{houseImage.imageName}, #{houseImage.imagePath}, #{houseImage.imgUrl}, #{houseImage.imageSize})
+        </foreach >
+    </insert>
 
 
 </mapper>

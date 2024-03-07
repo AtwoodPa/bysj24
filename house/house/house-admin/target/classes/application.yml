@@ -8,6 +8,10 @@ house:
   copyrightYear: 2023
   # 缓存懒加载
   cacheLazy: false
+  # 文件路径 示例（ Windows配置C:/source-vue/static/uploadPath，Linux配置 /home/source-vue/uploadPath）
+  profile: /Library/PP/Java/github/bysj24/house/house/uploadPath
+  # 域名，图片url前缀
+  domain: http://localhost
 
 captcha:
   # 页面 <参数设置> 可开启关闭 验证码校验

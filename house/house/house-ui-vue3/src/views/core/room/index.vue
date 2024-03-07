@@ -600,40 +600,40 @@ const data = reactive({
   form: {},
   // 表单校验
   rules: {
-    type: [
-      {required: true, message: "请选择类型", trigger: "change",},
-    ],
-    houseNum: [
-      { required: true, message: "居室不能为空", trigger: "blur" },
-    ],
-    // houseHall: [
-    //   { required: true, message: "厅室不能为空", trigger: "blur" },
+    // type: [
+    //   {required: true, message: "请选择类型", trigger: "change",},
     // ],
-    // toiletNum: [
-    //   { required: true, message: "卫生间不能为空", trigger: "blur" },
+    // houseNum: [
+    //   { required: true, message: "居室不能为空", trigger: "blur" },
     // ],
-    houseNo: [
-      { required: true, message: "房牌号不能为空", trigger: "blur" },
-    ],
-    // direction: [
-    //   { required: true, message: "朝向不能为空", trigger: "blur" },
+    // // houseHall: [
+    // //   { required: true, message: "厅室不能为空", trigger: "blur" },
+    // // ],
+    // // toiletNum: [
+    // //   { required: true, message: "卫生间不能为空", trigger: "blur" },
+    // // ],
+    // houseNo: [
+    //   { required: true, message: "房牌号不能为空", trigger: "blur" },
     // ],
-    decoration: [
-      { required: true, message: "装修不能为空", trigger: "blur" },
-    ],
-    price: [{ required: true, message: "租金不能为空", trigger: "blur" }],
-    startDate: [
-      { required: true, message: "起租日期不能为空", trigger: "blur" },
-    ],
-    villageName: [
-      { required: true, message: "小区名称不能为空", trigger: "blur" },
-    ],
-    ownerName: [
-      { required: true, message: "房东姓名不能为空", trigger: "blur" },
-    ],
-    owerPhone: [
-      { required: true, message: "房东电话不能为空", trigger: "blur" },
-    ]
+    // // direction: [
+    // //   { required: true, message: "朝向不能为空", trigger: "blur" },
+    // // ],
+    // decoration: [
+    //   { required: true, message: "装修不能为空", trigger: "blur" },
+    // ],
+    // price: [{ required: true, message: "租金不能为空", trigger: "blur" }],
+    // startDate: [
+    //   { required: true, message: "起租日期不能为空", trigger: "blur" },
+    // ],
+    // villageName: [
+    //   { required: true, message: "小区名称不能为空", trigger: "blur" },
+    // ],
+    // ownerName: [
+    //   { required: true, message: "房东姓名不能为空", trigger: "blur" },
+    // ],
+    // owerPhone: [
+    //   { required: true, message: "房东电话不能为空", trigger: "blur" },
+    // ]
   }
 });
 
@@ -744,14 +744,18 @@ function submitForm() {
     if (valid) {
       buttonLoading.value = true;
 
-      if (form.featureList && form.featureList.length > 0) {
-        form.featureList = form.featureList.map((val) => ({
-          feature: val,
-        }));
-        //this.form.featureList = featureList;
+      if (featureList.value && featureList.value.length > 0) {
+        // 将featureList的内容存到form中
+
+        form.value.featureList = featureList.value.map((val) => {
+          return{
+            feature: val,
+          }
+        });
       } else {
         proxy.$modal.msgWarning("请选择房源亮点");
       }
+
       if (form.imageList) {
         form.imageList = form.imageList.split(",").map((val) => ({
           imageName: val.split("/")[6],

@@ -139,21 +139,24 @@ public class HouseRoomServiceImpl implements IHouseRoomService {
         houseRoom.setCode(CodeUtil.getCode());
         // 封面图设置默认值
         houseRoom.setFaceUrl("https://sourcebyte.vip/profile/customer/file/loading.png");
+        boolean flag = baseMapper.insert(houseRoom) > 0;
+        if (flag) {
+            bo.setId(houseRoom.getId());
+        }
+
         if (StringUtils.isNotEmpty((CharSequence) bo.getFeatureList()) && bo.getFeatureList().size() > 0){
             // 批量插入房源特色
-            featureService.insertBatch(bo.getFeatureList(), houseRoom.getId());
+            baseMapper.insertHouseFeature(bo);
         }
         if (StringUtils.isNotEmpty(String.valueOf(bo.getImageList())) && bo.getImageList().size() > 0){
             // 设置封面图（默认是多图列表中的第一张）
             houseRoom.setFaceUrl(bo.getImageList().get(0).getImgUrl());
             // 批量插入房源图片
-            imageService.insertBatch(bo.getImageList(), houseRoom.getId());
+            baseMapper.insertHouseImage(bo);
         }
         validEntityBeforeSave(houseRoom);
-        boolean flag = baseMapper.insert(houseRoom) > 0;
-        if (flag) {
-            bo.setId(houseRoom.getId());
-        }
+
+        flag = baseMapper.updateById(houseRoom) > 0;
         return flag;
     }
 
