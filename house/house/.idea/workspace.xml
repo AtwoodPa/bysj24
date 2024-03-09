@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/house-common/src/main/java/com/house/common/utils/redis/RedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/house-common/src/main/java/com/house/common/utils/redis/RedisUtils.java" afterDir="false" />
-    </list>
+    <list default="true" id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +141,7 @@
       <workItem from="1709729328177" duration="2900000" />
       <workItem from="1709732239933" duration="2601000" />
       <workItem from="1709781811995" duration="62000" />
-      <workItem from="1709819114295" duration="2273000" />
+      <workItem from="1709819114295" duration="2545000" />
     </task>
     <servers />
   </component>
