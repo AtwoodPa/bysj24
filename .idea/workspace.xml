@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97c99b41-ba55-4f3a-8dfe-6b589657457d" name="Changes" comment="NewFeature: 校友会管理系统前台框架搭建">
-      <change afterPath="$PROJECT_DIR$/doc/4201153014苏盼盼/毕业设计/4201153014苏盼盼-1毕业设计任务书京江.doc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/4201153014苏盼盼/毕业设计/4201153014苏盼盼-2文献翻译.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/4201153014苏盼盼/毕业设计/4201153014苏盼盼-3开题报告.doc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/4201153014苏盼盼/毕业设计/pdf/4201153014苏盼盼-1毕业设计任务书京江.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/4201153014苏盼盼/毕业设计/pdf/4201153014苏盼盼-2文献翻译.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/4201153014苏盼盼/毕业设计/pdf/4201153014苏盼盼-3开题报告.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/4201153014苏盼盼/毕业设计/~$开题报告.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/参考.zip" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,36 +38,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "21",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Library/PP/Java/github/bysj24/doc/4201153014苏盼盼",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15429688",
-    "project.structure.side.proportion": "0.46487984",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "ts.external.directory.path": "/Users/panpan/Applications/IntelliJ IDEA Ultimate.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Library/PP/Java/github/bysj24/doc/4201153014苏盼盼/毕业设计&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15429688&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.46487984&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/panpan/Applications/IntelliJ IDEA Ultimate.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/doc/4201153014苏盼盼/毕业设计" />
       <recent name="$PROJECT_DIR$/doc/4201153014苏盼盼" />
       <recent name="$PROJECT_DIR$/doc" />
       <recent name="$PROJECT_DIR$/alumni" />
       <recent name="$PROJECT_DIR$/house" />
-      <recent name="$PROJECT_DIR$/ym" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ym" />
@@ -138,6 +132,9 @@
       <workItem from="1709713214793" duration="52000" />
       <workItem from="1709797615340" duration="741000" />
       <workItem from="1709954423822" duration="452000" />
+      <workItem from="1710166919616" duration="797000" />
+      <workItem from="1710168530505" duration="7000" />
+      <workItem from="1710237016838" duration="114000" />
     </task>
     <task id="LOCAL-00001" summary="Enhancement: 租房小程序.md">
       <option name="closed" value="true" />
