@@ -84,36 +84,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="接种地点" prop="inoculateSiteId">
-          <el-select
-            v-model="form.inoculateSiteId"
-            placeholder="请选择接种地点"
-            size="default"
-            style="width: 240px"
-          >
-            <el-option
-              v-for="item in address"
-              :key="item.key"
-              :label="item.value"
-              :value="item.key"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="接种疫苗" prop="vaccineId">
-          <el-select
-            v-model="form.vaccineId"
-            placeholder="请选择接种疫苗"
-            size="default"
-            style="width: 240px"
-          >
-            <el-option
-              v-for="item in vaccines"
-              :key="item.key"
-              :label="item.value"
-              :value="item.key"
-            ></el-option>
-          </el-select>
-        </el-form-item>
+<!--        添加疫苗以及站点的详细信息，在页面加载的时候根据id查询获取-->
         <el-form-item >
           <el-button @click="dialogVisible = false">取消</el-button>
           <el-button type="primary" @click="submitAppointment">提交</el-button>

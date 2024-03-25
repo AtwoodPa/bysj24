@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="" />
+    <list default="true" id="4d488df4-2700-4df5-8e60-934a133c9d9b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../doc/4201153014苏盼盼/毕业设计/4201153014苏盼盼-3开题报告.doc" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/4201153014苏盼盼/毕业设计/4201153014苏盼盼-3开题报告.doc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../doc/本科毕业论文.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/本科毕业论文.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ym/ym/ym-ui-vue3/src/views/Home/components/VaccineDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ym/ym/ym-ui-vue3/src/views/Home/components/VaccineDetail.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,8 +34,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="customMavenHome" value="$PROJECT_DIR$/../../../../../Tool/maven/maven_3.6.3" />
         <option name="localRepository" value="$PROJECT_DIR$/../../../../../Tool/maven/maven_jar" />
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../Tool/maven/maven_3.6.3" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
         <option name="userSettingsFile" value="$PROJECT_DIR$/../../../../../Tool/maven/maven_3.6.3/conf/settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -143,6 +148,9 @@
       <workItem from="1709781811995" duration="62000" />
       <workItem from="1709819114295" duration="2545000" />
       <workItem from="1710319128596" duration="1278000" />
+      <workItem from="1710682384946" duration="1858000" />
+      <workItem from="1711006701694" duration="111000" />
+      <workItem from="1711356537035" duration="3730000" />
     </task>
     <servers />
   </component>
